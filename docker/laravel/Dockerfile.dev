@@ -31,10 +31,6 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
 COPY . /var/www/html
 WORKDIR /var/www/html
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www/html/storage && \
-    chmod -R 775 /var/www/html/storage
-
 # Copy entrypoint script
 COPY entrypoint.dev.sh /usr/local/bin/
 
