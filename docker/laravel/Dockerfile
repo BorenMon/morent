@@ -17,7 +17,8 @@ RUN apt-get update && apt-get install -y \
     bcmath \
     gd \
     zip \
-    opcache
+    opcache \
+    openssh-client
 
 # Add GitHub to known hosts
 RUN mkdir -p /root/.ssh && ssh-keyscan -t rsa github.com >> /root/.ssh/known_hosts

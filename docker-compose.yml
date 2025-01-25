@@ -7,6 +7,7 @@ services:
     volumes:
       - .:/var/www/html
       - ./docker/nginx:/etc/nginx/conf.d
+      - ~/.ssh:/root/.ssh:ro
     depends_on:
       - mysql
       - minio
