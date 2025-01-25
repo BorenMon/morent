@@ -31,14 +31,11 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
 COPY . /var/www/html
 WORKDIR /var/www/html
 
-# Copy and install Composer dependencies
-RUN composer install --optimize-autoloader --no-dev
+# Copy entrypoint script
+COPY entrypoint.sh /usr/local/bin/
 
-# Copy and install Yarn dependencies
-RUN yarn install && yarn build
+# Make the entrypoint script executable
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# Change PHP-FPM to listen on port 9002
-RUN sed -i 's/listen = 9000/listen = 9002/' /usr/local/etc/php-fpm.d/www.conf
-
-# Expose the new PHP-FPM port
-EXPOSE 9002
+# Use the entrypoint script
+ENTRYPOINT ["entrypoint.sh"]

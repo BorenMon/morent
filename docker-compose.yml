@@ -2,8 +2,7 @@ services:
   laravel:
     build:
       context: .
-      dockerfile: docker/Dockerfile
-    hostname: morent-admin-console_laravel
+      dockerfile: docker/laravel/Dockerfile
     container_name: morent-admin-console_laravel
     volumes:
       - .:/var/www/html
@@ -14,7 +13,6 @@ services:
 
   nginx:
     image: nginx:stable-alpine
-    hostname: morent-admin-console_nginx
     container_name: morent-admin-console_nginx
     ports:
       - "7000:80"
@@ -26,7 +24,6 @@ services:
 
   mysql:
     image: mysql:8.0
-    hostname: morent-admin-console_mysql
     container_name: morent-admin-console_mysql
     ports:
       - "3308:3306"
@@ -35,10 +32,11 @@ services:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_USER: ${DB_USERNAME}
       MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - mysql-data:/var/lib/mysql
 
   minio:
     image: minio/minio
-    hostname: morent-admin-console_minio
     container_name: morent-admin-console_minio
     ports:
       - "9000:9000"
@@ -47,3 +45,9 @@ services:
       MINIO_ROOT_USER: ${MINIO_ROOT_USER}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
     command: server /data --console-address ":9001"
+    volumes:
+      - minio-data:/data
+
+volumes:
+  mysql-data:
+  minio-data:
