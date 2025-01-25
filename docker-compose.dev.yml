@@ -4,6 +4,8 @@ services:
       context: .
       dockerfile: docker/laravel/Dockerfile.dev
     container_name: morent-admin-console_laravel
+    ports:
+      - "7000:8000"
     volumes:
       - .:/var/www/html
     # depends_on:
