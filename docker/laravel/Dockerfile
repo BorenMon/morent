@@ -32,8 +32,7 @@ COPY . /var/www/html
 WORKDIR /var/www/html
 
 # Set permissions
-RUN chown -R www-data:www-data /var/www/html/storage && \
-    chmod -R 775 /var/www/html/storage
+RUN chmod -R 777 /var/www/html/storage
 
 # Copy entrypoint script
 COPY entrypoint.sh /usr/local/bin/
