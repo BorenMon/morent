@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     libzip-dev \
+    openssh-client \
     && docker-php-ext-install \
     pdo_mysql \
     mbstring \
@@ -17,8 +18,7 @@ RUN apt-get update && apt-get install -y \
     bcmath \
     gd \
     zip \
-    opcache \
-    openssh-client
+    opcache
 
 # Add GitHub to known hosts
 RUN mkdir -p /root/.ssh && ssh-keyscan -t rsa github.com >> /root/.ssh/known_hosts
