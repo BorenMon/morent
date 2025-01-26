@@ -1,3 +1,5 @@
 node_modules
 vendor
 .env.example
+.env.dev.example
+.env.prod.example

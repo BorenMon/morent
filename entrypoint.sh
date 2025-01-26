@@ -1,11 +1,14 @@
 #!/bin/sh
 
-composer install --optimize-autoloader
+chmod 777 storage/logs
+chmod 777 storage/framework/sessions
+chmod 777 storage/framework/views
 
-chmod 777 /storage/logs
-chmod 777 /storage/frameworks/sessions
-chmod 777 /storage/frameworks/views
+composer install --no-dev --optimize-autoloader
+
+php artisan key:generate
+php artisan migrate --force
 
 yarn install && yarn build
 
-php-fpm
+apache2-foreground

@@ -2,26 +2,17 @@ services:
   laravel:
     build:
       context: .
-      dockerfile: docker/laravel/Dockerfile
+      dockerfile: Dockerfile
     container_name: morent-admin-console_laravel
     volumes:
       - .:/var/www/html
-      - ./docker/nginx:/etc/nginx/conf.d
-      - ~/.ssh:/root/.ssh:ro
     depends_on:
       - mysql
       - minio
-
-  nginx:
-    image: nginx:stable-alpine
-    container_name: morent-admin-console_nginx
+    env_file:
+      - .env
     ports:
       - "7000:80"
-    volumes:
-      - ./docker/nginx:/etc/nginx/conf.d
-      - .:/var/www/html
-    depends_on:
-      - laravel
 
   mysql:
     image: mysql:8.0
