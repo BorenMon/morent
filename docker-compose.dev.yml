@@ -6,8 +6,11 @@ services:
     container_name: morent-admin-console_laravel
     ports:
       - "7000:8000"
+      - "5173:5173"
     volumes:
       - .:/var/www/html
+    env_file:
+      - .env
     # depends_on:
     #   - mysql
     #   - minio
