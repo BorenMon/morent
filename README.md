@@ -32,7 +32,7 @@ cd morent-admin-console
 Copy the example `.env` file and adjust the values as needed:
 
 ```bash
-cp .env.example .env
+cp .env.dev.example .env
 ```
 
 - Ensure the following variables are correctly set in `.env`:
@@ -62,10 +62,10 @@ Run the following commands inside the `laravel` container to install PHP and Nod
 docker exec -it morent-admin-console_laravel bash
 ```
 
-Run migrations to set up the database schema:
+Run database seeding (To get test user)
 
 ```bash
-php artisan migrate
+php artisan db:seed
 ```
 
 ## Additional Information

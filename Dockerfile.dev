@@ -1,4 +1,4 @@
-FROM php:8.2-fpm
+FROM php:8.2
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -20,8 +20,9 @@ RUN apt-get update && apt-get install -y \
     zip \
     opcache
 
-# Add GitHub to known hosts
-RUN mkdir -p /root/.ssh && ssh-keyscan -t rsa github.com >> /root/.ssh/known_hosts
+# Install cloudflared
+RUN curl -fsSL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o /usr/local/bin/cloudflared && \
+    chmod +x /usr/local/bin/cloudflared
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -36,10 +37,10 @@ COPY . /var/www/html
 WORKDIR /var/www/html
 
 # Copy entrypoint script
-COPY entrypoint.sh /usr/local/bin/
+COPY entrypoint.dev.sh /usr/local/bin/
 
 # Make the entrypoint script executable
-RUN chmod +x /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.dev.sh
 
 # Use the entrypoint script
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["entrypoint.dev.sh"]
