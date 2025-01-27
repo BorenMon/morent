@@ -59,7 +59,7 @@ Run the following commands inside the `laravel` container to install PHP and Nod
 #### Access the container:
 
 ```bash
-docker exec -it morent-admin-console_laravel bash
+docker exec -it dev_morent-admin-console_laravel bash
 ```
 
 Run database seeding (To get test user)
@@ -86,8 +86,3 @@ This command establishes a connection, allowing you to access the MySQL server w
 
 - **S3 Connection Issues:** Verify the `AWS_ENDPOINT` and credentials.
 - **Database Connection Errors:** Ensure the database container or external database is accessible and correctly configured in `.env`.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
