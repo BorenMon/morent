@@ -63,7 +63,6 @@ export default defineConfig({
         port: 5173,
         hmr: {
             host: '127.0.0.1',
-        },
-        watch: true
+        }
     },
 });

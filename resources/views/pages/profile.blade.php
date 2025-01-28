@@ -1,5 +1,9 @@
 @extends('layouts.vertical', ['title' => 'Profile', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
+@php
+    $user = Auth::user();
+@endphp
+
 @section('content')
     <!-- start page title -->
     <div class="row">
@@ -16,9 +20,9 @@
                         <div class="profile-user-img"><img src="/images/users/avatar-1.jpg" alt=""
                                 class="avatar-lg rounded-circle"></div>
                         <div class="">
-                            <h4 class="mt-4 fs-17 ellipsis">Michael A. Franklin</h4>
-                            <p class="font-13"> User Experience Specialist</p>
-                            <p class="text-muted mb-0"><small>California, United States</small></p>
+                            <h4 class="mt-4 fs-17 ellipsis">{{ $user->name }}</h4>
+                            <p class="font-13">{{ $user->role }}</p>
+                            <p class="text-muted mb-0"><small>{{ $user->address }}</small></p>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -48,152 +52,39 @@
                                     aria-controls="home" aria-selected="true" href="#aboutme">About</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
-                                    data-bs-target="#user-activities" type="button" role="tab"
-                                    aria-controls="home" aria-selected="true"
-                                    href="#user-activities">Activities</a></li>
-                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
                                     data-bs-target="#edit-profile" type="button" role="tab"
                                     aria-controls="home" aria-selected="true"
                                     href="#edit-profile">Settings</a></li>
-                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
-                                    data-bs-target="#projects" type="button" role="tab"
-                                    aria-controls="home" aria-selected="true"
-                                    href="#projects">Projects</a></li>
                         </ul>
 
                         <div class="tab-content m-0 p-4">
                             <div class="tab-pane active" id="aboutme" role="tabpanel"
                                 aria-labelledby="home-tab" tabindex="0">
                                 <div class="profile-desk">
-                                    <h5 class="text-uppercase fs-17 text-dark">Johnathan Deo</h5>
-                                    <div class="designation mb-4">PRODUCT DESIGNER (UX / UI / Visual
-                                        Interaction)</div>
-                                    <p class="text-muted fs-16">
-                                        I have 10 years of experience designing for the web, and
-                                        specialize
-                                        in the areas of user interface design, interaction design,
-                                        visual
-                                        design and prototyping. I’ve worked with notable startups
-                                        including
-                                        Pearl Street Software.
-                                    </p>
+                                    <h5 class="text-uppercase fs-17 text-dark">{{ $user->name }}</h5>
+                                    <div class="designation mb-4">{{ $user->role }}</div>
 
                                     <h5 class="mt-4 fs-17 text-dark">Contact Information</h5>
                                     <table class="table table-condensed mb-0 border-top">
                                         <tbody>
                                             <tr>
-                                                <th scope="row">Url</th>
-                                                <td>
-                                                    <a href="#" class="ng-binding">
-                                                        www.example.com
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
                                                 <th scope="row">Email</th>
                                                 <td>
                                                     <a href="" class="ng-binding">
-                                                        jonathandeo@example.com
+                                                        {{ $user->email }}
                                                     </a>
                                                 </td>
                                             </tr>
 
                                             <tr>
                                                 <th scope="row">Phone</th>
-                                                <td class="ng-binding">(123)-456-7890</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">Skype</th>
-                                                <td>
-                                                    <a href="#" class="ng-binding">
-                                                        jonathandeo123
-                                                    </a>
-                                                </td>
+                                                <td class="ng-binding">{{ $user->phone }}</td>
                                             </tr>
 
                                         </tbody>
                                     </table>
                                 </div> <!-- end profile-desk -->
                             </div> <!-- about-me -->
-
-                            <!-- Activities -->
-                            <div id="user-activities" class="tab-pane">
-                                <div class="timeline-2">
-                                    <div class="time-item">
-                                        <div class="item-info ms-3 mb-3">
-                                            <div class="text-muted">5 minutes ago</div>
-                                            <p><strong><a href="#" class="text-info">John
-                                                        Doe</a></strong>Uploaded a photo</p>
-                                            <img src="/images/small/small-3.jpg" alt=""
-                                                height="40" width="60" class="rounded-1">
-                                            <img src="/images/small/small-4.jpg" alt=""
-                                                height="40" width="60" class="rounded-1">
-                                        </div>
-                                    </div>
-
-                                    <div class="time-item">
-                                        <div class="item-info ms-3 mb-3">
-                                            <div class="text-muted">30 minutes ago</div>
-                                            <p><a href="" class="text-info">Lorem</a> commented your
-                                                post.
-                                            </p>
-                                            <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing
-                                                    elit.
-                                                    Aliquam laoreet tellus ut tincidunt euismod. "</em>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="time-item">
-                                        <div class="item-info ms-3 mb-3">
-                                            <div class="text-muted">59 minutes ago</div>
-                                            <p><a href="" class="text-info">Jessi</a> attended a meeting
-                                                with<a href="#" class="text-success">John Doe</a>.</p>
-                                            <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing
-                                                    elit.
-                                                    Aliquam laoreet tellus ut tincidunt euismod. "</em>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="time-item">
-                                        <div class="item-info ms-3 mb-3">
-                                            <div class="text-muted">5 minutes ago</div>
-                                            <p><strong><a href="#" class="text-info">John
-                                                        Doe</a></strong> Uploaded 2 new photos</p>
-                                            <img src="/images/small/small-2.jpg" alt=""
-                                                height="40" width="60" class="rounded-1">
-                                            <img src="/images/small/small-1.jpg" alt=""
-                                                height="40" width="60" class="rounded-1">
-                                        </div>
-                                    </div>
-
-                                    <div class="time-item">
-                                        <div class="item-info ms-3 mb-3">
-                                            <div class="text-muted">30 minutes ago</div>
-                                            <p><a href="" class="text-info">Lorem</a> commented your
-                                                post.
-                                            </p>
-                                            <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing
-                                                    elit.
-                                                    Aliquam laoreet tellus ut tincidunt euismod. "</em>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="time-item">
-                                        <div class="item-info ms-3 mb-3">
-                                            <div class="text-muted">59 minutes ago</div>
-                                            <p><a href="" class="text-info">Jessi</a> attended a meeting
-                                                with<a href="#" class="text-success">John Doe</a>.</p>
-                                            <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing
-                                                    elit.
-                                                    Aliquam laoreet tellus ut tincidunt euismod. "</em>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
                             <!-- settings -->
                             <div id="edit-profile" class="tab-pane">
@@ -210,17 +101,6 @@
                                                 <label class="form-label" for="Email">Email</label>
                                                 <input type="email" value="first.last@example.com"
                                                     id="Email" class="form-control">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label" for="web-url">Website</label>
-                                                <input type="text" value="Enter website url"
-                                                    id="web-url" class="form-control">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label"
-                                                    for="Username">Username</label>
-                                                <input type="text" value="john" id="Username"
-                                                    class="form-control">
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label"
@@ -243,77 +123,6 @@
                                         <button class="btn btn-primary" type="submit"><i
                                                 class="ri-save-line me-1 fs-16 lh-1"></i> Save</button>
                                     </form>
-                                </div>
-                            </div>
-
-                            <!-- profile -->
-                            <div id="projects" class="tab-pane">
-                                <div class="row m-t-10">
-                                    <div class="col-md-12">
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered mb-0">
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Project Name</th>
-                                                        <th>Start Date</th>
-                                                        <th>Due Date</th>
-                                                        <th>Status</th>
-                                                        <th>Assign</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Velonic Admin</td>
-                                                        <td>01/01/2015</td>
-                                                        <td>07/05/2015</td>
-                                                        <td><span class="badge bg-info">Work
-                                                                in Progress</span></td>
-                                                        <td>Techzaa</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>Velonic Frontend</td>
-                                                        <td>01/01/2015</td>
-                                                        <td>07/05/2015</td>
-                                                        <td><span
-                                                                class="badge bg-success">Pending</span>
-                                                        </td>
-                                                        <td>Techzaa</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td>Velonic Admin</td>
-                                                        <td>01/01/2015</td>
-                                                        <td>07/05/2015</td>
-                                                        <td><span class="badge bg-pink">Done</span>
-                                                        </td>
-                                                        <td>Techzaa</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4</td>
-                                                        <td>Velonic Frontend</td>
-                                                        <td>01/01/2015</td>
-                                                        <td>07/05/2015</td>
-                                                        <td><span class="badge bg-purple">Work
-                                                                in Progress</span></td>
-                                                        <td>Techzaa</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>5</td>
-                                                        <td>Velonic Admin</td>
-                                                        <td>01/01/2015</td>
-                                                        <td>07/05/2015</td>
-                                                        <td><span class="badge bg-warning">Coming
-                                                                soon</span></td>
-                                                        <td>Techzaa</td>
-                                                    </tr>
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

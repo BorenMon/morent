@@ -3,3 +3,5 @@ vendor
 .env.example
 .env.dev.example
 .env.prod.example
+public/builds/
+public/hot

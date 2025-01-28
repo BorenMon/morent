@@ -20,10 +20,10 @@
                             <div class="col-lg-6">
                                 <div class="d-flex flex-column h-100">
                                     <div class="auth-brand p-4">
-                                        <a href="{{ route('any', 'index') }}" class="logo-light">
+                                        <a href="{{ route('dashboard') }}" class="logo-light">
                                             <img src="/images/logo.png" alt="logo" height="22">
                                         </a>
-                                        <a href="{{ route('any', 'index') }}" class="logo-dark">
+                                        <a href="{{ route('dashboard') }}" class="logo-dark">
                                             <img src="/images/logo-dark.png" alt="dark logo" height="22">
                                         </a>
                                     </div>
@@ -35,10 +35,13 @@
                                         <div class="text-center">
                                             <h1 class="mb-3">500</h1>
                                             <h4 class="fs-20">Internal server error</h4>
-                                            <p class="text-muted mb-3"> Why not try refreshing your page? or you can contact <a href="javascript: void(0);" class="text-primary"><b>Support</b></a></p>
+                                            <p class="text-muted mb-3"> Why not try refreshing your page? or you can
+                                                contact <a href="javascript: void(0);"
+                                                    class="text-primary"><b>Support</b></a></p>
                                         </div>
 
-                                        <a href="{{ route('any', 'index') }}" class="btn btn-soft-primary w-100"><i class="ri-home-4-line me-1"></i>  Back to Home</a>
+                                        <a href="{{ route('dashboard') }}" class="btn btn-soft-primary w-100"><i
+                                                class="ri-home-4-line me-1"></i> Back to Home</a>
                                     </div>
                                 </div>
                             </div> <!-- end col -->
@@ -54,7 +57,9 @@
 
     <footer class="footer footer-alt fw-medium">
         <span class="text-dark-emphasis">
-            <script>document.write(new Date().getFullYear())</script> © Velonic - Theme by Techzaa
+            <script>
+                document.write(new Date().getFullYear())
+            </script> © Velonic - Theme by Techzaa
         </span>
     </footer>
     @@include('./partials/footer-scripts.html')

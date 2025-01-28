@@ -1,12 +1,9 @@
 #!/bin/sh
 
-composer install
-
 cloudflared access tcp --hostname morent-admin-db.borenmon.dev --url 127.0.0.1:3308 &
 
-php artisan key:generate
-php artisan migrate
+git config --global --add safe.directory /var/www/html
 
-yarn install && yarn dev &
+composer install
 
 php artisan serve --host=0.0.0.0

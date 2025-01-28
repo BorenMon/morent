@@ -2,7 +2,7 @@
 <div class="leftside-menu">
 
     <!-- Brand Logo Light -->
-    <a href="{{ route('any', 'index') }}" class="logo logo-light">
+    <a href="{{ route('dashboard') }}" class="logo logo-light">
         <span class="logo-lg">
             <img src="/images/logo.png" alt="logo">
         </span>
@@ -12,7 +12,7 @@
     </a>
 
     <!-- Brand Logo Dark -->
-    <a href="{{ route('any', 'index') }}" class="logo logo-dark">
+    <a href="{{ route('dashboard') }}" class="logo logo-dark">
         <span class="logo-lg">
             <img src="/images/logo-dark.png" alt="dark logo">
         </span>
@@ -29,7 +29,7 @@
             <li class="side-nav-title">Main</li>
 
             <li class="side-nav-item">
-                <a href="{{ route('any', 'index') }}" class="side-nav-link">
+                <a href="{{ route('dashboard') }}" class="side-nav-link">
                     <i class="ri-dashboard-3-line"></i>
                     <span class="badge bg-success float-end">9+</span>
                     <span> Dashboard </span>
@@ -120,19 +120,24 @@
                 <div class="collapse" id="sidebarLayouts">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="{{ route('second', ['layouts-eg', 'horizontal']) }}" target="_blank">Horizontal</a>
+                            <a href="{{ route('second', ['layouts-eg', 'horizontal']) }}"
+                                target="_blank">Horizontal</a>
                         </li>
                         <li>
-                            <a href="{{ route('second', ['layouts-eg', 'light-sidebar']) }}" target="_blank">Light Sidebar</a>
+                            <a href="{{ route('second', ['layouts-eg', 'light-sidebar']) }}" target="_blank">Light
+                                Sidebar</a>
                         </li>
                         <li>
-                            <a href="{{ route('second', ['layouts-eg', 'sm-sidebar']) }}" target="_blank">Small Sidebar</a>
+                            <a href="{{ route('second', ['layouts-eg', 'sm-sidebar']) }}" target="_blank">Small
+                                Sidebar</a>
                         </li>
                         <li>
-                            <a href="{{ route('second', ['layouts-eg', 'collapsed-sidebar']) }}" target="_blank">Collapsed Sidebar</a>
+                            <a href="{{ route('second', ['layouts-eg', 'collapsed-sidebar']) }}"
+                                target="_blank">Collapsed Sidebar</a>
                         </li>
                         <li>
-                            <a href="{{ route('second', ['layouts-eg', 'unsticky-layout']) }}" target="_blank">Unsticky Layout</a>
+                            <a href="{{ route('second', ['layouts-eg', 'unsticky-layout']) }}" target="_blank">Unsticky
+                                Layout</a>
                         </li>
                         <li>
                             <a href="{{ route('second', ['layouts-eg', 'boxed']) }}" target="_blank">Boxed Layout</a>
