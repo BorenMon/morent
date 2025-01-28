@@ -6,7 +6,7 @@ services:
     container_name: dev_morent-admin-console_laravel
     ports:
       - "7000:8000"
-      # - "5173:5173"
+      - "5173:5173"
     volumes:
       - .:/var/www/html
     env_file:

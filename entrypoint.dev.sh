@@ -4,6 +4,8 @@ cloudflared access tcp --hostname morent-admin-db.borenmon.dev --url 127.0.0.1:3
 
 git config --global --add safe.directory /var/www/html
 
+yarn install && yarn dev &
+
 composer install
 
 php artisan serve --host=0.0.0.0
