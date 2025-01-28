@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Grid System', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Grid System', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Grid System'])
@@ -16,73 +16,73 @@
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped mb-0">
                             <thead>
-                            <tr>
-                                <th></th>
-                                <th class="text-center">
-                                    Extra small<br>
-                                    <small>&lt;576px</small>
-                                </th>
-                                <th class="text-center">
-                                    Small<br>
-                                    <small>≥576px</small>
-                                </th>
-                                <th class="text-center">
-                                    Medium<br>
-                                    <small>≥768px</small>
-                                </th>
-                                <th class="text-center">
-                                    Large<br>
-                                    <small>≥992px</small>
-                                </th>
-                                <th class="text-center">
-                                    Extra large<br>
-                                    <small>≥1200px</small>
-                                </th>
-                                <th class="text-center">
-                                    Extra large<br>
-                                    <small>≥1400px</small>
-                                </th>
-                            </tr>
+                                <tr>
+                                    <th></th>
+                                    <th class="text-center">
+                                        Extra small<br>
+                                        <small>&lt;576px</small>
+                                    </th>
+                                    <th class="text-center">
+                                        Small<br>
+                                        <small>≥576px</small>
+                                    </th>
+                                    <th class="text-center">
+                                        Medium<br>
+                                        <small>≥768px</small>
+                                    </th>
+                                    <th class="text-center">
+                                        Large<br>
+                                        <small>≥992px</small>
+                                    </th>
+                                    <th class="text-center">
+                                        Extra large<br>
+                                        <small>≥1200px</small>
+                                    </th>
+                                    <th class="text-center">
+                                        Extra large<br>
+                                        <small>≥1400px</small>
+                                    </th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th class="text-nowrap" scope="row">Max container width</th>
-                                <td>None (auto)</td>
-                                <td>540px</td>
-                                <td>720px</td>
-                                <td>960px</td>
-                                <td>1140px</td>
-                                <td>1320px</td>
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap" scope="row">Class prefix</th>
-                                <td><code>.col-</code></td>
-                                <td><code>.col-sm-</code></td>
-                                <td><code>.col-md-</code></td>
-                                <td><code>.col-lg-</code></td>
-                                <td><code>.col-xl-</code></td>
-                                <td><code>.col-xxl-</code></td>
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap" scope="row"># of columns</th>
-                                <td colspan="6">12</td>
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap" scope="row">Gutter width</th>
-                                <td colspan="6">1.25rem (0.625rem on each side of a column)</td>
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap" scope="row">Custom gutters</th>
-                                <td colspan="6">Yes</td>
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap" scope="row">Nestable</th>
-                                <td colspan="6">Yes</td>
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap" scope="row">Column ordering</th>
-                                <td colspan="6">Yes</td>
-                            </tr>
+                                <tr>
+                                    <th class="text-nowrap" scope="row">Max container width</th>
+                                    <td>None (auto)</td>
+                                    <td>540px</td>
+                                    <td>720px</td>
+                                    <td>960px</td>
+                                    <td>1140px</td>
+                                    <td>1320px</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap" scope="row">Class prefix</th>
+                                    <td><code>.col-</code></td>
+                                    <td><code>.col-sm-</code></td>
+                                    <td><code>.col-md-</code></td>
+                                    <td><code>.col-lg-</code></td>
+                                    <td><code>.col-xl-</code></td>
+                                    <td><code>.col-xxl-</code></td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap" scope="row"># of columns</th>
+                                    <td colspan="6">12</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap" scope="row">Gutter width</th>
+                                    <td colspan="6">1.25rem (0.625rem on each side of a column)</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap" scope="row">Custom gutters</th>
+                                    <td colspan="6">Yes</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap" scope="row">Nestable</th>
+                                    <td colspan="6">Yes</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap" scope="row">Column ordering</th>
+                                    <td colspan="6">Yes</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div> <!-- end table-responsive-->
@@ -269,10 +269,10 @@
                             </div>
                         </div> <!-- end row -->
                     </div> <!-- grid-structure -->
-                    
+
                 </div> <!-- end card-body-->
             </div> <!-- end card-->
         </div> <!-- end col-->
-    </div> 
+    </div>
     <!-- end row-->
 @endsection

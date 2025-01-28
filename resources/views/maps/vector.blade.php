@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Vector Maps', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Vector Maps', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('css')
     @vite(['node_modules/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css'])
@@ -38,7 +38,7 @@
                     <h4 class="header-title mb-0">India Vector Map</h4>
                 </div>
                 <div class="card-body">
-                    <div id="india-vectormap"  style="height: 300px"></div>
+                    <div id="india-vectormap" style="height: 300px"></div>
                 </div> <!-- end card-body-->
             </div> <!-- end card-->
         </div> <!-- end col-->
@@ -62,7 +62,7 @@
                     <h4 class="header-title mb-0">Chicago Vector Map</h4>
                 </div>
                 <div class="card-body">
-                    <div id="chicago-vectormap"  style="height: 300px"></div>
+                    <div id="chicago-vectormap" style="height: 300px"></div>
                 </div> <!-- end card-body-->
             </div> <!-- end card-->
         </div> <!-- end col-->
@@ -86,7 +86,7 @@
                     <h4 class="header-title mb-0">Canada Vector Map</h4>
                 </div>
                 <div class="card-body">
-                    <div id="canada-vectormap"  style="height: 300px"></div>
+                    <div id="canada-vectormap" style="height: 300px"></div>
                 </div> <!-- end card-body-->
             </div> <!-- end card-->
         </div> <!-- end col-->
@@ -110,7 +110,7 @@
                     <h4 class="header-title mb-0">France Vector Map</h4>
                 </div>
                 <div class="card-body">
-                    <div id="france-vectormap"  style="height: 300px"></div>
+                    <div id="france-vectormap" style="height: 300px"></div>
                 </div> <!-- end card-body-->
             </div> <!-- end card-->
         </div> <!-- end col-->
@@ -134,7 +134,7 @@
                     <h4 class="header-title mb-0">Spain Vector Map</h4>
                 </div>
                 <div class="card-body">
-                    <div id="spain2-vectormap"  style="height: 300px"></div>
+                    <div id="spain2-vectormap" style="height: 300px"></div>
                 </div> <!-- end card-body-->
             </div> <!-- end card-->
         </div> <!-- end col-->

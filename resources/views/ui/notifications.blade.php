@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Notifications', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Notifications', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('css')
     @vite(['node_modules/jquery-toast-plugin/dist/jquery.toast.min.css'])
@@ -26,15 +26,13 @@
                                 strongly encourage a dismiss button.</p>
                             <div class="p-3">
 
-                                <div class="toast fade show" role="alert" aria-live="assertive"
-                                    aria-atomic="true">
+                                <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
                                     <div class="toast-header">
-                                        <img src="/images/logo-sm.png" alt="brand-logo"
-                                            height="16" class="me-1" />
+                                        <img src="/images/logo-sm.png" alt="brand-logo" height="16" class="me-1" />
                                         <strong class="me-auto">Velonic</strong>
                                         <small>11 mins ago</small>
-                                        <button type="button" class="ms-2 btn-close"
-                                            data-bs-dismiss="toast" aria-label="Close"></button>
+                                        <button type="button" class="ms-2 btn-close" data-bs-dismiss="toast"
+                                            aria-label="Close"></button>
                                     </div>
                                     <div class="toast-body">
                                         Hello, world! This is a toast message.
@@ -52,15 +50,13 @@
                                 we’ll also attempt to blur the elements under a toast.</p>
 
                             <div class="p-3 bg-light">
-                                <div class="toast fade show" role="alert" aria-live="assertive"
-                                    aria-atomic="true">
+                                <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
                                     <div class="toast-header">
-                                        <img src="/images/logo-sm.png" alt="brand-logo"
-                                            height="16" class="me-1" />
+                                        <img src="/images/logo-sm.png" alt="brand-logo" height="16" class="me-1" />
                                         <strong class="me-auto">Velonic</strong>
                                         <small>11 mins ago</small>
-                                        <button type="button" class="ms-2 btn-close"
-                                            data-bs-dismiss="toast" aria-label="Close"></button>
+                                        <button type="button" class="ms-2 btn-close" data-bs-dismiss="toast"
+                                            aria-label="Close"></button>
                                     </div>
                                     <div class="toast-body">
                                         Hello, world! This is a toast message.
@@ -78,22 +74,20 @@
                             <p class="text-muted mb-0">When you have multiple toasts, we
                                 default to vertiaclly stacking them in a readable manner.</p>
                             <div class="p-3">
-                                <div aria-live="polite" aria-atomic="true"
-                                    style="position: relative; min-height: 200px;">
+                                <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
                                     <!-- Position it -->
-                                    <div class="toast-container"
-                                        style="position: absolute; top: 0; right: 0;">
+                                    <div class="toast-container" style="position: absolute; top: 0; right: 0;">
 
                                         <!-- Then put toasts within -->
                                         <div class="toast fade show" role="alert" aria-live="assertive"
                                             aria-atomic="true">
                                             <div class="toast-header">
-                                                <img src="/images/logo-sm.png" alt="brand-logo"
-                                                    height="16" class="me-1" />
+                                                <img src="/images/logo-sm.png" alt="brand-logo" height="16"
+                                                    class="me-1" />
                                                 <strong class="me-auto">Velonic</strong>
                                                 <small class="text-muted">just now</small>
-                                                <button type="button" class="ms-2 btn-close"
-                                                    data-bs-dismiss="toast" aria-label="Close"></button>
+                                                <button type="button" class="ms-2 btn-close" data-bs-dismiss="toast"
+                                                    aria-label="Close"></button>
                                             </div>
                                             <div class="toast-body">
                                                 See? Just like this.
@@ -104,12 +98,12 @@
                                         <div class="toast fade show" role="alert" aria-live="assertive"
                                             aria-atomic="true">
                                             <div class="toast-header">
-                                                <img src="/images/logo-sm.png" alt="brand-logo"
-                                                    height="16" class="me-1" />
+                                                <img src="/images/logo-sm.png" alt="brand-logo" height="16"
+                                                    class="me-1" />
                                                 <strong class="me-auto">Velonic</strong>
                                                 <small class="text-muted">2 seconds ago</small>
-                                                <button type="button" class="ms-2 btn-close"
-                                                    data-bs-dismiss="toast" aria-label="Close"></button>
+                                                <button type="button" class="ms-2 btn-close" data-bs-dismiss="toast"
+                                                    aria-label="Close"></button>
                                             </div>
                                             <div class="toast-body">
                                                 Heads up, toasts will stack automatically
@@ -129,19 +123,18 @@
                                 styles right on the <code>.toast</code>.</p>
                             <div class="p-3">
                                 <div aria-live="polite" aria-atomic="true"
-                                    class="d-flex justify-content-center align-items-center"
-                                    style="min-height: 200px;">
+                                    class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
 
                                     <!-- Then put toasts within -->
-                                    <div class="toast fade show" role="alert" aria-live="assertive"
-                                        aria-atomic="true" data-bs-toggle="toast">
+                                    <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true"
+                                        data-bs-toggle="toast">
                                         <div class="toast-header">
-                                            <img src="/images/logo-sm.png" alt="brand-logo"
-                                                height="16" class="me-1" />
+                                            <img src="/images/logo-sm.png" alt="brand-logo" height="16"
+                                                class="me-1" />
                                             <strong class="me-auto">Velonic</strong>
                                             <small>11 mins ago</small>
-                                            <button type="button" class="ms-2 btn-close"
-                                                data-bs-dismiss="toast" aria-label="Close"></button>
+                                            <button type="button" class="ms-2 btn-close" data-bs-dismiss="toast"
+                                                aria-label="Close"></button>
                                         </div>
                                         <div class="toast-body">
                                             Hello, world! This is a toast message.
@@ -179,14 +172,14 @@
                         </div>
                     </div>
 
-                    <div class="toast show align-items-center text-white bg-primary border-0 mb-4"
-                        role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast show align-items-center text-white bg-primary border-0 mb-4" role="alert"
+                        aria-live="assertive" aria-atomic="true">
                         <div class="d-flex">
                             <div class="toast-body">
                                 Hello, world! This is a toast message.
                             </div>
-                            <button type="button" class="btn-close btn-close-white me-2 m-auto"
-                                data-bs-dismiss="toast" aria-label="Close"></button>
+                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                                aria-label="Close"></button>
                         </div>
                     </div>
 
@@ -202,8 +195,7 @@
                         </div>
                     </div>
 
-                    <div class="toast bg-primary show" role="alert" aria-live="assertive"
-                        aria-atomic="true">
+                    <div class="toast bg-primary show" role="alert" aria-live="assertive" aria-atomic="true">
                         <div class="toast-body text-white">
                             Hello, world! This is a toast message.
                             <div class="mt-2 pt-2 border-top">
@@ -251,13 +243,12 @@
                             </select>
                         </div>
                     </form>
-                    <div aria-live="polite" aria-atomic="true"
-                        class="bg-light position-relative bd-example-toasts" style="min-height:294px">
+                    <div aria-live="polite" aria-atomic="true" class="bg-light position-relative bd-example-toasts"
+                        style="min-height:294px">
                         <div class="toast-container position-absolute p-3" id="toastPlacement">
                             <div class="toast show">
                                 <div class="toast-header">
-                                    <img src="/images/logo-sm.png" alt="brand-logo" height="16"
-                                        class="me-1" />
+                                    <img src="/images/logo-sm.png" alt="brand-logo" height="16" class="me-1" />
                                     <strong class="me-auto">Velonic</strong>
                                     <small>11 mins ago</small>
                                 </div>
@@ -294,22 +285,19 @@
                         <div class="col-md-3 col-sm-6">
                             <div class="text-center p-1 pb-3 p-sm-3">
                                 <p>Warning Example</p>
-                                <button type="button" class="btn btn-warning btn-sm"
-                                    id="toastr-two">Click me</button>
+                                <button type="button" class="btn btn-warning btn-sm" id="toastr-two">Click me</button>
                             </div>
                         </div> <!-- end col-->
                         <div class="col-md-3 col-sm-6">
                             <div class="text-center p-1 pb-3 p-sm-3">
                                 <p>Success Example</p>
-                                <button type="button" class="btn btn-success btn-sm"
-                                    id="toastr-three">Click me</button>
+                                <button type="button" class="btn btn-success btn-sm" id="toastr-three">Click me</button>
                             </div>
                         </div> <!-- end col-->
                         <div class="col-md-3 col-sm-6">
                             <div class="text-center p-1 pb-3 p-sm-3">
                                 <p>Danger Example</p>
-                                <button type="button" class="btn btn-danger btn-sm"
-                                    id="toastr-four">Click me</button>
+                                <button type="button" class="btn btn-danger btn-sm" id="toastr-four">Click me</button>
                             </div>
                         </div> <!-- end col-->
                     </div>
@@ -319,8 +307,7 @@
                         <div class="col-md-3 col-sm-6">
                             <div class="text-center p-1 pb-3 p-sm-3">
                                 <p>The text can be an array</p>
-                                <button type="button" class="btn btn-light btn-sm"
-                                    id="toastr-five">Click me</button>
+                                <button type="button" class="btn btn-light btn-sm" id="toastr-five">Click me</button>
                             </div>
                         </div> <!-- end col-->
                         <div class="col-md-3 col-sm-6">
@@ -333,15 +320,13 @@
                         <div class="col-md-3 col-sm-6">
                             <div class="text-center p-1 pb-3 p-sm-3">
                                 <p>Making them sticky</p>
-                                <button type="button" class="btn btn-light btn-sm"
-                                    id="toastr-seven">Click me</button>
+                                <button type="button" class="btn btn-light btn-sm" id="toastr-seven">Click me</button>
                             </div>
                         </div> <!-- end col-->
                         <div class="col-md-3 col-sm-6">
                             <div class="text-center p-1 pb-3 p-sm-3">
                                 <p>Fade transitions</p>
-                                <button type="button" class="btn btn-light btn-sm"
-                                    id="toastr-eight">Click me</button>
+                                <button type="button" class="btn btn-light btn-sm" id="toastr-eight">Click me</button>
                             </div>
                         </div> <!-- end col-->
                     </div>
@@ -355,5 +340,5 @@
 @endsection
 
 @section('script-bottom')
-    @vite(['resources/js/pages/toastr.init.js',])
+    @vite(['resources/js/pages/toastr.init.js'])
 @endsection

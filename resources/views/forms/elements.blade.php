@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Form Elements', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Form Elements', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     @include('layouts.shared/page-title', ['page_title' => 'Form Elements', 'sub_title' => 'Forms'])
@@ -26,14 +26,13 @@
 
                                 <div class="mb-3">
                                     <label for="example-email" class="form-label">Email</label>
-                                    <input type="email" id="example-email" name="example-email"
-                                        class="form-control" placeholder="Email">
+                                    <input type="email" id="example-email" name="example-email" class="form-control"
+                                        placeholder="Email">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="example-password" class="form-label">Password</label>
-                                    <input type="password" id="example-password" class="form-control"
-                                        value="password">
+                                    <input type="password" id="example-password" class="form-control" value="password">
                                 </div>
 
                                 <div class="mb-3">
@@ -48,35 +47,33 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="example-palaceholder"
-                                        class="form-label">Placeholder</label>
+                                    <label for="example-palaceholder" class="form-label">Placeholder</label>
                                     <input type="text" id="example-palaceholder" class="form-control"
                                         placeholder="placeholder">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="example-textarea" class="form-label">Text area</label>
-                                    <textarea class="form-control" id="example-textarea"
-                                        rows="5"></textarea>
+                                    <textarea class="form-control" id="example-textarea" rows="5"></textarea>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="example-readonly" class="form-label">Readonly</label>
-                                    <input type="text" id="example-readonly" class="form-control"
-                                        readonly="" value="Readonly value">
+                                    <input type="text" id="example-readonly" class="form-control" readonly=""
+                                        value="Readonly value">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="example-disable" class="form-label">Disabled</label>
-                                    <input type="text" class="form-control" id="example-disable"
-                                        disabled="" value="Disabled value">
+                                    <input type="text" class="form-control" id="example-disable" disabled=""
+                                        value="Disabled value">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="example-static" class="form-label">Static
                                         control</label>
-                                    <input type="text" readonly class="form-control-plaintext"
-                                        id="example-static" value="email@example.com">
+                                    <input type="text" readonly class="form-control-plaintext" id="example-static"
+                                        value="email@example.com">
                                 </div>
 
                                 <div class="mb-0">
@@ -125,44 +122,39 @@
 
                                 <div class="mb-3">
                                     <label for="example-date" class="form-label">Date</label>
-                                    <input class="form-control" id="example-date" type="date"
-                                        name="date">
+                                    <input class="form-control" id="example-date" type="date" name="date">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="example-month" class="form-label">Month</label>
-                                    <input class="form-control" id="example-month" type="month"
-                                        name="month">
+                                    <input class="form-control" id="example-month" type="month" name="month">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="example-time" class="form-label">Time</label>
-                                    <input class="form-control" id="example-time" type="time"
-                                        name="time">
+                                    <input class="form-control" id="example-time" type="time" name="time">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="example-week" class="form-label">Week</label>
-                                    <input class="form-control" id="example-week" type="week"
-                                        name="week">
+                                    <input class="form-control" id="example-week" type="week" name="week">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="example-number" class="form-label">Number</label>
-                                    <input class="form-control" id="example-number" type="number"
-                                        name="number">
+                                    <input class="form-control" id="example-number" type="number" name="number">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="example-color" class="form-label">Color</label>
-                                    <input class="form-control" id="example-color" type="color"
-                                        name="color" value="#727cf5">
+                                    <input class="form-control" id="example-color" type="color" name="color"
+                                        value="#727cf5">
                                 </div>
 
                                 <div class="mb-0">
                                     <label for="example-range" class="form-label">Range</label>
-                                    <input class="form-range" id="example-range" type="range"
-                                        name="range" min="0" max="100">
+                                    <input class="form-range" id="example-range" type="range" name="range"
+                                        min="0" max="100">
                                 </div>
 
                             </form>
@@ -206,8 +198,7 @@
 
                             <h5 class="mb-3 mt-4">Textareas</h5>
                             <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a comment here"
-                                    id="floatingTextarea" style="height: 100px"></textarea>
+                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 100px"></textarea>
                                 <label for="floatingTextarea">Comments</label>
                             </div>
                         </div>
@@ -322,8 +313,7 @@
                                     element</label>
                             </div>
                             <div class="form-check form-switch mt-1">
-                                <input type="checkbox" class="form-check-input" disabled
-                                    id="customSwitch2">
+                                <input type="checkbox" class="form-check-input" disabled id="customSwitch2">
                                 <label class="form-check-label" for="customSwitch2">Disabled switch
                                     element</label>
                             </div>
@@ -382,8 +372,7 @@
 
                     <div class="mt-2">
                         <div class="form-check form-check-inline">
-                            <input type="checkbox" class="form-check-input" id="customCheck5" checked
-                                disabled>
+                            <input type="checkbox" class="form-check-input" id="customCheck5" checked disabled>
                             <label class="form-check-label" for="customCheck5">Check this custom
                                 checkbox</label>
                         </div>
@@ -446,14 +435,12 @@
 
                     <div class="mt-3">
                         <div class="form-check">
-                            <input type="radio" id="customRadio1" name="customRadio"
-                                class="form-check-input">
+                            <input type="radio" id="customRadio1" name="customRadio" class="form-check-input">
                             <label class="form-check-label" for="customRadio1">Toggle this custom
                                 radio</label>
                         </div>
                         <div class="form-check">
-                            <input type="radio" id="customRadio2" name="customRadio"
-                                class="form-check-input">
+                            <input type="radio" id="customRadio2" name="customRadio" class="form-check-input">
                             <label class="form-check-label" for="customRadio2">Or toggle this other
                                 custom radio</label>
                         </div>
@@ -463,14 +450,12 @@
 
                     <div class="mt-2">
                         <div class="form-check form-check-inline">
-                            <input type="radio" id="customRadio3" name="customRadio1"
-                                class="form-check-input">
+                            <input type="radio" id="customRadio3" name="customRadio1" class="form-check-input">
                             <label class="form-check-label" for="customRadio3">Toggle this custom
                                 radio</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input type="radio" id="customRadio4" name="customRadio1"
-                                class="form-check-input">
+                            <input type="radio" id="customRadio4" name="customRadio1" class="form-check-input">
                             <label class="form-check-label" for="customRadio4">Or toggle this other
                                 custom radio</label>
                         </div>
@@ -480,14 +465,14 @@
 
                     <div class="mt-2">
                         <div class="form-check form-check-inline">
-                            <input type="radio" id="customRadio5" name="customRadio2"
-                                class="form-check-input" disabled>
+                            <input type="radio" id="customRadio5" name="customRadio2" class="form-check-input"
+                                disabled>
                             <label class="form-check-label" for="customRadio5">Toggle this custom
                                 radio</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input type="radio" id="customRadio6" name="customRadio2"
-                                class="form-check-input" checked disabled>
+                            <input type="radio" id="customRadio6" name="customRadio2" class="form-check-input" checked
+                                disabled>
                             <label class="form-check-label" for="customRadio6">Or toggle this other
                                 custom radio</label>
                         </div>
@@ -496,38 +481,38 @@
                     <h6 class="fs-15 mt-3">Colors</h6>
 
                     <div class="form-check mb-2">
-                        <input type="radio" id="customRadiocolor1" name="customRadiocolor1"
-                            class="form-check-input" checked>
+                        <input type="radio" id="customRadiocolor1" name="customRadiocolor1" class="form-check-input"
+                            checked>
                         <label class="form-check-label" for="customRadiocolor1">Default Radio</label>
                     </div>
                     <div class="form-check form-radio-success mb-2">
-                        <input type="radio" id="customRadiocolor2" name="customRadiocolor2"
-                            class="form-check-input" checked>
+                        <input type="radio" id="customRadiocolor2" name="customRadiocolor2" class="form-check-input"
+                            checked>
                         <label class="form-check-label" for="customRadiocolor2">Success Radio</label>
                     </div>
                     <div class="form-check form-radio-info mb-2">
-                        <input type="radio" id="customRadiocolor3" name="customRadiocolor3"
-                            class="form-check-input" checked>
+                        <input type="radio" id="customRadiocolor3" name="customRadiocolor3" class="form-check-input"
+                            checked>
                         <label class="form-check-label" for="customRadiocolor3">Info Radio</label>
                     </div>
                     <div class="form-check form-radio-secondary mb-2">
-                        <input type="radio" id="customRadiocolor6" name="customRadiocolor6"
-                            class="form-check-input" checked>
+                        <input type="radio" id="customRadiocolor6" name="customRadiocolor6" class="form-check-input"
+                            checked>
                         <label class="form-check-label" for="customRadiocolor6">Secondary Radio</label>
                     </div>
                     <div class="form-check form-radio-warning mb-2">
-                        <input type="radio" id="customRadiocolor4" name="customRadiocolor4"
-                            class="form-check-input" checked>
+                        <input type="radio" id="customRadiocolor4" name="customRadiocolor4" class="form-check-input"
+                            checked>
                         <label class="form-check-label" for="customRadiocolor4">Warning Radio</label>
                     </div>
                     <div class="form-check form-radio-danger mb-2">
-                        <input type="radio" id="customRadiocolor5" name="customRadiocolor5"
-                            class="form-check-input" checked>
+                        <input type="radio" id="customRadiocolor5" name="customRadiocolor5" class="form-check-input"
+                            checked>
                         <label class="form-check-label" for="customRadiocolor5">Danger Radio</label>
                     </div>
                     <div class="form-check form-radio-dark">
-                        <input type="radio" id="customRadiocolor7" name="customRadiocolor7"
-                            class="form-check-input" checked>
+                        <input type="radio" id="customRadiocolor7" name="customRadiocolor7" class="form-check-input"
+                            checked>
                         <label class="form-check-label" for="customRadiocolor7">Dark Radio</label>
                     </div>
 
@@ -597,17 +582,16 @@
                             <label class="form-label">Static</label>
                             <div class="input-group flex-nowrap">
                                 <span class="input-group-text" id="basic-addon1">@</span>
-                                <input type="text" class="form-control" placeholder="Username"
-                                    aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                                    aria-describedby="basic-addon1">
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Dropdowns</label>
                             <div class="input-group">
-                                <button class="btn btn-primary dropdown-toggle" type="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">Dropdown</button>
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">Dropdown</button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="#">Action</a>
                                     <a class="dropdown-item" href="#">Another action</a>
@@ -621,8 +605,7 @@
                         <div class="mb-3">
                             <label class="form-label">Buttons</label>
                             <div class="input-group">
-                                <input type="text" class="form-control"
-                                    placeholder="Recipient's username"
+                                <input type="text" class="form-control" placeholder="Recipient's username"
                                     aria-label="Recipient's username">
                                 <button class="btn btn-dark" type="button">Button</button>
                             </div>
@@ -636,8 +619,7 @@
                             <div class="col-sm-6">
                                 <label for="formFileMultiple01" class="form-label">Multiple files
                                     input</label>
-                                <input class="form-control" type="file" id="formFileMultiple01"
-                                    multiple>
+                                <input class="form-control" type="file" id="formFileMultiple01" multiple>
                             </div>
                         </div>
                     </form>
@@ -703,15 +685,13 @@
                         <div class="row mb-3">
                             <label for="inputEmail3" class="col-3 col-form-label">Email</label>
                             <div class="col-9">
-                                <input type="email" class="form-control" id="inputEmail3"
-                                    placeholder="Email">
+                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-3 col-form-label">Password</label>
                             <div class="col-9">
-                                <input type="password" class="form-control" id="inputPassword3"
-                                    placeholder="Password">
+                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -766,8 +746,7 @@
                         </div>
                         <div class="col-12">
                             <label for="inputPassword2" class="visually-hidden">Password</label>
-                            <input type="password" class="form-control" id="inputPassword2"
-                                placeholder="Password">
+                            <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary">Confirm identity</button>
@@ -783,8 +762,7 @@
                                     placeholder="Jane Doe">
                             </div>
                             <div class="col-auto">
-                                <label class="visually-hidden"
-                                    for="inlineFormInputGroup">Username</label>
+                                <label class="visually-hidden" for="inlineFormInputGroup">Username</label>
                                 <div class="input-group mb-2">
                                     <div class="input-group-text">@</div>
                                     <input type="text" class="form-control" id="inlineFormInputGroup"
@@ -793,8 +771,7 @@
                             </div>
                             <div class="col-auto">
                                 <div class="form-check mb-2">
-                                    <input type="checkbox" class="form-check-input"
-                                        id="autoSizingCheck">
+                                    <input type="checkbox" class="form-check-input" id="autoSizingCheck">
                                     <label class="form-check-label" for="autoSizingCheck">Remember
                                         me</label>
                                 </div>
@@ -825,11 +802,10 @@
                 <div class="card-body">
                     <form>
                         <div class="mb-2 row">
-                            <label for="colFormLabelSm"
-                                class="col-sm-2 col-form-label col-form-label-sm">Email</label>
+                            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control form-control-sm"
-                                    id="colFormLabelSm" placeholder="col-form-label-sm">
+                                <input type="email" class="form-control form-control-sm" id="colFormLabelSm"
+                                    placeholder="col-form-label-sm">
                             </div>
                         </div>
                         <div class="mb-2 row">
@@ -840,11 +816,10 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label for="colFormLabelLg"
-                                class="col-sm-2 col-form-label col-form-label-lg">Email</label>
+                            <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control form-control-lg"
-                                    id="colFormLabelLg" placeholder="col-form-label-lg">
+                                <input type="email" class="form-control form-control-lg" id="colFormLabelLg"
+                                    placeholder="col-form-label-lg">
                             </div>
                         </div>
                     </form>
@@ -870,20 +845,17 @@
                         <div class="row g-2">
                             <div class="mb-3 col-md-6">
                                 <label for="inputEmail4" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="inputEmail4"
-                                    placeholder="Email">
+                                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="inputPassword4" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="inputPassword4"
-                                    placeholder="Password">
+                                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label for="inputAddress" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="inputAddress"
-                                placeholder="1234 Main St">
+                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
                         </div>
 
                         <div class="mb-3">

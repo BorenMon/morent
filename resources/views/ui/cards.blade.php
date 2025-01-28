@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Cards', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Cards', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 
 @section('content')
@@ -303,8 +303,7 @@
             <div class="card">
                 <div class="row g-0 align-items-center">
                     <div class="col-md-4">
-                        <img src="/images/small/small-4.jpg" class="img-fluid rounded-start"
-                            alt="...">
+                        <img src="/images/small/small-4.jpg" class="img-fluid rounded-start" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -333,8 +332,7 @@
                         </div> <!-- end card-body -->
                     </div> <!-- end col -->
                     <div class="col-md-4">
-                        <img src="/images/small/small-1.jpg" class="img-fluid rounded-end"
-                            alt="...">
+                        <img src="/images/small/small-1.jpg" class="img-fluid rounded-end" alt="...">
                     </div> <!-- end col -->
                 </div> <!-- end row-->
             </div> <!-- end card -->
@@ -406,8 +404,7 @@
         <div class="col-12">
             <div class="card-group">
                 <div class="card d-block">
-                    <img class="card-img-top" src="/images/small/small-1.jpg"
-                        alt="Card image cap">
+                    <img class="card-img-top" src="/images/small/small-1.jpg" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a wider card with supporting text below as a
@@ -419,8 +416,7 @@
                     </div>
                 </div>
                 <div class="card d-block">
-                    <img class="card-img-top" src="/images/small/small-2.jpg"
-                        alt="Card image cap">
+                    <img class="card-img-top" src="/images/small/small-2.jpg" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This card has supporting text below as a natural
@@ -431,8 +427,7 @@
                     </div>
                 </div>
                 <div class="card d-block">
-                    <img class="card-img-top" src="/images/small/small-3.jpg"
-                        alt="Card image cap">
+                    <img class="card-img-top" src="/images/small/small-3.jpg" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a wider card with supporting text below as a

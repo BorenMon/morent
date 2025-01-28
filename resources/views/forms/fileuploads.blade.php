@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'File Uploads', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'File Uploads', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('css')
 @endsection

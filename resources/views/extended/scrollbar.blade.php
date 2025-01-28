@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Scrollbar', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Scrollbar', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     @include('layouts.shared/page-title', ['sub_title' => 'Extended', 'page_title' => 'Scrollbar'])

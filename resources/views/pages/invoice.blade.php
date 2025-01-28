@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Invoice', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Invoice', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     @include('layouts.shared/page-title', ['sub_title' => 'Pages', 'page_title' => 'Invoice'])
@@ -23,14 +23,17 @@
                         <div class="col-sm-6">
                             <div class="float-end mt-3">
                                 <p><b>Hello, Thomson</b></p>
-                                <p class="text-muted fs-13">Please find below a cost-breakdown for the recent work completed. Please make payment at your earliest convenience, and do not hesitate to contact me with any questions.</p>
+                                <p class="text-muted fs-13">Please find below a cost-breakdown for the recent work
+                                    completed. Please make payment at your earliest convenience, and do not hesitate to
+                                    contact me with any questions.</p>
                             </div>
 
                         </div><!-- end col -->
                         <div class="col-sm-4 offset-sm-2">
                             <div class="mt-3 float-sm-end">
                                 <p class="fs-13"><strong>Order Date: </strong> &nbsp;&nbsp;&nbsp; Jan 17, 2023</p>
-                                <p class="fs-13"><strong>Order Status: </strong> <span class="badge bg-success float-end">Paid</span></p>
+                                <p class="fs-13"><strong>Order Status: </strong> <span
+                                        class="badge bg-success float-end">Paid</span></p>
                                 <p class="fs-13"><strong>Order ID: </strong> <span class="float-end">#123456</span></p>
                             </div>
                         </div><!-- end col -->
@@ -57,53 +60,55 @@
                                 <abbr title="Phone">P:</abbr> (123) 456-7890
                             </address>
                         </div> <!-- end col-->
-                    </div>    
-                    <!-- end row -->        
+                    </div>
+                    <!-- end row -->
 
                     <div class="row">
                         <div class="col-12">
                             <div class="table-responsive">
                                 <table class="table table-sm table-centered table-hover table-borderless mb-0 mt-3">
                                     <thead class="border-top border-bottom bg-light-subtle border-light">
-                                    <tr><th>#</th>
-                                        <th>Item</th>
-                                        <th>Quantity</th>
-                                        <th>Unit Cost</th>
-                                        <th class="text-end">Total</th>
-                                    </tr></thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Item</th>
+                                            <th>Quantity</th>
+                                            <th>Unit Cost</th>
+                                            <th class="text-end">Total</th>
+                                        </tr>
+                                    </thead>
                                     <tbody>
-                                    <tr>
-                                        <td class="">1</td>
-                                        <td>
-                                            <b>Laptop</b> <br/>
-                                            Brand Model VGN-TXN27N/B
-                                            11.1" Notebook PC
-                                        </td>
-                                        <td>1</td>
-                                        <td>$1799.00</td>
-                                        <td class="text-end">$1799.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>
-                                            <b>Warranty</b> <br/>
-                                            Two Year Extended Warranty -
-                                            Parts and Labor
-                                        </td>
-                                        <td class="">3</td>
-                                        <td>$499.00</td>
-                                        <td class="text-end">$1497.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>
-                                            <b>LED</b> <br/>
-                                            80cm (32) HD Ready LED TV
-                                        </td>
-                                        <td class="">2</td>
-                                        <td>$412.00</td>
-                                        <td class="text-end">$824.00</td>
-                                    </tr>
+                                        <tr>
+                                            <td class="">1</td>
+                                            <td>
+                                                <b>Laptop</b> <br />
+                                                Brand Model VGN-TXN27N/B
+                                                11.1" Notebook PC
+                                            </td>
+                                            <td>1</td>
+                                            <td>$1799.00</td>
+                                            <td class="text-end">$1799.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>
+                                                <b>Warranty</b> <br />
+                                                Two Year Extended Warranty -
+                                                Parts and Labor
+                                            </td>
+                                            <td class="">3</td>
+                                            <td>$499.00</td>
+                                            <td class="text-end">$1497.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>
+                                                <b>LED</b> <br />
+                                                80cm (32) HD Ready LED TV
+                                            </td>
+                                            <td class="">2</td>
+                                            <td>$412.00</td>
+                                            <td class="text-end">$824.00</td>
+                                        </tr>
 
                                     </tbody>
                                 </table>
@@ -138,10 +143,11 @@
 
                     <div class="d-print-none mt-4">
                         <div class="text-center">
-                            <a href="javascript:window.print()" class="btn btn-primary"><i class="ri-printer-line"></i> Print</a>
+                            <a href="javascript:window.print()" class="btn btn-primary"><i class="ri-printer-line"></i>
+                                Print</a>
                             <a href="javascript: void(0);" class="btn btn-info">Submit</a>
                         </div>
-                    </div>   
+                    </div>
                     <!-- end buttons -->
 
                 </div> <!-- end card-body-->

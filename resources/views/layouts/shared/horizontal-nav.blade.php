@@ -11,6 +11,30 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" href="/booking"
+                            id="topnav-dashboards" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="ri-draft-line"></i>Bookings
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" href="/booking1"
+                            id="topnav-dashboards" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="ri-roadster-line"></i>Cars
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" href="/booking2"
+                            id="topnav-dashboards" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="ri-group-line"></i>Customers
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" href="/booking3"
+                            id="topnav-dashboards" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="ri-user-line"></i>Staffs
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-apps" role="button"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="ri-pages-line"></i>Pages <div class="arrow-down"></div>

@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Collapse', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Collapse', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Collapse'])
@@ -11,21 +11,19 @@
                     <p class="text-muted mb-0 mb-3">
                         Bootstrap's collapse provides the way to toggle the visibility of any content or
                         element.
-                        Please read the official <a
-                            href="https://getbootstrap.com/docs/5.2/components/collapse/"
+                        Please read the official <a href="https://getbootstrap.com/docs/5.2/components/collapse/"
                             target="_blank">Bootstrap</a>
                         documentation for a full list of options.
                     </p>
                 </div>
                 <div class="card-body">
                     <p>
-                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample"
-                            aria-expanded="false" aria-controls="collapseExample">
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" aria-expanded="false"
+                            aria-controls="collapseExample">
                             Link with href
                         </a>
                         <button class="btn btn-primary ms-1" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseExample" aria-expanded="false"
-                            aria-controls="collapseExample">
+                            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                             Button with data-bs-target
                         </button>
                     </p>
@@ -50,7 +48,8 @@
                     <p class="text-muted mb-0 mb-3">The collapse plugin also supports horizontal
                         collapsing. Add the <code>.collapse-horizontal</code> modifier class to
                         transition the <code>width</code> instead of <code>height</code> and set a
-                        <code>width</code> on the immediate child element.</p>
+                        <code>width</code> on the immediate child element.
+                    </p>
                 </div>
                 <div class="card-body">
                     <p>
@@ -91,9 +90,8 @@
                 </div>
                 <div class="card-body">
                     <p>
-                        <a class="btn btn-primary" data-bs-toggle="collapse"
-                            href="#multiCollapseExample1" role="button" aria-expanded="false"
-                            aria-controls="multiCollapseExample1">Toggle first element</a>
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button"
+                            aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
                         <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
                             data-bs-target="#multiCollapseExample2" aria-expanded="false"
                             aria-controls="multiCollapseExample2">Toggle second element</button>

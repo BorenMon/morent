@@ -59,7 +59,7 @@
         <span class="text-dark-emphasis">
             <script>
                 document.write(new Date().getFullYear())
-            </script> © Velonic - Theme by Techzaa
+            </script> © MORENT
         </span>
     </footer>
     @@include('./partials/footer-scripts.html')

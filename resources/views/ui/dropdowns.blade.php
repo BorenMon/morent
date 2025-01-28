@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Dropdowns', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Dropdowns', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Dropdowns'])
@@ -16,10 +16,11 @@
                     </p>
                 </div>
                 <div class="card-body">
-                   <div class="row">
+                    <div class="row">
                         <div class="col-auto">
                             <div class="dropdown">
-                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Dropdown button
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -32,7 +33,9 @@
 
                         <div class="col-auto">
                             <div class="dropdown">
-                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
+                                    id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
                                     Dropdown link
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -53,7 +56,8 @@
                 </div>
                 <div class="card-body">
                     <div class="btn-group mb-2">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Primary</button>
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Primary</button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
@@ -63,7 +67,8 @@
                         </div>
                     </div><!-- /btn-group -->
                     <div class="btn-group mb-2">
-                        <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Secondary</button>
+                        <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Secondary</button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
@@ -73,7 +78,8 @@
                         </div>
                     </div><!-- /btn-group -->
                     <div class="btn-group mb-2">
-                        <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Success</button>
+                        <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Success</button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
@@ -83,7 +89,8 @@
                         </div>
                     </div><!-- /btn-group -->
                     <div class="btn-group mb-2">
-                        <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Info</button>
+                        <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Info</button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
@@ -93,7 +100,8 @@
                         </div>
                     </div><!-- /btn-group -->
                     <div class="btn-group mb-2">
-                        <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Warning</button>
+                        <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Warning</button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
@@ -103,7 +111,8 @@
                         </div>
                     </div><!-- /btn-group -->
                     <div class="btn-group mb-2">
-                        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Danger</button>
+                        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Danger</button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
@@ -113,7 +122,8 @@
                         </div>
                     </div><!-- /btn-group -->
                     <div class="btn-group mb-2">
-                        <button type="button" class="btn btn-pink dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pink</button>
+                        <button type="button" class="btn btn-pink dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Pink</button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
@@ -123,7 +133,8 @@
                         </div>
                     </div><!-- /btn-group -->
                     <div class="btn-group mb-2">
-                        <button type="button" class="btn btn-purple dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Purple</button>
+                        <button type="button" class="btn btn-purple dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Purple</button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
@@ -145,7 +156,8 @@
                 </div>
                 <div class="card-body">
                     <div class="dropdown btn-group">
-                        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="animated-preview">
+                        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" id="animated-preview">
                             Animated Dropdown
                         </button>
                         <div class="dropdown-menu dropdown-menu-animated">
@@ -166,9 +178,10 @@
                     </p>
                 </div>
                 <div class="card-body">
-                   <!-- Default dropup button -->
+                    <!-- Default dropup button -->
                     <div class="btn-group dropup">
-                        <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropup</button>
+                        <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Dropup</button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
@@ -183,7 +196,8 @@
                         <button type="button" class="btn btn-light">
                             Split dropup
                         </button>
-                        <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <div class="dropdown-menu">
@@ -200,13 +214,15 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="header-title">Dropend variation</h4>
-                    <p class="text-muted mb-0">Trigger dropdown menus at the right of the elements by adding <code>.dropend</code> to the parent element.</p>
+                    <p class="text-muted mb-0">Trigger dropdown menus at the right of the elements by adding
+                        <code>.dropend</code> to the parent element.</p>
                 </div>
                 <div class="card-body">
-    
+
                     <!-- Default dropend button -->
                     <div class="btn-group mb-2 dropend">
-                        <button type="button" class="btn btn-primary   dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-primary   dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
                             Dropend
                         </button>
                         <div class="dropdown-menu">
@@ -223,7 +239,8 @@
                         <button type="button" class="btn btn-primary">
                             Split Dropend
                         </button>
-                        <button type="button" class="btn btn-primary dropdown-toggle-split dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-primary dropdown-toggle-split dropdown-toggle"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="visually-hidden">Toggle Dropright</span>
                         </button>
                         <div class="dropdown-menu">
@@ -240,17 +257,20 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="header-title">Disabled Item</h4>
-                    <p class="text-muted mb-0">Add <code>.disabled</code> to items in the dropdown to <strong>style them as disabled</strong>.</p>
+                    <p class="text-muted mb-0">Add <code>.disabled</code> to items in the dropdown to <strong>style them as
+                            disabled</strong>.</p>
                 </div>
                 <div class="card-body">
                     <!-- Disabled -->
                     <div class="btn-group">
-                        <button type="button" class="btn btn-primary   dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-primary   dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
                             Disabled
                         </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Regular link</a>
-                            <a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Disabled link</a>
+                            <a class="dropdown-item disabled" href="#" tabindex="-1"
+                                aria-disabled="true">Disabled link</a>
                             <a class="dropdown-item" href="#">Another link</a>
                         </div>
                     </div>
@@ -260,19 +280,24 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="header-title">Dark dropdowns</h4>
-                    <p class="text-muted mb-0">Opt into darker dropdowns to match a dark navbar or custom style by adding <code>.dropdown-menu-dark</code> onto an existing <code>.dropdown-menu</code>. No changes are required to the dropdown items.</p>
+                    <p class="text-muted mb-0">Opt into darker dropdowns to match a dark navbar or custom style by adding
+                        <code>.dropdown-menu-dark</code> onto an existing <code>.dropdown-menu</code>. No changes are
+                        required to the dropdown items.</p>
                 </div>
                 <div class="card-body">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Dropdown button
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dropdown button
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                          <li><a class="dropdown-item active" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#">Separated link</a></li>
+                            <li><a class="dropdown-item active" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Separated link</a></li>
                         </ul>
                     </div>
                 </div> <!-- end card-body -->
@@ -281,12 +306,14 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="header-title">Dropdown options</h4>
-                    <p class="text-muted mb-0">Use <code>data-bs-offset</code> or <code>data-bs-reference</code> to change the location of the dropdown.</p>
+                    <p class="text-muted mb-0">Use <code>data-bs-offset</code> or <code>data-bs-reference</code> to change
+                        the location of the dropdown.</p>
                 </div>
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="dropdown me-1">
-                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false" data-bs-offset="10,20">
                                 Offset
                             </button>
                             <ul class="dropdown-menu">
@@ -297,14 +324,17 @@
                         </div>
                         <div class="btn-group">
                             <button type="button" class="btn btn-secondary">Reference</button>
-                            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
+                            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
                                 <span class="visually-hidden">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Action</a></li>
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
                                 <li><a class="dropdown-item" href="#">Separated link</a></li>
                             </ul>
                         </div>
@@ -315,12 +345,14 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="header-title">Text</h4>
-                    <p class="text-muted mb-0">Place any freeform text within a dropdown menu with text and use spacing utilities. Note that you’ll likely need additional sizing styles to constrain the menu width.</p>
+                    <p class="text-muted mb-0">Place any freeform text within a dropdown menu with text and use spacing
+                        utilities. Note that you’ll likely need additional sizing styles to constrain the menu width.</p>
                 </div>
                 <div class="card-body">
                     <!-- Text Example -->
                     <div class="btn-group">
-                        <button type="button" class="btn btn-primary   dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-primary   dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
                             Text Dropdown
                         </button>
                         <div class="dropdown-menu p-3 text-muted" style="max-width: 200px;">
@@ -349,7 +381,8 @@
                 </div>
                 <div class="card-body">
                     <div class="dropdown">
-                        <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
                             Right-aligned menu
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">
@@ -365,13 +398,16 @@
                 <div class="card-header">
                     <h4 class="header-title">Split button dropdowns</h4>
                     <p class="text-muted mb-0">
-                        Similarly, create split button dropdowns with virtually the same markup as single button dropdowns, but with the addition of <code>.dropdown-toggle-split</code> for proper spacing around the dropdown caret.
+                        Similarly, create split button dropdowns with virtually the same markup as single button dropdowns,
+                        but with the addition of <code>.dropdown-toggle-split</code> for proper spacing around the dropdown
+                        caret.
                     </p>
                 </div>
                 <div class="card-body">
                     <div class="btn-group mb-2">
                         <button type="button" class="btn btn-primary">Primary</button>
-                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <div class="dropdown-menu">
@@ -384,7 +420,8 @@
                     </div><!-- /btn-group -->
                     <div class="btn-group mb-2">
                         <button type="button" class="btn btn-light">Secondary</button>
-                        <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <div class="dropdown-menu">
@@ -397,7 +434,8 @@
                     </div><!-- /btn-group -->
                     <div class="btn-group mb-2">
                         <button type="button" class="btn btn-success">Success</button>
-                        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <div class="dropdown-menu">
@@ -410,7 +448,8 @@
                     </div><!-- /btn-group -->
                     <div class="btn-group mb-2">
                         <button type="button" class="btn btn-info">Info</button>
-                        <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <div class="dropdown-menu">
@@ -423,7 +462,8 @@
                     </div><!-- /btn-group -->
                     <div class="btn-group mb-2">
                         <button type="button" class="btn btn-warning">Warning</button>
-                        <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <div class="dropdown-menu">
@@ -436,7 +476,8 @@
                     </div><!-- /btn-group -->
                     <div class="btn-group mb-2">
                         <button type="button" class="btn btn-danger">Danger</button>
-                        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <div class="dropdown-menu">
@@ -449,7 +490,8 @@
                     </div><!-- /btn-group -->
                     <div class="btn-group mb-2">
                         <button type="button" class="btn btn-pink">Pink</button>
-                        <button type="button" class="btn btn-pink dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-pink dropdown-toggle dropdown-toggle-split"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <div class="dropdown-menu">
@@ -462,7 +504,8 @@
                     </div><!-- /btn-group -->
                     <div class="btn-group mb-2">
                         <button type="button" class="btn btn-purple">Purple</button>
-                        <button type="button" class="btn btn-purple dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-purple dropdown-toggle dropdown-toggle-split"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <div class="dropdown-menu">
@@ -479,12 +522,14 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="header-title">Sizing</h4>
-                    <p class="text-muted mb-0">Button dropdowns work with buttons of all sizes, including default and split dropdown buttons.</p>
+                    <p class="text-muted mb-0">Button dropdowns work with buttons of all sizes, including default and split
+                        dropdown buttons.</p>
                 </div>
                 <div class="card-body">
                     <!-- Large button groups (default and split) -->
                     <div class="btn-group">
-                        <button class="btn btn-light btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-light btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
                             Large button
                         </button>
                         <div class="dropdown-menu">
@@ -499,7 +544,8 @@
                         <button class="btn btn-light btn-lg" type="button">
                             Large button
                         </button>
-                        <button type="button" class="btn btn-lg btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-lg btn-light dropdown-toggle dropdown-toggle-split"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <div class="dropdown-menu">
@@ -513,7 +559,8 @@
 
                     <!-- Small button groups (default and split) -->
                     <div class="btn-group">
-                        <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
                             Small button
                         </button>
                         <div class="dropdown-menu">
@@ -528,7 +575,8 @@
                         <button class="btn btn-light btn-sm" type="button">
                             Small button
                         </button>
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-sm btn-light dropdown-toggle dropdown-toggle-split"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <div class="dropdown-menu">
@@ -545,13 +593,15 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="header-title">Dropstart variation</h4>
-                    <p class="text-muted mb-0">Trigger dropdown menus at the right of the elements by adding <code>.dropleft</code> to the parent element.</p>
+                    <p class="text-muted mb-0">Trigger dropdown menus at the right of the elements by adding
+                        <code>.dropleft</code> to the parent element.</p>
                 </div>
                 <div class="card-body">
                     <!-- Default dropstart button -->
                     <div class="btn-group dropstart ">
-                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropstart 
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Dropstart
                         </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Action</a>
@@ -561,12 +611,13 @@
                             <a class="dropdown-item" href="#">Separated link</a>
                         </div>
                     </div>
-                    
+
                     <!-- Split dropstart button -->
                     <div class="btn-group">
                         <div class="btn-group dropstart" role="group">
-                            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-split dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
+                            <button type="button"
+                                class="btn btn-secondary dropdown-toggle dropdown-split dropdown-toggle-split"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="visually-hidden">Toggle Dropstart</span>
                             </button>
                             <div class="dropdown-menu">
@@ -587,12 +638,14 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="header-title">Active Item</h4>
-                    <p class="text-muted mb-0">Add <code>.active</code> to item in the dropdown to <strong>style them as active</strong>.</p>
+                    <p class="text-muted mb-0">Add <code>.active</code> to item in the dropdown to <strong>style them as
+                            active</strong>.</p>
                 </div>
                 <div class="card-body">
                     <!-- Active Item -->
                     <div class="btn-group">
-                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
                             Active Item
                         </button>
                         <div class="dropdown-menu">
@@ -612,7 +665,8 @@
                 <div class="card-body">
                     <!-- Header Item -->
                     <div class="btn-group">
-                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
                             Header
                         </button>
                         <div class="dropdown-menu">
@@ -627,12 +681,14 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="header-title">Centered dropdowns</h4>
-                    <p class="text-muted mb-0">Make the dropdown menu centered below the toggle with <code>.dropdown-center</code> on the parent element.</p>
+                    <p class="text-muted mb-0">Make the dropdown menu centered below the toggle with
+                        <code>.dropdown-center</code> on the parent element.</p>
                 </div>
                 <div class="card-body">
                     <div class="hstack gap-2">
                         <div class="dropdown-center">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 Centered dropdown
                             </button>
                             <ul class="dropdown-menu">
@@ -643,7 +699,8 @@
                         </div>
 
                         <div class="dropup-center dropup">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 Centered dropup
                             </button>
                             <ul class="dropdown-menu">
@@ -659,12 +716,15 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="header-title">Auto close behavior</h4>
-                    <p class="text-muted mb-0">By default, the dropdown menu is closed when clicking inside or outside the dropdown menu. You can use the <code>autoClose</code> option to change this behavior of the dropdown.</p>
+                    <p class="text-muted mb-0">By default, the dropdown menu is closed when clicking inside or outside the
+                        dropdown menu. You can use the <code>autoClose</code> option to change this behavior of the
+                        dropdown.</p>
                 </div>
                 <div class="card-body">
                     <div class="hstack gap-2">
                         <div class="btn-group">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                data-bs-auto-close="true" aria-expanded="false">
                                 Default dropdown
                             </button>
                             <ul class="dropdown-menu">
@@ -673,9 +733,10 @@
                                 <li><a class="dropdown-item" href="#">Menu item</a></li>
                             </ul>
                         </div>
-                          
-                          <div class="btn-group">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
+
+                        <div class="btn-group">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                data-bs-auto-close="inside" aria-expanded="false">
                                 Clickable inside
                             </button>
                             <ul class="dropdown-menu">
@@ -684,9 +745,10 @@
                                 <li><a class="dropdown-item" href="#">Menu item</a></li>
                             </ul>
                         </div>
-                          
+
                         <div class="btn-group">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                data-bs-auto-close="outside" aria-expanded="false">
                                 Clickable outside
                             </button>
                             <ul class="dropdown-menu">
@@ -695,9 +757,10 @@
                                 <li><a class="dropdown-item" href="#">Menu item</a></li>
                             </ul>
                         </div>
-                          
+
                         <div class="btn-group">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                data-bs-auto-close="false" aria-expanded="false">
                                 Manual close
                             </button>
                             <ul class="dropdown-menu">
@@ -713,23 +776,27 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="header-title">Forms</h4>
-                    <p class="text-muted mb-0">Put a form within a dropdown menu, or make it into a dropdown menu, and use margin or padding utilities to give it the negative space you require.</p>
+                    <p class="text-muted mb-0">Put a form within a dropdown menu, or make it into a dropdown menu, and use
+                        margin or padding utilities to give it the negative space you require.</p>
                 </div>
                 <div class="card-body">
                     <!-- Forms -->
                     <div class="dropdown">
-                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
                             Form
                         </button>
                         <div class="dropdown-menu">
                             <form class="px-4 py-3">
                                 <div class="mb-3">
                                     <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
-                                    <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                                    <input type="email" class="form-control" id="exampleDropdownFormEmail1"
+                                        placeholder="email@example.com">
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                                    <input type="password" class="form-control" id="exampleDropdownFormPassword1"
+                                        placeholder="Password">
                                 </div>
                                 <div class="mb-2">
                                     <div class="form-check">

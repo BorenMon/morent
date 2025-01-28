@@ -1,8 +1,8 @@
-@extends('layouts.vertical', ['title' => 'Bootstrap Icons', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Bootstrap Icons', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     @include('layouts.shared/page-title', ['sub_title' => 'Icons', 'page_title' => 'Bootstrap Icons'])
-   
+
     <div class="row">
         <div class="col">
             <div class="card">

@@ -1,7 +1,8 @@
-@extends('layouts.vertical', ['title' => 'Dashboard', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Dashboard', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-@include('layouts.shared/page-title', ['sub_title' => 'Menu', 'page_title' => 'Dashboard'])
+{{-- @include('layouts.shared/page-title', ['sub_title' => 'Menu', 'page_title' => 'Dashboard']) --}}
+    <br />
     <div class="row">
         <div class="col-xxl-3 col-sm-6">
             <div class="card widget-flat text-bg-pink">
@@ -41,7 +42,7 @@
                     <div class="float-end">
                         <i class="ri-shopping-basket-line widget-icon"></i>
                     </div>
-                    <h6 class="text-uppercase mt-0" title="Customers">Orders</h6>
+                    <h6 class="text-uppercase mt-0" title="Customers">Bookings</h6>
                     <h2 class="my-2">753</h2>
                     <p class="mb-0">
                         <span class="badge bg-white bg-opacity-25 me-1">-5.75%</span>
@@ -57,7 +58,7 @@
                     <div class="float-end">
                         <i class="ri-group-2-line widget-icon"></i>
                     </div>
-                    <h6 class="text-uppercase mt-0" title="Customers">Users</h6>
+                    <h6 class="text-uppercase mt-0" title="Customers">Customers</h6>
                     <h2 class="my-2">63,154</h2>
                     <p class="mb-0">
                         <span class="badge bg-white bg-opacity-10 me-1">8.21%</span>
@@ -76,7 +77,7 @@
                         <a href="javascript:;" data-bs-toggle="reload"><i class="ri-refresh-line"></i></a>
                         <a data-bs-toggle="collapse" href="#weeklysales-collapse" role="button" aria-expanded="false"
                             aria-controls="weeklysales-collapse"><i class="ri-subtract-line"></i></a>
-                        <a href="#" data-bs-toggle="remove"><i class="ri-close-line"></i></a>
+                        {{-- <a href="#" data-bs-toggle="remove"><i class="ri-close-line"></i></a> --}}
                     </div>
                     <h5 class="header-title mb-0">Weekly Sales Report</h5>
 
@@ -123,7 +124,7 @@
                         <a href="javascript:;" data-bs-toggle="reload"><i class="ri-refresh-line"></i></a>
                         <a data-bs-toggle="collapse" href="#yearly-sales-collapse" role="button" aria-expanded="false"
                             aria-controls="yearly-sales-collapse"><i class="ri-subtract-line"></i></a>
-                        <a href="#" data-bs-toggle="remove"><i class="ri-close-line"></i></a>
+                        {{-- <a href="#" data-bs-toggle="remove"><i class="ri-close-line"></i></a> --}}
                     </div>
                     <h5 class="header-title mb-0">Yearly Sales Report</h5>
 
@@ -170,7 +171,7 @@
     <!-- end row -->
 
     <div class="row">
-        <div class="col-xl-4">
+        {{-- <div class="col-xl-4">
             <!-- Chat-->
             <div class="card">
                 <div class="card-body p-0">
@@ -270,9 +271,9 @@
                 </div>
 
             </div> <!-- end card-->
-        </div> <!-- end col-->
+        </div> <!-- end col--> --}}
 
-        <div class="col-xl-8">
+        <div class="col-xl-12">
             <!-- Todo-->
             <div class="card">
                 <div class="card-body p-0">
@@ -282,7 +283,7 @@
                             <a data-bs-toggle="collapse" href="#yearly-sales-collapse" role="button"
                                 aria-expanded="false" aria-controls="yearly-sales-collapse"><i
                                     class="ri-subtract-line"></i></a>
-                            <a href="#" data-bs-toggle="remove"><i class="ri-close-line"></i></a>
+                            {{-- <a href="#" data-bs-toggle="remove"><i class="ri-close-line"></i></a> --}}
                         </div>
                         <h5 class="header-title mb-0">Projects</h5>
                     </div>

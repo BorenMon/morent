@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Avatars', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Avatars', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Avatars'])
@@ -10,42 +10,38 @@
                     <h4 class="header-title">Sizing - Images</h4>
                     <p class="text-muted mb-0">
                         Create and group avatars of different sizes and shapes with the css classes.
-                        Using Bootstrap's naming convention, you can control size of avatar including standard avatar, or scale it up to different sizes.
+                        Using Bootstrap's naming convention, you can control size of avatar including standard avatar, or
+                        scale it up to different sizes.
                     </p>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3">
-                            <img src="/images/users/avatar-2.jpg" alt="image"
-                                class="img-fluid avatar-xs rounded">
+                            <img src="/images/users/avatar-2.jpg" alt="image" class="img-fluid avatar-xs rounded">
                             <p>
                                 <code>.avatar-xs</code>
                             </p>
-                            <img src="/images/users/avatar-3.jpg" alt="image"
-                                class="img-fluid avatar-sm rounded mt-2">
+                            <img src="/images/users/avatar-3.jpg" alt="image" class="img-fluid avatar-sm rounded mt-2">
                             <p class="mb-2 mb-sm-0">
                                 <code>.avatar-sm</code>
                             </p>
                         </div>
                         <div class="col-md-3">
-                            <img src="/images/users/avatar-4.jpg" alt="image"
-                                class="img-fluid avatar-md rounded" />
+                            <img src="/images/users/avatar-4.jpg" alt="image" class="img-fluid avatar-md rounded" />
                             <p>
                                 <code>.avatar-md</code>
                             </p>
                         </div>
 
                         <div class="col-md-3">
-                            <img src="/images/users/avatar-5.jpg" alt="image"
-                                class="img-fluid avatar-lg rounded" />
+                            <img src="/images/users/avatar-5.jpg" alt="image" class="img-fluid avatar-lg rounded" />
                             <p>
                                 <code>.avatar-lg</code>
                             </p>
                         </div>
 
                         <div class="col-md-3">
-                            <img src="/images/users/avatar-6.jpg" alt="image"
-                                class="img-fluid avatar-xl rounded" />
+                            <img src="/images/users/avatar-6.jpg" alt="image" class="img-fluid avatar-xl rounded" />
                             <p class="mb-0">
                                 <code>.avatar-xl</code>
                             </p>
@@ -207,8 +203,7 @@
 
                         <div class="col-md-4">
                             <div class="avatar-xl">
-                                <span
-                                    class="avatar-title bg-primary-subtle text-primary fs-24 rounded-circle">
+                                <span class="avatar-title bg-primary-subtle text-primary fs-24 rounded-circle">
                                     XL
                                 </span>
                             </div>
@@ -237,32 +232,32 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-2">
-                            <img src="/images/small/small-2.jpg" alt="image"
-                                class="img-fluid rounded" width="200" />
+                            <img src="/images/small/small-2.jpg" alt="image" class="img-fluid rounded"
+                                width="200" />
                             <p class="mb-0">
                                 <code>.rounded</code>
                             </p>
                         </div>
 
                         <div class="col-sm-2 text-center">
-                            <img src="/images/users/avatar-6.jpg" alt="image"
-                                class="img-fluid rounded" width="120" />
+                            <img src="/images/users/avatar-6.jpg" alt="image" class="img-fluid rounded"
+                                width="120" />
                             <p class="mb-0">
                                 <code>.rounded</code>
                             </p>
                         </div>
 
                         <div class="col-sm-2 text-center">
-                            <img src="/images/users/avatar-7.jpg" alt="image"
-                                class="img-fluid rounded-circle" width="120" />
+                            <img src="/images/users/avatar-7.jpg" alt="image" class="img-fluid rounded-circle"
+                                width="120" />
                             <p class="mb-0">
                                 <code>.rounded-circle</code>
                             </p>
                         </div>
 
                         <div class="col-sm-2">
-                            <img src="/images/small/small-3.jpg" alt="image"
-                                class="img-fluid img-thumbnail" width="200" />
+                            <img src="/images/small/small-3.jpg" alt="image" class="img-fluid img-thumbnail"
+                                width="200" />
                             <p class="mb-0">
                                 <code>.img-thumbnail</code>
                             </p>
@@ -326,27 +321,26 @@
                         <div class="col-lg-6">
                             <div class="mt-lg-0 mt-3">
                                 <div class="avatar-group">
-                                    <a href="javascript: void(0);" class="avatar-group-item"
-                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Tosha">
+                                    <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Tosha">
                                         <img src="/images/users/avatar-1.jpg" alt=""
                                             class="rounded-circle avatar-sm">
                                     </a>
-                                    <a href="javascript: void(0);" class="avatar-group-item"
-                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Brain">
+                                    <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Brain">
                                         <img src="/images/users/avatar-3.jpg" alt=""
                                             class="rounded-circle avatar-sm">
                                     </a>
-                                    <a href="javascript: void(0);" class="avatar-group-item"
-                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Hooker">
+                                    <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Hooker">
                                         <div class="avatar-sm">
-                                            <div
-                                                class="avatar-title rounded-circle bg-light text-primary">
+                                            <div class="avatar-title rounded-circle bg-light text-primary">
                                                 K
                                             </div>
                                         </div>
                                     </a>
-                                    <a href="javascript: void(0);" class="avatar-group-item"
-                                        data-bs-toggle="tooltip" data-bs-placement="top" title="More +">
+                                    <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="More +">
                                         <div class="avatar-sm">
                                             <div class="avatar-title rounded-circle">
                                                 9+
@@ -364,4 +358,3 @@
         </div> <!-- end col -->
     </div> <!-- end row -->
 @endsection
-

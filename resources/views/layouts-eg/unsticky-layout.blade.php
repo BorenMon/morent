@@ -1,7 +1,7 @@
-@extends('layouts.vertical', ['title' => 'Unsticky', 'position' =>'scrollable', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Unsticky', 'position' => 'scrollable', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-@include('layouts.shared/page-title', ['sub_title' => 'Menu', 'page_title' => 'Unsticky'])
+    @include('layouts.shared/page-title', ['sub_title' => 'Menu', 'page_title' => 'Unsticky'])
 
     <div class="row">
         <div class="col-xxl-3 col-sm-6">

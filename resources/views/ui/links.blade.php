@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Links', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Links', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Links'])
@@ -78,7 +78,8 @@
                     <h4 class="header-title">Link Opacity</h4>
                     <p class="text-muted mb-0">Change the alpha opacity of the link <code>rgba()</code> color value with
                         utilities. Please be aware that changes to a color’s opacity can lead to links with
-                        <em>insufficient</em> contrast.</p>
+                        <em>insufficient</em> contrast.
+                    </p>
                 </div>
                 <div class="card-body">
                     <p><a class="link-opacity-10" href="#">Link opacity 10</a></p>
@@ -178,7 +179,8 @@
                     <h4 class="header-title">Hover Variants</h4>
                     <p class="text-muted mb-0">Just like the <code>.link-opacity-*-hover</code> utilities,
                         <code>.link-offset</code> and <code>.link-underline-opacity</code> utilities include
-                        <code>:hover</code> variants by default. Mix and match to create unique link styles.</p>
+                        <code>:hover</code> variants by default. Mix and match to create unique link styles.
+                    </p>
                 </div>
                 <div class="card-body">
                     <a class="link-offset-2 link-offset-3-hover text-decoration-underline link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
