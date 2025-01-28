@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Scrollspy', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Scrollspy', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     @include('layouts.shared/page-title', ['sub_title' => 'Extended', 'page_title' => 'Scrollspy'])
@@ -281,4 +281,3 @@
     </div>
     <!-- end row -->
 @endsection
-

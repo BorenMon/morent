@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Utilities', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Utilities', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Utilities'])
@@ -11,7 +11,8 @@
                     <p class="text-muted mb-0">Similar to the contextual text color classes, set the background of an element
                         to any contextual class. Background
                         utilities <strong>do not set <code>color</code></strong>, so in some cases you’ll want to use
-                        <code>.text-*</code>color utilities.</p>
+                        <code>.text-*</code>color utilities.
+                    </p>
                 </div>
                 <div class="card-body">
                     <div class="bg-primary text-white p-2 mb-2">.bg-primary</div>
@@ -108,7 +109,8 @@
                     <p class="text-muted mb-0">Color and background helpers combine the power of our <code>.text-*</code>
                         utilities and <code>.bg-*</code> utilities in one class. Using our Sass
                         <code>color-contrast()</code> function, we automatically determine a contrasting <code>color</code>
-                        for a particular <code>background-color</code>.</p>
+                        for a particular <code>background-color</code>.
+                    </p>
                 </div>
                 <div class="card-body">
                     <div class="d-flex flex-column gap-2">
@@ -224,7 +226,8 @@
                             level, where <code>1</code> is not transparent at all, <code>.5</code> is 50% visible, and
                             <code>0</code> is
                             completely transparent. Set the <code>opacity</code> of an element using
-                            <code>.opacity-{value}</code> utilities.</p>
+                            <code>.opacity-{value}</code> utilities.
+                        </p>
                     </div>
                     <div class="card-body">
                         <div class="d-flex flex-wrap gap-2">
@@ -435,12 +438,9 @@
                             <img src="/images/users/avatar-2.jpg" class="avatar-lg rounded" alt="rounded">
                             <img src="/images/users/avatar-2.jpg" class="avatar-lg rounded-top" alt="rounded-top">
                             <img src="/images/users/avatar-2.jpg" class="avatar-lg rounded-end" alt="rounded-end">
-                            <img src="/images/users/avatar-2.jpg" class="avatar-lg rounded-bottom"
-                                alt="rounded-bottom">
-                            <img src="/images/users/avatar-2.jpg" class="avatar-lg rounded-start"
-                                alt="rounded-start">
-                            <img src="/images/users/avatar-2.jpg" class="avatar-lg rounded-circle"
-                                alt="rounded-circle">
+                            <img src="/images/users/avatar-2.jpg" class="avatar-lg rounded-bottom" alt="rounded-bottom">
+                            <img src="/images/users/avatar-2.jpg" class="avatar-lg rounded-start" alt="rounded-start">
+                            <img src="/images/users/avatar-2.jpg" class="avatar-lg rounded-circle" alt="rounded-circle">
                             <img src="/images/small/small-2.jpg" class="avatar-lg w-auto rounded-pill"
                                 alt="rounded-pill">
                         </div>
@@ -612,7 +612,8 @@
                         <h4 class="header-title">Position in Axis</h4>
                         <p class="text-muted mb-0">By adding <code>.translate-middle-x</code> or
                             <code>.translate-middle-y</code> classes, elements can be positioned only in horizontal or
-                            vertical direction.</p>
+                            vertical direction.
+                        </p>
                     </div>
                     <div class="card-body">
                         <!-- Center elements -->
@@ -733,28 +734,28 @@
                     <div class="card-body">
                         <div class="d-flex align-items-start flex-wrap gap-3 text-center">
                             <div>
-                                <img src="/images/small/small-1.jpg"
-                                    class="object-fit-contain border rounded avatar-xl" alt="...">
+                                <img src="/images/small/small-1.jpg" class="object-fit-contain border rounded avatar-xl"
+                                    alt="...">
                                 <p class="mt-1 mb-0"><code class="user-select-all">.object-fit-contain</code></p>
                             </div>
                             <div>
-                                <img src="/images/small/small-1.jpg"
-                                    class="object-fit-cover border rounded avatar-xl" alt="...">
+                                <img src="/images/small/small-1.jpg" class="object-fit-cover border rounded avatar-xl"
+                                    alt="...">
                                 <p class="mt-1 mb-0"><code class="user-select-all">.object-fit-cover</code></p>
                             </div>
                             <div>
-                                <img src="/images/small/small-1.jpg"
-                                    class="object-fit-fill border rounded avatar-xl" alt="...">
+                                <img src="/images/small/small-1.jpg" class="object-fit-fill border rounded avatar-xl"
+                                    alt="...">
                                 <p class="mt-1 mb-0"><code class="user-select-all">.object-fit-fill</code></p>
                             </div>
                             <div>
-                                <img src="/images/small/small-1.jpg"
-                                    class="object-fit-scale border rounded avatar-xl" alt="...">
+                                <img src="/images/small/small-1.jpg" class="object-fit-scale border rounded avatar-xl"
+                                    alt="...">
                                 <p class="mt-1 mb-0"><code class="user-select-all">.object-fit-scale</code></p>
                             </div>
                             <div>
-                                <img src="/images/small/small-1.jpg"
-                                    class="object-fit-none border rounded avatar-xl" alt="...">
+                                <img src="/images/small/small-1.jpg" class="object-fit-none border rounded avatar-xl"
+                                    alt="...">
                                 <p class="mt-1 mb-0"><code class="user-select-all">.object-fit-none</code></p>
                             </div>
                         </div>

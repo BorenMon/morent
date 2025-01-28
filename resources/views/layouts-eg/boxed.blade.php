@@ -1,7 +1,7 @@
-@extends('layouts.vertical', ['title' => 'Boxed', 'sidenav'=>'condensed', 'layoutMode' =>'boxed', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Boxed', 'sidenav' => 'condensed', 'layoutMode' => 'boxed', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-@include('layouts.shared/page-title', ['sub_title' => 'Menu', 'page_title' => 'Boxed'])
+    @include('layouts.shared/page-title', ['sub_title' => 'Menu', 'page_title' => 'Boxed'])
 
     <div class="row">
         <div class="col-xxl-3 col-sm-6">

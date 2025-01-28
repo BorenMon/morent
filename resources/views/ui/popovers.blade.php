@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Popovers', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Popovers', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Popovers'])
@@ -14,8 +14,7 @@
                     </p>
                 </div>
                 <div class="card-body">
-                    <button type="button" class="btn btn-danger" data-bs-toggle="popover"
-                        title="Popover title"
+                    <button type="button" class="btn btn-danger" data-bs-toggle="popover" title="Popover title"
                         data-bs-content="And here's some amazing content. It's very engaging. Right?">Click
                         to toggle popover</button>
                 </div> <!-- end card-body -->
@@ -46,8 +45,8 @@
                 <div class="card-body">
                     <button type="button" tabindex="0" class="btn btn-dark" data-bs-toggle="popover"
                         data-bs-trigger="hover"
-                        data-bs-content="And here's some amazing content. It's very engaging. Right?"
-                        title="Ohh Wow !"> Please Hover Me </button>
+                        data-bs-content="And here's some amazing content. It's very engaging. Right?" title="Ohh Wow !">
+                        Please Hover Me </button>
                 </div> <!-- end card-body -->
             </div> <!-- end card-->
         </div> <!-- end col -->
@@ -60,25 +59,21 @@
                         left aligned.</p>
                 </div>
                 <div class="card-body">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="popover"
-                        data-bs-placement="top"
-                        data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                        title=""> Popover on top </button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="popover" data-bs-placement="top"
+                        data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title=""> Popover
+                        on top </button>
 
-                    <button type="button" class="btn btn-primary" data-bs-toggle="popover"
-                        data-bs-placement="bottom"
-                        data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                        title=""> Popover on bottom </button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="popover" data-bs-placement="bottom"
+                        data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title=""> Popover
+                        on bottom </button>
 
-                    <button type="button" class="btn btn-primary" data-bs-toggle="popover"
-                        data-bs-placement="right"
-                        data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                        title=""> Popover on right </button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="popover" data-bs-placement="right"
+                        data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title=""> Popover
+                        on right </button>
 
-                    <button type="button" class="btn btn-primary" data-bs-toggle="popover"
-                        data-bs-placement="left"
-                        data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-                        title="Popover title"> Popover on left </button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="popover" data-bs-placement="left"
+                        data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover title">
+                        Popover on left </button>
                 </div> <!-- end card-body -->
             </div> <!-- end card-->
 
@@ -94,44 +89,38 @@
                 </div>
                 <div class="card-body">
                     <div class="d-flex flex-wrap gap-2">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="popover"
-                            data-bs-placement="right" data-bs-custom-class="primary-popover"
-                            data-bs-title="Primary popover"
+                        <button type="button" class="btn btn-primary" data-bs-toggle="popover" data-bs-placement="right"
+                            data-bs-custom-class="primary-popover" data-bs-title="Primary popover"
                             data-bs-content="This popover is themed via CSS variables.">
                             Primary popover
                         </button>
 
-                        <button type="button" class="btn btn-success" data-bs-toggle="popover"
-                            data-bs-placement="right" data-bs-custom-class="success-popover"
-                            data-bs-title="Success popover"
+                        <button type="button" class="btn btn-success" data-bs-toggle="popover" data-bs-placement="right"
+                            data-bs-custom-class="success-popover" data-bs-title="Success popover"
                             data-bs-content="This popover is themed via CSS variables.">
                             Success popover
                         </button>
 
-                        <button type="button" class="btn btn-danger" data-bs-toggle="popover"
-                            data-bs-placement="right" data-bs-custom-class="danger-popover"
-                            data-bs-title="Danger popover"
+                        <button type="button" class="btn btn-danger" data-bs-toggle="popover" data-bs-placement="right"
+                            data-bs-custom-class="danger-popover" data-bs-title="Danger popover"
                             data-bs-content="This popover is themed via CSS variables.">
                             Danger popover
                         </button>
 
-                        <button type="button" class="btn btn-info" data-bs-toggle="popover"
-                            data-bs-placement="right" data-bs-custom-class="info-popover"
-                            data-bs-title="Info popover"
+                        <button type="button" class="btn btn-info" data-bs-toggle="popover" data-bs-placement="right"
+                            data-bs-custom-class="info-popover" data-bs-title="Info popover"
                             data-bs-content="This popover is themed via CSS variables.">
                             Info popover
                         </button>
 
-                        <button type="button" class="btn btn-pink" data-bs-toggle="popover"
-                            data-bs-placement="right" data-bs-custom-class="pink-popover"
-                            data-bs-title="Pink popover"
+                        <button type="button" class="btn btn-pink" data-bs-toggle="popover" data-bs-placement="right"
+                            data-bs-custom-class="pink-popover" data-bs-title="Pink popover"
                             data-bs-content="This popover is themed via CSS variables.">
                             Pink popover
                         </button>
 
-                        <button type="button" class="btn btn-purple" data-bs-toggle="popover"
-                            data-bs-placement="left" data-bs-custom-class="purple-popover"
-                            data-bs-title="Purple popover"
+                        <button type="button" class="btn btn-purple" data-bs-toggle="popover" data-bs-placement="left"
+                            data-bs-custom-class="purple-popover" data-bs-title="Purple popover"
                             data-bs-content="This popover is themed via CSS variables.">
                             Purple popover
                         </button>
@@ -150,10 +139,9 @@
                     </p>
                 </div>
                 <div class="card-body">
-                    <span class="d-inline-block" data-bs-toggle="popover"
-                        data-bs-content="Disabled popover">
-                        <button class="btn btn-primary" style="pointer-events: none;" type="button"
-                            disabled>Disabled button</button>
+                    <span class="d-inline-block" data-bs-toggle="popover" data-bs-content="Disabled popover">
+                        <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Disabled
+                            button</button>
                     </span>
                 </div> <!-- end card-body -->
             </div> <!-- end card-->

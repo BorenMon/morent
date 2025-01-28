@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Form Advanced', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Form Advanced', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('css')
     @vite(['node_modules/select2/dist/css/select2.min.css', 'node_modules/daterangepicker/daterangepicker.css', 'node_modules/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.css', 'node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css', 'node_modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css', 'node_modules/flatpickr/dist/flatpickr.min.css'])

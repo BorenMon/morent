@@ -1,7 +1,7 @@
-@extends('layouts.vertical', ['title' => 'Collapsed Layout', 'sidenav' =>'compact', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Collapsed Layout', 'sidenav' => 'compact', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-@include('layouts.shared/page-title', ['sub_title' => 'Menu', 'page_title' => 'Collapsed Layout'])
+    @include('layouts.shared/page-title', ['sub_title' => 'Menu', 'page_title' => 'Collapsed Layout'])
 
     <div class="row">
         <div class="col-xxl-3 col-sm-6">

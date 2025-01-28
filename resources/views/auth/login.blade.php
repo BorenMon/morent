@@ -70,20 +70,6 @@
                                                         class="ri-login-circle-fill me-1"></i> <span class="fw-bold">Log
                                                         In</span> </button>
                                             </div>
-
-                                            <div class="text-center mt-4">
-                                                <p class="text-muted fs-16">Sign in with</p>
-                                                <div class="d-flex gap-2 justify-content-center mt-3">
-                                                    <a href="javascript: void(0);" class="btn btn-soft-primary"><i
-                                                            class="ri-facebook-circle-fill"></i></a>
-                                                    <a href="javascript: void(0);" class="btn btn-soft-danger"><i
-                                                            class="ri-google-fill"></i></a>
-                                                    <a href="javascript: void(0);" class="btn btn-soft-info"><i
-                                                            class="ri-twitter-fill"></i></a>
-                                                    <a href="javascript: void(0);" class="btn btn-soft-dark"><i
-                                                            class="ri-github-fill"></i></a>
-                                                </div>
-                                            </div>
                                         </form>
                                         <!-- end form-->
                                     </div>
@@ -94,14 +80,14 @@
                 </div>
                 <!-- end row -->
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-12 text-center">
                     <p class="text-dark-emphasis">Don't have an account? <a
-                            href="{{ route('second', ['auth', 'register']) }}"
+                            href="{{ route('register') }}"
                             class="text-dark fw-bold ms-1 link-offset-3 text-decoration-underline"><b>Sign up</b></a>
                     </p>
                 </div> <!-- end col -->
-            </div>
+            </div> --}}
             <!-- end row -->
         </div>
         <!-- end container -->
@@ -112,7 +98,7 @@
         <span class="text-dark">
             <script>
                 document.write(new Date().getFullYear())
-            </script> © Velonic - Theme by Techzaa
+            </script> © MORENT
         </span>
     </footer>
 

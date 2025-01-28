@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Embed Video', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Embed Video', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Embed Video'])
@@ -13,8 +13,7 @@
                 <div class="card-body">
                     <!-- 21:9 aspect ratio -->
                     <div class="ratio ratio-21x9">
-                        <iframe
-                            src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"></iframe>
+                        <iframe src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"></iframe>
                     </div>
                 </div> <!-- end card-body -->
             </div> <!-- end card-->
@@ -42,8 +41,7 @@
                 <div class="card-body">
                     <!-- 16:9 aspect ratio -->
                     <div class="ratio ratio-16x9">
-                        <iframe
-                            src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"></iframe>
+                        <iframe src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"></iframe>
                     </div>
                 </div> <!-- end card-body -->
             </div> <!-- end card-->

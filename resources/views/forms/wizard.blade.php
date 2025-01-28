@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Form Wizard', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Form Wizard', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('css')
 @endsection
@@ -619,5 +619,5 @@
 @endsection
 
 @section('script')
-    @vite(['resources/js/pages/form-wizard.init.js',])
+    @vite(['resources/js/pages/form-wizard.init.js'])
 @endsection

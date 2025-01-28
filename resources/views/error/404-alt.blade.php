@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Error 404 Alt', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Error 404 Alt', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     @include('layouts.shared/page-title', ['sub_title' => 'Charts', 'page_title' => '404 Alt Error'])

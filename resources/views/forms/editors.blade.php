@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Editors', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Editors', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('css')
     <!-- Quill css -->

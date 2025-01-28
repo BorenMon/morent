@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Badges', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Badges', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Badges'])
@@ -9,7 +9,8 @@
                 <div class="card-header">
                     <h4 class="header-title">Default</h4>
                     <p class="text-muted mb-0">
-                        A simple labeling component. Badges scale to match the size of the immediate parent element by using relative font sizing and <code>em</code> units.
+                        A simple labeling component. Badges scale to match the size of the immediate parent element by using
+                        relative font sizing and <code>em</code> units.
                     </p>
                 </div>
                 <div class="card-body">
@@ -74,7 +75,8 @@
                     <h4 class="header-title">Contextual variations</h4>
                     <p class="text-muted fs-14 mb-3">
                         Add any of the below mentioned modifier classes to change the appearance of a badge.
-                        Badge can be more contextual as well. Just use regular convention e.g. <code>badge-*color</code>, <code>bg-primary</code>
+                        Badge can be more contextual as well. Just use regular convention e.g. <code>badge-*color</code>,
+                        <code>bg-primary</code>
                         to have badge with different background.
                     </p>
 
@@ -144,8 +146,9 @@
                         <div class="col-6">
                             <button type="button" class="btn btn-primary position-relative">
                                 Profile
-                                <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
-                                  <span class="visually-hidden">New alerts</span>
+                                <span
+                                    class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
+                                    <span class="visually-hidden">New alerts</span>
                                 </span>
                             </button>
                         </div>
@@ -155,7 +158,7 @@
                             </button>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
 
@@ -163,4 +166,3 @@
     </div>
     <!-- end row -->
 @endsection
-

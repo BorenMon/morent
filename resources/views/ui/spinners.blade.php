@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Spinners', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Spinners', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Spinners'])
@@ -124,7 +124,8 @@
                     <h4 class="header-title">Placement</h4>
                     <p class="text-muted mb-0">Use <code>flexbox utilities</code>,
                         <code>float utilities</code>, or <code>text alignment</code> utilities to place
-                        spinners exactly where you need them in any situation.</p>
+                        spinners exactly where you need them in any situation.
+                    </p>
                 </div>
                 <div class="card-body">
                     <div class="d-flex align-items-center">
@@ -148,8 +149,7 @@
                             <div class="d-flex flex-wrap gap-2">
                                 <button class="btn btn-primary" type="button" disabled>
                                     <span class="spinner-border spinner-border-sm" role="status"
-                                        aria-hidden="true"></span><span
-                                        class="visually-hidden">Loading...</span>
+                                        aria-hidden="true"></span><span class="visually-hidden">Loading...</span>
                                 </button>
                                 <button class="btn btn-primary" type="button" disabled>
                                     <span class="spinner-border spinner-border-sm me-1" role="status"
@@ -161,9 +161,8 @@
                         <div class="col-lg-6">
                             <div class="d-flex flex-wrap gap-2">
                                 <button class="btn btn-primary" type="button" disabled>
-                                    <span class="spinner-grow spinner-grow-sm" role="status"
-                                        aria-hidden="true"></span> <span
-                                        class="visually-hidden">Loading...</span>
+                                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Loading...</span>
                                 </button>
                                 <button class="btn btn-primary" type="button" disabled>
                                     <span class="spinner-grow spinner-grow-sm me-1" role="status"

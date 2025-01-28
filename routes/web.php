@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoutingController;
+use App\Http\Controllers\Admin\CarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,8 @@ require __DIR__ . '/auth.php';
 
 Route::group(['prefix' => '/', 'middleware'=>'auth'], function () {
     Route::get('', fn()=>view('index'))->name('dashboard');
+
+    Route::resource('cars', CarController::class);
 
     Route::get('{first}/{second}/{third}', [RoutingController::class, 'thirdLevel'])->name('third');
     Route::get('{first}/{second}', [RoutingController::class, 'secondLevel'])->name('second');

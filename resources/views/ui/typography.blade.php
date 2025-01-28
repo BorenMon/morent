@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Typography', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Typography', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Typography'])
@@ -8,7 +8,9 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="header-title">Display headings</h4>
-                    <p class="text-muted mb-0">Traditional heading elements are designed to work best in the meat of your page content. When you need a heading to stand out, consider using a display heading—a larger, slightly more opinionated heading style.</p>
+                    <p class="text-muted mb-0">Traditional heading elements are designed to work best in the meat of your
+                        page content. When you need a heading to stand out, consider using a display heading—a larger,
+                        slightly more opinionated heading style.</p>
                 </div>
                 <div class="card-body">
                     <h1 class="display-1">Display 1</h1>
@@ -47,22 +49,22 @@
                         commodo condimentum. Mauris
                         blandit, velit a consectetur egestas, diam arcu fermentum justo,
                         eget
-                        ultrices arcu eros vel erat.</p>  
-                        
+                        ultrices arcu eros vel erat.</p>
+
                     <div class="clearfix"></div>
 
                     <h1 class="display-5">Display 5</h1>
                     <p class="text-muted mb-0">Nulla et mattis nunc. Curabitur scelerisque
                         commodo condimentum. Mauris
                         blandit, velit a consectetur egestas, diam arcu fermentum justo,
-                        eget.</p>  
+                        eget.</p>
 
                     <div class="clearfix"></div>
 
                     <h1 class="display-6">Display 6</h1>
                     <p class="text-muted mb-0">Nulla et mattis nunc. Curabitur scelerisque
                         commodo condimentum. Mauris
-                        blandit, velit a consectetur egestas.</p> 
+                        blandit, velit a consectetur egestas.</p>
                 </div> <!-- end card-body -->
             </div> <!-- end card-->
         </div> <!-- end col -->
@@ -77,10 +79,11 @@
                     <p class="text-muted mb-0">All HTML headings, <code>&lt;h1&gt;</code> through
                         <code>&lt;h6&gt;</code>, are available. <code>.h1</code> through <code>.h6</code>
                         classes are also available, for when you want to match the font styling of a heading
-                        but still want your text to be displayed inline.</p>
+                        but still want your text to be displayed inline.
+                    </p>
                 </div>
                 <div class="card-body">
-                   <h1>This is a Heading 1</h1>
+                    <h1>This is a Heading 1</h1>
                     <p class="text-muted">Suspendisse vel quam malesuada, aliquet sem sit
                         amet, fringilla elit. Morbi
                         tempor tincidunt tempor. Etiam id turpis viverra, vulputate sapien
@@ -164,12 +167,12 @@
                     <p><u>This line of text will render as underlined</u></p>
                     <p><small>This line of text is meant to be treated as fine print.</small></p>
                     <p><strong>This line rendered as bold text.</strong></p>
-                    <p><em>This line rendered as italicized text.</em></p>  
+                    <p><em>This line rendered as italicized text.</em></p>
                     Nulla <abbr title="attribute">attr</abbr> vitae elit libero, a pharetra augue.
                 </div> <!-- end card-body -->
             </div> <!-- end card-->
         </div> <!-- end col -->
-    
+
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-header">
@@ -212,7 +215,7 @@
                     </p>
                     <p class="text-white-50 bg-dark mb-0">
                         Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                    </p> 
+                    </p>
                 </div> <!-- end card-body -->
             </div> <!-- end card-->
         </div> <!-- end col -->
@@ -266,7 +269,7 @@
                         <li>
                             Eget porttitor lorem
                         </li>
-                    </ul> 
+                    </ul>
                 </div> <!-- end card-body -->
             </div> <!-- end card-->
         </div> <!-- end col -->
@@ -317,16 +320,17 @@
                         <li>
                             Eget porttitor lorem
                         </li>
-                    </ol> 
+                    </ol>
                 </div> <!-- end card-body -->
             </div> <!-- end card-->
         </div> <!-- end col -->
-    
+
         <div class="col-xl-4">
             <div class="card">
                 <div class="card-header">
                     <h4 class="header-title">Unstyled</h4>
-                    <p class="text-muted mb-0"><strong>This only applies to immediate children list items</strong>, meaning you will need to add the class for any nested lists as well.</p>
+                    <p class="text-muted mb-0"><strong>This only applies to immediate children list items</strong>, meaning
+                        you will need to add the class for any nested lists as well.</p>
                 </div>
                 <div class="card-body">
                     <ul class="list-unstyled">
@@ -347,12 +351,12 @@
                         <li>
                             Eget porttitor lorem
                         </li>
-                    </ul>    
-                    
+                    </ul>
+
                     <h5>Inline</h5>
                     <p class="text-muted m-b-15">
                         Place all list items on a single line with <code>
-                        display: inline-block;</code>
+                            display: inline-block;</code>
                         and some light padding.
                     </p>
 
@@ -378,36 +382,46 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="header-title">Blockquotes</h4>
-                    <p class="text-muted mb-0">For quoting blocks of content from another source within your document. Wrap <code>&lt;blockquote class="blockquote"&gt;</code> around any <abbr title="VelonicText Markup Language">HTML</abbr> as the quote.</p>
+                    <p class="text-muted mb-0">For quoting blocks of content from another source within your document. Wrap
+                        <code>&lt;blockquote class="blockquote"&gt;</code> around any <abbr
+                            title="VelonicText Markup Language">HTML</abbr> as the quote.</p>
                 </div>
                 <div class="card-body">
                     <blockquote class="blockquote">
-                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                            ante.</p>
                     </blockquote>
-                    <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>
+                    <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>
+                    </figcaption>
 
                     <p class="text-muted m-b-15">
                         Use text utilities as needed to change the alignment of your blockquote.
                     </p>
 
                     <blockquote class="blockquote text-center">
-                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                            ante.</p>
                     </blockquote>
-                    <figcaption class="blockquote-footer text-center">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>
+                    <figcaption class="blockquote-footer text-center">Someone famous in <cite title="Source Title">Source
+                            Title</cite></figcaption>
 
                     <blockquote class="blockquote text-end">
-                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                    </blockquote>                                          
-                    <figcaption class="blockquote-footer text-end">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>
+                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                            ante.</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer text-end">Someone famous in <cite title="Source Title">Source
+                            Title</cite></figcaption>
                 </div> <!-- end card-body -->
             </div> <!-- end card-->
         </div> <!-- end col -->
-    
+
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-header">
                     <h4 class="header-title">Description list alignment</h4>
-                    <p class="text-muted mb-0">Align terms and descriptions horizontally by using our grid system’s predefined classes (or semantic mixins). For longer terms, you can optionally add a <code>.text-truncate</code> class to truncate the text with an ellipsis.</p>
+                    <p class="text-muted mb-0">Align terms and descriptions horizontally by using our grid system’s
+                        predefined classes (or semantic mixins). For longer terms, you can optionally add a
+                        <code>.text-truncate</code> class to truncate the text with an ellipsis.</p>
                 </div>
                 <div class="card-body">
                     <dl class="row mb-0">
@@ -424,20 +438,21 @@
                         <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
 
                         <dt class="col-sm-3 text-truncate">Truncated term is truncated</dt>
-                        <dd class="col-sm-9">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+                        <dd class="col-sm-9">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+                            fermentum massa justo sit amet risus.</dd>
 
                         <dt class="col-sm-3">Nesting</dt>
                         <dd class="col-sm-9">
                             <dl class="row mb-0">
                                 <dt class="col-sm-4">Nested definition list</dt>
-                                <dd class="col-sm-8">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.</dd>
+                                <dd class="col-sm-8">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.
+                                </dd>
                             </dl>
                         </dd>
-                    </dl>  
+                    </dl>
                 </div> <!-- end card-body -->
             </div> <!-- end card-->
         </div> <!-- end col -->
     </div>
     <!-- end row -->
 @endsection
-

@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'List Group', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'List Group', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'List Group'])
@@ -39,9 +39,8 @@
                     </p>
                 </div>
                 <div class="card-body">
-                   <ul class="list-group">
-                        <li class="list-group-item active"><i
-                                class="ri-drive-line me-1"></i> Google Drive</li>
+                    <ul class="list-group">
+                        <li class="list-group-item active"><i class="ri-drive-line me-1"></i> Google Drive</li>
                         <li class="list-group-item"><i class="ri-messenger-line me-1"></i>
                             Facebook Messenger</li>
                         <li class="list-group-item"><i class="ri-apple-line me-1"></i> Apple
@@ -65,8 +64,8 @@
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
-                        <li class="list-group-item disabled" aria-disabled="true"><i
-                                class="ri-drive-line me-1"></i> Google Drive</li>
+                        <li class="list-group-item disabled" aria-disabled="true"><i class="ri-drive-line me-1"></i> Google
+                            Drive</li>
                         <li class="list-group-item"><i class="ri-messenger-line me-1"></i>
                             Facebook Messenger</li>
                         <li class="list-group-item"><i class="ri-apple-line me-1"></i> Apple
@@ -100,14 +99,12 @@
                         </a>
                         <a href="#" class="list-group-item list-group-item-action">Google
                             Drive</a>
-                        <button type="button"
-                            class="list-group-item list-group-item-action">Facebook
+                        <button type="button" class="list-group-item list-group-item-action">Facebook
                             Messenger</button>
-                        <button type="button"
-                            class="list-group-item list-group-item-action">Apple Technology
+                        <button type="button" class="list-group-item list-group-item-action">Apple Technology
                             Company</button>
-                        <a href="#" class="list-group-item list-group-item-action disabled"
-                            tabindex="-1" aria-disabled="true">Intercom Support System</a>
+                        <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1"
+                            aria-disabled="true">Intercom Support System</a>
                     </div>
                 </div> <!-- end card-body -->
             </div> <!-- end card-->
@@ -204,16 +201,26 @@
                 <div class="card-body">
                     <div class="list-group">
                         <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-primary">A simple primary list group item</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">A simple secondary list group item</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-success">A simple success list group item</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-danger">A simple danger list group item</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-warning">A simple warning list group item</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A simple info list group item</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-pink">A simple pink list group item</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-purple">A simple purple list group item</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-dark">A simple dark list group item</a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-primary">A simple
+                            primary list group item</a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">A
+                            simple secondary list group item</a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-success">A simple
+                            success list group item</a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-danger">A simple
+                            danger list group item</a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-warning">A simple
+                            warning list group item</a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-info">A simple
+                            info list group item</a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-pink">A simple
+                            pink list group item</a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-purple">A simple
+                            purple list group item</a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple
+                            light list group item</a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-dark">A simple
+                            dark list group item</a>
                     </div>
                 </div> <!-- end card-body -->
             </div> <!-- end card-->
@@ -272,28 +279,23 @@
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
-                        <li
-                            class="list-group-item d-flex justify-content-between align-items-center">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
                             Gmail Emails
                             <span class="badge bg-primary rounded-pill">14</span>
                         </li>
-                        <li
-                            class="list-group-item d-flex justify-content-between align-items-center">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
                             Pending Payments
                             <span class="badge bg-success rounded-pill">2</span>
                         </li>
-                        <li
-                            class="list-group-item d-flex justify-content-between align-items-center">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
                             Action Needed
                             <span class="badge bg-danger rounded-pill">99+</span>
                         </li>
-                        <li
-                            class="list-group-item d-flex justify-content-between align-items-center">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
                             Payments Done
                             <span class="badge bg-success rounded-pill">20+</span>
                         </li>
-                        <li
-                            class="list-group-item d-flex justify-content-between align-items-center">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
                             Pending Payments
                             <span class="badge bg-warning rounded-pill">12</span>
                         </li>
@@ -315,14 +317,12 @@
                 <div class="card-body">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <input class="form-check-input me-1" type="checkbox" value=""
-                                id="firstCheckbox">
+                            <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
                             <label class="form-check-label" for="firstCheckbox">First
                                 checkbox</label>
                         </li>
                         <li class="list-group-item">
-                            <input class="form-check-input me-1" type="checkbox" value=""
-                                id="secondCheckbox">
+                            <input class="form-check-input me-1" type="checkbox" value="" id="secondCheckbox">
                             <label class="form-check-label" for="secondCheckbox">Second
                                 checkbox</label>
                         </li>
@@ -330,13 +330,13 @@
 
                     <ul class="list-group mt-2">
                         <li class="list-group-item">
-                            <input class="form-check-input me-1" type="radio"
-                                name="listGroupRadio" value="" id="firstRadio" checked>
+                            <input class="form-check-input me-1" type="radio" name="listGroupRadio" value=""
+                                id="firstRadio" checked>
                             <label class="form-check-label" for="firstRadio">First radio</label>
                         </li>
                         <li class="list-group-item">
-                            <input class="form-check-input me-1" type="radio"
-                                name="listGroupRadio" value="" id="secondRadio">
+                            <input class="form-check-input me-1" type="radio" name="listGroupRadio" value=""
+                                id="secondRadio">
                             <label class="form-check-label" for="secondRadio">Second
                                 radio</label>
                         </li>
@@ -357,24 +357,21 @@
                 </div>
                 <div class="card-body">
                     <ol class="list-group list-group-numbered">
-                        <li
-                            class="list-group-item d-flex justify-content-between align-items-start">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
                                 <div class="fw-bold">Velonic Admin</div>
                                 Velonic Admin
                             </div>
                             <span class="badge bg-primary rounded-pill">865</span>
                         </li>
-                        <li
-                            class="list-group-item d-flex justify-content-between align-items-start">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
                                 <div class="fw-bold">Velonic React Admin</div>
                                 Velonic React Admin
                             </div>
                             <span class="badge bg-primary rounded-pill">140</span>
                         </li>
-                        <li
-                            class="list-group-item d-flex justify-content-between align-items-start">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
                                 <div class="fw-bold">Angular Version</div>
                                 Angular Version

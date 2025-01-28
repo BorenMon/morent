@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Alerts', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Alerts', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Alerts'])
@@ -9,11 +9,12 @@
                 <div class="card-body">
                     <h4 class="header-title">Default Alert</h4>
                     <p class="text-muted fs-14 mb-3">
-                        Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
+                        Provide contextual feedback messages for typical user actions with the handful of available and
+                        flexible alert messages.
                         Alerts are available for any length of text, as well as an optional dismiss
-                        button. 
+                        button.
                     </p>
-                    
+
                     <div class="alert alert-primary" role="alert">
                         <strong>Primary - </strong> A simple primary alert—check it out!
                     </div>
@@ -26,8 +27,7 @@
                     <div class="alert alert-danger" role="alert">
                         <strong>Error - </strong> A simple danger alert—check it out!
                     </div>
-                    <div class="alert alert-warning"
-                        role="alert">
+                    <div class="alert alert-warning" role="alert">
                         <strong>Warning - </strong> A simple warning alert—check it out!
                     </div>
                     <div class="alert alert-info text-bg-info border-0" role="alert">
@@ -60,24 +60,25 @@
                         and positions the <code>.btn-close</code> button.
                     </p>
 
-                    <div class="alert alert-primary alert-dismissible text-bg-primary border-0 fade show"
-                        role="alert">
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <div class="alert alert-primary alert-dismissible text-bg-primary border-0 fade show" role="alert">
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"
+                            aria-label="Close"></button>
                         <strong>Primary - </strong> A simple primary alert—check it out!
                     </div>
                     <div class="alert alert-secondary alert-dismissible text-bg-secondary border-0 fade show"
                         role="alert">
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"
+                            aria-label="Close"></button>
                         <strong>Secondary - </strong> A simple secondary alert—check it out!
                     </div>
-                    <div class="alert alert-success alert-dismissible text-bg-success border-0 fade show"
-                        role="alert">
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <div class="alert alert-success alert-dismissible text-bg-success border-0 fade show" role="alert">
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"
+                            aria-label="Close"></button>
                         <strong>Success - </strong> A simple success alert—check it out!
                     </div>
-                    <div class="alert alert-danger alert-dismissible text-bg-danger border-0 fade show"
-                        role="alert">
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <div class="alert alert-danger alert-dismissible text-bg-danger border-0 fade show" role="alert">
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"
+                            aria-label="Close"></button>
                         <strong>Error - </strong> A simple danger alert—check it out!
                     </div>
                     <div class="alert alert-warning alert-dismissible text-bg-warning border-0 fade show" role="alert">
@@ -156,7 +157,7 @@
                     <div class="alert alert-dark bg-transparent text-dark mb-0" role="alert">
                         This is a <strong>dark</strong> alert—check it out!
                     </div>
-                    
+
                 </div> <!-- end card-body-->
             </div> <!-- end card-->
         </div> <!-- end col-->
@@ -256,7 +257,7 @@
                         dividers.
                     </p>
 
-                    
+
                     <div class="alert alert-info text-center mb-0" role="alert">
                         <div class="avatar-sm mb-2 mx-auto">
                             <span class="avatar-title bg-info rounded-circle">
@@ -282,7 +283,8 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title">Live Alert</h4>
-                    <p class="text-muted fs-14 mb-3">Click the button below to show an alert (hidden with inline styles to start), then dismiss (and destroy) it with the built-in close button.</p>
+                    <p class="text-muted fs-14 mb-3">Click the button below to show an alert (hidden with inline styles to
+                        start), then dismiss (and destroy) it with the built-in close button.</p>
 
                     <div class="tab-pane show active" id="live-alert-preview">
                         <div id="liveAlertPlaceholder"></div>
@@ -294,4 +296,3 @@
         </div>
     </div> <!-- end row-->
 @endsection
-

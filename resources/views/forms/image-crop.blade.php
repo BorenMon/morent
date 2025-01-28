@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Image Crop', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Image Crop', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('css')
     @vite(['node_modules/cropper/dist/cropper.min.css'])

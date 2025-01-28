@@ -1,7 +1,10 @@
-@extends('layouts.vertical', ['title' => 'Material Design Icons', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Material Design Icons', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Icons', 'page_title' => 'Material Design Icons'])
+    @include('layouts.shared/page-title', [
+        'sub_title' => 'Icons',
+        'page_title' => 'Material Design Icons',
+    ])
 
     <div class="row">
         <div class="col-12">

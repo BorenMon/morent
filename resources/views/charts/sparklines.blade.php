@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ['title' => 'Sparkline Charts', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('layouts.horizontal', ['title' => 'Sparkline Charts', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     @include('layouts.shared/page-title', ['sub_title' => 'Charts', 'page_title' => 'Sparkline'])
@@ -31,8 +31,7 @@
                 <div class="card-body">
                     <h4 class="header-title">Pie Chart</h4>
                     <div class="mt-4">
-                        <div id="sparkline3" data-colors="#3bc0c3,#4489e4,#d03f3f,#716cb0"
-                            class="text-center"></div>
+                        <div id="sparkline3" data-colors="#3bc0c3,#4489e4,#d03f3f,#716cb0" class="text-center"></div>
                     </div>
                 </div>
             </div> <!-- end card -->
