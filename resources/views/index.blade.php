@@ -2,7 +2,6 @@
 
 @section('content')
 @include('layouts.shared/page-title', ['sub_title' => 'Menu', 'page_title' => 'Dashboard'])
-
     <div class="row">
         <div class="col-xxl-3 col-sm-6">
             <div class="card widget-flat text-bg-pink">

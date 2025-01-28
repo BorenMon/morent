@@ -21,10 +21,10 @@
                             <div class="col-lg-6">
                                 <div class="d-flex flex-column h-100">
                                     <div class="auth-brand p-4">
-                                        <a href="{{ route('any', 'index') }}" class="logo-light">
+                                        <a href="{{ route('dashboard') }}" class="logo-light">
                                             <img src="/images/logo.png" alt="logo" height="22">
                                         </a>
-                                        <a href="{{ route('any', 'index') }}" class="logo-dark">
+                                        <a href="{{ route('dashboard') }}" class="logo-dark">
                                             <img src="/images/logo-dark.png" alt="dark logo" height="22">
                                         </a>
                                     </div>
@@ -42,13 +42,13 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="emailaddress" class="form-label">Email address</label>
-                                                <input class="form-control" type="email" id="emailaddress" required=""
-                                                    placeholder="Enter your email">
+                                                <input class="form-control" type="email" id="emailaddress"
+                                                    required="" placeholder="Enter your email">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="password" class="form-label">Password</label>
-                                                <input class="form-control" type="password" required="" id="password"
-                                                    placeholder="Enter your password">
+                                                <input class="form-control" type="password" required=""
+                                                    id="password" placeholder="Enter your password">
                                             </div>
                                             <div class="mb-3">
                                                 <div class="form-check">
@@ -89,7 +89,9 @@
             </div>
             <div class="row">
                 <div class="col-12 text-center">
-                    <p class="text-dark-emphasis">Already have account? <a href="{{ route('second', [ 'auth' , 'login']) }}" class="text-dark fw-bold ms-1 link-offset-3 text-decoration-underline"><b>Log In</b></a></p>
+                    <p class="text-dark-emphasis">Already have account? <a
+                            href="{{ route('second', ['auth', 'login']) }}"
+                            class="text-dark fw-bold ms-1 link-offset-3 text-decoration-underline"><b>Log In</b></a></p>
                 </div> <!-- end col -->
             </div>
             <!-- end row -->
@@ -100,7 +102,9 @@
 
     <footer class="footer footer-alt fw-medium">
         <span class="text-dark-emphasis">
-            <script>document.write(new Date().getFullYear())</script> © Velonic - Theme by Techzaa
+            <script>
+                document.write(new Date().getFullYear())
+            </script> © Velonic - Theme by Techzaa
         </span>
     </footer>
 

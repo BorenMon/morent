@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class RoutingController extends Controller
@@ -16,37 +15,6 @@ class RoutingController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
-        if (Auth::user()) {
-            return redirect('index');
-        } else {
-            return redirect('login');
-        }
-    }
-
-    /**
-     * Display a view based on first route param
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function root(Request $request, $first)
-    {
-
-        $mode = $request->query('mode');
-        $demo = $request->query('demo');
-     
-        if ($first == "assets")
-            return redirect('home');
-
-        return view($first, ['mode' => $mode, 'demo' => $demo]);
-    }
-
-    /**
      * second level route
      */
     public function secondLevel(Request $request, $first, $second)
@@ -56,11 +24,9 @@ class RoutingController extends Controller
         $demo = $request->query('demo');
 
         if ($first == "assets")
-            return redirect('home');
+            return redirect('dashboard');
 
-
-
-    return view($first .'.'. $second, ['mode' => $mode, 'demo' => $demo]);
+        return view($first . '.' . $second, ['mode' => $mode, 'demo' => $demo]);
     }
 
     /**
@@ -72,10 +38,10 @@ class RoutingController extends Controller
         $demo = $request->query('demo');
 
         if ($first == "assets")
-            return redirect('home');
+            return redirect('dashboard');
 
-        dd($first,$second,$third);
-        
+        dd($first, $second, $third);
+
         return view($first . '.' . $second . '.' . $third, ['mode' => $mode, 'demo' => $demo]);
     }
 }

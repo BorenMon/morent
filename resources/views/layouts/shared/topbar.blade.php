@@ -6,7 +6,7 @@
             <!-- Topbar Brand Logo -->
             <div class="logo-topbar">
                 <!-- Logo light -->
-                <a href="{{route('any', 'index')}}" class="logo-light">
+                <a href="{{ route('dashboard') }}" class="logo-light">
                     <span class="logo-lg">
                         <img src="/images/logo.png" alt="logo">
                     </span>
@@ -16,7 +16,7 @@
                 </a>
 
                 <!-- Logo Dark -->
-                <a href="{{route('any', 'index')}}" class="logo-dark">
+                <a href="{{ route('dashboard') }}" class="logo-dark">
                     <span class="logo-lg">
                         <img src="/images/logo-dark.png" alt="dark logo">
                     </span>
@@ -40,7 +40,7 @@
                 </div>
             </button>
 
-            <!-- Topbar Search Form -->
+            {{-- <!-- Topbar Search Form -->
             <div class="app-search d-none d-lg-block">
                 <form>
                     <div class="input-group">
@@ -48,7 +48,7 @@
                         <span class="ri-search-line search-icon text-muted"></span>
                     </div>
                 </form>
-            </div>
+            </div> --}}
         </div>
 
         <ul class="topbar-menu d-flex align-items-center gap-3">
@@ -65,7 +65,7 @@
                 </div>
             </li>
 
-            <li class="dropdown">
+            {{-- <li class="dropdown">
                 <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
                     aria-haspopup="false" aria-expanded="false">
                     <img src="/images/flags/us.jpg" alt="user-image" class="me-0 me-sm-1" height="12">
@@ -99,9 +99,9 @@
                     </a>
 
                 </div>
-            </li>
+            </li> --}}
 
-            <li class="dropdown notification-list">
+            {{-- <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
                     aria-haspopup="false" aria-expanded="false">
                     <i class="ri-mail-line fs-22"></i>
@@ -324,7 +324,7 @@
                     </a>
 
                 </div>
-            </li>
+            </li> --}}
 
             <li class="d-none d-sm-inline-block">
                 <a class="nav-link" data-bs-toggle="offcanvas" href="#theme-settings-offcanvas">
@@ -339,13 +339,13 @@
             </li>
 
             <li class="dropdown">
-                <a class="nav-link dropdown-toggle arrow-none nav-user" data-bs-toggle="dropdown" href="#" role="button"
-                    aria-haspopup="false" aria-expanded="false">
+                <a class="nav-link dropdown-toggle arrow-none nav-user" data-bs-toggle="dropdown" href="#"
+                    role="button" aria-haspopup="false" aria-expanded="false">
                     <span class="account-user-avatar">
                         <img src="/images/users/avatar-1.jpg" alt="user-image" width="32" class="rounded-circle">
                     </span>
                     <span class="d-lg-block d-none">
-                        <h5 class="my-0 fw-normal">Thomson <i
+                        <h5 class="my-0 fw-normal">{{ Auth::user()->name }} <i
                                 class="ri-arrow-down-s-line d-none d-sm-inline-block align-middle"></i></h5>
                     </span>
                 </a>
@@ -356,34 +356,19 @@
                     </div>
 
                     <!-- item-->
-                    <a href="pages-profile.html" class="dropdown-item">
+                    <a href="{{ route('second', ['pages', 'profile']) }}" class="dropdown-item">
                         <i class="ri-account-circle-line fs-18 align-middle me-1"></i>
                         <span>My Account</span>
                     </a>
 
                     <!-- item-->
-                    <a href="pages-profile.html" class="dropdown-item">
-                        <i class="ri-settings-4-line fs-18 align-middle me-1"></i>
-                        <span>Settings</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="pages-faq.html" class="dropdown-item">
-                        <i class="ri-customer-service-2-line fs-18 align-middle me-1"></i>
-                        <span>Support</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="auth-lock-screen.html" class="dropdown-item">
-                        <i class="ri-lock-password-line fs-18 align-middle me-1"></i>
-                        <span>Lock Screen</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="auth-logout-2.html" class="dropdown-item">
-                        <i class="ri-logout-box-line fs-18 align-middle me-1"></i>
-                        <span>Logout</span>
-                    </a>
+                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                        @csrf
+                        <a href="javascript:void(0)" class="dropdown-item" onclick="this.closest('form').submit();">
+                            <i class="ri-logout-box-line fs-18 align-middle me-1"></i>
+                            <span>Logout</span>
+                        </a>
+                    </form>
                 </div>
             </li>
         </ul>
