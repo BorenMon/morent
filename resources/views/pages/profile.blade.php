@@ -1,8 +1,8 @@
-@extends('layouts.horizontal', ['title' => 'Profile', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
-
 @php
     $user = Auth::user();
 @endphp
+
+@extends('layouts.horizontal', ['title' => 'Profile', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     <!-- start page title -->
@@ -30,8 +30,6 @@
                                 <i class="ri-settings-2-line align-text-bottom me-1 fs-16 lh-1"></i>
                                 Edit Profile
                             </button>
-                            <a class="btn btn-soft-info" href="#"> <i
-                                    class="ri-check-double-fill fs-18 me-1 lh-1"></i> Following</a>
                         </div>
                     </div>
                 </div>
@@ -130,4 +128,20 @@
 
     </div>
     <!-- end row -->
+    <img src="/images/auth-bg.jpg" id="image">
+@endsection
+
+@section('css')
+    <style>
+        @import  "~cropper/dist/cropper.min.css";
+        #image {
+            width: 300px;
+            height: 300px;
+            object-fit: contain;
+        }
+    </style>
+@endsection
+
+@section('script')
+    @vite('resources/js/addons/pages/profile.js')
 @endsection
