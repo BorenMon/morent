@@ -5,7 +5,7 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                // Theme Scss
+                // Theme SCSS
                 'resources/scss/app.scss',
                 'resources/scss/icons.scss',
                 'node_modules/jquery-toast-plugin/dist/jquery.toast.min.css',
@@ -29,7 +29,7 @@ export default defineConfig({
                 'node_modules/admin-resources/rwd-table/rwd-table.min.css',
                 'node_modules/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css',
 
-                // Theme Js
+                // Theme JS
                 'resources/js/main.js',
                 'resources/js/layout.js',
                 'resources/js/head.js',
@@ -54,6 +54,9 @@ export default defineConfig({
                 'resources/js/pages/responsive-table.init.js',
                 'resources/js/pages/google-maps.init.js',
                 'resources/js/pages/vector-maps.init.js',
+
+                // Custom JS
+                'resources/js/addons/pages/profile.js'
             ],
             refresh: true,
         }),
@@ -63,6 +66,9 @@ export default defineConfig({
         port: 5173,
         hmr: {
             host: '127.0.0.1',
+        },
+        watch: {
+            usePolling: true,
         }
     },
 });
