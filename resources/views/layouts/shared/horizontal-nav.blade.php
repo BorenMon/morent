@@ -11,27 +11,27 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" href="/booking"
-                            id="topnav-dashboards" role="button" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle arrow-none" href="/booking" id="topnav-dashboards"
+                            role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="ri-draft-line"></i>Bookings
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" href="/booking1"
-                            id="topnav-dashboards" role="button" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle arrow-none" href="/booking1" id="topnav-dashboards"
+                            role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="ri-roadster-line"></i>Cars
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" href="/booking2"
-                            id="topnav-dashboards" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="ri-group-line"></i>Customers
+                        <a class="nav-link dropdown-toggle arrow-none" href="/booking2" id="topnav-dashboards"
+                            role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="ri-group-2-line"></i>Customers
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" href="/booking3"
-                            id="topnav-dashboards" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="ri-user-line"></i>Staffs
+                        <a class="nav-link dropdown-toggle arrow-none" href="/booking3" id="topnav-dashboards"
+                            role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="ri-group-line"></i>Staffs
                         </a>
                     </li>
                     <li class="nav-item dropdown">
@@ -90,7 +90,8 @@
                         <div class="dropdown-menu" aria-labelledby="topnav-components">
                             <div class="dropdown">
                                 <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-ui-kit"
-                                    role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
                                     Base UI 1 <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-ui-kit">
@@ -175,21 +176,22 @@
                                     Forms <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-forms">
-                                    <a href="{{ route('second', ['form', 'elements']) }}" class="dropdown-item">Basic
+                                    <a href="{{ route('second', ['forms', 'elements']) }}"
+                                        class="dropdown-item">Basic
                                         Elements</a>
-                                    <a href="{{ route('second', ['form', 'advanced']) }}" class="dropdown-item">Form
+                                    <a href="{{ route('second', ['forms', 'advanced']) }}" class="dropdown-item">Form
                                         Advanced</a>
-                                    <a href="{{ route('second', ['form', 'validation']) }}"
+                                    <a href="{{ route('second', ['forms', 'validation']) }}"
                                         class="dropdown-item">Form Validation</a>
-                                    <a href="{{ route('second', ['form', 'wizard']) }}" class="dropdown-item">Form
+                                    <a href="{{ route('second', ['forms', 'wizard']) }}" class="dropdown-item">Form
                                         Wizard</a>
-                                    <a href="{{ route('second', ['form', 'fileuploads']) }}"
+                                    <a href="{{ route('second', ['forms', 'fileuploads']) }}"
                                         class="dropdown-item">File Uploads</a>
-                                    <a href="{{ route('second', ['form', 'editors']) }}" class="dropdown-item">Form
+                                    <a href="{{ route('second', ['forms', 'editors']) }}" class="dropdown-item">Form
                                         Editors</a>
-                                    <a href="{{ route('second', ['form', 'image-crop']) }}"
+                                    <a href="{{ route('second', ['forms', 'image-crop']) }}"
                                         class="dropdown-item">Image Crop</a>
-                                    <a href="{{ route('second', ['form', 'x-editable']) }}" class="dropdown-item">X
+                                    <a href="{{ route('second', ['forms', 'x-editable']) }}" class="dropdown-item">X
                                         Editable</a>
                                 </div>
                             </div>

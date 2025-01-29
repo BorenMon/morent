@@ -11,7 +11,7 @@
                     <!-- Invoice Logo-->
                     <div class="clearfix">
                         <div class="float-start mb-3">
-                            <img src="/images/logo-dark.png" alt="dark logo" height="22">
+                            <img src="/images/logo-dark.svg" alt="dark logo" height="22">
                         </div>
                         <div class="float-end">
                             <h4 class="m-0 d-print-none">Invoice</h4>
