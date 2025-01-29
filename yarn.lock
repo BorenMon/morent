@@ -494,7 +494,7 @@ crelt@^1.0.5:
   resolved "https://registry.yarnpkg.com/crelt/-/crelt-1.0.6.tgz#7cc898ea74e190fb6ef9dae57f8f81cf7302df72"
   integrity sha512-VQ2MBenTq1fWZUH9DJNGti7kKv6EeAuYr3cLwxUWhIu1baTaXh4Ib5W2CqHVqib4/MqbYGJqiL3Zb8GJZr3l4g==
 
-cropper@^4.0.0:
+cropper@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/cropper/-/cropper-4.1.0.tgz#3c2faaa78f730a3c71814cee61e17c7a674b943f"
   integrity sha512-dNbkWNT606oMgRQ2aYMerDnPpSVLBMTWyERDHsDwih1ahJiVpyfSM9ev/n6G4ElfRG8t0shUZ5FXLg7YtmDdBQ==
@@ -1260,11 +1260,6 @@ is-regex@^1.1.4:
     gopd "^1.2.0"
     has-tostringtag "^1.0.2"
     hasown "^2.0.2"
-
-jquery-cropper@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/jquery-cropper/-/jquery-cropper-1.0.1.tgz#6ba9faf1c2c86c0ac3c648d40554ba53673113cf"
-  integrity sha512-KGlY8b0IJQi2Bxe3lqMKmd5Z2Ce4GrnDE5O8Iciza9xCzXISkL6EqX/jFHwnLL1H6Q4FGjoRguuv3lxezsbKJQ==
 
 jquery-mask-plugin@^1.14.16:
   version "1.14.16"

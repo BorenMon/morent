@@ -225,10 +225,10 @@
                                 <div class="modal-body">
                                     <div class="auth-brand text-center mt-2 mb-4 position-relative top-0">
                                         <a href="index.html" class="logo-dark">
-                                            <span><img src="/images/logo-dark.png" alt="dark logo" height="22"></span>
+                                            <span><img src="/images/logo-dark.svg" alt="dark logo" height="22"></span>
                                         </a>
                                         <a href="index.html" class="logo-light">
-                                            <span><img src="/images/logo.png" alt="logo" height="22"></span>
+                                            <span><img src="/images/logo.svg" alt="logo" height="22"></span>
                                         </a>
                                     </div>
 
@@ -279,10 +279,10 @@
                                 <div class="modal-body">
                                     <div class="auth-brand text-center mt-2 mb-4 position-relative top-0">
                                         <a href="index.html" class="logo-dark">
-                                            <span><img src="/images/logo-dark.png" alt="dark logo" height="22"></span>
+                                            <span><img src="/images/logo-dark.svg" alt="dark logo" height="22"></span>
                                         </a>
                                         <a href="index.html" class="logo-light">
-                                            <span><img src="/images/logo.png" alt="logo" height="22"></span>
+                                            <span><img src="/images/logo.svg" alt="logo" height="22"></span>
                                         </a>
                                     </div>
 
@@ -1138,7 +1138,8 @@
                 <div class="card-header">
                     <h4 class="header-title">Toggle Between Modals</h4>
                     <p class="text-muted mb-0">Toggle between multiple modals with some clever placement of the
-                        <code>data-bs-target</code> and <code>data-bs-toggle</code> attributes.</p>
+                        <code>data-bs-target</code> and <code>data-bs-toggle</code> attributes.
+                    </p>
                 </div>
                 <div class="card-body">
                     <!-- Modal -->

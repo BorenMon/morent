@@ -8,7 +8,7 @@
                 <!-- Logo light -->
                 <a href="{{ route('dashboard') }}" class="logo-light">
                     <span class="logo-lg">
-                        <img src="/images/logo.png" alt="logo">
+                        <img src="/images/logo.svg" alt="logo">
                     </span>
                     <span class="logo-sm">
                         <img src="/images/logo-sm.png" alt="small logo">
@@ -18,7 +18,7 @@
                 <!-- Logo Dark -->
                 <a href="{{ route('dashboard') }}" class="logo-dark">
                     <span class="logo-lg">
-                        <img src="/images/logo-dark.png" alt="dark logo">
+                        <img src="/images/logo-dark.svg" alt="dark logo">
                     </span>
                     <span class="logo-sm">
                         <img src="/images/logo-sm.png" alt="small logo">
@@ -52,19 +52,6 @@
         </div>
 
         <ul class="topbar-menu d-flex align-items-center gap-3">
-            <li class="dropdown d-lg-none">
-                <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
-                    aria-haspopup="false" aria-expanded="false">
-                    <i class="ri-search-line fs-22"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
-                    <form class="p-3">
-                        <input type="search" class="form-control" placeholder="Search ..."
-                            aria-label="Recipient's username">
-                    </form>
-                </div>
-            </li>
-
             {{-- <li class="dropdown">
                 <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
                     aria-haspopup="false" aria-expanded="false">
@@ -342,7 +329,7 @@
                 <a class="nav-link dropdown-toggle arrow-none nav-user" data-bs-toggle="dropdown" href="#"
                     role="button" aria-haspopup="false" aria-expanded="false">
                     <span class="account-user-avatar">
-                        <img src="/images/users/avatar-1.jpg" alt="user-image" width="32" class="rounded-circle">
+                        <img src="/images/default-profile.jpg" alt="user-image" width="32" class="rounded-circle">
                     </span>
                     <span class="d-lg-block d-none">
                         <h5 class="my-0 fw-normal">{{ Auth::user()->name }} <i
@@ -350,10 +337,10 @@
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown">
-                    <!-- item-->
+                    {{-- <!-- item-->
                     <div class=" dropdown-header noti-title">
                         <h6 class="text-overflow m-0">Welcome !</h6>
-                    </div>
+                    </div> --}}
 
                     <!-- item-->
                     <a href="{{ route('second', ['pages', 'profile']) }}" class="dropdown-item">

@@ -151,20 +151,6 @@
 
                 </div> <!-- end card-body-->
             </div> <!-- end card-->
-
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="flex-grow-1 overflow-hidden">
-                            <h4 class="fs-22 fw-semibold">69.25%</h4>
-                            <p class="text-uppercase fw-medium text-muted text-truncate mb-0"> US Dollar Share</p>
-                        </div>
-                        <div class="flex-shrink-0">
-                            <div id="us-share-chart" class="apex-charts" dir="ltr"></div>
-                        </div>
-                    </div>
-                </div><!-- end card body -->
-            </div> <!-- end card-->
         </div> <!-- end col-->
 
     </div>
@@ -280,26 +266,26 @@
                     <div class="p-3">
                         <div class="card-widgets">
                             <a href="javascript:;" data-bs-toggle="reload"><i class="ri-refresh-line"></i></a>
-                            <a data-bs-toggle="collapse" href="#yearly-sales-collapse" role="button"
-                                aria-expanded="false" aria-controls="yearly-sales-collapse"><i
+                            <a data-bs-toggle="collapse" href="#bookings-collapse" role="button"
+                                aria-expanded="false" aria-controls="bookings-collapse"><i
                                     class="ri-subtract-line"></i></a>
                             {{-- <a href="#" data-bs-toggle="remove"><i class="ri-close-line"></i></a> --}}
                         </div>
-                        <h5 class="header-title mb-0">Projects</h5>
+                        <h5 class="header-title mb-0">Bookings</h5>
                     </div>
 
-                    <div id="yearly-sales-collapse" class="collapse show">
+                    <div id="bookings-collapse" class="collapse show">
 
                         <div class="table-responsive">
                             <table class="table table-nowrap table-hover mb-0">
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Project Name</th>
-                                        <th>Start Date</th>
-                                        <th>Due Date</th>
+                                        <th>Customer Name</th>
+                                        <th>Pick-up Date</th>
+                                        <th>Drop-off Date</th>
                                         <th>Status</th>
-                                        <th>Assign</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
