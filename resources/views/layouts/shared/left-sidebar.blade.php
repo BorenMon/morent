@@ -7,7 +7,7 @@
             <img src="/images/logo.svg" alt="logo">
         </span>
         <span class="logo-sm">
-            <img src="/images/logo-sm.png" alt="small logo">
+            <img src="/images/logo-sm.svg" alt="small logo">
         </span>
     </a>
 
@@ -17,7 +17,7 @@
             <img src="/images/logo-dark.svg" alt="dark logo">
         </span>
         <span class="logo-sm">
-            <img src="/images/logo-sm.png" alt="small logo">
+            <img src="/images/logo-sm.svg" alt="small logo">
         </span>
     </a>
 
