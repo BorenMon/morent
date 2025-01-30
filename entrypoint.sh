@@ -1,10 +1,10 @@
 #!/bin/sh
 
-chmod 777 storage/logs
-chmod 777 storage/framework/sessions
-chmod 777 storage/framework/views
+composer install --optimize-autoloader
 
-composer install --no-dev --optimize-autoloader
+chmod 777 storage/logs
+chmod 777 storage/framework/sessions/*
+chmod 777 storage/framework/views
 
 yarn install && yarn build
 
