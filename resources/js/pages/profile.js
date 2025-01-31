@@ -1,6 +1,7 @@
 import 'cropper'
 
-const $profileImage = $('#profile-image')
+const $profileImage = $('#profile-image');
+const $uploadButton = $('#upload-cropped-image');
 
 // Function to initialize Cropper
 function initCropper() {
@@ -10,6 +11,14 @@ function initCropper() {
         viewMode: 1,  // Ensures it fits within the container
         autoCropArea: 1, // Ensures the crop area takes full space
         responsive: true
+    });
+}
+
+// Function to set the uploaded image as Cropper source
+function setCropperImage(imageUrl) {
+    $profileImage.attr('src', imageUrl); // Update the image source
+    $profileImage.on('load', function () {
+        initCropper(); // Reinitialize Cropper when the image is loaded
     });
 }
 
@@ -23,6 +32,49 @@ $(document).ready(function () {
     if ($('#profile-cropper-modal').hasClass('show')) {
         initCropper();
     }
+});
+
+// Function to upload the cropped image
+function uploadCroppedImage() {
+    let cropper = $profileImage.data('cropper');
+
+    if (!cropper) {
+        alert("Cropper not initialized!");
+        return;
+    }
+
+    // Get cropped image as a Blob
+    cropper.getCroppedCanvas({
+        width: 200, // Resize to 200x200
+        height: 200
+    }).toBlob((blob) => {
+        let formData = new FormData();
+        formData.append('avatar', blob, 'avatar.png');
+
+        // Send AJAX request to Laravel
+        $.ajax({
+            url: '/upload-avatar',  // Laravel route
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Include CSRF token
+            },
+            success: function (response) {
+                alert("Avatar updated successfully!");
+                console.log(response);
+            },
+            error: function (xhr, status, error) {
+                alert("Error uploading avatar: " + error);
+            }
+        });
+    }, 'image/png');
+}
+
+// Button click event to upload cropped image
+$uploadButton.on('click', function () {
+    uploadCroppedImage();
 });
 
 import select2 from 'select2';
@@ -48,14 +100,14 @@ import Dropzone from 'dropzone';
         Dropzone.autoDiscover = false;
 
         $('[data-plugin="dropzone"]').each(function () {
-            var actionUrl = $(this).attr('action');
+            var actionUrl = $(this).attr('action'); // Keep actionUrl but don't use it directly
             var previewContainer = $(this).data('previewsContainer');
 
             var opts = {
-                url: actionUrl,
+                url: actionUrl, // Required but won't be used automatically
                 maxFiles: 1, // Allow only one file
                 addRemoveLinks: true, // Optionally add remove button
-                autoProcessQueue: true, // Automatically upload on selection
+                autoProcessQueue: false, // Prevent automatic upload
                 dictMaxFilesExceeded: "You can only upload one file at a time."
             };
 
@@ -76,10 +128,42 @@ import Dropzone from 'dropzone';
                     this.removeFile(this.files[0]); // Remove previous file
                 }
             });
+
+            // Manually process file instead of auto-submitting
+            dropzoneEl.on("addedfile", function (file) {
+                console.log("File added:", file);
+
+                // Simulate file upload
+                setTimeout(() => {
+                    let fakeResponse = {
+                        success: true,
+                        filename: file.name,
+                        fileUrl: URL.createObjectURL(file) // Generate temporary URL for preview
+                    };
+                    dropzoneEl.emit("success", file, fakeResponse);
+                    dropzoneEl.emit("complete", file);
+                }, 1000);
+            });
+
+            // Custom function when upload is complete
+            dropzoneEl.on("success", function (file, response) {
+                console.log("Custom function triggered, file uploaded:", response);
+                onFileUploaded(response); // Call custom function
+            });
         });
     };
 
-    //init fileupload
+    // Custom function to handle file upload
+    function onFileUploaded(response) {
+        console.log("File upload completed:", response);
+
+        // Set the uploaded image as the Cropper source
+        if (response.fileUrl) {
+            setCropperImage(response.fileUrl);
+        }
+    }
+
+    // Initialize FileUpload
     $.FileUpload = new FileUpload, $.FileUpload.Constructor = FileUpload;
 
 }(window.jQuery),
