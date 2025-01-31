@@ -28,7 +28,7 @@
 
                                 <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
                                     <div class="toast-header">
-                                        <img src="/images/logo-sm.png" alt="brand-logo" height="16" class="me-1" />
+                                        <img src="/images/logo-sm.svg" alt="brand-logo" height="16" class="me-1" />
                                         <strong class="me-auto">Velonic</strong>
                                         <small>11 mins ago</small>
                                         <button type="button" class="ms-2 btn-close" data-bs-dismiss="toast"
@@ -52,7 +52,7 @@
                             <div class="p-3 bg-light">
                                 <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
                                     <div class="toast-header">
-                                        <img src="/images/logo-sm.png" alt="brand-logo" height="16" class="me-1" />
+                                        <img src="/images/logo-sm.svg" alt="brand-logo" height="16" class="me-1" />
                                         <strong class="me-auto">Velonic</strong>
                                         <small>11 mins ago</small>
                                         <button type="button" class="ms-2 btn-close" data-bs-dismiss="toast"
@@ -82,7 +82,7 @@
                                         <div class="toast fade show" role="alert" aria-live="assertive"
                                             aria-atomic="true">
                                             <div class="toast-header">
-                                                <img src="/images/logo-sm.png" alt="brand-logo" height="16"
+                                                <img src="/images/logo-sm.svg" alt="brand-logo" height="16"
                                                     class="me-1" />
                                                 <strong class="me-auto">Velonic</strong>
                                                 <small class="text-muted">just now</small>
@@ -98,7 +98,7 @@
                                         <div class="toast fade show" role="alert" aria-live="assertive"
                                             aria-atomic="true">
                                             <div class="toast-header">
-                                                <img src="/images/logo-sm.png" alt="brand-logo" height="16"
+                                                <img src="/images/logo-sm.svg" alt="brand-logo" height="16"
                                                     class="me-1" />
                                                 <strong class="me-auto">Velonic</strong>
                                                 <small class="text-muted">2 seconds ago</small>
@@ -129,7 +129,7 @@
                                     <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true"
                                         data-bs-toggle="toast">
                                         <div class="toast-header">
-                                            <img src="/images/logo-sm.png" alt="brand-logo" height="16"
+                                            <img src="/images/logo-sm.svg" alt="brand-logo" height="16"
                                                 class="me-1" />
                                             <strong class="me-auto">Velonic</strong>
                                             <small>11 mins ago</small>
@@ -248,7 +248,7 @@
                         <div class="toast-container position-absolute p-3" id="toastPlacement">
                             <div class="toast show">
                                 <div class="toast-header">
-                                    <img src="/images/logo-sm.png" alt="brand-logo" height="16" class="me-1" />
+                                    <img src="/images/logo-sm.svg" alt="brand-logo" height="16" class="me-1" />
                                     <strong class="me-auto">Velonic</strong>
                                     <small>11 mins ago</small>
                                 </div>

@@ -56,7 +56,7 @@ export default defineConfig({
                 'resources/js/pages/vector-maps.init.js',
 
                 // Custom JS
-                'resources/js/addons/pages/profile.js'
+                'resources/js/pages/profile.js'
             ],
             refresh: true,
         }),
@@ -69,6 +69,7 @@ export default defineConfig({
         },
         watch: {
             usePolling: true,
+            interval: 200
         }
     },
 });

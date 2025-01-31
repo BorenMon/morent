@@ -38,9 +38,6 @@ $(function () {
     var uploadedImageType = 'image/jpeg';
     var uploadedImageURL;
 
-    // Tooltip
-    $('[data-toggle="tooltip"]').tooltip();
-
     // Cropper
     $image.on({
         ready: function (e) {

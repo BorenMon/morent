@@ -1,10 +1,12 @@
 #!/bin/sh
 
+composer install --optimize-autoloader
+
 chmod 777 storage/logs
-chmod 777 storage/framework/sessions
+chmod 777 storage/framework/sessions/*
 chmod 777 storage/framework/views
 
-composer install --no-dev --optimize-autoloader
+rm -rf public/hot
 
 yarn install && yarn build
 

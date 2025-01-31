@@ -18,3 +18,4 @@ yarn-error.log
 /.idea
 /.vscode
 /database/database.sqlite
+/git-filter-env

@@ -8,7 +8,7 @@ services:
       - "7000:8000"
       - "5173:5173"
     volumes:
-      - .:/var/www/html
+      - .:/var/www/html:delegated
     env_file:
       - .env
     # depends_on:

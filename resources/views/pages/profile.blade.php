@@ -26,7 +26,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="d-flex justify-content-end align-items-center gap-2">
-                            <button type="button" class="btn btn-soft-danger" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-soft-danger" data-bs-toggle="modal" id="edit-profile-btn"
                                 data-bs-target="#profile-cropper-modal">
                                 <i class="ri-settings-2-line align-text-bottom me-1 fs-16 lh-1"></i>
                                 Edit Profile
@@ -131,8 +131,17 @@
     <!-- end row -->
 
     <!-- Profile Cropper Modal-->
-    <div id="profile-cropper-modal" class="modal fade" tabindex="-1" role="dialog"
-        aria-labelledby="standard-modalLabel" aria-hidden="false">
+    <div id="profile-cropper-modal"
+        class="
+            modal
+            fade
+            {{-- show d-block --}}
+        " tabindex="-1"
+        role="dialog" aria-labelledby="standard-modalLabel"
+        aria-hidden="
+            {{-- false --}}
+            true
+        ">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -140,33 +149,32 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div class="img-container">
+                        <img id="profile-image" src="{{ getAvatarUrl($user->avatar) }}" alt="Picture"
+                            class="img-fluid">
+                    </div>
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="header-title">Dropzone File Upload</h4>
-                                    <p class="text-muted mb-0">
-                                        DropzoneJS is an open source library that provides drag’n’drop file uploads with image previews.
-                                    </p>
+                                    <h4 class="header-title">Dropzone Profile Upload</h4>
                                 </div>
                                 <div class="card-body">
-                                    <form action="/" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone"
-                                        data-previews-container="#file-previews" data-upload-preview-template="#uploadPreviewTemplate">
+                                    <form action="/" method="post" class="dropzone" id="myAwesomeDropzone"
+                                        data-plugin="dropzone" data-previews-container="#file-previews"
+                                        data-upload-preview-template="#uploadPreviewTemplate">
                                         <div class="fallback">
-                                            <input name="file" type="file" multiple />
+                                            <input name="file" type="file" />
                                         </div>
-                
+
                                         <div class="dz-message needsclick">
                                             <i class="h1 text-muted ri-upload-cloud-2-line"></i>
-                                            <h3>Drop files here or click to upload.</h3>
-                                            <span class="text-muted fs-13">(This is just a demo dropzone. Selected files are
-                                                <strong>not</strong> actually uploaded.)</span>
+                                            <h3>Drop file here or click to upload.</h3>
                                         </div>
                                     </form>
-                
+
                                     <!-- Preview -->
                                     <div class="dropzone-previews mt-3" id="file-previews"></div>
-                
                                 </div>
                                 <!-- end card-body -->
                             </div>
@@ -176,7 +184,8 @@
                                     <div class="p-2">
                                         <div class="row align-items-center">
                                             <div class="col-auto">
-                                                <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light" alt="">
+                                                <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light"
+                                                    alt="">
                                             </div>
                                             <div class="col ps-0">
                                                 <a href="javascript:void(0);" class="text-muted fw-bold" data-dz-name></a>
@@ -192,24 +201,15 @@
                                     </div>
                                 </div>
                             </div>
-                
+
                             <!-- end card-->
                         </div>
                         <!-- end col-->
                     </div>
-                    <h5>Overflowing text to show scroll behavior</h5>
-                    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
-                        facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac,
-                        vestibulum at eros.</p>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-                        lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                    <p class="mb-0">Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus
-                        magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper
-                        nulla non metus auctor fringilla.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary" id="upload-cropped-image">Save</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -217,15 +217,9 @@
 @endsection
 
 @section('css')
-    <style>
-        #image {
-            width: 300px;
-            height: 300px;
-            object-fit: contain;
-        }
-    </style>
+    @vite(['node_modules/cropper/dist/cropper.min.css'])
 @endsection
 
 @section('script')
-    @vite(['resources/js/addons/pages/profile.js', 'resources/js/pages/fileupload.init.js'])
+    @vite(['resources/js/pages/profile.js'])
 @endsection

@@ -5,4 +5,4 @@
 <meta content="Techzaa" name="author" />
 
 <!-- App favicon -->
-<link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="shortcut icon" href="/images/logo-sm.svg">
