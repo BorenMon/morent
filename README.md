@@ -75,7 +75,7 @@ php artisan db:seed
 To connect to the deployed MySQL server (`morent-admin-db.borenmon.dev`) from outside the container, run the following command:
 
 ```bash
-cloudflared access tcp --hostname morent-admin-db.borenmon.dev --url 127.0.0.1:3308
+cloudflared access tcp --hostname morent-db.borenmon.dev --url 127.0.0.1:3308
 ```
 
 This command establishes a connection, allowing you to access the MySQL server with:

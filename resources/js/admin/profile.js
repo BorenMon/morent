@@ -1,4 +1,5 @@
 import 'cropper'
+import { showLoading, hideLoading, showAlert } from '../uiHelpers';
 
 const $profileImage = $('#profile-image');
 const $uploadButton = $('#upload-cropped-image');
@@ -43,30 +44,55 @@ function uploadCroppedImage() {
         return;
     }
 
+    // Get user ID and CSRF token from meta tags
+    let userId = $('meta[name="user-id"]').attr('content');
+    let csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+    if (!userId) {
+        showAlert('danger', "User ID is missing in meta tag!");
+        return;
+    }
+
+    if (!csrfToken) {
+        showAlert('danger', "CSRF token is missing in meta tag!");
+        return;
+    }
+
     // Get cropped image as a Blob
     cropper.getCroppedCanvas({
-        width: 200, // Resize to 200x200
-        height: 200
+        width: 400, // Resize to 200x200
+        height: 400,
+        imageSmoothingQuality: 'high'
     }).toBlob((blob) => {
         let formData = new FormData();
         formData.append('avatar', blob, 'avatar.png');
 
         // Send AJAX request to Laravel
         $.ajax({
-            url: '/upload-avatar',  // Laravel route
+            url: `/admin/users/${userId}/avatar`,
             type: 'POST',
             data: formData,
             processData: false,
             contentType: false,
             headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Include CSRF token
+                'X-CSRF-TOKEN': csrfToken
             },
-            success: function (response) {
-                alert("Avatar updated successfully!");
-                console.log(response);
+            beforeSend: function() {
+                showLoading();
             },
-            error: function (xhr, status, error) {
+            success: function(response) {
+                $('.account-user-avatar img').attr('src', response.avatar_url);
+                $('.profile-user-img img').attr('src', response.avatar_url);
+                $('#profile-cropper-modal').modal('hide');
+            },
+            complete: function() {
+                hideLoading();
+                showAlert('success', 'Avatar updated successfully!');
+            },
+            error: function(xhr, status, error) {
+                showAlert('danger', error);
                 alert("Error uploading avatar: " + error);
+                hideLoading();
             }
         });
     }, 'image/png');

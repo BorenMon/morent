@@ -8,7 +8,7 @@
     <div class="offcanvas-body p-0">
         <div data-simplebar class="h-100">
             <div class="p-3">
-                <h5 class="mb-3 fs-16 fw-bold">Color Scheme</h5>
+                {{-- <h5 class="mb-3 fs-16 fw-bold">Color Scheme</h5>
 
                 <div class="row">
                     <div class="col-4">
@@ -30,7 +30,7 @@
                         </div>
                         <h5 class="font-14 text-center text-muted mt-2">Dark</h5>
                     </div>
-                </div>
+                </div> --}}
 
                 <div id="layout-width">
                     <h5 class="my-3 fs-16 fw-bold">Layout Mode</h5>

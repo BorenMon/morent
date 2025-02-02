@@ -1,3 +1,7 @@
+@php
+    $user = Auth::user();
+@endphp
+
 <!-- ========== Topbar Start ========== -->
 <div class="navbar-custom">
     <div class="topbar container-fluid">
@@ -6,7 +10,7 @@
             <!-- Topbar Brand Logo -->
             <div class="logo-topbar">
                 <!-- Logo light -->
-                <a href="{{ route('dashboard') }}" class="logo-light">
+                <a href="{{ route('admin.dashboard') }}" class="logo-light">
                     <span class="logo-lg">
                         <img src="/images/logo.svg" alt="logo">
                     </span>
@@ -16,7 +20,7 @@
                 </a>
 
                 <!-- Logo Dark -->
-                <a href="{{ route('dashboard') }}" class="logo-dark">
+                <a href="{{ route('admin.dashboard') }}" class="logo-dark">
                     <span class="logo-lg">
                         <img src="/images/logo-dark.svg" alt="dark logo">
                     </span>
@@ -319,17 +323,17 @@
                 </a>
             </li>
 
-            <li class="d-none d-sm-inline-block">
+            {{-- <li class="d-none d-sm-inline-block">
                 <div class="nav-link" id="light-dark-mode">
                     <i class="ri-moon-line fs-22"></i>
                 </div>
-            </li>
+            </li> --}}
 
             <li class="dropdown">
                 <a class="nav-link dropdown-toggle arrow-none nav-user" data-bs-toggle="dropdown" href="#"
                     role="button" aria-haspopup="false" aria-expanded="false">
                     <span class="account-user-avatar">
-                        <img src="/images/default-profile.jpg" alt="user-image" width="32" class="rounded-circle">
+                        <img src="{{ getAvatarUrl($user->avatar) }}" alt="user-image" width="32" class="rounded-circle">
                     </span>
                     <span class="d-lg-block d-none">
                         <h5 class="my-0 fw-normal">{{ Auth::user()->name }} <i
@@ -343,7 +347,7 @@
                     </div> --}}
 
                     <!-- item-->
-                    <a href="{{ route('second', ['pages', 'profile']) }}" class="dropdown-item">
+                    <a href="{{ route('admin.profile') }}" class="dropdown-item">
                         <i class="ri-account-circle-line fs-18 align-middle me-1"></i>
                         <span>My Account</span>
                     </a>

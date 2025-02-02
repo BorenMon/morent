@@ -2,22 +2,25 @@
     $user = Auth::user();
 @endphp
 
-@extends('layouts.horizontal', ['title' => 'Profile', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Profile', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+
+@section('meta')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="user-id" content="{{ auth()->id() }}">
+@endsection
 
 @section('content')
     <!-- start page title -->
     <div class="row">
         <div class="col-sm-12">
-            <div class="profile-bg-picture" style="background-image:url('/images/bg-profile.jpg'); background-size: cover;">
-                <span class="picture-bg-overlay"></span>
-                <!-- overlay -->
-            </div>
+            <div style="height: 150px;"></div>
             <!-- meta -->
             <div class="profile-user-box">
                 <div class="row">
                     <div class="col-sm-6">
-                        <div class="profile-user-img"><img src="/images/default-profile.jpg" alt=""
-                                class="avatar-lg rounded-circle"></div>
+                        <div class="profile-user-img">
+                            <img src="{{ getAvatarUrl($user->avatar) }}" alt="" class="avatar-lg rounded-circle">
+                        </div>
                         <div class="">
                             <h4 class="mt-4 fs-17 ellipsis">{{ $user->name }}</h4>
                             <p class="font-13">{{ $user->role }}</p>
@@ -56,13 +59,10 @@
                         </ul>
 
                         <div class="tab-content m-0 p-4">
-                            <div class="tab-pane active" id="aboutme" role="tabpanel" aria-labelledby="home-tab"
+                            <div class="tab-pane" id="aboutme" role="tabpanel" aria-labelledby="home-tab"
                                 tabindex="0">
                                 <div class="profile-desk">
-                                    <h5 class="text-uppercase fs-17 text-dark">{{ $user->name }}</h5>
-                                    <div class="designation mb-4">{{ $user->role }}</div>
-
-                                    <h5 class="mt-4 fs-17 text-dark">Contact Information</h5>
+                                    <h5 class="fs-17 text-dark">Contact Information</h5>
                                     <table class="table table-condensed mb-0 border-top">
                                         <tbody>
                                             <tr>
@@ -85,19 +85,28 @@
                             </div> <!-- about-me -->
 
                             <!-- settings -->
-                            <div id="edit-profile" class="tab-pane">
+                            <div id="edit-profile" class="tab-pane active">
                                 <div class="user-profile-content">
                                     <form>
                                         <div class="row row-cols-sm-2 row-cols-1">
                                             <div class="mb-2">
-                                                <label class="form-label" for="FullName">Full
-                                                    Name</label>
-                                                <input type="text" value="John Doe" id="FullName" class="form-control">
+                                                <label class="form-label" for="FullName">Name</label>
+                                                <input type="text" value="{{ $user->name }}" id="FullName" class="form-control">
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label" for="Email">Email</label>
-                                                <input type="email" value="first.last@example.com" id="Email"
+                                                <input type="email" value="{{ $user->email }}" id="Email"
                                                     class="form-control">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label" for="Phone">Phone</label>
+                                                <input type="text" value="{{ $user->phone }}" id="Phone"
+                                                    class="form-control">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label" for="Role">Role</label>
+                                                <input type="text" id="example-readonly" class="form-control" readonly=""
+                                        value="{{ $user->role }}">
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label" for="Password">Password</label>
@@ -111,7 +120,7 @@
                                             </div>
                                             <div class="col-sm-12 mb-3">
                                                 <label class="form-label" for="address">Address</label>
-                                                <textarea style="height: 125px;" id="address" class="form-control">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</textarea>
+                                                <textarea style="height: 125px;" id="address" class="form-control">{{ $user->address }}</textarea>
                                             </div>
                                         </div>
                                         <button class="btn btn-primary" type="submit"><i
@@ -135,11 +144,9 @@
         class="
             modal
             fade
-            {{-- show d-block --}}
         " tabindex="-1"
         role="dialog" aria-labelledby="standard-modalLabel"
         aria-hidden="
-            {{-- false --}}
             true
         ">
         <div class="modal-dialog">
@@ -221,5 +228,5 @@
 @endsection
 
 @section('script')
-    @vite(['resources/js/pages/profile.js'])
+    @vite(['resources/js/admin/profile.js'])
 @endsection

@@ -5,7 +5,7 @@
             <div class="collapse navbar-collapse" id="topnav-menu-content">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" href="{{ route('dashboard') }}"
+                        <a class="nav-link dropdown-toggle arrow-none" href="{{ route('admin.dashboard') }}"
                             id="topnav-dashboards" role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="ri-dashboard-3-line"></i>Dashboards
                         </a>

@@ -1,7 +1,7 @@
-@extends('layouts.horizontal', ['title' => 'Form Elements', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Form Elements', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['page_title' => 'Form Elements', 'sub_title' => 'Forms'])
+    @include('admin.layouts.shared/page-title', ['page_title' => 'Form Elements', 'sub_title' => 'Forms'])
     <div class="row">
         <div class="col-12">
             <div class="card">

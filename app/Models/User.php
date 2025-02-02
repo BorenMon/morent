@@ -21,6 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'avatar',
         'password',
         'role',
         'phone',
@@ -48,6 +49,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function hasRole($roles)
+    {
+        // Convert to array if a single role is passed
+        $roles = is_array($roles) ? $roles : [$roles];
+
+        return in_array($this->role, $roles);
+    }
 
     public function bookings()
     {

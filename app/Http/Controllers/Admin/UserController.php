@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -69,21 +68,15 @@ class UserController extends Controller
     /**
      * Update the authenticated user's avatar.
      */
-    public function updateAvatar(Request $request)
+    public function updateAvatar(Request $request, User $user)
     {
+        // Check if the authenticated user is allowed to update the avatar
+        $this->authorize('updateAvatar', $user);
+
         // Validate the uploaded file to ensure it's an image and meets size requirements
         $request->validate([
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
-        // Get the authenticated user
-        /** @var User $user */
-        $user = Auth::user();
-
-        // Ensure the user is authenticated
-        if (!$user instanceof User) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
 
         // If the user already has an avatar, delete it from S3
         if ($user->avatar) {
@@ -93,16 +86,20 @@ class UserController extends Controller
         // Store the new avatar in the default S3 bucket
         $path = $request->file('avatar')->store('avatars', 's3');
 
+        if(!$path) {
+            return response()->json([
+               'message' => 'Failed to update avatar. Please try again.'
+            ], 500);
+        }
+
         // Update the user's avatar path in the database
         $user->avatar = $path;
         $user->save();
 
-        // Generate a publicly accessible URL for the uploaded avatar
-        $avatarUrl = Storage::disk('s3')->url($path);
-
+        // Return a JSON response with the success message and avatar URL
         return response()->json([
             'message' => 'Avatar updated successfully!',
-            'avatar_url' => $avatarUrl,
+            'avatar_url' => getAvatarUrl($path)
         ]);
     }
 }
