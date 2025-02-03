@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: morent-admin-console_laravel
+    container_name: morent_laravel
     volumes:
       - .:/var/www/html
     depends_on:
@@ -16,7 +16,7 @@ services:
 
   mysql:
     image: mysql:8.0
-    container_name: morent-admin-console_mysql
+    container_name: morent_mysql
     ports:
       - "3308:3306"
     environment:
@@ -29,7 +29,7 @@ services:
 
   minio:
     image: minio/minio
-    container_name: morent-admin-console_minio
+    container_name: morent_minio
     ports:
       - "9002:9000"
       - "9001:9001"

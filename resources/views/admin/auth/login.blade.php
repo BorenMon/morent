@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    @include('layouts.shared/title-meta', ['title' => 'Log In'])
+    @include('admin.layouts.shared/title-meta', ['title' => 'Log In'])
 
-    @include('layouts.shared/head-css', ['mode' => $mode ?? '', 'demo' => $demo ?? ''])
+    @include('admin.layouts.shared/head-css', ['mode' => $mode ?? '', 'demo' => $demo ?? ''])
 </head>
 
 <body class="authentication-bg position-relative">
@@ -102,7 +102,7 @@
         </span>
     </footer>
 
-    @include('layouts.shared/footer-scripts')
+    @include('admin.layouts.shared/footer-scripts')
 
 </body>
 

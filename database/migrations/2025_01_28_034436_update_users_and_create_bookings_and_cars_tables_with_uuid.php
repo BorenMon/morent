@@ -92,9 +92,9 @@ class UpdateUsersAndCreateBookingsAndCarsTablesWithUuid extends Migration
             $table->uuid('customer_id'); // Foreign key as UUID
             $table->uuid('car_id'); // Foreign key as UUID
             $table->enum('pick_up_city', $this->city_provinces); // Update with actual cities
-            $table->timestamp('pick_up_datetime');
+            $table->timestamp('pick_up_datetime')->nullable();
             $table->enum('drop_off_city', $this->city_provinces); // Update with actual cities
-            $table->timestamp('drop_off_datetime');
+            $table->timestamp('drop_off_datetime')->nullable();
             $table->enum('stage', ['BOOKING', 'RENTING', 'HISTORY']);
             $table->enum('payment_status', ['PENDING', 'PAID', 'REFUNDING', 'REFUNDED']);
             $table->enum('progress_status', ['PENDING', 'IN_PROGRESS', 'CANCELLED', 'COMPLETED']);

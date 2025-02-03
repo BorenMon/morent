@@ -1,1 +1,0 @@
-cloudflared access tcp --hostname morent-db.borenmon.dev --url 127.0.0.1:3308

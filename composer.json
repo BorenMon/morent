@@ -1,8 +1,13 @@
 {
-    "name": "laravel/laravel",
+    "name": "morent/car-rental-web-app",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "The web application for car rental service.",
     "keywords": [
+        "morent",
+        "car_rental",
+        "web",
+        "website",
+        "web_app",
         "laravel",
         "framework"
     ],
