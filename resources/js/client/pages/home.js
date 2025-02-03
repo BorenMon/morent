@@ -67,15 +67,15 @@ const displayPopular = async () => {
       <div class="space-y-[24px]">
         <div>
           <div>
-            <img src="./assets/icons/gas-station.svg" alt="" class="icon">
+            <img src="/client/icons/gas-station.svg" alt="" class="icon">
             <span>${gasoline}L</span>
           </div>
           <div>
-            <img src="./assets/icons/car.svg" alt="" class="icon">
+            <img src="/client/icons/car.svg" alt="" class="icon">
             <span>${steering}</span>
           </div>
           <div>
-            <img src="./assets/icons/profile-2user.svg" alt="" class="icon">
+            <img src="/client/icons/profile-2user.svg" alt="" class="icon">
             <span>${capacity} People</span>
           </div>
         </div>
@@ -120,15 +120,15 @@ const displayRecommendation = async () => {
       <div class="space-y-[24px]">
         <div>
           <div>
-            <img src="./assets/icons/gas-station.svg" alt="" class="icon">
+            <img src="/client/icons/gas-station.svg" alt="" class="icon">
             <span>${gasoline}L</span>
           </div>
           <div>
-            <img src="./assets/icons/car.svg" alt="" class="icon">
+            <img src="/client/icons/car.svg" alt="" class="icon">
             <span>${steering}</span>
           </div>
           <div>
-            <img src="./assets/icons/profile-2user.svg" alt="" class="icon">
+            <img src="/client/icons/profile-2user.svg" alt="" class="icon">
             <span>${capacity} People</span>
           </div>
         </div>

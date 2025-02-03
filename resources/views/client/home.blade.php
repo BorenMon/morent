@@ -93,7 +93,7 @@
                 </section>
                 <div class="flex items-center justify-between mb-[20px] mt-[36px] h-[44px] px-[20px]">
                     <h5 class="font-semibold text-[#90A3BF]">Popular Car</h5>
-                    <a href="/pages/category.html" class="text-[#3563E9] font-semibold">View All</a>
+                    <a href="{{ route('client.cars') }}" class="text-[#3563E9] font-semibold">View All</a>
                 </div>
                 <section id="popular" class="splide">
                     <div class="splide__track">
@@ -110,7 +110,7 @@
                 </div>
                 <div class="my-[64px] flex ml-auto w-1/2 justify-between items-center">
                     <button class="-translate-x-1/2">
-                        <a href="/pages/category.html">Show more car</a>
+                        <a href="{{ route('client.cars') }}">Show more car</a>
                     </button>
                     <div class="font-medium text-[#90A3BF]">
                         <span id="cars-count"></span> Car

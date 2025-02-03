@@ -9,4 +9,7 @@ Route::group([
     Route::get('', function () {
         return view('client.home'); // Correct way to render a view
     })->name('home');
+    Route::get('/cars', function () {
+        return view('client.cars'); // Correct way to render a view
+    })->name('cars');
 });

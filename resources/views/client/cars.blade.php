@@ -77,55 +77,6 @@
                 <img src="/assets/icons/filter.svg" alt="" class="icon" />
             </div>
             <div id="category" class="space-y-[32px]">
-                <div id="booking" class="space-x-[44px]">
-                    <div class="booking-container" id="pick-up">
-                        <div>
-                            <img src="/assets/icons/mark.svg" alt="" />
-                            <h3>Pick - Up</h3>
-                        </div>
-                        <div>
-                            <div>
-                                <label>Location</label>
-                                <div class="select">
-                                    <select class="city"></select>
-                                </div>
-                            </div>
-                            <div>
-                                <label>Date</label>
-                                <input type="date" class="date" />
-                            </div>
-                            <div>
-                                <label>Time</label>
-                                <input type="time" class="time" />
-                            </div>
-                        </div>
-                    </div>
-                    <div id="swap-icon">
-                        <img src="/assets/icons/swap.svg" alt="" class="icon" />
-                    </div>
-                    <div class="booking-container" id="drop-off">
-                        <div>
-                            <img src="/assets/icons/mark.svg" alt="" />
-                            <h3>Drop - Off</h3>
-                        </div>
-                        <div>
-                            <div>
-                                <label>Location</label>
-                                <div class="select">
-                                    <select class="city"></select>
-                                </div>
-                            </div>
-                            <div>
-                                <label>Date</label>
-                                <input type="date" class="date" />
-                            </div>
-                            <div>
-                                <label>Time</label>
-                                <input type="time" class="time" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="space-y-8" id="skeleton-loading">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                         <div class="w-full p-4 border border-gray-200 rounded shadow animate-pulse md:p-6">
