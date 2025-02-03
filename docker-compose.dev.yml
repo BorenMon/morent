@@ -8,13 +8,13 @@ services:
       - "7000:8000"
       - "5173:5173"
     volumes:
-      - .:/var/www/html:delegated
+      - .:/var/www/html
     env_file:
       - .env
 
   mysql:
     image: mysql:8.0
-    container_name: morent-admin-console_mysql
+    container_name: dev_morent_mysql
     ports:
       - "3308:3306"
     environment:

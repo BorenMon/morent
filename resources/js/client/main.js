@@ -88,7 +88,19 @@ document.addEventListener('click', function (event) {
   }
 })
 
-const profile = await fetchProfile()
+fetchProfile().then((profile) => {
+  if (profile) {
+    toggleProfile(false)
+    $('#nav-profile').attr(
+      'src',
+      profile.avatar
+        ? getAssetUrl(profile.avatar)
+        : '/assets/images/sample-profile.jpg'
+    )
+  } else {
+    toggleProfile(true)
+  }
+})
 
 const toggleProfile = (isHidden) => {
   if (!isHidden) {
@@ -102,18 +114,6 @@ const toggleProfile = (isHidden) => {
     $('#profile').addClass('!hidden')
     $('#mobile-profile').addClass('!hidden')
   }
-}
-
-if (profile) {
-  toggleProfile(false)
-  $('#nav-profile').attr(
-    'src',
-    profile.avatar
-      ? getAssetUrl(profile.avatar)
-      : '/assets/images/sample-profile.jpg'
-  )
-} else {
-  toggleProfile(true)
 }
 
 $('.logout').on('click', (e) => {

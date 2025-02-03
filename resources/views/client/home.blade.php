@@ -1,7 +1,7 @@
 @extends('client.layout', ['title' => 'Home'])
 
 @section('css')
-    @vite(['resources/scss/client/pages/home.css', 'resources/js/client/modules/tailwind.js'])
+    @vite(['resources/scss/client/pages/home.css'])
 @endsection
 
 @section('content')

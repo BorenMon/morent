@@ -1,0 +1,422 @@
+@import url('../main.css');
+@import url('../modules/select2.min.css');
+
+#body-wrapper {
+  background: linear-gradient(to right, #FFFFFF 50%, #F6F7F9 50%);
+}
+
+#body {
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+}
+
+#filter {
+  background-color: white;
+  width: 328px;
+  padding: 32px 32px 32px 0;
+}
+
+#filter h4 {
+  color: #90A3BF;
+  margin-bottom: 28px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+input[type="range"] { 
+  margin: auto;
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+  overflow: hidden;
+  height: 12px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+::-webkit-slider-runnable-track {
+  background: #90A3BF;
+}
+
+/*
+* 1. Set to 0 width and remove border for a slider without a thumb
+* 2. Shadow is negative the full width of the input and has a spread 
+*    of the width of the input.
+*/
+::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #3563E9;
+  box-shadow: -210px 0 0 200px #3563E9; /* 2 */
+  border-radius: 50%;
+  border: white solid 4px;
+}
+
+::-moz-range-track {
+  height: 40px;
+  background: #ddd;
+}
+
+::-moz-range-thumb {
+  background: #fff;
+  height: 40px;
+  width: 20px; /* 1 */
+  border: 3px solid #999; /* 1 */
+  border-radius: 0 !important;
+  box-shadow: -200px 0 0 200px dodgerblue;
+  box-sizing: border-box;
+}
+
+::-ms-fill-lower { 
+  background: dodgerblue;
+}
+
+::-ms-thumb { 
+  background: #fff;
+  border: 2px solid #999; /* 1 */
+  height: 40px;
+  width: 20px; /* 1 */
+  box-sizing: border-box;
+}
+
+::-ms-ticks-after { 
+  display: none; 
+}
+
+::-ms-ticks-before { 
+  display: none; 
+}
+
+::-ms-track { 
+  background: #ddd;
+  color: transparent;
+  height: 40px;
+  border: none;
+}
+
+::-ms-tooltip { 
+  display: none;
+}
+
+#filter input[type="range"] {
+  width: 100%;
+}
+
+.checkbox-item * {
+  color: #596780;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.checkbox-item span {
+  color: #90A3BF;
+}
+
+.checkbox-item input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+#category {
+  background-color: #F6F7F9;
+  width: calc(100% - 328px);
+  padding: 32px 0 32px 32px;
+}
+
+/* Change the border of the Select2 container */
+.select .select2-container .select2-selection--single {
+  border: none; /* Change border color */
+  border-radius: 0; /* Round the corners */
+  height: 40px; /* Set height */
+  outline: none; /* Remove outline */
+}
+
+/* Change the color of the selected item text */
+.select .select2-container .select2-selection--single .select2-selection__rendered {
+  color: #90A3BF; /* Text color */
+  line-height: 38px; /* Center text vertically */
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Change the placeholder color */
+.select .select2-container .select2-selection--single .select2-selection__placeholder {
+  color: #90A3BF; /* Placeholder text color */
+}
+
+/* Change the style of dropdown items */
+.select .select2-container .select2-results__option {
+  color: #212529; /* Item text color */
+  padding: 8px 12px; /* Padding for items */
+}
+
+/* Change the hover effect for dropdown items */
+.select .select2-container .select2-results__option--highlighted[aria-selected] {
+  background-color: #3563E9; /* Background color when highlighted */
+  color: white; /* Text color when highlighted */
+}
+
+/* Optional: Add focus styles */
+.select .select2-container .select2-selection--single:focus {
+  border: none; /* Border color when focused */
+  outline: none; /* Remove default outline */
+}
+
+/* Optional: Add transition effects */
+.select .select2-container .select2-selection--single {
+  transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field:focus {
+  outline: none;
+}
+
+.select .select2-container--default .select2-selection--single .select2-selection__arrow {
+  top: 8px;
+}
+
+#booking {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+}
+
+#swap-icon {
+  width: 60px;
+  height: 60px;
+  background-color: #3563E9;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#swap-icon:active {
+  transform: scale(0.98);
+}
+
+.booking-container {
+  flex-grow: 1;
+  padding: 24px 48px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.booking-container > div:nth-of-type(1) {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px
+}
+
+.booking-container > div:nth-of-type(1) img {
+  width: 16px;
+  height: 16px;
+}
+
+.booking-container > div:nth-of-type(1) h3 {
+  margin-left: 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.booking-container > div:nth-of-type(2) {
+  display: flex;
+}
+
+.booking-container > div:nth-of-type(2) > div {
+  flex-grow: 1;
+  padding-top: 4px;
+}
+
+.booking-container > div:nth-of-type(2) > div > input {
+  width: 100%;
+  color: #90A3BF;
+  height: 38px;
+}
+
+.booking-container > div:nth-of-type(2) > div > input:focus {
+  outline: none;
+}
+
+.booking-container > div:nth-of-type(2) > div > label {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.booking-container > div:nth-of-type(2) > div:nth-of-type(1) {
+  padding-right: 24px;
+}
+
+.booking-container > div:nth-of-type(2) > div:nth-of-type(2) {
+  padding-right: 24px;
+  padding-left: 24px;
+  border-left: #C3D4E9 1px solid;
+  border-right: #C3D4E9 1px solid;
+}
+
+.booking-container > div:nth-of-type(2) > div:nth-of-type(3) {
+  padding-left: 24px;
+}
+
+#booking {
+  flex-direction: column;
+}
+
+#booking > div:nth-of-type(2), #booking > div:nth-of-type(3) {
+  margin: 0;
+}
+
+#booking > div:nth-of-type(2) {
+  margin-top: -12px;
+  margin-bottom: -12px;
+  z-index: 8;
+}
+
+#booking > div:nth-of-type(1), #booking > div:nth-of-type(3) {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.car-card {
+  width: 304px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 388px;
+}
+
+.car-card > div:nth-of-type(1) {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.car-card > a > img {
+  width: 232px;
+  object-fit: contain;
+}
+
+.car-card > div:nth-of-type(2) {
+  width: 100%;
+}
+
+.car-card > div:nth-of-type(2) > div:nth-of-type(1) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.car-card > div:nth-of-type(2) > div:nth-of-type(1) > div {
+  display: flex;
+  align-items: center;
+}
+
+.car-card > div:nth-of-type(2) > div:nth-of-type(1) > div > img {
+  margin-right: 6px;
+}
+
+.car-card > div:nth-of-type(2) > div:nth-of-type(1) > div > span {
+  font-weight: 500;
+  font-size: 14px;
+  color: #90A3BF;
+}
+
+.car-card > div:nth-of-type(2) > div:nth-of-type(2) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#cars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+
+#cars .car-card {
+  width: 100%;
+}
+
+@media (max-width: 1400px) {
+  #cars {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.favorite {
+  cursor: pointer;
+}
+
+.favorite:active {
+  transform: scale(0.8);
+}
+
+@media (max-width: 730px) {
+  #cars {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+#filter-button {
+  display: none;
+  padding: 8px 16px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border: 2px solid #2125294f;
+  border-left-width: 0;
+  position: fixed;
+  left: 0;
+  top: 212px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+#close-filter {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  #filter-button {
+    display: inline-block;
+  }
+  
+  #filter {
+    display: none;
+  }
+
+  #filter.open {
+    display: block;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    padding-left: 32px;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  #filter.open > div:nth-of-type(1) h4 {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .open #close-filter {
+    display: block;
+  }
+
+  #body-wrapper {
+    background: linear-gradient(to right, #F6F7F9 50%, #F6F7F9 50%);
+  }
+
+  #category {
+    padding-left: 0;
+    width: 100%;
+  }
+}

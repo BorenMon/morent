@@ -13,11 +13,12 @@
     />
     <link
       rel="shortcut icon"
-      href="/assets/icons/favicon.svg"
+      href="/client/icons/favicon.svg"
       type="image/x-icon"
     />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    @vite(['resources/js/client/modules/tailwind.js'])
 
     @yield('meta')
     @yield('css')
@@ -31,7 +32,7 @@
           <a href="/" id="logo-link">
             <img
               class="logo-img"
-              src="/assets/images/logo/morent-logo.svg"
+              src="/images/logo-dark.svg"
               alt="Logo Image"
             />
           </a>
@@ -42,12 +43,12 @@
             class="inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
             id="menu-icon"
           >
-            <img src="/assets/icons/menu.svg" alt="" />
+            <img src="/client/icons/menu.svg" alt="" />
           </button>
         </div>
         <div id="search-box-1" class="rounded-full">
           <img
-            src="/assets/icons/search-normal.svg"
+            src="/client/icons/search-normal.svg"
             alt=""
             class="icon ml-[18px] search-icon"
           />
@@ -60,14 +61,14 @@
         </div>
         <div id="icons-wrapper" class="space-x-[20px]">
           <a href="/pages/favorites.html" class="nav-icon">
-            <img src="/assets/icons/heart.svg" alt="" class="icon" />
+            <img src="/client/icons/heart.svg" alt="" class="icon" />
           </a>
           <a
             href="/pages/auth.html"
             id="login"
             class="font-semibold !hidden"
           >
-            Login&nbsp;<img src="/assets/icons/login.svg" alt="" class="icon" />
+            Login&nbsp;<img src="/client/icons/login.svg" alt="" class="icon" />
           </a>
           <div class="relative inline-block text-left !hidden" id="profile">
             <img src="" alt="Profile" id="nav-profile" class="shadow-md" />
@@ -103,7 +104,7 @@
         <div class="space-x-[16px] w-[492px] flex">
           <div id="search-box-2">
             <img
-              src="/assets/icons/search-normal.svg"
+              src="/client/icons/search-normal.svg"
               alt=""
               class="icon ml-[18px] search-icon"
             />
@@ -124,7 +125,7 @@
           <a href="/" id="logo-link">
             <img
               class="logo-img"
-              src="/assets/images/logo/morent-logo.svg"
+              src="/images/logo-dark.svg"
               alt="Logo Image"
             />
           </a>
@@ -133,17 +134,14 @@
             class="rounded-md p-2.5 text-gray-700"
             id="close-icon"
           >
-            <img src="/assets/icons/close.svg" alt="" />
+            <img src="/client/icons/close.svg" alt="" />
           </button>
         </div>
         <div class="mt-6 flow-root" id="mobile-nav">
           <div class="-my-6 divide-y divide-gray-500/10">
             <div class="space-y-2 py-6">
               <a href="/" class="active">Home</a>
-              <a href="/pages/category.html">Category</a>
-              <a href="/pages/blogs.html">Blogs</a>
-              <a href="/pages/about.html">About Us</a>
-              <a href="/pages/contact.html">Contact Us</a>
+              <a href="/pages/category.html">Cars</a>
             </div>
             <div class="space-y-2 py-6">
               <a href="/pages/favorites.html">Favorites</a>
@@ -160,10 +158,7 @@
       </div>
       <ul id="nav" class="container-fluid space-x-[32px]">
         <li class="active"><a href="/">Home</a></li>
-        <li><a href="/pages/category.html">Category</a></li>
-        <li><a href="/pages/blogs.html">Blogs</a></li>
-        <li><a href="/pages/about.html">About Us</a></li>
-        <li><a href="/pages/contact.html">Contact Us</a></li>
+        <li><a href="/pages/category.html">Cars</a></li>
       </ul>
     </header>
 
@@ -174,7 +169,7 @@
         <div>
           <div class="space-y-[16px] mr-[48px] mt-[20px]">
             <img
-              src="/assets/images/logo/morent-logo.svg"
+              src="/images/logo-dark.svg"
               alt="Logo"
               class="logo-img"
             />
@@ -188,7 +183,7 @@
               <h6>About</h6>
               <ul class="space-y-[20px]">
                 <li><a href="#">How it works</a></li>
-                <li><a href="/pages/about.html#lower">Features</a></li>
+                <li><a href="#">Features</a></li>
                 <li><a href="#">Partnership</a></li>
                 <li><a href="#">Bussiness Relation</a></li>
               </ul>
