@@ -11,9 +11,6 @@ services:
       - .:/var/www/html:delegated
     env_file:
       - .env
-    # depends_on:
-    #   - mysql
-    #   - minio
 
 #   mysql:
 #     image: mysql:8.0

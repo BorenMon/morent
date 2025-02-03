@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Car;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CarController extends Controller
 {
@@ -20,7 +21,8 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create', Car::class);
+        return view('admin.cars.create');
     }
 
     /**
@@ -50,8 +52,9 @@ class CarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Car $car)
     {
+        $this->authorize('update', $car);
         //
     }
 

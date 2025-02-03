@@ -55,8 +55,15 @@ export default defineConfig({
                 'resources/js/pages/google-maps.init.js',
                 'resources/js/pages/vector-maps.init.js',
 
-                // Custom JS
-                'resources/js/addons/pages/profile.js'
+                // Admin JS
+                'resources/js/admin/profile.js',
+
+                // Client Style
+                'resources/scss/client/pages/home.css',
+
+                // Client JS
+                'resources/js/client/modules/tailwind.js',
+                'resources/js/client/pages/home.js',
             ],
             refresh: true,
         }),

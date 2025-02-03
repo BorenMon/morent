@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -17,7 +18,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        return view('auth.login');
+        return view('admin.auth.login');
     }
 
     /**
@@ -28,12 +29,15 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        
+
         $request->authenticate();
-        
+
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        if (Auth::user()->role == UserRole::Customer->value)
+            return redirect()->intended(RouteServiceProvider::CUSTOMER_HOME);
+
+        return redirect()->intended(RouteServiceProvider::ADMIN_DASHBOARD);
     }
 
     /**
