@@ -43,7 +43,6 @@ const displayPopular = async () => {
     li.className = 'splide__slide car-card';
     const { id, model, type, card_image, gasoline, steering, capacity, price, has_promotion, promotion_price } = car;
     li.setAttribute('data-id', id);
-    const { iconPath } = checkIsFavorite(id);
     
     li.innerHTML = `
       <div>
@@ -51,7 +50,6 @@ const displayPopular = async () => {
           <div class="text-[20px] font-bold text-[#1A202C]">${model}</div>
           <div class="text-[14px] font-bold text-[#90A3BF]">${type}</div>
         </div>
-        <img src="${iconPath}" alt="" class="icon favorite">
       </div>
       <a href="/pages/detail.html?id=${id}" aria-label="See more about car"><img src="${getAssetUrl(card_image)}" loading="lazy" alt=""></a>
       <div class="space-y-[24px]">
@@ -96,7 +94,6 @@ const displayRecommendation = async () => {
     div.className = 'car-card';
     const { id, model, type, card_image, gasoline, steering, capacity, price, has_promotion, promotion_price } = car;
     div.setAttribute('data-id', id);
-    const { iconPath } = checkIsFavorite(id);
     
     div.innerHTML = `
       <div>
@@ -104,7 +101,6 @@ const displayRecommendation = async () => {
           <div class="text-[20px] font-bold text-[#1A202C]">${model}</div>
           <div class="text-[14px] font-bold text-[#90A3BF]">${type}</div>
         </div>
-        <img src="${iconPath}" alt="" class="icon favorite">
       </div>
       <a href="/pages/detail.html?id=${id}" aria-label="See more about car"><img src="${getAssetUrl(card_image)}" loading="lazy" alt=""></a>
       <div class="space-y-[24px]">
@@ -169,9 +165,7 @@ Promise.all([
       autoWidth: true
     }).mount();
   }).then(() => {
-    // Refresh favorite events only after Splide has mounted
-    refreshFavoriteEvent();
-    displayRecommendation().then(refreshFavoriteEvent)
+    displayRecommendation()
   }),
   getCarsCount()
 ]).then(() => {
