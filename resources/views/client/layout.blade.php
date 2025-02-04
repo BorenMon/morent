@@ -159,6 +159,7 @@
     </footer>
 
     @yield('script')
+    @vite('resources/js/client/main.js')
 </body>
 
 </html>

@@ -1,5 +1,5 @@
-import '../main.js'
-import '@splidejs/splide'
+import $ from 'jquery'
+import Splide from '@splidejs/splide'
 import 'select2'
 import { getAssetUrl, fetchCollection } from '../services/publicAPI.js'
 import { formatToTwoDecimals } from '../services/utils.js'
