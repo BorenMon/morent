@@ -63,7 +63,6 @@ export default defineConfig({
                 'resources/scss/client/pages/cars.css',
 
                 // Client JS
-                'resources/js/client/modules/tailwind.js',
                 'resources/js/client/pages/home.js',
                 'resources/js/client/pages/cars.js',
             ],
