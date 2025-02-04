@@ -1,18 +1,8 @@
 import '../main.js'
-import '../modules/splide.min.js'
-import '../modules/select2.min.js'
-import { getAssetUrl, fetchCollection } from '../services/publicAPI.js';
-import { cities } from '../config/location.master-data.js'
-import { formatToTwoDecimals } from '../services/utils.js';
-import { refreshFavoriteEvent, checkIsFavorite } from '../services/favorites.js';
-
-$('.city').select2({
-  width: '100%',
-  data: [
-    { id: '0', text: 'Select your city', value: '' },
-    ...cities
-  ]
-});
+import '@splidejs/splide'
+import 'select2'
+import { getAssetUrl, fetchCollection } from '../services/publicAPI.js'
+import { formatToTwoDecimals } from '../services/utils.js'
 
 const displaySlides = async () => {
   const slides = (await fetchCollection('slides?filter[status][_eq]=published')).data;

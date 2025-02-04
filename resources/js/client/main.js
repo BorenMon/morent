@@ -1,10 +1,10 @@
-import './modules/jquery-3.7.1.slim.min.js'
+import 'jquery'
 import { redirectSearch } from './services/utils.js'
 import { fetchProfile } from './services/client.js'
 import { getAssetUrl } from './services/publicAPI.js'
 import { toast } from './services/sweetalert2.js'
 import { logout } from './services/auth.js'
-import sweetalert2 from './modules/sweetalert2.all.min.js'
+import sweetalert2 from 'sweetalert2'
 
 // Function to open mobile menu
 $('#menu-icon').on('click', () => {

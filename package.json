@@ -13,6 +13,7 @@
     },
     "dependencies": {
         "@popperjs/core": "^2.11.8",
+        "@splidejs/splide": "^4.1.4",
         "admin-resources": "git+https://github.com/coderthemes/admin-resources.git#master",
         "apexcharts": "^3.35.0",
         "blueimp-file-upload": "^10.32.0",
@@ -59,6 +60,7 @@
         "select2": "^4.1.0-rc.0",
         "simplebar": "^5.3.6",
         "simplemde": "^1.11.2",
+        "sweetalert2": "^11.15.10",
         "twitter-bootstrap-wizard": "^1.2.0",
         "typeahead.js": "^0.11.1",
         "x-editable": "^1.5.1"
