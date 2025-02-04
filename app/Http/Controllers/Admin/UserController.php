@@ -86,12 +86,6 @@ class UserController extends Controller
         // Store the new avatar in the default S3 bucket
         $path = $request->file('avatar')->store('avatars', 's3');
 
-        if(!$path) {
-            return response()->json([
-               'message' => 'Failed to update avatar. Please try again.'
-            ], 500);
-        }
-
         // Update the user's avatar path in the database
         $user->avatar = $path;
         $user->save();

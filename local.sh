@@ -1,5 +1,5 @@
-composer install
+composer update && composer install
 
-yarn install && yarn dev &
+yarn && yarn dev &
 
 php artisan serve

@@ -4,7 +4,7 @@
 
 git config --global --add safe.directory /var/www/html
 
-yarn install && yarn dev &
+yarn && yarn dev &
 
 composer update && composer install
 
