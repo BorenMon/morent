@@ -8,8 +8,6 @@ Ensure the following tools are installed on your local machine:
 
 - **Docker**: [Install Docker](https://docs.docker.com/get-docker/)
 - **Docker Compose**: Included with Docker Desktop or install separately.
-- **Git**: [Install Git](https://git-scm.com/downloads)
-- **Cloudflare Tunnel**: [Install Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/downloads/) (Optional)
 
 ## Project Overview
 
@@ -20,14 +18,7 @@ This project uses a Dockerized environment for development, which includes servi
 
 ## Setting Up the Development Environment
 
-### 1. Clone the Repository
-
-```bash
-git clone git@github.com:BorenMon/morent-admin-console.git
-cd morent-admin-console
-```
-
-### 2. Configure Environment Variables
+### 1. Configure Environment Variables
 
 Copy the example `.env` file and adjust the values as needed:
 
@@ -39,7 +30,7 @@ cp .env.dev.example .env
   - **Database credentials**
   - **S3 credentials**
 
-### 3. Build and Start Docker Containers
+### 2. Build and Start Docker Containers
 
 Run the following command to build and start the containers:
 
@@ -52,37 +43,24 @@ This will:
 - Expose the Laravel application on `http://localhost:7000`.
 - Map the Node.js development server to `http://localhost:5173`.
 
-### 4. Run Laravel Migrations
+### 3. Run Laravel Migrations
 
 Run the following commands inside the `laravel` container to install PHP and Node.js dependencies:
 
 #### Access the container:
-
 ```bash
-docker exec -it dev_morent-admin-console_laravel bash
+docker exec -it dev_morent_laravel bash
 ```
 
-Run database seeding (To get test user)
+Run Migrations
+```
+php artisan migrate
+```
 
+Run database seeding (To get test/admin user)
 ```bash
 php artisan db:seed
 ```
 
-## Additional Information
-
-### Cloudflare Tunnel
-
-To connect to the deployed MySQL server (`morent-admin-db.borenmon.dev`) from outside the container, run the following command:
-
-```bash
-cloudflared access tcp --hostname morent-db.borenmon.dev --url 127.0.0.1:3308
-```
-
-This command establishes a connection, allowing you to access the MySQL server with:
-- **Hostname:** 127.0.0.1
-- **Port:** 3308
-
-## Troubleshooting
-
-- **S3 Connection Issues:** Verify the `AWS_ENDPOINT` and credentials.
-- **Database Connection Errors:** Ensure the database container or external database is accessible and correctly configured in `.env`.
+Access Web App Locally
+Visit http://127.0.0.1:7000
