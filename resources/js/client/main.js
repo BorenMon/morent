@@ -1,4 +1,4 @@
-import 'jquery'
+import $ from 'jquery'
 import { redirectSearch } from './services/utils.js'
 import { fetchProfile } from './services/client.js'
 import { getAssetUrl } from './services/publicAPI.js'
