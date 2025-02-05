@@ -140,11 +140,14 @@ FilePond.registerPlugin(
   FilePondPluginImagePreview
 )
 
-let idCardImages = (
-  await api.get(
-    `items/junction_directus_users_files?filter[id][_in]=${profile.id_card}`
-  )
-).data.data.map((image) => {
+let idCardImages = 
+// (
+//   await api.get(
+//     `items/junction_directus_users_files?filter[id][_in]=${profile.id_card}`
+//   )
+// ).data.data
+[]
+.map((image) => {
   return {
     id: image.id,
     url: getAssetUrl(image.directus_files_id),
