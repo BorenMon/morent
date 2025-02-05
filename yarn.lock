@@ -53,9 +53,9 @@
     crelt "^1.0.5"
 
 "@codemirror/state@^6.0.0", "@codemirror/state@^6.4.0", "@codemirror/state@^6.5.0":
-  version "6.5.1"
-  resolved "https://registry.yarnpkg.com/@codemirror/state/-/state-6.5.1.tgz#e5c0599f7b43cf03f19e05861317df5425c07904"
-  integrity sha512-3rA9lcwciEB47ZevqvD8qgbzhM9qMb8vCcQCNmDfVRPQG4JT9mSb0Jg8H7YjKGGQcFnLN323fj9jdnG59Kx6bg==
+  version "6.5.2"
+  resolved "https://registry.yarnpkg.com/@codemirror/state/-/state-6.5.2.tgz#8eca3a64212a83367dc85475b7d78d5c9b7076c6"
+  integrity sha512-FVqsPqtPWKVVL3dPSxy8wEF/ymIEuVzF1PK3VbUgrxXpJUSHQWWZz4JMToquRxnkw+36LTamCZG2iua2Ptq0fA==
   dependencies:
     "@marijn/find-cluster-break" "^1.0.0"
 
@@ -333,7 +333,7 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
-axios@^1.1.2:
+axios@^1.7.9:
   version "1.7.9"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.9.tgz#d7d071380c132a24accda1b2cfc1535b79ec650a"
   integrity sha512-LhLcE7Hbiryz8oMDdDptSrWowmB4Bl6RCt6sIJKpRB4XtVf0iEgewX3au/pJqm+Py1kCASkb/FFKjxQaLtxJvw==
@@ -772,11 +772,11 @@ datatables.net-bs5@1.11.4:
     jquery ">=1.7"
 
 datatables.net-bs5@>=1.10.25, datatables.net-bs5@>=1.11.3:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/datatables.net-bs5/-/datatables.net-bs5-2.2.1.tgz#cae86f90929ff242c2cc93fe741b2f69bdb4e237"
-  integrity sha512-/Z2XUnYh5/bUXDAAi/sHhugAsRiRPHLKwBFM2VEwNA8+gNo7M1eJht9g4gnT0x1w+PGy/obQnN+s8Dt6nXbbog==
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/datatables.net-bs5/-/datatables.net-bs5-2.2.2.tgz#2d23183f6d9892a5518be9d33ef845935d859dba"
+  integrity sha512-0mAbpUf0EpnIEc0RlN6vSrSk9y/+NuReiwDpjHYY3RfzdvH6Lt0+7Q9OU5RIbYxaFxES/z60thxdrw7IUFnBhw==
   dependencies:
-    datatables.net "2.2.1"
+    datatables.net "2.2.2"
     jquery ">=1.7"
 
 datatables.net-bs5@^1.13.0:
@@ -942,10 +942,10 @@ datatables.net@1.13.11, datatables.net@^1.10.15, datatables.net@^1.13.0:
   dependencies:
     jquery "1.8 - 4"
 
-datatables.net@2.2.1, datatables.net@>=1.10.25, datatables.net@>=1.11.0, datatables.net@>=1.11.3, datatables.net@^2:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/datatables.net/-/datatables.net-2.2.1.tgz#30506074a42eb6f9bfdd823bd7e97d7458c6f1c4"
-  integrity sha512-Hz7f+a77xGdroAzej88aobT5nkQIJ2Oy1JI7yh2cl0QAXQSJDXOKkOLknu+nphVP8CP8w9MtLCmwMst/F8niiQ==
+datatables.net@2.2.2, datatables.net@>=1.10.25, datatables.net@>=1.11.0, datatables.net@>=1.11.3, datatables.net@^2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/datatables.net/-/datatables.net-2.2.2.tgz#de45c9ef18775499481ffdae81a8de6a10d264a0"
+  integrity sha512-gfODIKE3gpgbVeZy2QGj2Dq9roO6hy00S+k1knklrqlMyAMrh1wt0Q6ryBUM7gU96U77ysbq8dYhxFdmcC/oPQ==
   dependencies:
     jquery ">=1.7"
 
@@ -1676,6 +1676,11 @@ uglify-js@^3.1.4:
   version "3.19.3"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.19.3.tgz#82315e9bbc6f2b25888858acd1fff8441035b77f"
   integrity sha512-v3Xu+yuwBXisp6QYTcH4UbH+xYJXqnq2m/LtQVWKWzYc1iehYnLixoQDN9FH6/j9/oybfd6W9Ghwkl8+UMKTKQ==
+
+viewerjs@^1.11.7:
+  version "1.11.7"
+  resolved "https://registry.yarnpkg.com/viewerjs/-/viewerjs-1.11.7.tgz#99c39b86c3f1b6debf446747a1f0e25f8be4db74"
+  integrity sha512-0JuVqOmL5v1jmEAlG5EBDR3XquxY8DWFQbFMprOXgaBB0F7Q/X9xWdEaQc59D8xzwkdUgXEMSSknTpriq95igg==
 
 vite-plugin-full-reload@^1.0.5:
   version "1.2.0"

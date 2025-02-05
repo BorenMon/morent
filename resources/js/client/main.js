@@ -1,7 +1,5 @@
 import $ from 'jquery'
 import { redirectSearch } from './services/utils.js'
-import { fetchProfile } from './services/client.js'
-import { getAssetUrl } from './services/publicAPI.js'
 import { toast } from './services/sweetalert2.js'
 import { logout } from './services/auth.js'
 import sweetalert2 from 'sweetalert2'
@@ -40,7 +38,7 @@ mediaQuery.addEventListener('change', handleResize)
 const inputs = document.querySelectorAll('.search-input')
 const searchButtons = document.querySelectorAll('.search-icon')
 
-if (!window.location.pathname.includes('/pages/category')) {
+if (!window.location.pathname.includes('/cars')) {
   inputs.forEach((input) => {
     input.addEventListener('keypress', function (event) {
       // Check if the pressed key is Enter
@@ -85,20 +83,6 @@ document.addEventListener('click', function (event) {
     !profileImage.contains(event.target)
   ) {
     dropdownMenu.classList.add('hidden')
-  }
-})
-
-fetchProfile().then((profile) => {
-  if (profile) {
-    toggleProfile(false)
-    $('#nav-profile').attr(
-      'src',
-      profile.avatar
-        ? getAssetUrl(profile.avatar)
-        : '/assets/images/sample-profile.jpg'
-    )
-  } else {
-    toggleProfile(true)
   }
 })
 

@@ -1,4 +1,4 @@
-import axios from '../modules/axios.min.js';
+import axios from 'axios';
 import directusConfig from '../config/directus.config.js';
 
 // Create an axios instance with the base URL from the config

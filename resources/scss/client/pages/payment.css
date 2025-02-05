@@ -1,0 +1,193 @@
+@import url('../modules/select2.min.css');
+
+/* Change the border of the Select2 container */
+.select2-container .select2-selection--single {
+  border: none; /* Change border color */
+  border-radius: 0; /* Round the corners */
+  height: 20px; /* Set height */
+  outline: none; /* Remove outline */
+  background-color: transparent;
+}
+
+/* Change the color of the selected item text */
+.select2-container .select2-selection--single .select2-selection__rendered {
+  color: #000000; /* Text color */
+  line-height: 18px; /* Center text vertically */
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Change the placeholder color */
+.select2-container .select2-selection--single .select2-selection__placeholder {
+  color: #90A3BF; /* Placeholder text color */
+}
+
+/* Change the style of dropdown items */
+.select2-container .select2-results__option {
+  color: #212529; /* Item text color */
+  padding: 8px 12px; /* Padding for items */
+}
+
+/* Change the hover effect for dropdown items */
+.select2-container .select2-results__option--highlighted[aria-selected] {
+  background-color: #3563E9; /* Background color when highlighted */
+  color: white; /* Text color when highlighted */
+}
+
+/* Optional: Add focus styles */
+.select2-container .select2-selection--single:focus {
+  border: none; /* Border color when focused */
+  outline: none; /* Remove default outline */
+}
+
+/* Optional: Add transition effects */
+.select2-container .select2-selection--single {
+  transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field:focus {
+  outline: none;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  top: -4px;
+}
+
+#payment {
+  margin: auto;
+  max-width: 1440px;
+}
+
+.payment-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'pay pic';
+  background-color: whitesmoke;
+  gap: 24px;
+  padding: 24px 0;
+}
+
+/* responsive */
+@media (max-width: 1250px) {
+  .payment-main {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'pic'
+      'pay';
+  }
+}
+@media (max-width: 710px) {
+  .payment-main {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'pic'
+      'pay';
+  }
+
+  .bill_input {
+    flex-direction: column;
+  }
+  .bill_input > div:nth-of-type(2) {
+    margin-left: 0 !important;
+    margin-top: 24px;
+  }
+  .pay_step {
+    display: grid !important;
+  }
+  .car_img {
+    display: grid !important;
+    gap: 24px;
+    margin-top: 24px;
+  }
+  .car_img > #car_card {
+    width: 100% !important;
+    height: 280px;
+  }
+}
+
+.bill_input_div {
+  display: grid;
+  width: 100%;
+  gap: 10px;
+}
+/* ============================== */
+#car_pic {
+  background-color: white;
+  padding: 24px;
+  border-radius: 10px;
+}
+
+#form > div {
+  background-color: white;
+  padding: 24px;
+  border-radius: 10px;
+}
+.bill_input {
+  display: flex;
+  margin-top: 24px;
+  justify-content: space-between;
+}
+.bill_input > div:nth-of-type(2) {
+  margin-left: 24px;
+}
+.pay_step {
+  display: flex;
+  justify-content: space-between;
+}
+.car_img {
+  display: flex;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+#pay-choice {
+  background-color: whitesmoke;
+  padding: 16px 16px 16px 28px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+#input_ {
+  padding: 16px;
+  outline: none;
+  background-color: white;
+  border-radius: 10px;
+}
+
+#car_card {
+  background-color: black;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 115px;
+  width: 150px;
+  background-image: url('/assets/images/background.svg');
+  background-size: cover;
+}
+
+:root {
+  --star-size: 24px;
+  --star-color: #e6e6e6;
+  --star-background: #fc0;
+}
+
+.Stars {
+  --percent: calc(var(--rating) / 5 * 100%);
+
+  display: inline-block;
+  font-size: var(--star-size);
+  font-family: Times; /* make sure ★ appears correctly */
+  line-height: 1;
+}
+
+.Stars::before {
+  content: '★★★★★';
+  letter-spacing: 3px;
+  background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

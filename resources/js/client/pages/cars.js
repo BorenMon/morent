@@ -46,7 +46,7 @@ const displayCars = async (queryString) => {
             <div class="text-[14px] font-bold text-[#90A3BF]">${type}</div>
           </div>
         </div>
-        <a href="/pages/detail.html?id=${id}"><img src="${getAssetUrl(
+        <a href="/detail?id=${id}"><img src="${getAssetUrl(
                 card_image
             )}" alt=""></a>
         <div class="space-y-[24px]">
@@ -79,7 +79,7 @@ const displayCars = async (queryString) => {
                       : ""
               }
             </div>
-            <button><a href="/pages/payment.html?id=${id}">Book Now</a></button>
+            <button><a href="/payment?id=${id}">Book Now</a></button>
           </div>
         </div>
       `);

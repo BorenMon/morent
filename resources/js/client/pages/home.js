@@ -50,7 +50,7 @@ const displayPopular = async () => {
           <div class="text-[14px] font-bold text-[#90A3BF]">${type}</div>
         </div>
       </div>
-      <a href="/pages/detail.html?id=${id}" aria-label="See more about car"><img src="${getAssetUrl(card_image)}" loading="lazy" alt=""></a>
+      <a href="/detail?id=${id}" aria-label="See more about car"><img src="${getAssetUrl(card_image)}" loading="lazy" alt=""></a>
       <div class="space-y-[24px]">
         <div>
           <div>
@@ -101,7 +101,7 @@ const displayRecommendation = async () => {
           <div class="text-[14px] font-bold text-[#90A3BF]">${type}</div>
         </div>
       </div>
-      <a href="/pages/detail.html?id=${id}" aria-label="See more about car"><img src="${getAssetUrl(card_image)}" loading="lazy" alt=""></a>
+      <a href="/detail?id=${id}" aria-label="See more about car"><img src="${getAssetUrl(card_image)}" loading="lazy" alt=""></a>
       <div class="space-y-[24px]">
         <div>
           <div>

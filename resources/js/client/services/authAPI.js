@@ -1,4 +1,4 @@
-import axios from '../modules/axios.min.js';
+import axios from 'axios';
 import directusConfig from '../config/directus.config.js';
 import { logout } from './auth.js';
 

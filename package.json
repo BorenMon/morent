@@ -6,7 +6,7 @@
         "build": "vite build"
     },
     "devDependencies": {
-        "axios": "^1.1.2",
+        "axios": "^1.7.9",
         "laravel-vite-plugin": "^0.7.5",
         "sass": "^1.64.2",
         "vite": "^4.0.0"
@@ -63,6 +63,7 @@
         "sweetalert2": "^11.15.10",
         "twitter-bootstrap-wizard": "^1.2.0",
         "typeahead.js": "^0.11.1",
+        "viewerjs": "^1.11.7",
         "x-editable": "^1.5.1"
     }
 }

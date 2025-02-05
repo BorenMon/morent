@@ -1,4 +1,4 @@
-import axios from '../modules/axios.min.js';
+import axios from 'axios';
 import serviceConfig from '../config/service.config.js';
 import { logout } from './auth.js';
 import api from './authAPI.js'
