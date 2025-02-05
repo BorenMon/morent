@@ -13,7 +13,7 @@
                     <h4>
                         <div>TYPE</div>
                         <button type="button" class="rounded-md p-2.5 text-gray-700" id="close-filter">
-                            <img src="/assets/icons/close.svg" alt="" />
+                            <img src="/client/icons/close.svg" alt="" />
                         </button>
                     </h4>
                     <ul class="space-y-[32px]">
@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div id="filter-button">
-                <img src="/assets/icons/filter.svg" alt="" class="icon" />
+                <img src="/client/icons/filter.svg" alt="" class="icon" />
             </div>
             <div id="category" class="space-y-[32px]">
                 <div class="space-y-8" id="skeleton-loading">

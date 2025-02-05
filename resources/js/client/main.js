@@ -102,20 +102,6 @@ fetchProfile().then((profile) => {
   }
 })
 
-const toggleProfile = (isHidden) => {
-  if (!isHidden) {
-    $('#login').addClass('!hidden')
-    $('#mobile-login').addClass('!hidden')
-    $('#profile').removeClass('!hidden')
-    $('#mobile-profile').removeClass('!hidden')
-  } else {
-    $('#login').removeClass('!hidden')
-    $('#mobile-login').removeClass('!hidden')
-    $('#profile').addClass('!hidden')
-    $('#mobile-profile').addClass('!hidden')
-  }
-}
-
 $('.logout').on('click', (e) => {
   e.preventDefault()
   sweetalert2

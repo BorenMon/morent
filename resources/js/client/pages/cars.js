@@ -52,15 +52,15 @@ const displayCars = async (queryString) => {
         <div class="space-y-[24px]">
           <div>
             <div>
-              <img src="/assets/icons/gas-station.svg" alt="" class="icon">
+              <img src="/client/icons/gas-station.svg" alt="" class="icon">
               <span>${gasoline}L</span>
             </div>
             <div>
-              <img src="/assets/icons/car.svg" alt="" class="icon">
+              <img src="/client/icons/car.svg" alt="" class="icon">
               <span>${steering}</span>
             </div>
             <div>
-              <img src="/assets/icons/profile-2user.svg" alt="" class="icon">
+              <img src="/client/icons/profile-2user.svg" alt="" class="icon">
               <span>${capacity} People</span>
             </div>
           </div>
@@ -137,7 +137,7 @@ function generatePagination(currentPage, totalPages) {
 
     // Previous button
     const prevButton = $(
-        '<div class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0"><span class="sr-only">Previous</span><img src="/assets/icons/backward-arrow.svg" alt=""></div>'
+        '<div class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0"><span class="sr-only">Previous</span><img src="/client/icons/backward-arrow.svg" alt=""></div>'
     );
 
     // Disable when on first page
@@ -202,7 +202,7 @@ function generatePagination(currentPage, totalPages) {
 
     // Next button
     const nextButton = $(
-        '<div class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0"><span class="sr-only">Next</span><img src="/assets/icons/forward-arrow.svg" alt=""></div>'
+        '<div class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0"><span class="sr-only">Next</span><img src="/client/icons/forward-arrow.svg" alt=""></div>'
     );
 
     // Disable when on last page
