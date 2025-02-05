@@ -1,35 +1,33 @@
-import '/js/main.js'
+import $ from 'jquery'
 import {
   updateProfileImage,
-  fetchProfile,
   removeProfileImage
 } from '../services/client.js'
 import { toast, sweetalert } from '../services/sweetalert2.js'
 import 'https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js'
-import '../modules/filepond.min.js'
+import * as FilePond from 'filepond'
+import FilePondPluginFileEncode from 'filepond-plugin-file-encode'
+import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-type'
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
+import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation'
 import { urlToFilePondObject } from '../services/filepond.js'
 import { getAssetUrl } from '../services/publicAPI.js'
 import api from '../services/authAPI.js'
 import { areObjectsEqual, formatISODate, formatToTwoDecimals, snakeToCapitalizedWithSpaces } from '../services/utils.js'
 import directusConfig from '../config/directus.config.js'
-import { forbiddenPage } from '../services/auth.js'
 import serviceApi from '../services/authServiceAPI.js'
 
-if (forbiddenPage()) window.location.href = '/'
-
-let profile = await fetchProfile(true)
-
-if (profile.is_verified) {
-  $('#status').html(`
-    <img src="/assets/icons/verified.svg" alt="">&nbsp;
-    Verified
-  `)
-} else {
-  $('#status').html(`
-    <img src="/assets/icons/unverified.svg" alt="">&nbsp;
-    Unverified
-  `)
-}
+// if (profile.is_verified) {
+//   $('#status').html(`
+//     <img src="/assets/icons/verified.svg" alt="">&nbsp;
+//     Verified
+//   `)
+// } else {
+//   $('#status').html(`
+//     <img src="/assets/icons/unverified.svg" alt="">&nbsp;
+//     Unverified
+//   `)
+// }
 
 const uploadProfileButton = $('#upload-save-profile')
 const uploadProfileInput = $('#upload-profile')

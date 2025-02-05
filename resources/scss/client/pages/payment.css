@@ -165,7 +165,7 @@
   align-items: center;
   height: 115px;
   width: 150px;
-  background-image: url('/assets/images/background.svg');
+  background-image: url('/resources/assets/client/images/background.svg');
   background-size: cover;
 }
 

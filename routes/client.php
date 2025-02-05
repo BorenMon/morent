@@ -15,4 +15,10 @@ Route::group([
     Route::get('/detail', function () {
         return view('client.detail');
     })->name('detail');
+    Route::get('/payment', function () {
+        return view('client.payment');
+    })->name('payment');
+    Route::get('/profile', function () {
+        return view('client.profile');
+    })->name('profile');
 });

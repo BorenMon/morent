@@ -63,12 +63,16 @@ export default defineConfig({
                 'resources/scss/client/pages/home.css',
                 'resources/scss/client/pages/cars.css',
                 'resources/scss/client/pages/detail.css',
+                'resources/scss/client/pages/payment.css',
+                'resources/scss/client/pages/profile.css',
 
                 // Client JS
                 'resources/js/client/main.js',
                 'resources/js/client/pages/home.js',
                 'resources/js/client/pages/cars.js',
-                'resources/js/client/pages/detail.js'
+                'resources/js/client/pages/detail.js',
+                'resources/js/client/pages/payment.js',
+                'resources/js/client/pages/profile.js'
             ],
             refresh: true,
         }),

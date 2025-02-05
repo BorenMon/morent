@@ -1,14 +1,12 @@
-import '../main.js'
-import '../modules/select2.min.js'
 import { cities } from '../config/location.master-data.js'
 import { getAssetUrl, fetchItemById } from '../services/publicAPI.js'
 import { formatToTwoDecimals } from '../services/utils.js'
-import { fetchProfile } from '../services/client.js'
 import serviceApi from '../services/authServiceAPI.js'
 import { sweetalert, toast } from '../services/sweetalert2.js'
-import { forbiddenPage } from '../services/auth.js'
+import $ from 'jquery'
+import select2 from 'select2'
 
-if (forbiddenPage()) window.location.href = '/pages/auth.html#login'
+select2()
 
 // Get the current URL
 const urlParams = new URLSearchParams(window.location.search)
@@ -38,7 +36,7 @@ if (carId) {
   total_amount = subTotal + tax
   $('#total').text(`$${formatToTwoDecimals(total_amount)}`)
 } else {
-  window.location.href = '/pages/category.html'
+  window.location.href = '/cars'
 }
 
 const bookingEls = [
@@ -106,12 +104,6 @@ const saveBookingInputs = (key, value, el) => {
 
   localStorage.setItem(type, JSON.stringify(savedInputs))
 }
-
-const profile = await fetchProfile()
-
-$('#name-input').val(profile.first_name + ' ' + profile.last_name)
-$('#phone-input').val(profile.phone)
-$('#address-input').val(profile.address)
 
 const requiredFields = [
   {
@@ -227,7 +219,7 @@ $('#book-button').on('click', async function () {
       })
       .then(() => {
         $('#loading-backdrop').css('display', 'none')
-        window.location.href = '/pages/profile.html#bookings-tab'
+        window.location.href = '//profile#bookings-tab'
       })
     } else {
       $('#loading-backdrop').css('display', 'none')
