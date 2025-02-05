@@ -1,21 +1,10 @@
-import "../main.js";
-import "../modules/select2.min.js";
-import { cities } from "../config/location.master-data.js";
+import $ from 'jquery'
 import { getAssetUrl, fetchCollection } from "../services/publicAPI.js";
 import { formatToTwoDecimals, debounce } from "../services/utils.js";
-import {
-    refreshFavoriteEvent,
-    checkIsFavorite,
-} from "../services/favorites.js";
 
 const debouncedRefreshCars = debounce(function (value) {
     defaultRefreshCars(value, true);
 }, 300);
-
-$(".city").select2({
-    width: "100%",
-    data: [{ id: "0", text: "Select your city", value: "" }, ...cities],
-});
 
 let filter_count;
 let total_page;
@@ -47,8 +36,6 @@ const displayCars = async (queryString) => {
                 promotion_price,
             } = car;
 
-            const { iconPath } = checkIsFavorite(id);
-
             // Create car card using jQuery
             const $div = $("<div></div>")
                 .addClass("car-card")
@@ -58,7 +45,6 @@ const displayCars = async (queryString) => {
             <div class="text-[20px] font-bold text-[#1A202C]">${model}</div>
             <div class="text-[14px] font-bold text-[#90A3BF]">${type}</div>
           </div>
-          <img src="${iconPath}" alt="" class="icon favorite">
         </div>
         <a href="/pages/detail.html?id=${id}"><img src="${getAssetUrl(
                 card_image
@@ -276,7 +262,7 @@ const changePagination = () => {
 };
 
 function refreshCars(queryString) {
-    displayCars(queryString).then(refreshFavoriteEvent);
+    displayCars(queryString)
 }
 
 function queryParamsBuilder(page, keyword, types, capacities, maxPrice) {
