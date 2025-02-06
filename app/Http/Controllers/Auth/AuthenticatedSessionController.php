@@ -34,8 +34,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        if (Auth::user()->role == UserRole::Customer->value)
+        if (Auth::user()->role == UserRole::Customer->value) 
+        {
             return redirect()->intended(RouteServiceProvider::CUSTOMER_HOME);
+        }
 
         return redirect()->intended(RouteServiceProvider::ADMIN_DASHBOARD);
     }
@@ -58,6 +60,6 @@ class AuthenticatedSessionController extends Controller
 
         if ($isCustomer) return redirect()->back();
         
-        return redirect('/login');
+        return redirect('/admin/login');
     }
 }

@@ -1,7 +1,6 @@
 import $ from "jquery";
 import { redirectSearch } from "./services/utils.js";
 import { toast } from "./services/sweetalert2.js";
-import { logout } from "./services/auth.js";
 import sweetalert2 from "sweetalert2";
 
 // Function to open mobile menu
@@ -103,11 +102,19 @@ $(".logout").on("click", (e) => {
         })
         .then((result) => {
             if (result.isConfirmed) {
-                logout();
-                toast("Logged out.", "success", "top");
-                setTimeout(() => {
-                    window.location.reload();
-                }, 1000);
+                fetch("/logout", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    credentials: "same-origin",
+                }).then(() => {
+                    toast("You have been logged out.", "success");
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
+                });
             }
         });
 });

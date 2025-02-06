@@ -1,3 +1,7 @@
+@php
+    $user = Auth::user();
+@endphp
+
 @extends('client.layout', ['title' => 'Profile'])
 
 @section('css')
@@ -71,7 +75,7 @@
                                     <div
                                         class="items-center sm:flex xl:block 2xl:flex sm:space-x-4 xl:space-x-0 2xl:space-x-4">
                                         <img class="mb-4 rounded-lg w-28 h-28 sm:mb-0 xl:mb-4 2xl:mb-0"
-                                            src="/client/images/sample-profile.jpg" alt="Profile picture"
+                                            src="{{ getAvatarUrl($user->avatar) }}" alt="Profile picture"
                                             id="profile-pic" />
                                         <div>
                                             <h3 class="mb-1 text-xl font-bold text-gray-900">
@@ -172,32 +176,24 @@
                                     <div>
                                         <div class="grid grid-cols-6 gap-6">
                                             <div class="col-span-6 sm:col-span-3">
-                                                <label for="first-name" class="block mb-2 font-medium text-gray-900">First
-                                                    Name </label>
-                                                <input type="text" name="first_name" id="first-name"
+                                                <label for="first-name" class="block mb-2 font-medium text-gray-900">Name <span class="text-red-500">*</span></label>
+                                                <input type="text" name="name" id="name"
                                                     class="shadow-sm bg-gray-50 text-gray-900 rounded-lg block w-full p-2.5 focus:outline-0"
-                                                    autocomplete="on" />
-                                            </div>
-                                            <div class="col-span-6 sm:col-span-3">
-                                                <label for="last-name" class="block mb-2 font-medium text-gray-900">Last
-                                                    Name <span class="text-red-500">*</span></label>
-                                                <input type="text" name="last_name" id="last-name"
-                                                    class="shadow-sm bg-gray-50 text-gray-900 rounded-lg block w-full p-2.5 focus:outline-0"
-                                                    autocomplete="on" />
+                                                    autocomplete="on" value="{{ $user->name }}" />
                                             </div>
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="address" class="block mb-2 font-medium text-gray-900">Address
                                                     <span class="text-red-500">*</span></label>
                                                 <input type="text" name="address" id="address"
                                                     class="shadow-sm bg-gray-50 text-gray-900 rounded-lg block w-full p-2.5 focus:outline-0"
-                                                    autocomplete="on" />
+                                                    autocomplete="on" value="{{ $user->address }}" />
                                             </div>
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="email"
                                                     class="block mb-2 font-medium text-gray-900">Email</label>
                                                 <input type="email" name="email" id="email"
                                                     class="shadow-sm bg-gray-50 text-gray-900 rounded-lg block w-full p-2.5 focus:outline-0 select-none"
-                                                    disabled autocomplete="off" />
+                                                    disabled autocomplete="off" value="{{ $user->email }}" />
                                             </div>
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="phone-number"
@@ -205,7 +201,7 @@
                                                     <span class="text-red-500">*</span></label>
                                                 <input type="text" name="phone" id="phone-number"
                                                     class="shadow-sm bg-gray-50 text-gray-900 rounded-lg block w-full p-2.5 focus:outline-0"
-                                                    autocomplete="on" />
+                                                    autocomplete="on" value="{{ $user->phone }}" />
                                             </div>
                                             <div class="col-span-6 sm:col-full">
                                                 <button id="save-general-info" class="disabled-button">

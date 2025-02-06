@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 Route::group([
     'prefix' => '',
@@ -23,7 +24,8 @@ Route::group([
         return view('client.profile');
     })->name('profile');
 
-    Route::get('/auth', fn () => view('client.auth'))
-    // ->middleware('guest')
-    ->name('login');
+    Route::get('/auth', fn () => view('client.auth'))->name('auth');
+
+    Route::post('/register', [RegisteredUserController::class, 'storeCustomer'])
+    ->name('register');
 });

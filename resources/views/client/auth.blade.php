@@ -16,7 +16,8 @@
     <div class="container">
       <!-- Form Login -->
       <div class="form-box login">
-        <form id="login">
+        <form id="login" action="/login" method="POST">
+          @csrf
           <h1>Login</h1>
           <div class="input-box">
             <input type="email" placeholder="Email" name="email" required />
@@ -35,7 +36,8 @@
 
       <!-- Form Register -->
       <div class="form-box register">
-        <form id="register">
+        <form id="register" action="{{ route('client.register') }}" method="POST">
+          @csrf
           <h1>Registration</h1>
           <div class="input-box">
             <input type="email" placeholder="Email" name="email" required />
@@ -46,7 +48,7 @@
             <i class="bx bxs-lock-alt"></i>
           </div>
           <div class="input-box">
-            <input type="password" placeholder="Confirm Password" name="confirmPassword" required />
+            <input type="password" placeholder="Confirm Password" name="password_confirmation" required />
             <i class="bx bxs-lock-alt"></i>
           </div>
           <button type="submit" class="btn">Register</button>

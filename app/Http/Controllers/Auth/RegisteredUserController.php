@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -44,10 +45,30 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        event(new Registered($user));
+        // event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::ADMIN_DASHBOARD);
+    }
+
+    public function storeCustomer(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|confirmed|min:8',
+        ]);
+
+        $user = User::create([
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => UserRole::Customer,
+        ]);
+
+        // event(new Registered($user));
+
+        Auth::login($user);
+
+        return redirect(RouteServiceProvider::CUSTOMER_HOME)->with('success', 'Registration successful!');
     }
 }

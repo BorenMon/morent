@@ -1,9 +1,6 @@
 import { toast } from '../services/sweetalert2.js'
 import { register, login } from '../services/auth.js'
 import { fetchProfile } from '../services/client.js'
-import { forbiddenPage } from '../services/auth.js'
-
-if (!forbiddenPage()) window.location.href = '/'
 
 const container = document.querySelector('.container')
 const registerBtn = document.querySelector('.register-btn')
@@ -17,51 +14,6 @@ registerBtn.addEventListener('click', () => {
 loginBtn.addEventListener('click', () => {
   container.classList.remove('active')
   window.location.hash = '#login';
-})
-
-document.getElementById('login').addEventListener('submit', async (e) => {
-  e.preventDefault()
-
-  const email = document.querySelector('#login input[name="email"]').value
-  const password = document.querySelector('#login input[name="password"]').value
-
-  if (!email || !password) {
-    toast('Please fill out all required fields.', 'error')
-    return
-  }
-
-  if (await login(email, password)) {
-    await fetchProfile()
-    window.location.href = '/'
-  }
-})
-
-document.getElementById('register').addEventListener('submit', async (e) => {
-  e.preventDefault()
-
-  const email = document.querySelector('#register input[name="email"]').value
-  const password = document.querySelector(
-    '#register input[name="password"]'
-  ).value
-  const confirmPassword = document.querySelector(
-    '#register input[name="confirmPassword"]'
-  ).value
-
-  if (!email || !password || !confirmPassword) {
-    toast('Please fill out all required fields.', 'error')
-    return
-  }
-
-  if (password !== confirmPassword) {
-    toast('Passwords do not match.', 'error')
-    return
-  }
-
-  if (await register(email, password)) {
-    e.target.reset()
-    container.classList.remove('active')
-    window.location.hash = '#login';
-  }
 })
 
 window.addEventListener('load', switchViewBasedOnHash)
