@@ -43,7 +43,7 @@
             </div>
             <div id="icons-wrapper" class="space-x-[20px]">
                 @if (!$user)
-                    <a href="/auth" id="login" class="font-semibold !hidden" style="height: 44px;">
+                    <a href="/auth#login" id="login" class="font-semibold" style="height: 44px;">
                         Login&nbsp;<img src="/client/icons/login.svg" alt="" class="icon" />
                     </a>
                 @else

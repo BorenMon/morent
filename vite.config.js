@@ -65,6 +65,7 @@ export default defineConfig({
                 'resources/scss/client/pages/detail.css',
                 'resources/scss/client/pages/payment.css',
                 'resources/scss/client/pages/profile.css',
+                'resources/scss/client/pages/auth.css',
 
                 // Client JS
                 'resources/js/client/main.js',
@@ -72,7 +73,8 @@ export default defineConfig({
                 'resources/js/client/pages/cars.js',
                 'resources/js/client/pages/detail.js',
                 'resources/js/client/pages/payment.js',
-                'resources/js/client/pages/profile.js'
+                'resources/js/client/pages/profile.js',
+                'resources/js/client/pages/auth.js',
             ],
             refresh: true,
         }),

@@ -34,7 +34,7 @@
                                         </p>
 
                                         <!-- form -->
-                                        <form method="POST" action="{{ route('login') }}">
+                                        <form method="POST" action="{{ route('admin.login') }}">
                                             @csrf
 
                                             @if (sizeof($errors) > 0)

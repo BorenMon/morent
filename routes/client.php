@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 Route::group([
     'prefix' => '',
@@ -21,4 +22,8 @@ Route::group([
     Route::get('/profile', function () {
         return view('client.profile');
     })->name('profile');
+
+    Route::get('/auth', fn () => view('client.auth'))
+    // ->middleware('guest')
+    ->name('login');
 });
