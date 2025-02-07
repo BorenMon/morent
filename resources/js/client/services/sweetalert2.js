@@ -1,4 +1,4 @@
-import sweetalert2 from '../modules/sweetalert2.all.min.js';
+import sweetalert2 from 'sweetalert2';
 
 export const toast = (title, icon = 'success', position = 'top-end') => {
   sweetalert2.fire({
