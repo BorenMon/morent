@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\CarController;
-use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 Route::get('/admin/login', [AuthenticatedSessionController::class, 'create'])
