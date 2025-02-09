@@ -1,7 +1,7 @@
-@extends('layouts.horizontal', ['title' => 'Popovers', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Popovers', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Popovers'])
+    @include('admin.layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Popovers'])
 
     <div class="row">
         <div class="col-xl-12">

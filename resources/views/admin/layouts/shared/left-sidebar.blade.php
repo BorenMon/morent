@@ -2,7 +2,7 @@
 <div class="leftside-menu">
 
     <!-- Brand Logo Light -->
-    <a href="{{ route('dashboard') }}" class="logo logo-light">
+    <a href="{{ route('admin.dashboard') }}" class="logo logo-light">
         <span class="logo-lg">
             <img src="/images/logo.svg" alt="logo">
         </span>
@@ -12,7 +12,7 @@
     </a>
 
     <!-- Brand Logo Dark -->
-    <a href="{{ route('dashboard') }}" class="logo logo-dark">
+    <a href="{{ route('admin.dashboard') }}" class="logo logo-dark">
         <span class="logo-lg">
             <img src="/images/logo-dark.svg" alt="dark logo">
         </span>
@@ -29,7 +29,7 @@
             <li class="side-nav-title">Main</li>
 
             <li class="side-nav-item">
-                <a href="{{ route('dashboard') }}" class="side-nav-link">
+                <a href="{{ route('admin.dashboard') }}" class="side-nav-link">
                     <i class="ri-dashboard-3-line"></i>
                     <span class="badge bg-success float-end">9+</span>
                     <span> Dashboard </span>

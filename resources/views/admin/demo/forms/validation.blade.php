@@ -1,10 +1,10 @@
-@extends('layouts.horizontal', ['title' => 'Form Validation', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Form Validation', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('css')
 @endsection
 
 @section('content')
-    @include('layouts.shared/page-title', ['page_title' => 'Validation', 'sub_title' => 'Forms'])
+    @include('admin.layouts.shared/page-title', ['page_title' => 'Validation', 'sub_title' => 'Forms'])
 
     <div class="row">
         <div class="col-lg-6">

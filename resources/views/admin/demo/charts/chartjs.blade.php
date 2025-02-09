@@ -1,7 +1,7 @@
-@extends('layouts.horizontal', ['title' => 'ChartJs', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'ChartJs', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Charts', 'page_title' => 'Chartjs'])
+    @include('admin.layouts.shared/page-title', ['sub_title' => 'Charts', 'page_title' => 'Chartjs'])
 
     <div class="row">
         <div class="col-xl-6">
@@ -129,5 +129,5 @@
 @endsection
 
 @section('script')
-    @vite(['resources/js/pages/chartjs-area.init.js'])
+    @vite(['resources/js/admin/demo/chartjs-area.init.js'])
 @endsection

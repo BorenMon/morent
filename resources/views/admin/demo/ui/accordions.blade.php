@@ -1,7 +1,7 @@
-@extends('layouts.horizontal', ['title' => 'Accordions', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Accordions', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Accordions'])
+    @include('admin.layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Accordions'])
 
     <div class="row">
         <div class="col-xl-6">
@@ -92,7 +92,8 @@
                     <h4 class="header-title">Flush Accordions</h4>
                     <p class="text-muted mb-0">Add <code>.accordion-flush</code> to remove the default
                         <code>background-color</code>, some borders, and some rounded corners to render accordions
-                        edge-to-edge with their parent container.</p>
+                        edge-to-edge with their parent container.
+                    </p>
                 </div>
                 <div class="card-body">
 
@@ -263,7 +264,8 @@
                 <div class="card-header">
                     <h4 class="header-title">Always Open Accordions</h4>
                     <p class="text-muted mb-0">Omit the <code>data-bs-parent</code> attribute on each
-                        <code>.accordion-collapse</code> to make accordion items stay open when another item is opened.</p>
+                        <code>.accordion-collapse</code> to make accordion items stay open when another item is opened.
+                    </p>
                 </div>
                 <div class="card-body">
                     <div class="accordion" id="accordionPanelsStayOpenExample">

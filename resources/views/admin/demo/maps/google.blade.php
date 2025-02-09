@@ -1,10 +1,10 @@
-@extends('layouts.horizontal', ['title' => 'Google Maps', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Google Maps', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('css')
 @endsection
 
 @section('content')
-    @include('layouts.shared/page-title', ['page_title' => 'Google Maps', 'sub_title' => 'Maps'])
+    @include('admin.layouts.shared/page-title', ['page_title' => 'Google Maps', 'sub_title' => 'Maps'])
 
     <div class="row">
         <div class="col-xl-6">
@@ -88,5 +88,5 @@
 @section('script')
     <!-- Google Maps API -->
     <script src="https://maps.google.com/maps/api/js"></script>
-    @vite(['resources/js/pages/google-maps.init.js'])
+    @vite(['resources/js/admin/demo/google-maps.init.js'])
 @endsection

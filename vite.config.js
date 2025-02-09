@@ -6,8 +6,8 @@ export default defineConfig({
         laravel({
             input: [
                 // Theme Styles
-                'resources/styles/app.scss',
-                'resources/styles/icons.scss',
+                'resources/styles/admin/app.scss',
+                'resources/styles/admin/icons.scss',
                 'node_modules/jquery-toast-plugin/dist/jquery.toast.min.css',
                 'node_modules/select2/dist/css/select2.min.css',
                 'node_modules/daterangepicker/daterangepicker.css',

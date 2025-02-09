@@ -1,7 +1,7 @@
-@extends('layouts.horizontal', ['title' => 'Invoice', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Invoice', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Pages', 'page_title' => 'Invoice'])
+    @include('admin.layouts.shared/page-title', ['sub_title' => 'Pages', 'page_title' => 'Invoice'])
 
     <div class="row">
         <div class="col-12">

@@ -16,7 +16,7 @@ use App\Http\Controllers\RoutingController;
 require __DIR__ . '/auth.php';
 
 // Template
-Route::group(['prefix' => '/demo', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'demo', 'middleware' => 'auth'], function () {
     Route::get('{first}/{second}/{third}', [RoutingController::class, 'thirdLevel'])->name('third');
     Route::get('{first}/{second}', [RoutingController::class, 'secondLevel'])->name('second');
 });

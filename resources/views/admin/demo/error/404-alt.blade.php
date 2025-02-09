@@ -1,7 +1,7 @@
-@extends('layouts.horizontal', ['title' => 'Error 404 Alt', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Error 404 Alt', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Charts', 'page_title' => '404 Alt Error'])
+    @include('admin.layouts.shared/page-title', ['sub_title' => 'Charts', 'page_title' => '404 Alt Error'])
 
     <div class="row justify-content-center items">
         <div class="col-12">
@@ -15,7 +15,7 @@
                                 happens to the best of us. Here's a
                                 little tip that might help you get back on track.</p>
 
-                            <a class="btn btn-soft-danger mt-3" href="{{ route('dashboard') }}"><i
+                            <a class="btn btn-soft-danger mt-3" href="{{ route('admin.dashboard') }}"><i
                                     class="ri-home-4-line me-1"></i> Back to Home</a>
                         </div> <!-- end /.text-center-->
                     </div> <!-- end col-->

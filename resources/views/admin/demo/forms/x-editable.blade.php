@@ -1,11 +1,11 @@
-@extends('layouts.horizontal', ['title' => 'X-Editable', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'X-Editable', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('css')
     @vite(['node_modules/x-editable/dist/bootstrap-editable/css/bootstrap-editable.css'])
 @endsection
 
 @section('content')
-    @include('layouts.shared/page-title', ['page_title' => 'X-Editable', 'sub_title' => 'Forms'])
+    @include('admin.layouts.shared/page-title', ['page_title' => 'X-Editable', 'sub_title' => 'Forms'])
 
     <div class="row">
         <div class="col-12">
@@ -90,5 +90,5 @@
 @endsection
 
 @section('script')
-    @vite(['resources/js/pages/form-xeditable.init.js'])
+    @vite(['resources/js/admin/demo/form-xeditable.init.js'])
 @endsection

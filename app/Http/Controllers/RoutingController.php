@@ -24,9 +24,9 @@ class RoutingController extends Controller
         $demo = $request->query('demo');
 
         if ($first == "assets")
-            return redirect('dashboard');
+            return redirect('admin.dashboard');
 
-        return view($first . '.' . $second, ['mode' => $mode, 'demo' => $demo]);
+        return view('admin.demo.' . $first . '.' . $second, ['mode' => $mode, 'demo' => $demo]);
     }
 
     /**
@@ -38,10 +38,10 @@ class RoutingController extends Controller
         $demo = $request->query('demo');
 
         if ($first == "assets")
-            return redirect('dashboard');
+            return redirect('admin.dashboard');
 
         dd($first, $second, $third);
 
-        return view($first . '.' . $second . '.' . $third, ['mode' => $mode, 'demo' => $demo]);
+        return view('admin.demo.' . $first . '.' . $second . '.' . $third, ['mode' => $mode, 'demo' => $demo]);
     }
 }

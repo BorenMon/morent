@@ -6,7 +6,7 @@
     Trusted Car Rental Partner in Cambodia">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Authentication</title>
-    @vite('resources/scss/client/pages/auth.css')
+    @vite('resources/styles/client/pages/auth.css')
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"

@@ -1,7 +1,7 @@
-@extends('layouts.horizontal', ['title' => 'Timeline', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Timeline', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Pages', 'page_title' => 'Timeline'])
+    @include('admin.layouts.shared/page-title', ['sub_title' => 'Pages', 'page_title' => 'Timeline'])
 
     <div class="row">
         <div class="col-12">

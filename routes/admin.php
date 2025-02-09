@@ -19,6 +19,6 @@ Route::group([
     Route::resource('users', UserController::class);
     Route::post('/users/{user}/avatar', [UserController::class, 'updateAvatar'])->name('users.avatar');
 
-    Route::get('', fn() => view('admin.dashboard'))->name('dashboard');
-    Route::get('profile', fn() => view('admin.profile'))->name('profile');
+    Route::get('', fn() => view('admin.pages.dashboard'))->name('dashboard');
+    Route::get('profile', fn() => view('admin.pages.profile'))->name('profile');
 });

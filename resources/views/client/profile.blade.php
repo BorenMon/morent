@@ -5,7 +5,7 @@
 @extends('client.layout', ['title' => 'Profile'])
 
 @section('css')
-    @vite('resources/scss/client/pages/profile.css')
+    @vite('resources/styles/client/pages/profile.css')
 @endsection
 
 @section('content')

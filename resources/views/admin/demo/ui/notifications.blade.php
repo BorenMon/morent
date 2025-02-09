@@ -1,11 +1,14 @@
-@extends('layouts.horizontal', ['title' => 'Notifications', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Notifications', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('css')
     @vite(['node_modules/jquery-toast-plugin/dist/jquery.toast.min.css'])
 @endsection
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Notifications'])
+    @include('admin.layouts.shared/page-title', [
+        'sub_title' => 'Base UI',
+        'page_title' => 'Notifications',
+    ])
 
     <div class="row">
         <div class="col-12">
@@ -340,5 +343,5 @@
 @endsection
 
 @section('script-bottom')
-    @vite(['resources/js/pages/toastr.init.js'])
+    @vite(['resources/js/admin/demo/toastr.init.js'])
 @endsection

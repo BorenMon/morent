@@ -1,10 +1,10 @@
-@extends('layouts.horizontal', ['title' => 'Form Wizard', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Form Wizard', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('css')
 @endsection
 
 @section('content')
-    @include('layouts.shared/page-title', ['page_title' => 'Form Wizard', 'sub_title' => 'Forms'])
+    @include('admin.layouts.shared/page-title', ['page_title' => 'Form Wizard', 'sub_title' => 'Forms'])
 
     <div class="row">
         <div class="col-12">
@@ -619,5 +619,5 @@
 @endsection
 
 @section('script')
-    @vite(['resources/js/pages/form-wizard.init.js'])
+    @vite(['resources/js/admin/demo/form-wizard.init.js'])
 @endsection

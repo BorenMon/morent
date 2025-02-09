@@ -1,7 +1,7 @@
-@extends('layouts.horizontal', ['title' => 'Typography', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Typography', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Typography'])
+    @include('admin.layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Typography'])
 
     <div class="row">
         <div class="col-12">
@@ -384,7 +384,8 @@
                     <h4 class="header-title">Blockquotes</h4>
                     <p class="text-muted mb-0">For quoting blocks of content from another source within your document. Wrap
                         <code>&lt;blockquote class="blockquote"&gt;</code> around any <abbr
-                            title="VelonicText Markup Language">HTML</abbr> as the quote.</p>
+                            title="VelonicText Markup Language">HTML</abbr> as the quote.
+                    </p>
                 </div>
                 <div class="card-body">
                     <blockquote class="blockquote">
@@ -421,7 +422,8 @@
                     <h4 class="header-title">Description list alignment</h4>
                     <p class="text-muted mb-0">Align terms and descriptions horizontally by using our grid system’s
                         predefined classes (or semantic mixins). For longer terms, you can optionally add a
-                        <code>.text-truncate</code> class to truncate the text with an ellipsis.</p>
+                        <code>.text-truncate</code> class to truncate the text with an ellipsis.
+                    </p>
                 </div>
                 <div class="card-body">
                     <dl class="row mb-0">

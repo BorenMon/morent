@@ -1,8 +1,8 @@
-@extends('layouts.horizontal', ['title' => 'Cards', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Cards', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Cards'])
+    @include('admin.layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Cards'])
 
     <div class="row">
         <div class="col-sm-6 col-lg-3">

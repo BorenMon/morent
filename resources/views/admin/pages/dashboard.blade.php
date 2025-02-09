@@ -1,7 +1,7 @@
-@extends('admin.layouts.horizontal', ['title' => 'Dashboard', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'admin.dashboard', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-{{-- @include('layouts.shared/page-title', ['sub_title' => 'Menu', 'page_title' => 'Dashboard']) --}}
+    {{-- @include('admin.layouts.shared/page-title', ['sub_title' => 'Menu', 'page_title' => 'admin.dashboard']) --}}
     <br />
     <div class="row">
         <div class="col-xxl-3 col-sm-6">
@@ -179,9 +179,8 @@
                     <div class="p-3">
                         <div class="card-widgets">
                             <a href="javascript:;" data-bs-toggle="reload"><i class="ri-refresh-line"></i></a>
-                            <a data-bs-toggle="collapse" href="#bookings-collapse" role="button"
-                                aria-expanded="false" aria-controls="bookings-collapse"><i
-                                    class="ri-subtract-line"></i></a>
+                            <a data-bs-toggle="collapse" href="#bookings-collapse" role="button" aria-expanded="false"
+                                aria-controls="bookings-collapse"><i class="ri-subtract-line"></i></a>
                             {{-- <a href="#" data-bs-toggle="remove"><i class="ri-close-line"></i></a> --}}
                         </div>
                         <h5 class="header-title mb-0">Bookings</h5>
@@ -273,5 +272,5 @@
 @endsection
 
 @section('script')
-    {{-- @vite(['resources/js/pages/dashboard.js']) --}}
+    {{-- @vite(['resources/js/admin/demo/dashboard.js']) --}}
 @endsection

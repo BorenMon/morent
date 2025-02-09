@@ -1,7 +1,7 @@
-@extends('layouts.horizontal', ['title' => 'Pagination', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Pagination', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Pagination'])
+    @include('admin.layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Pagination'])
 
     <div class="row">
         <div class="col-xl-12">
@@ -38,7 +38,8 @@
                     <h4 class="header-title">Disabled and active states</h4>
                     <p class="text-muted mb-0">Pagination links are customizable for different circumstances. Use
                         <code>.disabled</code> for links that appear un-clickable and <code>.active</code> to indicate the
-                        current page.</p>
+                        current page.
+                    </p>
                 </div>
                 <div class="card-body">
                     <nav aria-label="...">

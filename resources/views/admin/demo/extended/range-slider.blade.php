@@ -1,7 +1,10 @@
-@extends('layouts.horizontal', ['title' => 'Range Slider', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Range Slider', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Extended', 'page_title' => 'Range Slider'])
+    @include('admin.layouts.shared/page-title', [
+        'sub_title' => 'Extended',
+        'page_title' => 'Range Slider',
+    ])
 
     <div class="row">
         <div class="col-xl-6">
@@ -148,5 +151,5 @@
 @endsection
 
 @section('script')
-    @vite(['resources/js/pages/range-slider.init.js'])
+    @vite(['resources/js/admin/demo/range-slider.init.js'])
 @endsection

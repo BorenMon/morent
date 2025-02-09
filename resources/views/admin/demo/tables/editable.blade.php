@@ -1,10 +1,13 @@
-@extends('layouts.horizontal', ['title' => 'Editable Table', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Editable Table', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('css')
 @endsection
 
 @section('content')
-    @include('layouts.shared/page-title', ['page_title' => 'Editable Table', 'sub_title' => 'Tables'])
+    @include('admin.layouts.shared/page-title', [
+        'page_title' => 'Editable Table',
+        'sub_title' => 'Tables',
+    ])
 
     <div class="row">
         <div class="col-12">
@@ -251,5 +254,5 @@
 @endsection
 
 @section('script')
-    @vite(['resources/js/pages/tabledit.init.js'])
+    @vite(['resources/js/admin/demo/tabledit.init.js'])
 @endsection

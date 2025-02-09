@@ -1,7 +1,7 @@
-@extends('layouts.horizontal', ['title' => 'Pricing', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Pricing', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Pages', 'page_title' => 'Pricing'])
+    @include('admin.layouts.shared/page-title', ['sub_title' => 'Pages', 'page_title' => 'Pricing'])
 
     <div class="row justify-content-center">
         <div class="col-xxl-10">

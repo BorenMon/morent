@@ -1,7 +1,10 @@
-@extends('layouts.horizontal', ['title' => 'Bootstrap Icons', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Bootstrap Icons', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Icons', 'page_title' => 'Bootstrap Icons'])
+    @include('admin.layouts.shared/page-title', [
+        'sub_title' => 'Icons',
+        'page_title' => 'Bootstrap Icons',
+    ])
 
     <div class="row">
         <div class="col">
@@ -20,5 +23,5 @@
 
 @section('script')
     <!-- MDI Icons Demo js -->
-    @vite(['resources/js/pages/icons-bootstrap.init.js'])
+    @vite(['resources/js/admin/demo/icons-bootstrap.init.js'])
 @endsection

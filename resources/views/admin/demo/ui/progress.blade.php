@@ -1,7 +1,7 @@
-@extends('layouts.horizontal', ['title' => 'Progress', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Progress', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Progress'])
+    @include('admin.layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Progress'])
 
     <div class="row">
         <div class="col-xl-6">
@@ -95,7 +95,8 @@
                     <h4 class="header-title">Animated stripes</h4>
                     <p class="text-muted mb-0">The striped gradient can also be animated. Add
                         <code>.progress-bar-animated</code> to <code>.progress-bar</code> to animate the stripes right to
-                        left via CSS3 animations.</p>
+                        left via CSS3 animations.
+                    </p>
                 </div>
                 <div class="card-body">
                     <div class="progress">
@@ -111,7 +112,8 @@
                 <div class="card-header">
                     <h4 class="header-title">Labels</h4>
                     <p class="text-muted mb-0">Add labels to your progress bars by placing text within the
-                        <code>.progress-bar</code>.</p>
+                        <code>.progress-bar</code>.
+                    </p>
                 </div>
                 <div class="card-body">
                     <div class="progress">

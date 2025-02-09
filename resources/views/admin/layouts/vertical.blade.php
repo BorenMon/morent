@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" data-sidenav-size="{{ $sidenav ?? 'default' }}" data-layout-mode="{{ $layoutMode ?? 'fluid' }}" data-layout-position="{{ $position ?? 'fixed' }}" data-menu-color="{{ $menuColor ?? 'dark' }}" data-topbar-color="{{ $topbarColor ?? 'light' }}">
+<html lang="en" data-sidenav-size="{{ $sidenav ?? 'default' }}" data-layout-mode="{{ $layoutMode ?? 'fluid' }}"
+    data-layout-position="{{ $position ?? 'fixed' }}" data-menu-color="{{ $menuColor ?? 'dark' }}"
+    data-topbar-color="{{ $topbarColor ?? 'light' }}">
 
 <head>
-    @include('layouts.shared/title-meta', ['title' => $title])
+    @include('admin.layouts.shared/title-meta', ['title' => $title])
     @yield('css')
-    @include('layouts.shared/head-css', ['mode' => $mode ?? '', 'demo' => $demo ?? ''])
+    @include('admin.layouts.shared/head-css', ['mode' => $mode ?? '', 'demo' => $demo ?? ''])
 </head>
 
 <body>
     <!-- Begin page -->
     <div class="wrapper">
 
-        @include('layouts.shared/topbar')
-        @include('layouts.shared/left-sidebar')
+        @include('admin.layouts.shared/topbar')
+        @include('admin.layouts.shared/left-sidebar')
 
         <div class="content-page">
             <div class="content">
@@ -26,7 +28,7 @@
             </div>
             <!-- content -->
 
-            @include('layouts.shared/footer')
+            @include('admin.layouts.shared/footer')
         </div>
 
     </div>
@@ -34,9 +36,9 @@
 
     @yield('modal')
 
-    @include('layouts.shared/right-sidebar')
+    @include('admin.layouts.shared/right-sidebar')
 
-    @include('layouts.shared/footer-scripts')
+    @include('admin.layouts.shared/footer-scripts')
 
     @vite(['resources/js/layout.js', 'resources/js/main.js'])
 

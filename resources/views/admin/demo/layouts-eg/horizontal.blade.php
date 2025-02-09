@@ -1,7 +1,7 @@
-@extends('layouts.horizontal', ['title' => 'Layout Detached', 'topbarColor'=>'dark', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Layout Detached', 'topbarColor' => 'dark', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Menu', 'page_title' => 'Dashboard'])
+    @include('admin.layouts.shared/page-title', ['sub_title' => 'Menu', 'page_title' => 'admin.dashboard'])
 
     <div class="row">
         <div class="col-xxl-3 col-sm-6">
@@ -374,5 +374,5 @@
 @endsection
 
 @section('script')
-    @vite(['resources/js/pages/dashboard.js'])
+    @vite(['resources/js/admin/demo/dashboard.js'])
 @endsection

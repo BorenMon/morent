@@ -1,7 +1,7 @@
-@extends('layouts.horizontal', ['title' => 'Scrollbar', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Scrollbar', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Extended', 'page_title' => 'Scrollbar'])
+    @include('admin.layouts.shared/page-title', ['sub_title' => 'Extended', 'page_title' => 'Scrollbar'])
 
     <div class="row">
         <div class="col-xl-6">

@@ -1,7 +1,7 @@
-@extends('layouts.horizontal', ['title' => 'Sparkline Charts', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Sparkline Charts', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Charts', 'page_title' => 'Sparkline'])
+    @include('admin.layouts.shared/page-title', ['sub_title' => 'Charts', 'page_title' => 'Sparkline'])
 
     <div class="row">
         <div class="col-md-6 col-lg-4">
@@ -120,5 +120,5 @@
 @endsection
 
 @section('script')
-    @vite(['resources/js/pages/sparkline.init.js'])
+    @vite(['resources/js/admin/demo/sparkline.init.js'])
 @endsection

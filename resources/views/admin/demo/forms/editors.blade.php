@@ -1,4 +1,4 @@
-@extends('layouts.horizontal', ['title' => 'Editors', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Editors', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('css')
     <!-- Quill css -->
@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Forms', 'page_title' => 'Editors'])
+    @include('admin.layouts.shared/page-title', ['sub_title' => 'Forms', 'page_title' => 'Editors'])
 
     <div class="row">
         <div class="col-12">
@@ -79,5 +79,5 @@
 
 
 @section('script')
-    @vite(['resources/js/pages/quilljs.init.js'])
+    @vite(['resources/js/admin/demo/quilljs.init.js'])
 @endsection

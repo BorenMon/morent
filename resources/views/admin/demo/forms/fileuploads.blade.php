@@ -1,10 +1,10 @@
-@extends('layouts.horizontal', ['title' => 'File Uploads', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'File Uploads', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('css')
 @endsection
 
 @section('content')
-    @include('layouts.shared/page-title', ['page_title' => 'File Uploads', 'sub_title' => 'Forms'])
+    @include('admin.layouts.shared/page-title', ['page_title' => 'File Uploads', 'sub_title' => 'Forms'])
 
     <div class="row">
         <div class="col-12">
@@ -67,5 +67,5 @@
 @endsection
 
 @section('script')
-    @vite(['resources/js/pages/fileupload.init.js'])
+    @vite(['resources/js/admin/demo/fileupload.init.js'])
 @endsection

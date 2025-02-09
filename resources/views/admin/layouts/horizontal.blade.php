@@ -46,7 +46,7 @@
 
     @include('admin.layouts.shared/footer-scripts')
 
-    @vite(['resources/js/layout.js', 'resources/js/main.js'])
+    @vite(['resources/js/admin/layout.js', 'resources/js/admin/main.js'])
 
 </body>
 

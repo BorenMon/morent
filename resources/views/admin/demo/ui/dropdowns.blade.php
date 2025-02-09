@@ -1,7 +1,7 @@
-@extends('layouts.horizontal', ['title' => 'Dropdowns', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Dropdowns', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Dropdowns'])
+    @include('admin.layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Dropdowns'])
 
     <div class="row">
         <div class="col-xl-12">
@@ -215,7 +215,8 @@
                 <div class="card-header">
                     <h4 class="header-title">Dropend variation</h4>
                     <p class="text-muted mb-0">Trigger dropdown menus at the right of the elements by adding
-                        <code>.dropend</code> to the parent element.</p>
+                        <code>.dropend</code> to the parent element.
+                    </p>
                 </div>
                 <div class="card-body">
 
@@ -282,7 +283,8 @@
                     <h4 class="header-title">Dark dropdowns</h4>
                     <p class="text-muted mb-0">Opt into darker dropdowns to match a dark navbar or custom style by adding
                         <code>.dropdown-menu-dark</code> onto an existing <code>.dropdown-menu</code>. No changes are
-                        required to the dropdown items.</p>
+                        required to the dropdown items.
+                    </p>
                 </div>
                 <div class="card-body">
                     <div class="dropdown">
@@ -594,7 +596,8 @@
                 <div class="card-header">
                     <h4 class="header-title">Dropstart variation</h4>
                     <p class="text-muted mb-0">Trigger dropdown menus at the right of the elements by adding
-                        <code>.dropleft</code> to the parent element.</p>
+                        <code>.dropleft</code> to the parent element.
+                    </p>
                 </div>
                 <div class="card-body">
                     <!-- Default dropstart button -->
@@ -682,7 +685,8 @@
                 <div class="card-header">
                     <h4 class="header-title">Centered dropdowns</h4>
                     <p class="text-muted mb-0">Make the dropdown menu centered below the toggle with
-                        <code>.dropdown-center</code> on the parent element.</p>
+                        <code>.dropdown-center</code> on the parent element.
+                    </p>
                 </div>
                 <div class="card-body">
                     <div class="hstack gap-2">

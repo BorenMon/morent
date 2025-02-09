@@ -1,11 +1,11 @@
-@extends('layouts.horizontal', ['title' => 'Image Crop', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Image Crop', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('css')
     @vite(['node_modules/cropper/dist/cropper.min.css'])
 @endsection
 
 @section('content')
-    @include('layouts.shared/page-title', ['page_title' => 'Image Crop', 'sub_title' => 'Forms'])
+    @include('admin.layouts.shared/page-title', ['page_title' => 'Image Crop', 'sub_title' => 'Forms'])
 
     <div class="row">
         <div class="col-12">
@@ -635,5 +635,5 @@
 @endsection
 
 @section('script')
-    @vite(['resources/js/pages/form-imagecrop.init.js'])
+    @vite(['resources/js/admin/demo/form-imagecrop.init.js'])
 @endsection

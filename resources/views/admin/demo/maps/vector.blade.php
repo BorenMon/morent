@@ -1,11 +1,11 @@
-@extends('layouts.horizontal', ['title' => 'Vector Maps', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Vector Maps', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('css')
     @vite(['node_modules/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css'])
 @endsection
 
 @section('content')
-    @include('layouts.shared/page-title', ['page_title' => 'Vector Maps', 'sub_title' => 'Maps'])
+    @include('admin.layouts.shared/page-title', ['page_title' => 'Vector Maps', 'sub_title' => 'Maps'])
 
     <div class="row">
         <div class="col-12">
@@ -144,5 +144,5 @@
 
 @section('script')
     <!-- Vector Maps Demo js -->
-    @vite(['resources/js/pages/vector-maps.init.js'])
+    @vite(['resources/js/admin/demo/vector-maps.init.js'])
 @endsection

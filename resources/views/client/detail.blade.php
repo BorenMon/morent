@@ -1,7 +1,7 @@
 @extends('client.layout', ['title' => 'Car Detail'])
 
 @section('css')
-    @vite('resources/scss/client/pages/detail.css')
+    @vite('resources/styles/client/pages/detail.css')
 @endsection
 
 @section('content')

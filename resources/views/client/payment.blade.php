@@ -1,7 +1,7 @@
 @extends('client.layout', ['title' => 'Payment'])
 
 @section('css')
-    @vite('resources/scss/client/pages/payment.css')
+    @vite('resources/styles/client/pages/payment.css')
 @endsection
 
 @section('content')

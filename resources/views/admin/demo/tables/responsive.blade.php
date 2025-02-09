@@ -1,11 +1,14 @@
-@extends('layouts.horizontal', ['title' => 'Responsive Table', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Responsive Table', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('css')
     @vite(['node_modules/admin-resources/rwd-table/rwd-table.min.css'])
 @endsection
 
 @section('content')
-    @include('layouts.shared/page-title', ['page_title' => 'Responsive Table', 'sub_title' => 'Tables'])
+    @include('admin.layouts.shared/page-title', [
+        'page_title' => 'Responsive Table',
+        'sub_title' => 'Tables',
+    ])
 
     <div class="row">
         <div class="col-12">
@@ -432,5 +435,5 @@
 @endsection
 
 @section('script')
-    @vite(['resources/js/pages/responsive-table.init.js'])
+    @vite(['resources/js/admin/demo/responsive-table.init.js'])
 @endsection

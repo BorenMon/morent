@@ -1,7 +1,7 @@
-@extends('layouts.horizontal', ['title' => 'Light Sidebar', 'menuColor' => 'light', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Light Sidebar', 'menuColor' => 'light', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Menu', 'page_title' => 'Light Sidebar'])
+    @include('admin.layouts.shared/page-title', ['sub_title' => 'Menu', 'page_title' => 'Light Sidebar'])
 
     <div class="row">
         <div class="col-xxl-3 col-sm-6">
@@ -374,5 +374,5 @@
 @endsection
 
 @section('script')
-    @vite(['resources/js/pages/dashboard.js'])
+    @vite(['resources/js/admin/demo/dashboard.js'])
 @endsection

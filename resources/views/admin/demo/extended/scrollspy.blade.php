@@ -1,7 +1,7 @@
-@extends('layouts.horizontal', ['title' => 'Scrollspy', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Scrollspy', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Extended', 'page_title' => 'Scrollspy'])
+    @include('admin.layouts.shared/page-title', ['sub_title' => 'Extended', 'page_title' => 'Scrollspy'])
 
     <div class="row">
         <div class="col-12">

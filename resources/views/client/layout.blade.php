@@ -14,7 +14,7 @@
     <link rel="shortcut icon" href="/client/icons/favicon.svg" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    @vite('resources/scss/client/main.css')
+    @vite('resources/styles/client/main.css')
     <script src="/tailwind.js"></script>
 
     @yield('meta')

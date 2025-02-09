@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    @include('layouts.shared/title-meta', ['title' => 'Error 404'])
+    @include('admin.layouts.shared/title-meta', ['title' => 'Error 404'])
 
-    @include('layouts.shared/head-css', ['mode' => $mode ?? '', 'demo' => $demo ?? ''])
+    @include('admin.layouts.shared/head-css', ['mode' => $mode ?? '', 'demo' => $demo ?? ''])
 </head>
 
 <body class="authentication-bg">
@@ -20,10 +20,10 @@
                             <div class="col-lg-6">
                                 <div class="d-flex flex-column h-100">
                                     <div class="auth-brand p-4">
-                                        <a href="{{ route('dashboard') }}" class="logo-light">
+                                        <a href="{{ route('admin.dashboard') }}" class="logo-light">
                                             <img src="/images/logo.svg" alt="logo" height="22">
                                         </a>
-                                        <a href="{{ route('dashboard') }}" class="logo-dark">
+                                        <a href="{{ route('admin.dashboard') }}" class="logo-dark">
                                             <img src="/images/logo-dark.svg" alt="dark logo" height="22">
                                         </a>
                                     </div>
@@ -39,7 +39,7 @@
                                                 turn. Don't worry... it happens to the best of us.</p>
                                         </div>
 
-                                        <a href="{{ route('dashboard') }}" class="btn btn-soft-primary w-100"><i
+                                        <a href="{{ route('admin.dashboard') }}" class="btn btn-soft-primary w-100"><i
                                                 class="ri-home-4-line me-1"></i> Back to Home</a>
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@
         </span>
     </footer>
 
-    @include('layouts.shared/footer-scripts')
+    @include('admin.layouts.shared/footer-scripts')
 
 </body>
 

@@ -1,10 +1,10 @@
-@extends('layouts.horizontal', ['title' => 'Basic Tables', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Basic Tables', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('css')
 @endsection
 
 @section('content')
-    @include('layouts.shared/page-title', ['page_title' => 'Basic Tables', 'sub_title' => 'Tables'])
+    @include('admin.layouts.shared/page-title', ['page_title' => 'Basic Tables', 'sub_title' => 'Tables'])
 
     <div class="row">
         <div class="col-xl-6">

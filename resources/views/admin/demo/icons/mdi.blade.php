@@ -1,7 +1,7 @@
-@extends('layouts.horizontal', ['title' => 'Material Design Icons', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Material Design Icons', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', [
+    @include('admin.layouts.shared/page-title', [
         'sub_title' => 'Icons',
         'page_title' => 'Material Design Icons',
     ])
@@ -113,5 +113,5 @@
 
 @section('script')
     <!-- MDI Icons Demo js -->
-    @vite(['resources/js/pages/icons-mdi.init.js'])
+    @vite(['resources/js/admin/demo/icons-mdi.init.js'])
 @endsection

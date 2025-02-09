@@ -1,7 +1,7 @@
-@extends('layouts.horizontal', ['title' => 'Buttons', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Buttons', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Buttons'])
+    @include('admin.layouts.shared/page-title', ['sub_title' => 'Base UI', 'page_title' => 'Buttons'])
 
     <div class="row">
         <div class="col-12">
@@ -9,7 +9,8 @@
                 <div class="card-header">
                     <h4 class="header-title">Default Buttons</h4>
                     <p class="text-muted mb-0">Use the button classes on an <code>&lt;a&gt;</code>,
-                        <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
+                        <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.
+                    </p>
                 </div>
                 <div class="card-body">
                     <div class="d-flex flex-wrap gap-2">
@@ -300,7 +301,8 @@
                             <p class="text-muted mb-0">Add <code>data-bs-toggle="button"</code> to toggle a button’s
                                 <code>active</code> state. If you’re pre-toggling a button, you must manually add the
                                 <code>.active</code> class <strong>and</strong> <code>aria-pressed="true"</code> to ensure
-                                that it is conveyed appropriately to assistive technologies.</p>
+                                that it is conveyed appropriately to assistive technologies.
+                            </p>
                         </div>
                         <div class="card-body">
                             <button type="button" class="btn btn-primary" data-bs-toggle="button">Toggle button</button>
@@ -319,7 +321,8 @@
                             <p class="text-muted mb-0">The <code>.btn</code> classes are designed to be used with the
                                 <code>&lt;button&gt;</code> element. However, you can also use these classes on
                                 <code>&lt;a&gt;</code> or <code>&lt;input&gt;</code> elements (though some browsers may
-                                apply a slightly different rendering).</p>
+                                apply a slightly different rendering).
+                            </p>
                         </div>
                         <div class="card-body">
 

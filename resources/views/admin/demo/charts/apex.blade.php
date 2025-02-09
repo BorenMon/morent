@@ -1,7 +1,7 @@
-@extends('layouts.horizontal', ['title' => 'Apex Charts', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Apex Charts', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    @include('layouts.shared/page-title', ['sub_title' => 'Charts', 'page_title' => 'Apex Charts'])
+    @include('admin.layouts.shared/page-title', ['sub_title' => 'Charts', 'page_title' => 'Apex Charts'])
 
     <div class="row">
         <div class="col-xl-6">
@@ -389,5 +389,5 @@
     <!-- Apex Chart Candlestick Demo js -->
     <script src="https://apexcharts.com/samples/assets/ohlc.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.17/dayjs.min.js"></script>
-    @vite(['resources/js/pages/apex.init.js'])
+    @vite(['resources/js/admin/demo/apex.init.js'])
 @endsection
