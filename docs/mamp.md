@@ -45,8 +45,16 @@ yarn dev
 ```
 #### Set Env Variables (.env)
 ```
-AWS_ACCESS_KEY_ID=minio
-AWS_SECRET_ACCESS_KEY=mino123
+AWS_ACCESS_KEY_ID=*contact_for_credentials
+AWS_SECRET_ACCESS_KEY=*contact_for_credentials
+
+# MAMP DB
+DB_USERNAME=root
+DB_PASSWORD=root
+
+# DEV DB
+DB_USERNAME=*contact_for_credentials
+DB_PASSWORD=*contact_for_credentials
 ```
 #### In Second Terminal
 ```
