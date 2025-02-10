@@ -69,8 +69,8 @@ function uploadCroppedImage() {
 
         // Send AJAX request to Laravel
         $.ajax({
-            url: `/admin/users/${userId}/avatar`,
-            type: 'POST',
+            url: `/users/${userId}/avatar`,
+            type: 'PATCH',
             data: formData,
             processData: false,
             contentType: false,

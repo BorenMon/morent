@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -66,12 +67,12 @@ class UserController extends Controller
     }
 
     /**
-     * Update the authenticated user's avatar.
+     * Update user's avatar.
      */
     public function updateAvatar(Request $request, User $user)
     {
         // Check if the authenticated user is allowed to update the avatar
-        $this->authorize('updateAvatar', $user);
+        $this->authorize('updateUser', $user);
 
         // Validate the uploaded file to ensure it's an image and meets size requirements
         $request->validate([
@@ -95,5 +96,55 @@ class UserController extends Controller
             'message' => 'Avatar updated successfully!',
             'avatar_url' => getAvatarUrl($path)
         ]);
+    }
+
+    /**
+     * Update user's info.
+     */
+    public function updateInfo(Request $request, User $user)
+    {
+        // Check if the authenticated user is allowed to update the info
+        $this->authorize('updateUser', $user);
+
+        // Validate request body
+        $request->validate([
+            'name',
+            'phone',
+            'address',
+        ]);
+
+        // Update the user's info in the database
+        $user->update($request->all());
+
+        // Return a JSON response with the success message
+        return response()->json(['message' => 'User info updated successfully!']);
+    }
+
+    /**
+     * Update user's password.
+     */
+    public function updatePassword(Request $request, User $user)
+    {
+        // Check if the authenticated user is allowed to update the password
+        $this->authorize('updateUser', $user);
+
+        // Validate request body
+        $request->validate([
+            'current_password',
+            'new_password',
+            'new_password_confirmation',
+        ]);
+
+        // Check if the current password matches the user's stored password
+        if (! Hash::check($request->current_password, $user->password)) {
+            return response()->json(['error' => 'Current password does not match.'], 400);
+        }
+
+        // Update the user's password in the database
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        // Return a JSON response with the success message
+        return response()->json(['message' => 'Password updated successfully!']);
     }
 }

@@ -10,7 +10,7 @@ class UserPolicy
     /**
      * Determine if the given user can update another user's avatar.
      */
-    public function updateAvatar(User $authUser, User $user): bool
+    public function updateUser(User $authUser, User $user): bool
     {
         // Admin can update anyone's avatar
         if ($authUser->hasRole(UserRole::Admin->value)) {
