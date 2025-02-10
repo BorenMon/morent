@@ -52,14 +52,9 @@ Run the following commands inside the `laravel` container to install PHP and Nod
 docker exec -it dev_morent_laravel bash
 ```
 
-Run Migrations
+Generate Key
 ```
-php artisan migrate
-```
-
-Run database seeding (To get test/admin user)
-```bash
-php artisan db:seed
+php artisan key:generate
 ```
 
 Access Web App Locally
