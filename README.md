@@ -1,4 +1,4 @@
-# Docker Development Environment
+# Docker Development Environment (Recommended: Place and develop the project within WSL for Windows users to achieve faster hot reload)
 
 This document outlines the setup and usage of the Docker-based development environment for the project.
 

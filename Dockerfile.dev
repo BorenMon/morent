@@ -20,9 +20,9 @@ RUN apt-get update && apt-get install -y \
     zip \
     opcache
 
-# # Install cloudflared
-# RUN curl -fsSL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o /usr/local/bin/cloudflared && \
-#     chmod +x /usr/local/bin/cloudflared
+# Install cloudflared
+RUN curl -fsSL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o /usr/local/bin/cloudflared && \
+    chmod +x /usr/local/bin/cloudflared
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer

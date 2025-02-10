@@ -23,7 +23,16 @@ Ensure you have the following installed:
     openssl.cafile="C:\MAMP\bin\php\php8.2.14\extras\ssl\cacert.pem"
     extension_dir="ext"
     ```
-4. Ensure MAMP MySQL is running.
+4. Ensure that MAMP MySQL is running, or use the deployed DEV database "morent_dev" (recommended). If you choose the DEV database, follow these steps to connect successfully:
+   
+    - Install Cloudflare Tunnel on Windows or other OS by checking the [Installation Guide](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/downloads).
+        ```
+        winget install --id Cloudflare.cloudflared
+        ```
+    - Map your local port 3308 (or any available port you prefer) to securely access the DEV database via Cloudflare Tunnel.
+        ```
+        cloudflared access tcp --hostname morent-db.borenmon.dev --url 127.0.0.1:3308
+        ```
 
 ## Step 2: Project Setup
 Open a terminal at the project directory or use VS Code's integrated terminal (Git Bash recommended).
@@ -42,9 +51,11 @@ AWS_SECRET_ACCESS_KEY=mino123
 #### In Second Terminal
 ```
 php artisan key:generate
+php artisan serve
+
+# If using MAMP
 php artisan migrate
 php artisan db:seed # To create test/admin user
-php artisan serve
 ```
 
 ## Access Web App Locally
