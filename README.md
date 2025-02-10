@@ -1,61 +1,6 @@
-# Docker Development Environment (Recommended: Place and develop the project within WSL for Windows users to achieve faster hot reload)
+# Morent Development Documentation
 
-This document outlines the setup and usage of the Docker-based development environment for the project.
+📖 Full documentation is available at: **[Morent Docs](https://your-username.github.io/your-repo/)**
 
-## Prerequisites
-
-Ensure the following tools are installed on your local machine:
-
-- **Docker**: [Install Docker](https://docs.docker.com/get-docker/)
-- **Docker Compose**: Included with Docker Desktop or install separately.
-
-## Project Overview
-
-This project uses a Dockerized environment for development, which includes services such as:
-
-- Laravel application (PHP 8.2)
-- Node.js (via Docker for frontend build tools)
-
-## Setting Up the Development Environment
-
-### 1. Configure Environment Variables
-
-Copy the example `.env` file and adjust the values as needed:
-
-```bash
-cp .env.dev.example .env
-```
-
-- Ensure the following variables are correctly set in `.env`:
-  - **Database credentials**
-  - **S3 credentials**
-
-### 2. Build and Start Docker Containers
-
-Run the following command to build and start the containers:
-
-```bash
-sh dev.sh
-```
-
-This will:
-- Build the Laravel container with PHP 8.2.
-- Expose the Laravel application on `http://localhost:7000`.
-- Map the Node.js development server to `http://localhost:5173`.
-
-### 3. Run Laravel Migrations
-
-Run the following commands inside the `laravel` container to install PHP and Node.js dependencies:
-
-#### Access the container:
-```bash
-docker exec -it dev_morent_laravel bash
-```
-
-Generate Key
-```
-php artisan key:generate
-```
-
-Access Web App Locally
-Visit http://127.0.0.1:7000
+- [Development with MAMP](https://your-username.github.io/your-repo/mamp)
+- [Development with Docker](https://your-username.github.io/your-repo/docker)
