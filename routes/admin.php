@@ -14,9 +14,12 @@ Route::group([
     'middleware' => ['auth', 'role:MANAGER,STAFF,ADMIN'],
     'as' => 'admin.'
 ], function () {
-    Route::resource('cars', CarController::class);
-
-    Route::resource('users', UserController::class);
+    Route::group([
+        'middleware' => ['role:ADMIN,MANAGER']
+    ], function () {
+        Route::get('/staffs', [UserController::class, 'staffsIndex'])
+            ->name('staffs');
+    });
 
     Route::get('', fn() => view('admin.pages.dashboard'))->name('dashboard');
     Route::get('profile', fn() => view('admin.pages.profile'))->name('profile');

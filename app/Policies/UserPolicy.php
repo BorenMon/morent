@@ -25,4 +25,12 @@ class UserPolicy
         // Users can only update their own avatar
         return $authUser->id === $user->id;
     }
+
+    public function manageStaffs(User $authUser): bool
+    {
+        if ($authUser->hasRole([UserRole::Admin->value, UserRole::Manager->value]))
+            return true;
+
+        return false;
+    }
 }

@@ -24,7 +24,6 @@
                         <div class="">
                             <h4 class="mt-4 fs-17 ellipsis">{{ $user->name }}</h4>
                             <p class="font-13">{{ $user->role }}</p>
-                            <p class="text-muted mb-0"><small>{{ $user->address }}</small></p>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -50,16 +49,16 @@
                     <div class="profile-content">
                         <ul class="nav nav-underline nav-justified gap-0">
                             <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" data-bs-target="#aboutme"
-                                    type="button" role="tab" aria-controls="home" aria-selected="true"
-                                    href="#aboutme">About</a>
+                                    type="button" role="tab" aria-controls="home" aria-selected="true" href="#aboutme"
+                                    href="#profile">About</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" data-bs-target="#edit-profile"
                                     type="button" role="tab" aria-controls="home" aria-selected="true"
-                                    href="#edit-profile">Settings</a></li>
+                                    href="#edit-profile" href="#settings">Settings</a></li>
                         </ul>
 
                         <div class="tab-content m-0 p-4">
-                            <div class="tab-pane" id="aboutme" role="tabpanel" aria-labelledby="home-tab"
+                            <div class="tab-pane active" id="aboutme" role="tabpanel" aria-labelledby="home-tab"
                                 tabindex="0">
                                 <div class="profile-desk">
                                     <h5 class="fs-17 text-dark">Contact Information</h5>
@@ -79,52 +78,123 @@
                                                 <td class="ng-binding">{{ $user->phone }}</td>
                                             </tr>
 
+                                            <tr>
+                                                <th scope="row">Address</th>
+                                                <td class="ng-binding">{{ $user->address }}</td>
+                                            </tr>
+
                                         </tbody>
                                     </table>
                                 </div> <!-- end profile-desk -->
                             </div> <!-- about-me -->
 
                             <!-- settings -->
-                            <div id="edit-profile" class="tab-pane active">
+                            <div id="edit-profile" class="tab-pane">
                                 <div class="user-profile-content">
-                                    <form>
+                                    <h5 class="fs-17 text-dark">Information</h5>
+                                    <form action="{{ route('users.info', ['user' => $user->id]) }}" method="POST">
+                                        @csrf
+                                        @method('PATCH')
                                         <div class="row row-cols-sm-2 row-cols-1">
+                                            {{-- Name --}}
                                             <div class="mb-2">
                                                 <label class="form-label" for="FullName">Name</label>
-                                                <input type="text" value="{{ $user->name }}" id="FullName" class="form-control">
+                                                <input type="text" value="{{ old('name', $user->name) }}" id="FullName"
+                                                    class="form-control @error('name') is-invalid @enderror" name="name">
+                                                @error('name')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
+
+                                            {{-- Email (read-only) --}}
                                             <div class="mb-3">
                                                 <label class="form-label" for="Email">Email</label>
-                                                <input type="email" value="{{ $user->email }}" id="Email"
+                                                <input type="email" value="{{ $user->email }}" id="Email" readonly
                                                     class="form-control">
                                             </div>
+
+                                            {{-- Phone --}}
                                             <div class="mb-3">
                                                 <label class="form-label" for="Phone">Phone</label>
-                                                <input type="text" value="{{ $user->phone }}" id="Phone"
-                                                    class="form-control">
+                                                <input type="text" value="{{ old('phone', $user->phone) }}"
+                                                    id="Phone" class="form-control @error('phone') is-invalid @enderror"
+                                                    name="phone">
+                                                @error('phone')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
+
+                                            {{-- Role (read-only) --}}
                                             <div class="mb-3">
                                                 <label class="form-label" for="Role">Role</label>
-                                                <input type="text" id="example-readonly" class="form-control" readonly=""
-                                        value="{{ $user->role }}">
+                                                <input type="text" id="example-readonly" class="form-control" readonly
+                                                    value="{{ $user->role }}">
                                             </div>
-                                            <div class="mb-3">
-                                                <label class="form-label" for="Password">Password</label>
-                                                <input type="password" placeholder="6 - 15 Characters" id="Password"
-                                                    class="form-control">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label" for="RePassword">Re-Password</label>
-                                                <input type="password" placeholder="6 - 15 Characters" id="RePassword"
-                                                    class="form-control">
-                                            </div>
+
+                                            {{-- Address --}}
                                             <div class="col-sm-12 mb-3">
                                                 <label class="form-label" for="address">Address</label>
-                                                <textarea style="height: 125px;" id="address" class="form-control">{{ $user->address }}</textarea>
+                                                <textarea style="height: 125px;" id="address" class="form-control @error('address') is-invalid @enderror"
+                                                    name="address">{{ old('address', $user->address) }}</textarea>
+                                                @error('address')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
-                                        <button class="btn btn-primary" type="submit"><i
-                                                class="ri-save-line me-1 fs-16 lh-1"></i> Save</button>
+
+                                        {{-- Submit Button --}}
+                                        <button class="btn btn-primary" type="submit">
+                                            <i class="ri-save-line me-1 fs-16 lh-1"></i> Save
+                                        </button>
+                                    </form>
+                                    <hr class="my-4 " />
+                                    <h5 class="fs-17 text-dark">Password</h5>
+                                    <form action="{{ route('users.password', ['user' => $user->id]) }}" method="POST">
+                                        @csrf
+                                        @method('PATCH')
+
+                                        <div class="row row-cols-sm-2 row-cols-1">
+                                            {{-- Current Password --}}
+                                            <div class="mb-2">
+                                                <label class="form-label" for="currentPassword">Current Password</label>
+                                                <input type="password" id="currentPassword"
+                                                    class="form-control @error('current_password') is-invalid @enderror"
+                                                    name="current_password" value="{{ old('current_password') }}">
+                                                @error('current_password')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div></div> {{-- Spacer for grid alignment --}}
+
+                                            {{-- New Password --}}
+                                            <div class="mb-3">
+                                                <label class="form-label" for="newPassword">New Password</label>
+                                                <input type="password" id="newPassword"
+                                                    class="form-control @error('new_password') is-invalid @enderror"
+                                                    name="new_password" value="{{ old('new_password') }}">
+                                                @error('new_password')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            {{-- Confirm Password --}}
+                                            <div class="mb-3">
+                                                <label class="form-label" for="confirmPassword">Confirm Password</label>
+                                                <input type="password" id="confirmPassword"
+                                                    class="form-control @error('new_password_confirmation') is-invalid @enderror"
+                                                    name="new_password_confirmation"
+                                                    value="{{ old('new_password_confirmation') }}">
+                                                @error('new_password_confirmation')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        {{-- Submit Button --}}
+                                        <button class="btn btn-primary" type="submit">
+                                            <i class="ri-save-line me-1 fs-16 lh-1"></i> Change
+                                        </button>
                                     </form>
                                 </div>
                             </div>
@@ -140,13 +210,11 @@
     <!-- end row -->
 
     <!-- Profile Cropper Modal-->
-    <div id="profile-cropper-modal"
-        class="
+    <div id="profile-cropper-modal" class="
             modal
             fade
-        " tabindex="-1"
-        role="dialog" aria-labelledby="standard-modalLabel"
-        aria-hidden="
+        " tabindex="-1" role="dialog"
+        aria-labelledby="standard-modalLabel" aria-hidden="
             true
         ">
         <div class="modal-dialog">

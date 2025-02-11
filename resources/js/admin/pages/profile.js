@@ -200,3 +200,24 @@ function ($) {
     "use strict";
     $.FileUpload.init();
 }(window.jQuery);
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Check if there's a hash in the URL
+    let activeTab = localStorage.getItem("activeTab") || window.location.hash;
+
+    if (activeTab) {
+        let tabElement = document.querySelector(`a[href="${activeTab}"]`);
+        if (tabElement) {
+            new bootstrap.Tab(tabElement).show();
+        }
+    }
+
+    // Listen for tab change events
+    document.querySelectorAll(".nav-link").forEach(tab => {
+        tab.addEventListener("shown.bs.tab", function (event) {
+            let newTab = event.target.getAttribute("href");
+            localStorage.setItem("activeTab", newTab);
+            history.replaceState(null, null, newTab);
+        });
+    });
+});

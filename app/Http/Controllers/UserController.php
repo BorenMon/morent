@@ -13,9 +13,10 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function staffsIndex()
     {
-        //
+        $this->authorize('manageStaffs', auth()->user());
+        return view('admin.pages.staffs.index');
     }
 
     /**
@@ -103,21 +104,23 @@ class UserController extends Controller
      */
     public function updateInfo(Request $request, User $user)
     {
-        // Check if the authenticated user is allowed to update the info
+        // Check if the authenticated user is authorized to update the info
         $this->authorize('updateUser', $user);
 
         // Validate request body
-        $request->validate([
-            'name',
-            'phone',
-            'address',
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:20|unique:users,phone,' . $user->id,
+            'address' => 'nullable|string|max:255',
         ]);
 
-        // Update the user's info in the database
-        $user->update($request->all());
+        // Update only validated fields
+        $user->update($validated);
 
-        // Return a JSON response with the success message
-        return response()->json(['message' => 'User info updated successfully!']);
+        return redirect()->back()->with([
+            'message' => 'Info updated successfully!',
+            'message_type' => 'success'
+        ]);
     }
 
     /**
@@ -129,22 +132,23 @@ class UserController extends Controller
         $this->authorize('updateUser', $user);
 
         // Validate request body
-        $request->validate([
-            'current_password',
-            'new_password',
-            'new_password_confirmation',
+        $validated = $request->validate([
+            'current_password' => ['required', 'string'],
+            'new_password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
         // Check if the current password matches the user's stored password
-        if (! Hash::check($request->current_password, $user->password)) {
-            return response()->json(['error' => 'Current password does not match.'], 400);
+        if (!Hash::check($request->current_password, $user->password)) {
+            return back()->withErrors(['current_password' => 'Current password is incorrect.'])->withInput();
         }
 
         // Update the user's password in the database
         $user->password = Hash::make($request->new_password);
         $user->save();
 
-        // Return a JSON response with the success message
-        return response()->json(['message' => 'Password updated successfully!']);
+        return redirect()->back()->with([
+            'message' => 'Password updated successfully!',
+            'message_type' => 'success'
+        ]);
     }
 }

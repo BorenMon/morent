@@ -1,3 +1,7 @@
+@php
+    $user = Auth::user();
+@endphp
+
 <!-- ========== Horizontal Menu Start ========== -->
 <div class="topnav">
     <div class="container-fluid">
@@ -28,12 +32,14 @@
                             <i class="ri-group-2-line"></i>Customers
                         </a>
                     </li>
+                    @can('manageStaffs', $user)
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" href="/booking3" id="topnav-dashboards"
+                        <a class="nav-link dropdown-toggle arrow-none" href="{{ route('admin.staffs') }}" id="topnav-dashboards"
                             role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="ri-group-line"></i>Staffs
                         </a>
                     </li>
+                    @endcan
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-apps" role="button"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -12,6 +12,15 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
     ->middleware('auth')
     ->name('logout');
 
-Route::patch('/users/{user}/avatar', [UserController::class, 'updateAvatar'])
-    ->middleware('auth')
-    ->name('users.avatar');
+Route::group([
+    'prefix' => '/users',
+    'as' => 'users.',
+    'middleware' => ['auth']
+], function () {
+    Route::patch('/{user}/avatar', [UserController::class, 'updateAvatar'])
+    ->name('avatar');
+    Route::patch('/{user}/info', [UserController::class, 'updateInfo'])
+    ->name('info');
+    Route::patch('/{user}/password', [UserController::class, 'updatePassword'])
+    ->name('password');
+});
