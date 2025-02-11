@@ -49,7 +49,8 @@
                     </a>
                 @else
                     <div class="relative inline-block text-left" id="profile">
-                        <img src="{{ getAvatarUrl($user->avatar) }}" alt="Profile" id="nav-profile" class="shadow-md" />
+                        <img src="{{ getAvatarUrl($user->avatar) }}" alt="Profile" id="nav-profile"
+                            class="shadow-md" />
                         <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden"
                             role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                             <div class="py-1" role="none">
@@ -94,16 +95,16 @@
                         <a
                             href="{{ route('client.cars') }}"class="{{ Route::is('client.cars') ? 'active' : '' }}">Cars</a>
                     </div>
-                    <div class="space-y-2 py-6">
-                        <a href="/favorites">Favorites</a>
-                    </div>
-                    <div class="py-6 !hidden" id="mobile-login">
-                        <a href="/auth">Login</a>
-                    </div>
-                    <div class="space-y-2 py-6 !hidden" id="mobile-profile">
-                        <a href="/profile">Profile Setting</a>
-                        <a class="logout">Logout</a>
-                    </div>
+                    @if (!$user)
+                        <div class="py-6" id="mobile-login">
+                            <a href="/auth">Login</a>
+                        </div>
+                    @else
+                        <div class="space-y-2 py-6" id="mobile-profile">
+                            <a href="/profile" class="cursor-pointer {{ Route::is('client.profile') ? 'active' : '' }}">Profile Setting</a>
+                            <a class="logout cursor-pointer" >Logout</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

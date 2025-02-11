@@ -17,16 +17,13 @@ use Illuminate\Support\Facades\Route;
 // Route::post('/register', [RegisteredUserController::class, 'store'])
 //     ->middleware('guest');
 
-Route::post('/login', [AuthenticatedSessionController::class, 'store'])
-    ->middleware('guest');
+// Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
+//     ->middleware('guest')
+//     ->name('password.request');
 
-Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
-    ->middleware('guest')
-    ->name('password.request');
-
-Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
-    ->middleware('guest')
-    ->name('password.email');
+// Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
+//     ->middleware('guest')
+//     ->name('password.email');
 
 // Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])
 //     ->middleware('guest')
@@ -54,7 +51,3 @@ Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
 
 // Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store'])
 //     ->middleware('auth');
-
-Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-    ->middleware('auth')
-    ->name('logout');

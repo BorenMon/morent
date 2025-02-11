@@ -65,12 +65,13 @@ function uploadCroppedImage() {
         imageSmoothingQuality: 'high'
     }).toBlob((blob) => {
         let formData = new FormData();
+        formData.append('_method', 'PATCH'); // Spoof PATCH
         formData.append('avatar', blob, 'avatar.png');
 
         // Send AJAX request to Laravel
         $.ajax({
             url: `/users/${userId}/avatar`,
-            type: 'PATCH',
+            type: 'POST',
             data: formData,
             processData: false,
             contentType: false,
