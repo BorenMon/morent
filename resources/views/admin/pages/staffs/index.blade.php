@@ -1,5 +1,49 @@
 @extends('admin.layouts.horizontal', ['title' => 'Staffs', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
-    
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="header-title">Staffs List</h4>
+                    <a class="btn btn-primary" href="{{ route('admin.staffs.create') }}" role="button">Create</a>
+                </div>
+                <div class="card-body">
+                    @if ($users->count() > 0)
+                        <table id="basic-datatable" class="table table-striped dt-responsive nowrap w-100">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Role</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->phone }}</td>
+                                        <td>{{ $user->role }}</td>
+                                        <td>
+                                            <a href="javascript: void(0);" class="text-reset fs-16 px-1"> <i
+                                                    class="ri-settings-3-line"></i></a>
+                                            <a href="javascript: void(0);" class="text-reset fs-16 px-1"> <i
+                                                    class="ri-delete-bin-2-line"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @else
+                        <div class="text-center">No data found.</div>
+                    @endif
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div><!-- end col-->
+    </div> <!-- end row-->
 @endsection

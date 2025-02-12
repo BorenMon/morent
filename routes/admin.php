@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\CarController;
 use App\Http\Controllers\UserController;
 
 Route::get('/admin/login', [AuthenticatedSessionController::class, 'create'])
@@ -19,12 +18,12 @@ Route::group([
     ], function () {
         Route::get('/staffs', [UserController::class, 'staffsIndex'])
             ->name('staffs');
+        Route::get('/staffs/create', [UserController::class, 'staffsCreate'])
+            ->name('staffs.create');
+        Route::post('/staffs', [UserController::class, 'staffsStore'])
+            ->name('staffs.store');
     });
 
     Route::get('', fn() => view('admin.pages.dashboard'))->name('dashboard');
     Route::get('profile', fn() => view('admin.pages.profile'))->name('profile');
-
-    Route::group(['middleware' => 'role:ADMIN,MANAGER'], function () {
-
-    });
 });

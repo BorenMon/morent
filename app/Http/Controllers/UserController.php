@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Enums\UserRole;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -15,56 +16,57 @@ class UserController extends Controller
      */
     public function staffsIndex()
     {
+        $authUser = auth()->user();
+
+        $this->authorize('manageStaffs', $authUser);
+
+        $query = User::query();
+
+        if ($authUser->role === UserRole::Admin->value) {
+            $query->whereNotIn('role', ['CUSTOMER'])->where('id', '!=', $authUser->id); // Exclude self
+        } elseif ($authUser->role === UserRole::Manager->value) {
+            $query->whereIn('role', ['STAFF', 'MANAGER'])
+                ->where('id', '!=', $authUser->id); // Exclude self
+        }
+
+        $users = $query->paginate(15);
+
+        return view('admin.pages.staffs.index', compact('users'));
+    }
+
+    public function staffsCreate()
+    {
         $this->authorize('manageStaffs', auth()->user());
-        return view('admin.pages.staffs.index');
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return view('admin.pages.staffs.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    
+    public function staffsStore(Request $request)
     {
-        //
-    }
+        $this->authorize('manageStaffs', auth()->user());
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'phone' => 'required|string|max:20',
+            'role' => 'required|in:STAFF,MANAGER',
+            'address' => 'nullable|string',
+            'password' => 'required|min:8|confirmed',
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+        User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone'] ?? null,
+            'role' => $validated['role'],
+            'address' => $validated['address'] ?? null,
+            'password' => Hash::make($validated['password']),
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->route('admin.staffs')->with([
+            'message' => 'Staff created successfully',
+            'message_type' => 'success'
+        ]);
     }
 
     /**
@@ -73,7 +75,7 @@ class UserController extends Controller
     public function updateAvatar(Request $request, User $user)
     {
         // Check if the authenticated user is allowed to update the avatar
-        $this->authorize('updateUser', $user);
+        $this->authorize('updateUser', auth()->user(), $user);
 
         // Validate the uploaded file to ensure it's an image and meets size requirements
         $request->validate([
