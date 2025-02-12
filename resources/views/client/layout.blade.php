@@ -1,4 +1,5 @@
 @php
+    use App\Enums\UserRole;
     $user = Auth::user();
 @endphp
 
@@ -101,8 +102,14 @@
                         </div>
                     @else
                         <div class="space-y-2 py-6" id="mobile-profile">
-                            <a href="/profile" class="cursor-pointer {{ Route::is('client.profile') ? 'active' : '' }}">Profile Setting</a>
-                            <a class="logout cursor-pointer" >Logout</a>
+                            @if ($user->role == UserRole::Admin->value)
+                                <a href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
+                            @endif
+                            <a href="{{ $user->role == UserRole::Admin->value ? route('admin.profile') : route('client.profile') }}"
+                                class="cursor-pointer {{ Route::is('client.profile') ? 'active' : '' }}">
+                                Profile Setting
+                            </a>
+                            <a class="logout cursor-pointer">Logout</a>
                         </div>
                     @endif
                 </div>

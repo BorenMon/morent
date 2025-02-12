@@ -352,6 +352,11 @@
                         <span>My Account</span>
                     </a>
 
+                    <a href="{{ route('client.home') }}" class="dropdown-item">
+                        <i class="ri-home-line fs-18 align-middle me-1"></i>
+                        <span>MORENT Home</span>
+                    </a>
+
                     <!-- item-->
                     <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                         @csrf
