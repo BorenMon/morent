@@ -22,6 +22,10 @@ Route::group([
             ->name('staffs.create');
         Route::post('/staffs', [UserController::class, 'staffsStore'])
             ->name('staffs.store');
+        Route::get('/staffs/{user}', [UserController::class, 'staffsShow'])
+            ->name('staffs.show');
+        Route::get('/staffs/{user}/edit', [UserController::class, 'staffsEdit'])
+            ->name('staffs.edit');
         Route::delete('/staffs/{user}', [UserController::class, 'staffsDestroy'])
             ->name('staffs.destroy');
     });

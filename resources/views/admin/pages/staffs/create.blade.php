@@ -50,6 +50,8 @@
                                     <option value="STAFF" {{ old('role') == 'STAFF' ? 'selected' : '' }}>Staff</option>
                                     <option value="MANAGER" {{ old('role') == 'MANAGER' ? 'selected' : '' }}>Manager
                                     </option>
+                                    <option value="ADMIN" {{ old('role') == 'ADMIN' ? 'selected' : '' }}>Admin
+                                    </option>
                                 @else
                                     <option value="STAFF" {{ old('role') == 'STAFF' ? 'selected' : '' }}>Staff</option>
                                 @endif

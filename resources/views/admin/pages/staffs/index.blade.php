@@ -24,19 +24,19 @@
                             <tbody>
                                 @foreach ($users as $user)
                                     <tr>
-                                        <td><img src="{{ getAvatarUrl($user->avatar) }}" alt="Avatar" width="24px"></td>
+                                        <td><img src="{{ getAvatarUrl($user->avatar) }}" alt="Avatar" class="avatar-xs rounded"></td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->phone }}</td>
                                         <td>{{ $user->role }}</td>
                                         <td>
-                                            <a href="" class="text-reset fs-16 px-1"> <i
+                                            <a href="{{ route('admin.staffs.show', ['user' => $user->id]) }}" class="text-reset fs-16 px-1"> <i
                                                     class="ri-eye-line text-info"></i></a>
-                                            <a href="" class="text-reset fs-16 px-1"> <i
+                                            <a href="{{ route('admin.staffs.edit', ['user' => $user->id]) }}" class="text-reset fs-16 px-1"> <i
                                                     class="ri-settings-3-line text-primary"></i></a>
                                             <form id="delete-form-{{ $user->id }}"
-                                                action="{{ route('admin.staffs.destroy', ['user' => $user->id]) }}" method="POST"
-                                                style="display: none;">
+                                                action="{{ route('admin.staffs.destroy', ['user' => $user->id]) }}"
+                                                method="POST" style="display: none;">
                                                 @csrf
                                                 @method('DELETE')
                                             </form>

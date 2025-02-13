@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Enums\UserRole;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -43,13 +44,23 @@ class UserController extends Controller
 
     public function staffsStore(Request $request)
     {
-        $this->authorize('manageStaffs', auth()->user());
+        $authUser = auth()->user();
+        $this->authorize('manageStaffs', $authUser);
+
+        // Define role restrictions
+        $allowedRoles = [
+            'ADMIN' => ['ADMIN', 'STAFF', 'MANAGER'],
+            'MANAGER' => ['STAFF'],
+        ];
+
+        // Get the roles that the current user can assign
+        $assignableRoles = $allowedRoles[$authUser->role] ?? [];
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'phone' => 'required|string|max:20',
-            'role' => 'required|in:STAFF,MANAGER',
+            'role' => ['required', Rule::in($assignableRoles)],
             'address' => 'nullable|string',
             'password' => 'required|min:8|confirmed',
         ]);
@@ -66,6 +77,53 @@ class UserController extends Controller
         return redirect()->route('admin.staffs')->with([
             'message' => 'Staff created successfully',
             'message_type' => 'success'
+        ]);
+    }
+
+    public function staffsShow(User $user)
+    {
+        $this->authorize('manageStaffs', $user);
+        $this->authorize('deleteStaff', $user);
+
+        return view('admin.pages.staffs.show', compact('user'));
+    }
+
+    public function staffsEdit(User $user)
+    {
+        $this->authorize('manageStaffs', $user);
+        $this->authorize('deleteStaff', $user);
+
+        return view('admin.pages.staffs.edit', compact('user'));
+    }
+
+    public function staffsUpdate(Request $request, User $user)
+    {
+        $authUser = auth()->user();
+        $this->authorize('manageStaffs', $authUser);
+        $this->authorize('deleteStaff', $user);
+
+        // Define role restrictions
+        $allowedRoles = [
+            'ADMIN' => ['ADMIN', 'STAFF', 'MANAGER'],
+            'MANAGER' => ['STAFF'],
+        ];
+
+        // Get the roles that the current user can assign
+        $assignableRoles = $allowedRoles[$authUser->role] ?? [];
+
+        $validated = $request->validate([
+            'name' => ['required','string','max:255'],
+            'email' => ['required', 'email', Rule::unique('users')->ignore($user)],
+            'phone' => 'nullable|string|max:20',
+            'role' => ['required', Rule::in($assignableRoles)],
+            'address' => 'nullable|string',
+        ]);
+
+        $user->update($validated);
+
+        return redirect()->route('admin.staffs.show', $user)->with([
+            'message' => 'Staff updated successfully',
+            'message_type' =>'success'
         ]);
     }
 
