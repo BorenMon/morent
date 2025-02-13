@@ -40,7 +40,7 @@ class UserController extends Controller
 
         return view('admin.pages.staffs.create');
     }
-    
+
     public function staffsStore(Request $request)
     {
         $this->authorize('manageStaffs', auth()->user());
@@ -66,6 +66,25 @@ class UserController extends Controller
         return redirect()->route('admin.staffs')->with([
             'message' => 'Staff created successfully',
             'message_type' => 'success'
+        ]);
+    }
+
+    public function staffsDestroy(User $user)
+    {
+        $authUser = auth()->user();
+        $this->authorize('manageStaffs', $authUser);
+        $this->authorize('deleteStaff', $user);
+
+        if ($user->delete()) {
+            return redirect()->route('admin.staffs')->with([
+                'message' => 'Staff deleted successfully',
+                'message_type' =>'success'
+            ]);
+        }
+
+        return redirect()->route('admin.staffs')->with([
+            'message' => 'Failed to delete staff',
+            'message_type' => 'error'
         ]);
     }
 

@@ -33,4 +33,20 @@ class UserPolicy
 
         return false;
     }
+
+    public function deleteStaff(User $authUser, User $user): bool
+    {
+        // Admin can delete any user except themselves
+        if ($authUser->role === UserRole::Admin->value) {
+            return $authUser->id !== $user->id;
+        }
+
+        // Manager can only delete staff, but not themselves
+        if ($authUser->role === UserRole::Manager->value && $user->role === UserRole::Staff->value) {
+            return $authUser->id !== $user->id;
+        }
+
+        // Other roles cannot delete users
+        return false;
+    }
 }

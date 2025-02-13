@@ -22,6 +22,8 @@ Route::group([
             ->name('staffs.create');
         Route::post('/staffs', [UserController::class, 'staffsStore'])
             ->name('staffs.store');
+        Route::delete('/staffs/{user}', [UserController::class, 'staffsDestroy'])
+            ->name('staffs.destroy');
     });
 
     Route::get('', fn() => view('admin.pages.dashboard'))->name('dashboard');
