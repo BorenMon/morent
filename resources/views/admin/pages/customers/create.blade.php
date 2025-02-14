@@ -6,10 +6,10 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="header-title">Create Customer</h4>
-                    <a class="btn btn-primary" href="{{ route('admin.staffs') }}" role="button">List</a>
+                    <a class="btn btn-primary" href="{{ route('admin.customers') }}" role="button">List</a>
                 </div>
 
-                <form class="card-body" method="POST" action="{{ route('admin.staffs.store') }}">
+                <form class="card-body" method="POST" action="{{ route('admin.customers.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row row-cols-sm-2 row-cols-1">
                         {{-- Name --}}
@@ -82,7 +82,21 @@
                             @enderror
                         </div>
 
-                        
+                        <div class="mb-3">
+                            <label for="id-card" class="form-label">Identity Card</label>
+                            <input type="file" id="id-card" class="form-control @error('id_card') is-invalid @enderror" name="id_card">
+                            @error('id_card')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="driving-license" class="form-label">Driving License</label>
+                            <input type="file" id="driving-license" class="form-control @error('driving_license') is-invalid @enderror" name="driving_license">
+                            @error('driving_license')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
                     <button class="btn btn-primary float-end">Create</button>
                 </form>

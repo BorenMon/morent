@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Enums\UserRole;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
@@ -193,6 +194,55 @@ class UserController extends Controller
         return view('admin.pages.customers.create');
     }
 
+    public function customersStore(Request $request)
+    {
+        // Validate form input
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'phone' => 'required|string|max:20',
+            'is_verified' => 'nullable|boolean|default:false',
+            'address' => 'nullable|string',
+            'password' => 'required|min:8|confirmed',
+            'id_card' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'driving_license' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        // Handle file uploads
+        $idCardPath = $request->hasFile('id_card')
+            ? $request->file('id_card')->storeAs(
+                'customer/id_cards',
+                Str::uuid() . '.' . $request->file('id_card')->getClientOriginalExtension(),
+                's3'
+            )
+            : null;
+
+        $drivingLicensePath = $request->hasFile('driving_license')
+            ? $request->file('driving_license')->storeAs(
+                'customer/driving_licenses',
+                Str::uuid() . '.' . $request->file('driving_license')->getClientOriginalExtension(),
+                's3'
+            )
+            : null;
+
+        // Create user
+        User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone'],
+            'is_verified' => $request->boolean('is_verified'),
+            'address' => $validated['address'] ?? null,
+            'password' => Hash::make($validated['password']),
+            'id_card' => $idCardPath,
+            'driving_license' => $drivingLicensePath,
+        ]);
+
+        return redirect()->route('admin.customers')->with([
+            'message' => 'Customer created successfully',
+            'message_type' => 'success'
+        ]);
+    }
+
     /**
      * Update user's avatar.
      */
@@ -212,7 +262,11 @@ class UserController extends Controller
         }
 
         // Store the new avatar in the default S3 bucket
-        $path = $request->file('avatar')->store('avatars', 's3');
+        $path = $request->file('avatar')->storeAs(
+            'avatars',
+            Str::uuid() . '.' . $request->file('avatar')->getClientOriginalExtension(),
+            's3'
+        );
 
         // Update the user's avatar path in the database
         $user->avatar = $path;
