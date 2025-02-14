@@ -29,6 +29,7 @@ class User extends Authenticatable
         'address',
         'id_card',
         'driving_license',
+        'is_verified'
     ];
 
     /**

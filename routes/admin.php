@@ -13,23 +13,45 @@ Route::group([
     'middleware' => ['auth', 'role:MANAGER,STAFF,ADMIN'],
     'as' => 'admin.'
 ], function () {
+    // CRUD Staffs
     Route::group([
-        'middleware' => ['role:ADMIN,MANAGER']
+        'prefix' => '/staffs',
+        'middleware' => ['role:ADMIN,MANAGER'],
+        'as' => 'staffs'
     ], function () {
-        Route::get('/staffs', [UserController::class, 'staffsIndex'])
-            ->name('staffs');
-        Route::get('/staffs/create', [UserController::class, 'staffsCreate'])
-            ->name('staffs.create');
-        Route::post('/staffs', [UserController::class, 'staffsStore'])
-            ->name('staffs.store');
-        Route::get('/staffs/{user}', [UserController::class, 'staffsShow'])
-            ->name('staffs.show');
-        Route::get('/staffs/{user}/edit', [UserController::class, 'staffsEdit'])
-            ->name('staffs.edit');
-        Route::put('/staffs/{user}', [UserController::class, 'staffsUpdate'])
-            ->name('staffs.update');
-        Route::delete('/staffs/{user}', [UserController::class, 'staffsDestroy'])
-            ->name('staffs.destroy');
+        Route::get('', [UserController::class, 'staffsIndex']);
+        Route::get('/create', [UserController::class, 'staffsCreate'])
+            ->name('.create');
+        Route::post('', [UserController::class, 'staffsStore'])
+            ->name('.store');
+        Route::get('/{user}', [UserController::class, 'staffsShow'])
+            ->name('.show');
+        Route::get('/{user}/edit', [UserController::class, 'staffsEdit'])
+            ->name('.edit');
+        Route::put('/{user}', [UserController::class, 'staffsUpdate'])
+            ->name('.update');
+        Route::delete('/{user}', [UserController::class, 'staffsDestroy'])
+            ->name('.destroy');
+    });
+
+    // CRUD Customers
+    Route::group([
+        'prefix' => '/customers',
+        'as' => 'customers'
+    ], function () {
+        Route::get('', [UserController::class, 'customersIndex']);
+        Route::get('/create', [UserController::class, 'customersCreate'])
+            ->name('.create');
+        Route::post('', [UserController::class, 'customersStore'])
+            ->name('.store');
+        Route::get('/{user}', [UserController::class, 'customersShow'])
+            ->name('.show');
+        Route::get('/{user}/edit', [UserController::class, 'customersEdit'])
+            ->name('.edit');
+        Route::put('/{user}', [UserController::class, 'customersUpdate'])
+            ->name('.update');
+        Route::delete('/{user}', [UserController::class, 'customersDestroy'])
+            ->name('.destroy');
     });
 
     Route::get('', fn() => view('admin.pages.dashboard'))->name('dashboard');

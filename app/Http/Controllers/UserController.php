@@ -159,6 +159,13 @@ class UserController extends Controller
         ]);
     }
 
+    public function customersIndex()
+    {
+        $users = User::where('role', UserRole::Customer->value)->paginate(15);
+
+        return view('admin.pages.customers.index', compact('users'));
+    }
+
     /**
      * Update user's avatar.
      */
