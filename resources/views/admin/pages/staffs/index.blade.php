@@ -5,7 +5,19 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h4 class="header-title">Staffs List</h4>
+                    <div class="d-flex align-items-center gap-2">
+                        <h4 class="header-title">Staffs List</h4>
+                        <form method="GET" action="{{ route('admin.staffs') }}">
+                            <div class="input-group">
+                                <input type="text" name="search" class="form-control" placeholder="Search staff..."
+                                    value="{{ request('search') }}">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                                @if (request('search'))
+                                    <a href="{{ route('admin.staffs') }}" class="btn btn-secondary">Clear</a>
+                                @endif
+                            </div>
+                        </form>
+                    </div>
                     <a class="btn btn-primary" href="{{ route('admin.staffs.create') }}" role="button">Create</a>
                 </div>
                 <div class="card-body">
@@ -24,15 +36,17 @@
                             <tbody>
                                 @foreach ($users as $user)
                                     <tr>
-                                        <td><img src="{{ getAvatarUrl($user->avatar) }}" alt="Avatar" class="avatar-xs rounded"></td>
+                                        <td><img src="{{ getAvatarUrl($user->avatar) }}" alt="Avatar"
+                                                class="avatar-xs rounded"></td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->phone }}</td>
                                         <td>{{ $user->role }}</td>
                                         <td>
-                                            <a href="{{ route('admin.staffs.show', ['user' => $user->id]) }}" class="text-reset fs-16 px-1"> <i
-                                                    class="ri-eye-line text-info"></i></a>
-                                            <a href="{{ route('admin.staffs.edit', ['user' => $user->id]) }}" class="text-reset fs-16 px-1"> <i
+                                            <a href="{{ route('admin.staffs.show', ['user' => $user->id]) }}"
+                                                class="text-reset fs-16 px-1"> <i class="ri-eye-line text-info"></i></a>
+                                            <a href="{{ route('admin.staffs.edit', ['user' => $user->id]) }}"
+                                                class="text-reset fs-16 px-1"> <i
                                                     class="ri-settings-3-line text-primary"></i></a>
                                             <form id="delete-form-{{ $user->id }}"
                                                 action="{{ route('admin.staffs.destroy', ['user' => $user->id]) }}"

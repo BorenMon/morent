@@ -13,13 +13,16 @@ use Illuminate\Support\Facades\Storage;
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the staffs.
      */
-    public function staffsIndex()
+    public function staffsIndex(Request $request)
     {
         $authUser = auth()->user();
 
         $this->authorize('manageStaffs', $authUser);
+
+        // Get the search query
+        $search = $request->input('search');
 
         $query = User::query();
 
@@ -30,9 +33,19 @@ class UserController extends Controller
                 ->where('id', '!=', $authUser->id); // Exclude self
         }
 
-        $users = $query->paginate(15);
+        // Apply search filter
+        if (!empty($search)) {
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'LIKE', "%$search%")
+                    ->orWhere('email', 'LIKE', "%$search%")
+                    ->orWhere('phone', 'LIKE', "%$search%");
+            });
+        }
 
-        return view('admin.pages.staffs.index', compact('users'));
+        // Paginate results
+        $users = $query->paginate(15)->appends(['search' => $search]);
+
+        return view('admin.pages.staffs.index', compact('users', 'search'));
     }
 
     public function staffsCreate()
@@ -59,7 +72,7 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'phone' => 'required|string|max:20',
+            'phone' => 'required|string|max:20|unique:users,phone',
             'role' => ['required', Rule::in($assignableRoles)],
             'address' => 'nullable|string',
             'password' => 'required|min:8|confirmed',
@@ -83,7 +96,7 @@ class UserController extends Controller
     public function staffsShow(User $user)
     {
         $this->authorize('manageStaffs', $user);
-        $this->authorize('deleteStaff', $user);
+        $this->authorize('modifyStaff', $user);
 
         return view('admin.pages.staffs.show', compact('user'));
     }
@@ -91,7 +104,7 @@ class UserController extends Controller
     public function staffsEdit(User $user)
     {
         $this->authorize('manageStaffs', $user);
-        $this->authorize('deleteStaff', $user);
+        $this->authorize('modifyStaff', $user);
 
         return view('admin.pages.staffs.edit', compact('user'));
     }
@@ -100,7 +113,7 @@ class UserController extends Controller
     {
         $authUser = auth()->user();
         $this->authorize('manageStaffs', $authUser);
-        $this->authorize('deleteStaff', $user);
+        $this->authorize('modifyStaff', $user);
 
         // Define role restrictions
         $allowedRoles = [
@@ -112,9 +125,9 @@ class UserController extends Controller
         $assignableRoles = $allowedRoles[$authUser->role] ?? [];
 
         $validated = $request->validate([
-            'name' => ['required','string','max:255'],
+            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', Rule::unique('users')->ignore($user)],
-            'phone' => 'nullable|string|max:20',
+            'phone' => ['nullable', 'string', 'max:20', Rule::unique('users')->ignore($user)],
             'role' => ['required', Rule::in($assignableRoles)],
             'address' => 'nullable|string',
         ]);
@@ -123,7 +136,7 @@ class UserController extends Controller
 
         return redirect()->route('admin.staffs.show', $user)->with([
             'message' => 'Staff updated successfully',
-            'message_type' =>'success'
+            'message_type' => 'success'
         ]);
     }
 
@@ -131,12 +144,12 @@ class UserController extends Controller
     {
         $authUser = auth()->user();
         $this->authorize('manageStaffs', $authUser);
-        $this->authorize('deleteStaff', $user);
+        $this->authorize('modifyStaff', $user);
 
         if ($user->delete()) {
             return redirect()->route('admin.staffs')->with([
                 'message' => 'Staff deleted successfully',
-                'message_type' =>'success'
+                'message_type' => 'success'
             ]);
         }
 
@@ -152,7 +165,7 @@ class UserController extends Controller
     public function updateAvatar(Request $request, User $user)
     {
         // Check if the authenticated user is allowed to update the avatar
-        $this->authorize('updateUser', auth()->user(), $user);
+        $this->authorize('updateSelf', $user);
 
         // Validate the uploaded file to ensure it's an image and meets size requirements
         $request->validate([
@@ -184,11 +197,12 @@ class UserController extends Controller
     public function updateInfo(Request $request, User $user)
     {
         // Check if the authenticated user is authorized to update the info
-        $this->authorize('updateUser', $user);
+        $this->authorize('updateSelf', $user);
 
         // Validate request body
         $validated = $request->validate([
             'name' => 'required|string|max:255',
+            'email' => ['required', 'email', Rule::unique('users')->ignore($user)],
             'phone' => 'required|string|max:20|unique:users,phone,' . $user->id,
             'address' => 'nullable|string|max:255',
         ]);
@@ -208,7 +222,7 @@ class UserController extends Controller
     public function updatePassword(Request $request, User $user)
     {
         // Check if the authenticated user is allowed to update the password
-        $this->authorize('updateUser', $user);
+        $this->authorize('updateSelf', $user);
 
         // Validate request body
         $validated = $request->validate([

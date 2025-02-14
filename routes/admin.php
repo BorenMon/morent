@@ -26,6 +26,8 @@ Route::group([
             ->name('staffs.show');
         Route::get('/staffs/{user}/edit', [UserController::class, 'staffsEdit'])
             ->name('staffs.edit');
+        Route::put('/staffs/{user}', [UserController::class, 'staffsUpdate'])
+            ->name('staffs.update');
         Route::delete('/staffs/{user}', [UserController::class, 'staffsDestroy'])
             ->name('staffs.destroy');
     });

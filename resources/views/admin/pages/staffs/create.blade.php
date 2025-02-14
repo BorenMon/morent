@@ -90,7 +90,7 @@
                             @enderror
                         </div>
                     </div>
-                    <button class="btn btn-primary float-end">Save</button>
+                    <button class="btn btn-primary float-end">Create</button>
                 </form>
 
             </div>

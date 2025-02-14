@@ -109,8 +109,11 @@
                                             {{-- Email (read-only) --}}
                                             <div class="mb-3">
                                                 <label class="form-label" for="Email">Email</label>
-                                                <input type="email" value="{{ $user->email }}" id="Email" readonly
-                                                    class="form-control">
+                                                <input type="email" value="{{ old('name', $user->email) }}" id="Email"
+                                                    class="form-control @error('name') is-invalid @enderror" name="email">
+                                                @error('email')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             {{-- Phone --}}

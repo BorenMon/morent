@@ -10,17 +10,17 @@ class UserPolicy
     /**
      * Determine if the given user can update another user's avatar.
      */
-    public function updateUser(User $authUser, User $user): bool
+    public function updateSelf(User $authUser, User $user): bool
     {
-        // Admin can update anyone's avatar
-        if ($authUser->hasRole(UserRole::Admin->value)) {
-            return true;
-        }
+        // // Admin can update anyone's avatar
+        // if ($authUser->hasRole(UserRole::Admin->value)) {
+        //     return true;
+        // }
 
-        // Manager can only update staff, but not other managers or admins
-        if ($authUser->hasRole(UserRole::Manager->value) && $user->hasRole(UserRole::Staff->value)) {
-            return true;
-        }
+        // // Manager can only update staff, but not other managers or admins
+        // if ($authUser->hasRole(UserRole::Manager->value) && $user->hasRole(UserRole::Staff->value)) {
+        //     return true;
+        // }
 
         // Users can only update their own avatar
         return $authUser->id === $user->id;
@@ -34,19 +34,19 @@ class UserPolicy
         return false;
     }
 
-    public function deleteStaff(User $authUser, User $user): bool
+    public function modifyStaff(User $authUser, User $user): bool
     {
-        // Admin can delete any user except themselves
+        // Admin can modify any user except themselves
         if ($authUser->role === UserRole::Admin->value) {
             return $authUser->id !== $user->id;
         }
 
-        // Manager can only delete staff, but not themselves
+        // Manager can only modify staff, but not themselves
         if ($authUser->role === UserRole::Manager->value && $user->role === UserRole::Staff->value) {
             return $authUser->id !== $user->id;
         }
 
-        // Other roles cannot delete users
+        // Other roles cannot modify users
         return false;
     }
 }
