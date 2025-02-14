@@ -41,7 +41,13 @@
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->phone }}</td>
-                                        <td>{{ $user->is_verified }}</td>
+                                        <td>
+                                            @if ($user->is_verified)
+                                                <span class="badge bg-info-subtle text-info">Verified</span>
+                                            @else
+                                                <span class="badge bg-warning-subtle text-warning">Unverified</span>
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{ route('admin.customers.show', ['user' => $user->id]) }}"
                                                 class="text-reset fs-16 px-1"> <i class="ri-eye-line text-info"></i></a>

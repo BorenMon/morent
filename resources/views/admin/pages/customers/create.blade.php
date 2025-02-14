@@ -1,11 +1,11 @@
-@extends('admin.layouts.horizontal', ['title' => 'Create Staff', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Create Customer', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     <div class="row mt-4">
         <div class="col-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h4 class="header-title">Create Staff</h4>
+                    <h4 class="header-title">Create Customer</h4>
                     <a class="btn btn-primary" href="{{ route('admin.staffs') }}" role="button">List</a>
                 </div>
 
@@ -42,21 +42,13 @@
                             @enderror
                         </div>
 
-                        {{-- Role --}}
+                        {{-- Verification Status --}}
                         <div class="mb-3">
-                            <label class="form-label" for="Role">Role</label>
-                            <select name="role" id="Role" class="form-control @error('role') is-invalid @enderror">
-                                @if (Auth::user()->role === 'ADMIN')
-                                    <option value="STAFF" {{ old('role') == 'STAFF' ? 'selected' : '' }}>Staff</option>
-                                    <option value="MANAGER" {{ old('role') == 'MANAGER' ? 'selected' : '' }}>Manager
-                                    </option>
-                                    <option value="ADMIN" {{ old('role') == 'ADMIN' ? 'selected' : '' }}>Admin
-                                    </option>
-                                @else
-                                    <option value="STAFF" {{ old('role') == 'STAFF' ? 'selected' : '' }}>Staff</option>
-                                @endif
-                            </select>
-                            @error('role')
+                            <label class="form-label" for="IsVerified">Is Verified</label>
+                            <div class="form-check form-switch">
+                                <input type="checkbox" class="form-check-input" id="IsVerified">
+                            </div>
+                            @error('is_verified')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
@@ -89,10 +81,11 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+
+                        
                     </div>
                     <button class="btn btn-primary float-end">Create</button>
                 </form>
-
             </div>
         </div>
     </div>

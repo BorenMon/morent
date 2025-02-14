@@ -1,4 +1,4 @@
-@extends('admin.layouts.horizontal', ['title' => 'Staff Profile', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Customer Profile', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     <div class="card mt-4">
@@ -7,7 +7,14 @@
                 <img src="{{ getAvatarUrl($user->avatar) }}" alt="image" class="img-fluid avatar-xl rounded" />
                 <div>
                     <h2>{{ $user->name }}</h2>
-                    <h4>{{ $user->role }}</h4>
+                    <h4>
+                        {{ $user->role }}
+                        @if ($user->is_verified)
+                            <span class="badge bg-info-subtle text-info">Verified</span>
+                        @else
+                            <span class="badge bg-warning-subtle text-warning">Unverified</span>
+                        @endif
+                    </h4>
                 </div>
             </div>
             <div>
@@ -36,6 +43,36 @@
                 <div class="col-sm-12 mb-3">
                     <label class="form-label">Address</label>
                     <p>{{ $user->address }}</p>
+                </div>
+                <div class="card col-sm-12 mb-3">
+                    <div class="card-header">
+                        <div class="card-widgets">
+                            {{-- <a href="javascript:;" data-bs-toggle="reload"><i class="ri-refresh-line"></i></a> --}}
+                            {{-- <a data-bs-toggle="collapse" href="#id-card" role="button" aria-expanded="false"
+                                aria-controls="id-card"><i class="ri-subtract-line"></i></a> --}}
+                        </div>
+                        <h5 class="card-title mb-0">Identity Card</h5>
+                    </div>
+                    <div id="id-card" class="collapse show">
+                        <div class="card-body">
+                            <img src="{{ getAssetUrl($user->id_card) }}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="card col-sm-12 mb-3">
+                    <div class="card-header">
+                        <div class="card-widgets">
+                            {{-- <a href="javascript:;" data-bs-toggle="reload"><i class="ri-refresh-line"></i></a> --}}
+                            {{-- <a data-bs-toggle="collapse" href="#driving-license" role="button" aria-expanded="false"
+                                aria-controls="driving-license"><i class="ri-subtract-line"></i></a> --}}
+                        </div>
+                        <h5 class="card-title mb-0">Driving License</h5>
+                    </div>
+                    <div id="driving-license" class="collapse show">
+                        <div class="card-body">
+                            <img src="{{ getAssetUrl($user->driving_license) }}" alt="">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

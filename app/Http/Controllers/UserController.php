@@ -159,11 +159,38 @@ class UserController extends Controller
         ]);
     }
 
-    public function customersIndex()
+    public function customersIndex(Request $request)
     {
-        $users = User::where('role', UserRole::Customer->value)->paginate(15);
+        $authUser = auth()->user();
 
-        return view('admin.pages.customers.index', compact('users'));
+        // Get the search query
+        $search = $request->input('search');
+
+        $query = User::query()->where('role', UserRole::Customer->value);
+
+        // Apply search filter
+        if (!empty($search)) {
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'LIKE', "%$search%")
+                    ->orWhere('email', 'LIKE', "%$search%")
+                    ->orWhere('phone', 'LIKE', "%$search%");
+            });
+        }
+
+        // Paginate results
+        $users = $query->paginate(15)->appends(['search' => $search]);
+
+        return view('admin.pages.customers.index', compact('users', 'search'));
+    }
+
+    public function customersShow(User $user)
+    {
+        return view('admin.pages.customers.show', compact('user'));
+    }
+
+    public function customersCreate()
+    {
+        return view('admin.pages.customers.create');
     }
 
     /**
