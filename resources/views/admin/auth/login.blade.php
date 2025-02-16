@@ -50,9 +50,10 @@
                                                     value="test@test.com">
                                             </div>
                                             <div class="mb-3">
-                                                <a href="auth-forgotpw.html" class="text-muted float-end"><small>Forgot
-                                                        your
-                                                        password?</small></a>
+                                                <a href="{{ route('password.request') }}" class="text-muted float-end">
+                                                <small>
+                                                    Forgot your password?
+                                                </small></a>
                                                 <label for="password" class="form-label">Password</label>
                                                 <input class="form-control" type="password" name="password"
                                                     id="password" placeholder="Enter your password" value="password">

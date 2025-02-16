@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    @include('admin.layouts.shared/title-meta', ['title' => 'Recover Password'])
+    @include('admin.layouts.shared/title-meta', ['title' => 'Reset Password'])
 
     @include('admin.layouts.shared/head-css', ['mode' => $mode ?? '', 'demo' => $demo ?? ''])
 </head>
@@ -29,22 +29,40 @@
                                         </a>
                                     </div>
                                     <div class="p-4 my-auto">
-                                        <h4 class="fs-20">Forgot Password?</h4>
-                                        <p class="text-muted mb-3">Enter your email address and we'll send you an email
-                                            with instructions to reset your password.</p>
-
+                                        <div class="text-center w-75 m-auto">
+                                            <img src="{{ getAvatarUrl($avatar) }}" height="64" alt="user-image"
+                                                class="rounded-circle img-fluid img-thumbnail avatar-xl">
+                                            <h4 class="text-center mt-3 fw-bold fs-20">Hi ! {{ $name }} </h4>
+                                            <p class="text-muted mb-4">Enter your new password to reset.</p>
+                                        </div>
 
                                         <!-- form -->
-                                        <form action="#">
+                                        <form action="{{ route('password.update') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="email" value="{{ $request->email }}">
+                                            <input type="hidden" name="token" value="{{ $request->token }}">
                                             <div class="mb-3">
-                                                <label for="emailaddress" class="form-label">Email address</label>
-                                                <input class="form-control" type="email" id="emailaddress"
-                                                    required="" placeholder="Enter your email">
+                                                <label for="password" class="form-label">Password</label>
+                                                <input class="form-control" type="password" name="password"
+                                                    id="password" required placeholder="Enter your new password">
                                             </div>
+                                            <div class="mb-3">
+                                                <label for="password_confirmation" class="form-label">Confirm
+                                                    Password</label>
+                                                <input class="form-control" type="password" name="password_confirmation"
+                                                    id="password_confirmation" required
+                                                    placeholder="Confirm your new password">
+                                            </div>
+
+                                            @if ($errors->has('token'))
+                                                <div class="alert alert-danger">
+                                                    {{ $errors->first('token') }}
+                                                </div>
+                                            @endif
 
                                             <div class="mb-0 text-start">
                                                 <button class="btn btn-soft-primary w-100" type="submit"><i
-                                                        class="ri-loop-left-line me-1 fw-bold"></i> <span
+                                                        class="ri-login-circle-fill me-1"></i> <span
                                                         class="fw-bold">Reset Password</span> </button>
                                             </div>
                                         </form>
@@ -57,13 +75,6 @@
                 </div>
                 <!-- end row -->
             </div>
-            <div class="row">
-                <div class="col-12 text-center">
-                    <p class="text-dark-emphasis">Back To <a href="{{ route('second', ['auth', 'login']) }}"
-                            class="text-dark fw-bold ms-1 link-offset-3 text-decoration-underline"><b>Log In</b></a></p>
-                </div> <!-- end col -->
-            </div>
-            <!-- end row -->
         </div>
         <!-- end container -->
     </div>
@@ -78,7 +89,6 @@
     </footer>
 
     @include('admin.layouts.shared/footer-scripts')
-
 </body>
 
 </html>

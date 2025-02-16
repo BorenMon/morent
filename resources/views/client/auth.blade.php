@@ -28,7 +28,7 @@
             <i class="bx bxs-lock-alt"></i>
           </div>
           <div class="forgot-link">
-            <a href="#">Forget Password</a>
+            <a href="{{ route('password.request') }}">Forget Password?</a>
           </div>
           <button type="submit" class="btn">Login</button>
         </form>
