@@ -200,8 +200,8 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'phone' => 'required|string|max:20',
-            'is_verified' => 'nullable|boolean|default:false',
+            'phone' => 'required|string|max:20|unique:users,phone',
+            'is_verified' => 'required|boolean',
             'address' => 'nullable|string',
             'password' => 'required|min:8|confirmed',
             'id_card' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
@@ -242,6 +242,48 @@ class UserController extends Controller
             'message_type' => 'success'
         ]);
     }
+
+    public function customersEdit(User $user)
+    {
+        return view('admin.pages.customers.edit', compact('user'));
+    }
+
+    public function customersUpdate(Request $request, User $user)
+    {
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', Rule::unique('users')->ignore($user)],
+            'phone' => ['nullable', 'string', 'max:20', Rule::unique('users')->ignore($user)],
+            'is_verified' => 'required|boolean',
+            'address' => 'nullable|string'
+        ]);
+
+        // Ensure is_verified has a default value of false
+        $validated['is_verified'] = $request->boolean('is_verified');
+
+        $user->update($validated);
+
+        return redirect()->route('admin.customers.show', $user)->with([
+            'message' => 'Customer updated successfully',
+            'message_type' => 'success'
+        ]);
+    }
+
+    public function customersDestroy(User $user)
+    {
+        if ($user->delete()) {
+            return redirect()->route('admin.customers')->with([
+               'message' => 'Customer deleted successfully',
+               'message_type' =>'success'
+            ]);
+        }
+
+        return redirect()->route('admin.customers')->with([
+           'message' => 'Failed to delete customer',
+           'message_type' => 'error'
+        ]);
+    }
+
 
     /**
      * Update user's avatar.

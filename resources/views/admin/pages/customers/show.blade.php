@@ -18,9 +18,10 @@
                 </div>
             </div>
             <div>
-                <a href="{{ route('admin.staffs.edit', ['user' => $user->id]) }}" class="text-reset fs-24 px-1"> <i class="ri-settings-3-line text-primary"></i></a>
+                <a href="{{ route('admin.customers.edit', ['user' => $user->id]) }}" class="text-reset fs-24 px-1"> <i
+                        class="ri-settings-3-line text-primary"></i></a>
                 <form id="delete-form-{{ $user->id }}"
-                    action="{{ route('admin.staffs.destroy', ['user' => $user->id]) }}" method="POST"
+                    action="{{ route('admin.customers.destroy', ['user' => $user->id]) }}" method="POST"
                     style="display: none;">
                     @csrf
                     @method('DELETE')
@@ -46,31 +47,21 @@
                 </div>
                 <div class="card col-sm-12 mb-3">
                     <div class="card-header">
-                        <div class="card-widgets">
-                            {{-- <a href="javascript:;" data-bs-toggle="reload"><i class="ri-refresh-line"></i></a> --}}
-                            {{-- <a data-bs-toggle="collapse" href="#id-card" role="button" aria-expanded="false"
-                                aria-controls="id-card"><i class="ri-subtract-line"></i></a> --}}
-                        </div>
                         <h5 class="card-title mb-0">Identity Card</h5>
                     </div>
                     <div id="id-card" class="collapse show">
                         <div class="card-body">
-                            <img src="{{ getAssetUrl($user->id_card) }}" alt="">
+                            <img src="{{ getAssetUrl($user->id_card) }}" alt="" style="width: 100%; height: 300px;object-fit: contain; object-position: center;">
                         </div>
                     </div>
                 </div>
                 <div class="card col-sm-12 mb-3">
                     <div class="card-header">
-                        <div class="card-widgets">
-                            {{-- <a href="javascript:;" data-bs-toggle="reload"><i class="ri-refresh-line"></i></a> --}}
-                            {{-- <a data-bs-toggle="collapse" href="#driving-license" role="button" aria-expanded="false"
-                                aria-controls="driving-license"><i class="ri-subtract-line"></i></a> --}}
-                        </div>
                         <h5 class="card-title mb-0">Driving License</h5>
                     </div>
                     <div id="driving-license" class="collapse show">
                         <div class="card-body">
-                            <img src="{{ getAssetUrl($user->driving_license) }}" alt="">
+                            <img src="{{ getAssetUrl($user->driving_license) }}" alt="" style="width: 100%; height: 300px;object-fit: contain; object-position: center;">
                         </div>
                     </div>
                 </div>

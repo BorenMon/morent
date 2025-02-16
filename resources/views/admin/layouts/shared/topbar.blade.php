@@ -357,14 +357,14 @@
                         <span>MORENT Home</span>
                     </a>
 
-                    <!-- item-->
-                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
-                        <a href="javascript:void(0)" class="dropdown-item" onclick="this.closest('form').submit();">
-                            <i class="ri-logout-box-line fs-18 align-middle me-1"></i>
-                            <span>Logout</span>
-                        </a>
                     </form>
+
+                    <a href="javascript:void(0)" class="dropdown-item" id="logout-btn">
+                        <i class="ri-logout-box-line fs-18 align-middle me-1"></i>
+                        <span>Logout</span>
+                    </a>
                 </div>
             </li>
         </ul>

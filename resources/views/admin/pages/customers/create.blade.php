@@ -46,7 +46,8 @@
                         <div class="mb-3">
                             <label class="form-label" for="IsVerified">Is Verified</label>
                             <div class="form-check form-switch">
-                                <input type="checkbox" class="form-check-input" id="IsVerified">
+                                <input type="hidden" name="is_verified" value="0">
+                                <input type="checkbox" class="form-check-input" value="1" id="IsVerified" name="is_verified">
                             </div>
                             @error('is_verified')
                                 <div class="invalid-feedback">{{ $message }}</div>

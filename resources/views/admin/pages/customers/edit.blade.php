@@ -1,4 +1,4 @@
-@extends('admin.layouts.horizontal', ['title' => 'Edit Staff', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Edit Customer', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     <div class="row mt-4">
@@ -12,10 +12,11 @@
                             <h4>{{ $user->role }}</h4>
                         </div>
                     </div>
-                    <a class="btn btn-primary" href="{{ route('admin.staffs') }}" role="button">List</a>
+                    <a class="btn btn-primary" href="{{ route('admin.customers') }}" role="button">List</a>
                 </div>
 
-                <form class="card-body" method="POST" action="{{ route('admin.staffs.update', ['user' => $user->id]) }}">
+                <form class="card-body" method="POST"
+                    action="{{ route('admin.customers.update', ['user' => $user->id]) }}">
                     @csrf
                     @method('PUT')
                     <div class="row row-cols-sm-2 row-cols-1">
@@ -49,21 +50,15 @@
                             @enderror
                         </div>
 
-                        {{-- Role --}}
+                        {{-- Verification Status --}}
                         <div class="mb-3">
-                            <label class="form-label" for="Role">Role</label>
-                            <select name="role" id="Role" class="form-control @error('role') is-invalid @enderror">
-                                @if (Auth::user()->role === 'ADMIN')
-                                    <option value="STAFF" {{ old('role', $user->role) == 'STAFF' ? 'selected' : '' }}>Staff</option>
-                                    <option value="MANAGER" {{ old('role', $user->role) == 'MANAGER' ? 'selected' : '' }}>Manager
-                                    </option>
-                                    <option value="ADMIN" {{ old('role', $user->role) == 'ADMIN' ? 'selected' : '' }}>Admin
-                                    </option>
-                                @else
-                                    <option value="STAFF" {{ old('role', $user->role) == 'STAFF' ? 'selected' : '' }}>Staff</option>
-                                @endif
-                            </select>
-                            @error('role')
+                            <label class="form-label" for="IsVerified">Is Verified</label>
+                            <div class="form-check form-switch">
+                                <input type="hidden" name="is_verified" value="0">
+                                <input type="checkbox" class="form-check-input" id="IsVerified" name="is_verified"
+                                    value="1" @checked(old('is_verified', $user->is_verified))>
+                            </div>
+                            @error('is_verified')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
@@ -77,9 +72,30 @@
                             @enderror
                         </div>
                     </div>
-                    <button class="btn btn-primary float-end">Edit</button>
+                    <button class="btn btn-primary float-end mb-3">Edit</button>
+                    <div class="card col-sm-12 mb-3">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Identity Card</h5>
+                        </div>
+                        <div id="id-card" class="collapse show">
+                            <div class="card-body">
+                                <img src="{{ getAssetUrl($user->id_card) }}" alt=""
+                                    style="width: 100%; height: 300px;object-fit: contain; object-position: center;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card col-sm-12 mb-3">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Driving License</h5>
+                        </div>
+                        <div id="driving-license" class="collapse show">
+                            <div class="card-body">
+                                <img src="{{ getAssetUrl($user->driving_license) }}" alt=""
+                                    style="width: 100%; height: 300px;object-fit: contain; object-position: center;">
+                            </div>
+                        </div>
+                    </div>
                 </form>
-
             </div>
         </div>
     </div>

@@ -32,7 +32,7 @@ class UpdateUsersAndCreateBookingsAndCarsTablesWithUuid extends Migration
         'ODDAR_MEANCHEY',
         'PREY_VENG',
         'PAILIN'
-    ];    
+    ];
 
     /**
      * Run the migrations.
@@ -65,11 +65,11 @@ class UpdateUsersAndCreateBookingsAndCarsTablesWithUuid extends Migration
             $table->string('card_image');
             $table->json('images');
             $table->text('description');
-        
+
             $table->unsignedBigInteger('type_id')->nullable(); // Reference to picklists (integer)
             $table->unsignedBigInteger('steering_id')->nullable(); // Reference to picklists (integer)
             $table->unsignedBigInteger('brand_id')->nullable(); // Reference to picklists (integer)
-        
+
             $table->string('model');
             $table->integer('gasoline');
             $table->integer('capacity');
@@ -79,7 +79,7 @@ class UpdateUsersAndCreateBookingsAndCarsTablesWithUuid extends Migration
             $table->integer('rent_times')->default(0);
             $table->float('rating')->default(0);
             $table->timestamps();
-        
+
             // Foreign keys referencing picklists
             $table->foreign('type_id')->references('id')->on('picklists')->onDelete('set null');
             $table->foreign('steering_id')->references('id')->on('picklists')->onDelete('set null');
@@ -89,8 +89,8 @@ class UpdateUsersAndCreateBookingsAndCarsTablesWithUuid extends Migration
         // Create the bookings table
         Schema::create('bookings', function (Blueprint $table) {
             $table->uuid('id')->primary(); // Primary key as UUID
-            $table->uuid('customer_id'); // Foreign key as UUID
-            $table->uuid('car_id'); // Foreign key as UUID
+            $table->uuid('customer_id')->nullable(); // Foreign key as UUID
+            $table->uuid('car_id')->nullable(); // Foreign key as UUID
             $table->enum('pick_up_city', $this->city_provinces); // Update with actual cities
             $table->timestamp('pick_up_datetime')->nullable();
             $table->enum('drop_off_city', $this->city_provinces); // Update with actual cities
@@ -106,8 +106,8 @@ class UpdateUsersAndCreateBookingsAndCarsTablesWithUuid extends Migration
             $table->timestamps();
 
             // Foreign keys
-            $table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('car_id')->references('id')->on('cars')->onDelete('cascade');
+            $table->foreign('customer_id')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('car_id')->references('id')->on('cars')->onDelete('set null');
         });
     }
 

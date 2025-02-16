@@ -7,5 +7,5 @@ function getAvatarUrl($avatarPath)
 
 function getAssetUrl($path)
 {
-    return $path ? env('AWS_URL') . '/' . env('AWS_BUCKET') . '/' . $path : '';
+    return $path ? env('AWS_URL') . '/' . env('AWS_BUCKET') . '/' . $path : asset('images/no-image.png');
 }
