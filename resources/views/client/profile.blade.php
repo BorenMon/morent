@@ -4,6 +4,10 @@
 
 @extends('client.layout', ['title' => 'Profile'])
 
+@section('meta')
+    <meta name="user-id" content="{{ auth()->id() }}">
+@endsection
+
 @section('css')
     @vite('resources/styles/client/pages/profile.css')
 @endsection
@@ -82,7 +86,7 @@
                                                 Profile Picture
                                             </h3>
                                             <div class="mb-4 text-gray-500 text-xs">
-                                                JPG, GIF or PNG. Max size of 3 MB
+                                                JPG, GIF or PNG. Max size of 2 MB
                                             </div>
                                             <div class="flex items-center space-x-4">
                                                 <button class="flex items-center" id="upload-save-profile">
@@ -259,7 +263,7 @@
                             <a href="" class="text-sm text-blue-500">View All</a>
                         </div>
                         <img src="/client/images/loading.svg" width="100" style="margin: 0 auto;" class="hidden">
-                        <ul class="grid grid-cols-1 gap-[32px] min-[1000px]:grid-cols-2 hidden"></ul>
+                        <ul class="grid-cols-1 gap-[32px] min-[1000px]:grid-cols-2 hidden"></ul>
                     </div>
                     <div class="hidden p-[24px] rounded-lg bg-white border border-gray-200 shadow-sm" id="rentings"
                         role="tabpanel" aria-labelledby="rentings-tab">

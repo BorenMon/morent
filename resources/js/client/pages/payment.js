@@ -221,7 +221,7 @@ $("#book-button").on("click", async function () {
                 })
                 .then(() => {
                     $("#loading-backdrop").css("display", "none");
-                    window.location.href = "//profile#bookings-tab";
+                    window.location.href = "//profile#bookings";
                 });
         } else {
             $("#loading-backdrop").css("display", "none");

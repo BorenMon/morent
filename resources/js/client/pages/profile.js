@@ -19,6 +19,67 @@ import {
 import directusConfig from "../config/directus.config.js";
 import serviceApi from "../services/authServiceAPI.js";
 
+let userId = $('meta[name="user-id"]').attr('content');
+let csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Get all the tabs and tab contents
+    let tabs = document.querySelectorAll(".tab");
+    let tabContents = document.querySelectorAll("[role='tabpanel']");
+
+    // Check if there's a hash in the URL (e.g., #bookings, #profile-settings)
+    let hash = window.location.hash;
+
+    if (hash) {
+        // Find the tab based on the hash and activate it
+        let activeTab = document.querySelector(`[data-tabs-target="${hash}"]`);
+        if (activeTab) {
+            setActiveTab(activeTab);
+        }
+
+        // Show the corresponding tab content based on the hash
+        let activeContent = document.querySelector(hash);
+        if (activeContent) {
+            activeContent.classList.remove("hidden");
+        }
+    }
+
+    // Event listener for tab clicks
+    tabs.forEach(tab => {
+        tab.addEventListener("click", function () {
+            // Update the active tab
+            setActiveTab(this);
+
+            // Show the corresponding tab content
+            let targetId = this.getAttribute("data-tabs-target");
+            let targetContent = document.querySelector(targetId);
+
+            // Hide all tab contents
+            tabContents.forEach(content => content.classList.add("hidden"));
+
+            // Show the selected tab content
+            if (targetContent) {
+                targetContent.classList.remove("hidden");
+            }
+
+            // Update the URL hash without reloading the page
+            history.pushState(null, null, targetId);
+        });
+    });
+
+    function setActiveTab(selectedTab) {
+        // Deactivate all tabs
+        tabs.forEach(tab => {
+            tab.classList.remove("border-b-2", "border-gray-700", "text-gray-900");
+            tab.setAttribute("aria-selected", "false");
+        });
+
+        // Activate the selected tab
+        selectedTab.classList.add("border-b-2", "border-gray-700", "text-gray-900");
+        selectedTab.setAttribute("aria-selected", "true");
+    }
+});
+
 // if (profile.is_verified) {
 //   $('#status').html(`
 //     <img src="/assets/icons/verified.svg" alt="">&nbsp;
@@ -36,10 +97,10 @@ const uploadProfileInput = $("#upload-profile");
 const profilePic = $("#profile-pic");
 const removeButton = $("#remove-cancel-profile");
 let profileFile;
-let localProfilePic = profile.avatar;
+let localProfilePic = profilePic.attr('src')
 const defaultProfilePicSrc = "/client/images/sample-profile.jpg";
 let currentProfilePicSrc = localProfilePic
-    ? getAssetUrl(localProfilePic)
+    ? localProfilePic
     : defaultProfilePicSrc;
 let processingFile;
 
@@ -71,8 +132,7 @@ uploadProfileButton.on("click", async () => {
     if (!isProfileInputDisabled()) {
         uploadProfileInput.trigger("click");
     } else {
-        const avatar = await updateProfileImage(profileFile);
-        $("#nav-profile").attr("src", getAssetUrl(avatar));
+        $("#nav-profile").attr("src", await updateProfileImage(userId, csrfToken, profileFile));
         uploadProfileInput.attr("disabled", false);
         removeButton.text("Remove");
         uploadProfileButton.html(`
@@ -610,10 +670,9 @@ Promise.all(idCardImages.map((file) => urlToFilePondObject(file))).then(
                 const bookingsLoading = $("#bookings img");
                 bookingsLoading.removeClass("hidden");
                 bookingsList.addClass("hidden");
-                const response = await serviceApi.get("/renting/bookings");
                 bookingsList.empty();
 
-                response.data.data.forEach((booking) => {
+                [].forEach((booking) => {
                     const {
                         id,
                         car_id: { card_image, model, type },
@@ -686,15 +745,14 @@ Promise.all(idCardImages.map((file) => urlToFilePondObject(file))).then(
                 const rentingLoading = $("#rentings img");
                 rentingLoading.removeClass("hidden");
                 rentingList.addClass("hidden");
-                const response = await serviceApi.get("/renting");
                 rentingList.empty();
 
-                if (response.data.data.length > 0) {
+                if ([].length > 0) {
                     const {
                         car_id: { card_image, model, type },
                         date_created,
                         total_amount,
-                    } = response.data.data[0];
+                    } = [][0];
 
                     rentingList.html(`
             <img src="${getAssetUrl(card_image)}"
@@ -726,10 +784,9 @@ Promise.all(idCardImages.map((file) => urlToFilePondObject(file))).then(
                 const historyLoading = $("#history img");
                 historyLoading.removeClass("hidden");
                 historyList.addClass("hidden");
-                const response = await serviceApi.get("/renting/history");
                 historyList.empty();
 
-                response.data.data.forEach((booking) => {
+                [].forEach((booking) => {
                     const {
                         id,
                         car_id: { card_image, model, type },
