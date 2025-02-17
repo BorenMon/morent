@@ -67,32 +67,3 @@ export async function updateProfileImage(userId, csrfToken, fileInput) {
         toast(`Error updating profile image: ${error.message}`, "error");
     }
 }
-
-export async function removeProfileImage() {
-    try {
-        // Step 1: Fetch the current user's profile
-        const profile = await fetchProfile();
-
-        if (!profile.avatar) {
-            console.warn("No profile image to remove.");
-            return null; // Exit if there's no avatar to remove
-        }
-
-        const fileId = profile.avatar; // Get the current avatar file ID
-
-        // Step 2: Remove the avatar field from the user's profile
-        const updateResponse = await api.patch(`/users/${profile.id}`, {
-            avatar: null, // Set the avatar field to null
-        });
-
-        const updatedData = updateResponse.data.data;
-        updateLocalProfile(updatedData); // Update the local profile cache
-
-        // Step 3: Delete the file from Directus
-        await api.delete(`/files/${fileId}`);
-        console.log("Profile image and file removed successfully.");
-    } catch (error) {
-        console.error("Error removing profile image:", error.message);
-        throw error;
-    }
-}

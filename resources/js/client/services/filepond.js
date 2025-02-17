@@ -6,7 +6,7 @@ export async function urlToFilePondObject(file) {
     options: {
       type: 'local',
       metadata: {
-        id: file.id
+        object_name: file.object_name
       }
     }
   }

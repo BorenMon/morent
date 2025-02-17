@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
 Route::group([
@@ -22,4 +23,7 @@ Route::group([
 
     Route::get('/auth', fn() => view('client.auth'))->middleware('guest')->name('auth');
     Route::post('/register', [RegisteredUserController::class, 'storeCustomer'])->name('register');
+
+    Route::post('/id-card', [UserController::class, ''])->name('id-card');
+    Route::delete('/id-card', [UserController::class, ''])->name('id-card');
 });

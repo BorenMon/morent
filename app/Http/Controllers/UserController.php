@@ -273,14 +273,14 @@ class UserController extends Controller
     {
         if ($user->delete()) {
             return redirect()->route('admin.customers')->with([
-               'message' => 'Customer deleted successfully',
-               'message_type' =>'success'
+                'message' => 'Customer deleted successfully',
+                'message_type' => 'success'
             ]);
         }
 
         return redirect()->route('admin.customers')->with([
-           'message' => 'Failed to delete customer',
-           'message_type' => 'error'
+            'message' => 'Failed to delete customer',
+            'message_type' => 'error'
         ]);
     }
 
@@ -318,6 +318,30 @@ class UserController extends Controller
         return response()->json([
             'message' => 'Avatar updated successfully!',
             'avatar_url' => getAvatarUrl($path)
+        ]);
+    }
+
+    /**
+     * Remove user's avatar.
+     */
+    public function removeAvatar(User $user)
+    {
+        // Check if the authenticated user is allowed to update the avatar
+        $this->authorize('updateSelf', $user);
+
+        // Ensure the user has an avatar before attempting to delete
+        if ($user->avatar) {
+            // Delete the avatar from S3
+            Storage::disk('s3')->delete($user->avatar);
+
+            // Remove the avatar path from the database
+            $user->avatar = null;
+            $user->save();
+        }
+
+        // Return a JSON response confirming the removal
+        return response()->json([
+            'message' => 'Avatar removed successfully!'
         ]);
     }
 
@@ -372,6 +396,35 @@ class UserController extends Controller
         return redirect()->back()->with([
             'message' => 'Password updated successfully!',
             'message_type' => 'success'
+        ]);
+    }
+
+    public function uploadIdCard(Request $request, User $user)
+    {
+        $this->authorize('updateSelf', $user);
+
+        $request->validate([
+            'id_card' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        if ($user->id_card) {
+            Storage::disk('s3')->delete($user->id_card);
+        }
+
+        $path = $request->file('id_card')->storeAs(
+            'customer/id_cards',
+            Str::uuid() . '.' . $request->file('id_card')->getClientOriginalExtension(),
+            's3'
+        );
+
+        // Update the user's avatar path in the database
+        $user->id_card = $path;
+        $user->save();
+
+        // Return a JSON response with the success message and avatar URL
+        return response()->json([
+            'message' => 'Avatar updated successfully!',
+            'id_card' => $path
         ]);
     }
 }

@@ -356,9 +356,9 @@
             </main>
         </div>
     </div>
-    <div class="backdrop items-center justify-center" id="loading-backdrop">
+    {{-- <div class="backdrop items-center justify-center" id="loading-backdrop">
         <img src="/client/images/loading.svg">
-    </div>
+    </div> --}}
 @endsection
 
 @section('script')

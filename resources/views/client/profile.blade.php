@@ -6,6 +6,8 @@
 
 @section('meta')
     <meta name="user-id" content="{{ auth()->id() }}">
+    <meta name="user-id-card" content="{{ $user->id_card }}">
+    <meta name="user-id-card-url" content="{{ getAssetUrl($user->id_card) }}">
 @endsection
 
 @section('css')
@@ -15,27 +17,7 @@
 @section('content')
     <div id="body-wrapper">
         <div id="body" class="container-fluid">
-            <div id="skeleton-loading">
-                <div role="status"
-                    class="space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center">
-                    <div class="flex items-center justify-center w-full h-48 bg-gray-300 rounded sm:w-96">
-                        <svg class="w-10 h-10 text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 20 18">
-                            <path
-                                d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-                        </svg>
-                    </div>
-                    <div class="w-full">
-                        <div class="h-2.5 bg-gray-200 rounded-full w-48 mb-4"></div>
-                        <div class="h-2 bg-gray-200 rounded-full max-w-[480px] mb-2.5"></div>
-                        <div class="h-2 bg-gray-200 rounded-full mb-2.5"></div>
-                        <div class="h-2 bg-gray-200 rounded-full max-w-[440px] mb-2.5"></div>
-                        <div class="h-2 bg-gray-200 rounded-full max-w-[460px] mb-2.5"></div>
-                        <div class="h-2 bg-gray-200 rounded-full max-w-[360px]"></div>
-                    </div>
-                </div>
-            </div>
-            <div id="loaded" class="hidden">
+            <div>
                 <div class="mb-8 dark:border-gray-700">
                     <ul class="flex flex-wrap -mb-px text-sm font-medium text-center space-x-[24px]" id="default-tab"
                         data-tabs-toggle="#default-tab-content" role="tablist">
@@ -75,7 +57,15 @@
                             <div class="col-span-full xl:col-auto">
                                 <div
                                     class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 relative">
-                                    <div id="status"></div>
+                                    <div id="status">
+                                        @if ($user->is_verified)
+                                        <img src="client/icons/verified.svg" alt="">&nbsp;
+                                        Verified
+                                        @else
+                                        <img src="client/icons/unverified.svg" alt="">&nbsp;
+                                        Unverified
+                                        @endif
+                                    </div>
                                     <div
                                         class="items-center sm:flex xl:block 2xl:flex sm:space-x-4 xl:space-x-0 2xl:space-x-4">
                                         <img class="mb-4 rounded-lg w-28 h-28 sm:mb-0 xl:mb-4 2xl:mb-0"
@@ -177,81 +167,116 @@
                                     <h3 class="mb-4 text-xl font-semibold">
                                         General Information
                                     </h3>
-                                    <div>
+                                    <form action="{{ route('users.info', ['user' => $user->id]) }}" method="POST">
+                                        @csrf
+                                        @method('PATCH')
                                         <div class="grid grid-cols-6 gap-6">
                                             <div class="col-span-6 sm:col-span-3">
-                                                <label for="first-name" class="block mb-2 font-medium text-gray-900">Name <span class="text-red-500">*</span></label>
+                                                <label for="name" class="block mb-2 font-medium text-gray-900">Name
+                                                    <span class="text-red-500">*</span></label>
                                                 <input type="text" name="name" id="name"
                                                     class="shadow-sm bg-gray-50 text-gray-900 rounded-lg block w-full p-2.5 focus:outline-0"
-                                                    autocomplete="on" value="{{ $user->name }}" />
+                                                    autocomplete="on" value="{{ old('name', $user->name) }}" />
+                                                @error('name')
+                                                    <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                                                @enderror
                                             </div>
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="address" class="block mb-2 font-medium text-gray-900">Address
                                                     <span class="text-red-500">*</span></label>
                                                 <input type="text" name="address" id="address"
                                                     class="shadow-sm bg-gray-50 text-gray-900 rounded-lg block w-full p-2.5 focus:outline-0"
-                                                    autocomplete="on" value="{{ $user->address }}" />
+                                                    autocomplete="on" value="{{ old('address', $user->address) }}" />
+                                                @error('address')
+                                                    <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                                                @enderror
                                             </div>
                                             <div class="col-span-6 sm:col-span-3">
-                                                <label for="email"
-                                                    class="block mb-2 font-medium text-gray-900">Email</label>
+                                                <label for="email" class="block mb-2 font-medium text-gray-900">Email
+                                                    <span class="text-red-500">*</span></label>
                                                 <input type="email" name="email" id="email"
                                                     class="shadow-sm bg-gray-50 text-gray-900 rounded-lg block w-full p-2.5 focus:outline-0 select-none"
-                                                    disabled autocomplete="off" value="{{ $user->email }}" />
+                                                    autocomplete="off" value="{{ old('email', $user->email) }}" />
+                                                @error('email')
+                                                    <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                                                @enderror
                                             </div>
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="phone-number"
-                                                    class="block mb-2 font-medium text-gray-900">Phone Number
-                                                    <span class="text-red-500">*</span></label>
+                                                    class="block mb-2 font-medium text-gray-900">Phone Number <span
+                                                        class="text-red-500">*</span></label>
                                                 <input type="text" name="phone" id="phone-number"
                                                     class="shadow-sm bg-gray-50 text-gray-900 rounded-lg block w-full p-2.5 focus:outline-0"
-                                                    autocomplete="on" value="{{ $user->phone }}" />
+                                                    autocomplete="on" value="{{ old('phone', $user->phone) }}" />
+                                                @error('phone')
+                                                    <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                                                @enderror
                                             </div>
                                             <div class="col-span-6 sm:col-full">
-                                                <button id="save-general-info" class="disabled-button">
-                                                    Save
+                                                <button id="save-general-info" class="disabled-button" type="submit">
+                                                    @if (session('message') == 'Info updated successfully!')
+                                                        Saved
+                                                    @else
+                                                        Save
+                                                    @endif
                                                 </button>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
+
                                 </div>
                                 <div
                                     class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 sm:p-6">
                                     <h3 class="mb-4 text-xl font-semibold">Change Password</h3>
-                                    <div>
+                                    <form action="{{ route('users.password', ['user' => $user->id]) }}" method="POST">
+                                        @csrf
+                                        @method('PATCH')
                                         <div class="grid grid-cols-6 gap-6">
                                             <div class="col-span-6 sm:col-span-3">
-                                                <label for="current-password"
-                                                    class="block mb-2 font-medium text-gray-900">Current password
+                                                <label for="current-password" class="block mb-2 font-medium text-gray-900">Current password
                                                     <span class="text-red-500">*</span></label>
                                                 <input type="password" name="current_password" id="current-password"
                                                     class="shadow-sm bg-gray-50 text-gray-900 rounded-lg block w-full p-2.5 focus:outline-0"
                                                     placeholder="••••••••" required />
+                                                @error('current_password')
+                                                    <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                                                @enderror
                                             </div>
                                             <div class="col-span-6 sm:col-span-3"></div>
+                                    
                                             <div class="col-span-6 sm:col-span-3">
-                                                <label for="password" class="block mb-2 font-medium text-gray-900">New
-                                                    password
+                                                <label for="password" class="block mb-2 font-medium text-gray-900">New password
                                                     <span class="text-red-500">*</span></label>
                                                 <input type="password" id="password" name="new_password"
                                                     class="bg-gray-50 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                                     placeholder="••••••••" required />
+                                                @error('new_password')
+                                                    <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                                                @enderror
                                             </div>
+                                    
                                             <div class="col-span-6 sm:col-span-3">
-                                                <label for="confirm-password"
-                                                    class="block mb-2 font-medium text-gray-900">Confirm password
+                                                <label for="confirm-password" class="block mb-2 font-medium text-gray-900">Confirm password
                                                     <span class="text-red-500">*</span></label>
-                                                <input type="password" name="confirm_password" id="confirm-password"
+                                                <input type="password" name="new_password_confirmation" id="confirm-password"
                                                     class="shadow-sm bg-gray-50 text-gray-900 rounded-lg block w-full p-2.5 focus:outline-0"
                                                     placeholder="••••••••" required />
+                                                @error('new_password_confirmation')
+                                                    <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                                                @enderror
                                             </div>
+                                    
                                             <div class="col-span-6 sm:col-full">
-                                                <button id="change-password" class="disabled-button">
-                                                    Save
+                                                <button id="change-password" class="disabled-button" type="submit">
+                                                    @if (session('message') == 'Password updated successfully!')
+                                                        Saved
+                                                    @else
+                                                        Save
+                                                    @endif
                                                 </button>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

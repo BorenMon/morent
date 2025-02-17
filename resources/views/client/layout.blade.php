@@ -25,6 +25,9 @@
 </head>
 
 <body>
+    <div class="backdrop items-center justify-center" id="loading-backdrop">
+        <img src="/client/images/loading.svg">
+    </div>
     <header>
         <nav class="container-fluid">
             <div class="lg:flex" id="logo">
