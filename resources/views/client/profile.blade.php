@@ -6,8 +6,10 @@
 
 @section('meta')
     <meta name="user-id" content="{{ auth()->id() }}">
-    <meta name="user-id-card" content="{{ $user->id_card }}">
-    <meta name="user-id-card-url" content="{{ getAssetUrl($user->id_card) }}">
+    <meta name="id-card" content="{{ $user->id_card }}">
+    <meta name="id-card-url" content="{{ getAssetUrl($user->id_card) }}">
+    <meta name="driving-license" content="{{ $user->driving_license }}">
+    <meta name="driving-license-url" content="{{ getAssetUrl($user->driving_license) }}">
 @endsection
 
 @section('css')
@@ -125,7 +127,7 @@
                                         <div id="accordion-flush-body-1" class="hidden"
                                             aria-labelledby="accordion-flush-heading-1">
                                             <input type="file" class="filepond" name="id-card" multiple
-                                                data-max-file-size="3MB" data-max-files="2" />
+                                                data-max-file-size="3MB" data-max-files="1" />
                                         </div>
                                         <h2 id="accordion-flush-heading-2">
                                             <div class="flex items-center justify-between w-full font-medium rtl:text-right text-gray-500 border-b border-gray-200 gap-3 select-none"
@@ -243,7 +245,7 @@
                                                 @enderror
                                             </div>
                                             <div class="col-span-6 sm:col-span-3"></div>
-                                    
+
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="password" class="block mb-2 font-medium text-gray-900">New password
                                                     <span class="text-red-500">*</span></label>
@@ -254,7 +256,7 @@
                                                     <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
                                                 @enderror
                                             </div>
-                                    
+
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="confirm-password" class="block mb-2 font-medium text-gray-900">Confirm password
                                                     <span class="text-red-500">*</span></label>
@@ -265,7 +267,7 @@
                                                     <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
                                                 @enderror
                                             </div>
-                                    
+
                                             <div class="col-span-6 sm:col-full">
                                                 <button id="change-password" class="disabled-button" type="submit">
                                                     @if (session('message') == 'Password updated successfully!')

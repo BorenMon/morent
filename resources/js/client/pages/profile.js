@@ -8,15 +8,9 @@ import FilePondPluginFileValidateSize from "filepond-plugin-file-validate-type";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
 import { urlToFilePondObject } from "../services/filepond.js";
-import { getAssetUrl } from "../services/publicAPI.js";
-import api from "../services/authAPI.js";
 import {
-    areObjectsEqual,
-    formatISODate,
-    formatToTwoDecimals,
-    snakeToCapitalizedWithSpaces,
+    areObjectsEqual
 } from "../services/utils.js";
-import serviceApi from "../services/authServiceAPI.js";
 
 let userId = $('meta[name="user-id"]').attr("content");
 let csrfToken = $('meta[name="csrf-token"]').attr("content");
@@ -211,8 +205,8 @@ FilePond.registerPlugin(
     FilePondPluginImagePreview
 );
 
-const idCardObjectName = $('meta[name="user-id-card"]').attr("content");
-const idCardUrl = $('meta[name="user-id-card-url"]').attr("content");
+const idCardObjectName = $('meta[name="id-card"]').attr("content");
+const idCardUrl = $('meta[name="id-card-url"]').attr("content");
 
 let idCardImages = [];
 
@@ -264,22 +258,22 @@ Promise.all(idCardImages.map((file) => urlToFilePondObject(file))).then(
                                         formData.append("id_card", file.file);
 
                                         try {
-                                            const uploadResponse =
-                                                await api.post(
-                                                    "/files",
-                                                    formData,
-                                                    {
-                                                        headers: {
-                                                            "Content-Type":
-                                                                "multipart/form-data",
-                                                        },
-                                                    }
-                                                );
+                                            const response = await fetch(`/id-card/${userId}`, {
+                                                method: "POST",
+                                                body: formData,
+                                                headers: {
+                                                    "X-CSRF-TOKEN": csrfToken,
+                                                },
+                                            });
 
-                                            // Set metadata with file ID after successful upload and link
+                                            $('#status').html(`
+                                                <img src="client/icons/unverified.svg" alt="">&nbsp;
+                                                Unverified
+                                            `)
+
                                             file.setMetadata(
                                                 "object_name",
-                                                createResponse.data.data.id
+                                                response.id_card
                                             );
                                         } catch (uploadError) {
                                             console.error(
@@ -321,10 +315,17 @@ Promise.all(idCardImages.map((file) => urlToFilePondObject(file))).then(
                                 if (result.isConfirmed) {
                                     // Proceed with file removal if confirmed
                                     try {
-                                        await api.delete(
-                                            "items/junction_directus_users_files/" +
-                                                file.getMetadata().id
-                                        );
+                                        await fetch(`/id-card/${userId}`, {
+                                            method: "DELETE",
+                                            headers: {
+                                                "X-CSRF-TOKEN": csrfToken,
+                                            },
+                                        });
+
+                                        $('#status').html(`
+                                            <img src="client/icons/unverified.svg" alt="">&nbsp;
+                                            Unverified
+                                        `)
                                     } catch (removeError) {
                                         console.error(
                                             "File removal failed:",
@@ -333,6 +334,149 @@ Promise.all(idCardImages.map((file) => urlToFilePondObject(file))).then(
                                     }
                                 } else {
                                     pond1.addFile(processingFile.file, {
+                                        metadata: {
+                                            object_name: processingFile.getMetadata().object_name,
+                                            reverted: true,
+                                        },
+                                    }); // Re-add the file if removal is canceled
+                                }
+                            });
+                    }
+                },
+            }
+        );
+    }
+);
+
+const drivingLicenseObjectName = $('meta[name="driving-license"]').attr("content");
+const drivingLicenseUrl = $('meta[name="driving-license-url"]').attr("content");
+
+let drivingLicenseImages = [];
+
+if (drivingLicenseObjectName)
+    drivingLicenseImages.push({
+        object_name: drivingLicenseObjectName,
+        url: drivingLicenseUrl,
+    });
+
+Promise.all(drivingLicenseImages.map((file) => urlToFilePondObject(file))).then(
+    (drivingLicenseImages) => {
+        const pond2 = FilePond.create(
+            document.querySelector('input[name="driver-license"]'),
+            {
+                allowMultiple: false,
+                stylePanelAspectRatio: 1,
+                imagePreviewHeight: 100,
+                files: drivingLicenseImages,
+
+                // Prompt before adding a file
+                onaddfile: async (error, file) => {
+                    if (error) {
+                        toast(`${error.main}, ${error.sub}`, "error");
+                        pond2.removeFile(file);
+                        return;
+                    }
+
+                    // Prompt to confirm if the user wants to add the file
+                    if (
+                        !file.getMetadata().object_name &&
+                        !file.getMetadata().reverted
+                    ) {
+                        sweetalert
+                            .fire({
+                                title: "Are you sure you want to add this file?",
+                                text: "Whenever file is added, your status will be unverified until our staff rechecks it.",
+                                icon: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#3563E9",
+                                cancelButtonColor: "#d33",
+                                confirmButtonText: "Yes",
+                                cancelButtonText: "No",
+                            })
+                            .then(async (result) => {
+                                if (result.isConfirmed) {
+                                    // Proceed with file upload if confirmed
+                                    if (!file.getMetadata().object_name) {
+                                        const formData = new FormData();
+                                        formData.append("driving_license", file.file);
+
+                                        try {
+                                            const response = await fetch(`/driving-license/${userId}`, {
+                                                method: "POST",
+                                                body: formData,
+                                                headers: {
+                                                    "X-CSRF-TOKEN": csrfToken,
+                                                },
+                                            });
+
+                                            $('#status').html(`
+                                                <img src="client/icons/unverified.svg" alt="">&nbsp;
+                                                Unverified
+                                            `)
+
+                                            file.setMetadata(
+                                                "object_name",
+                                                response.driving_license
+                                            );
+                                        } catch (uploadError) {
+                                            console.error(
+                                                "File upload failed:",
+                                                uploadError
+                                            );
+                                        }
+                                    }
+                                } else {
+                                    pond2.removeFile(file); // This ensures you're using the correct instance to remove the file after prompt
+                                }
+                            });
+                    }
+                },
+
+                // Prompt before removing a file
+                onremovefile: async (error, file) => {
+                    if (error) {
+                        console.error(error);
+                        return;
+                    }
+
+                    if (file.getMetadata().object_name) {
+                        processingFile = file;
+
+                        // Prompt to confirm if the user wants to remove the file
+                        sweetalert
+                            .fire({
+                                title: "Are you sure you want to remove this file?",
+                                text: "Whenever file is removed, your status will be unverified until our staff rechecks it.",
+                                icon: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#3563E9",
+                                cancelButtonColor: "#d33",
+                                confirmButtonText: "Yes",
+                                cancelButtonText: "No",
+                            })
+                            .then(async (result) => {
+                                if (result.isConfirmed) {
+                                    // Proceed with file removal if confirmed
+                                    try {
+                                        await fetch(`/driving-license/${userId}`, {
+                                            method: "DELETE",
+                                            headers: {
+                                                "X-CSRF-TOKEN": csrfToken,
+                                            },
+                                        });
+
+                                        $('#status').html(`
+                                            <img src="client/icons/unverified.svg" alt="">&nbsp;
+                                            Unverified
+                                        `)
+                                    } catch (removeError) {
+                                        console.error(
+                                            "File removal failed:",
+                                            removeError
+                                        );
+                                    }
+                                } else {
+                                    pond2.addFile(processingFile.file, {
                                         metadata: {
                                             object_name: processingFile.getMetadata().object_name,
                                             reverted: true,
