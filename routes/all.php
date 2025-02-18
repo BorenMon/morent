@@ -18,9 +18,9 @@ Route::group([
     'middleware' => ['auth']
 ], function () {
     Route::patch('/{user}/avatar', [UserController::class, 'updateAvatar'])
-    ->name('avatar');
+    ->name('update-avatar');
     Route::delete('/{user}/avatar', [UserController::class, 'removeAvatar'])
-    ->name('avatar');
+    ->name('remove-avatar');
     Route::patch('/{user}/info', [UserController::class, 'updateInfo'])
     ->name('info');
     Route::patch('/{user}/password', [UserController::class, 'updatePassword'])

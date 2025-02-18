@@ -11,11 +11,24 @@ class CarController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $this->authorize('create', Car::class);
-        $cars = Car::paginate(10); // Paginate results
-        return view('cars.index', compact('cars'));
+        // Get the search query
+        $search = $request->input('search');
+
+        $query = Car::query();
+
+        // Apply search filter
+        if (!empty($search)) {
+            $query->where(function ($q) use ($search) {
+                $q->where('model', 'LIKE', "%$search%");
+            });
+        }
+
+        // Paginate results
+        $cars = $query->paginate(15)->appends(['search' => $search]);
+
+        return view('admin.pages.cars.index', compact('cars', 'search'));
     }
 
     /**
@@ -23,7 +36,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        return view('cars.create');
+        return view('admin.pages.cars.create');
     }
 
     /**

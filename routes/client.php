@@ -24,8 +24,8 @@ Route::group([
     Route::get('/auth', fn() => view('client.auth'))->middleware('guest')->name('auth');
     Route::post('/register', [RegisteredUserController::class, 'storeCustomer'])->name('register');
 
-    Route::post('/id-card/{user}', [ClientController::class, 'uploadIdCard'])->name('id-card');
-    Route::delete('/id-card/{user}', [ClientController::class, 'removeIdCard'])->name('id-card');
-    Route::post('driving-license/{user}', [ClientController::class, 'uploadDrivingLicense'])->name('driving-license');
-    Route::delete('driving-license/{user}', [ClientController::class, 'removeDrivingLicense'])->name('driving-license');
+    Route::post('id-card/{user}', [ClientController::class, 'uploadIdCard'])->name('upload-id-card');
+    Route::delete('id-card/{user}', [ClientController::class, 'removeIdCard'])->name('remove-id-card');
+    Route::post('driving-license/{user}', [ClientController::class, 'uploadDrivingLicense'])->name('upload-driving-license');
+    Route::delete('driving-license/{user}', [ClientController::class, 'removeDrivingLicense'])->name('remove-driving-license');
 });

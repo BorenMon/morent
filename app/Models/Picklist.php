@@ -14,11 +14,4 @@ class Picklist extends Model
         'category',
         'is_custom',
     ];
-
-    public function cars()
-    {
-        return $this->hasMany(Car::class, 'type_id')
-            ->orWhere('steering_id', $this->id)
-            ->orWhere('brand_id', $this->id);
-    }
 }

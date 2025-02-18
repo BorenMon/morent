@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\PicklistController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\CarController;
 
 Route::get('/admin/login', [AuthenticatedSessionController::class, 'create'])
     ->middleware('guest')
@@ -85,6 +86,50 @@ Route::group([
         Route::get('', [AdminController::class, 'index']);
         Route::get('/{booking}', [AdminController::class, 'show'])
             ->name('.show');
+    });
+
+    Route::group(['middleware' => ['role:ADMIN']], function () {
+        // CRUD Car Brands
+        Route::group([
+            'prefix' => '/car-brands',
+            'as' => 'car-brands'
+        ], function () {
+            Route::get('', [PicklistController::class, 'carBrandsIndex']);
+            Route::get('/create', [PicklistController::class, 'carBrandsCreate'])
+                ->name('.create');
+            Route::post('', [PicklistController::class, 'carBrandsStore'])
+                ->name('.store');
+            Route::delete('/{carBrand}', [PicklistController::class, 'carBrandsDestroy'])
+                ->name('.destroy');
+        });
+
+        // CRUD Car Types
+        Route::group([
+            'prefix' => '/car-types',
+            'as' => 'car-types'
+        ], function () {
+            Route::get('', [PicklistController::class, 'carTypesIndex']);
+            Route::get('/create', [PicklistController::class, 'carTypesCreate'])
+                ->name('.create');
+            Route::post('', [PicklistController::class, 'carTypesStore'])
+                ->name('.store');
+            Route::delete('/{carType}', [PicklistController::class, 'carTypesDestroy'])
+                ->name('.destroy');
+        });
+
+        // CRUD Car Steerings
+        Route::group([
+            'prefix' => '/car-steerings',
+            'as' => 'car-steerings'
+        ], function () {
+            Route::get('', [PicklistController::class, 'carSteeringsIndex']);
+            Route::get('/create', [PicklistController::class, 'carSteeringsCreate'])
+                ->name('.create');
+            Route::post('', [PicklistController::class, 'carSteeringsStore'])
+                ->name('.store');
+            Route::delete('/{carSteering}', [PicklistController::class, 'carSteeringsDestroy'])
+                ->name('.destroy');
+        });
     });
 
     Route::get('', [AdminController::class, 'dashboard'])->name('dashboard');

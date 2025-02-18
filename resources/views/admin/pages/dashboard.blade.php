@@ -4,22 +4,6 @@
     {{-- @include('admin.layouts.shared/page-title', ['sub_title' => 'Menu', 'page_title' => 'admin.dashboard']) --}}
     <br />
     <div class="row">
-        <a href="{{ route('admin.cars') }}" class="col-xxl-3 col-sm-6">
-            <div class="card widget-flat text-bg-pink">
-                <div class="card-body">
-                    <div class="float-end">
-                        <i class="ri-roadster-line widget-icon"></i>
-                    </div>
-                    <h6 class="text-uppercase mt-0" title="Customers">Cars</h6>
-                    <h2 class="my-2">{{ $carsCount }}</h2>
-                    <p class="mb-0">
-                        <span class="badge bg-white bg-opacity-10 me-1">{{ $carsPercentageChange }}%</span>
-                        <span class="text-nowrap">Since last month</span>
-                    </p>
-                </div>
-            </div>
-        </a> <!-- end col-->
-
         <div class="col-xxl-3 col-sm-6">
             <div class="card widget-flat text-bg-purple">
                 <div class="card-body">
@@ -35,6 +19,22 @@
                 </div>
             </div>
         </div> <!-- end col-->
+        
+        <a href="{{ route('admin.cars') }}" class="col-xxl-3 col-sm-6">
+            <div class="card widget-flat text-bg-pink">
+                <div class="card-body">
+                    <div class="float-end">
+                        <i class="ri-roadster-line widget-icon"></i>
+                    </div>
+                    <h6 class="text-uppercase mt-0" title="Customers">Cars</h6>
+                    <h2 class="my-2">{{ $carsCount }}</h2>
+                    <p class="mb-0">
+                        <span class="badge bg-white bg-opacity-10 me-1">{{ $carsPercentageChange }}%</span>
+                        <span class="text-nowrap">Since last month</span>
+                    </p>
+                </div>
+            </div>
+        </a> <!-- end col-->
 
         <a href="{{ route('admin.bookings') }}" class="col-xxl-3 col-sm-6">
             <div class="card widget-flat text-bg-info">
