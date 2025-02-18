@@ -29,10 +29,6 @@ export const fetchProfile = async (refresh = false) => {
     return profile;
 };
 
-function updateLocalProfile(data) {
-    localStorage.setItem("profile", JSON.stringify(data));
-}
-
 export async function updateProfileImage(userId, csrfToken, fileInput) {
     try {
         // Step 1: Get the selected file
@@ -57,7 +53,6 @@ export async function updateProfileImage(userId, csrfToken, fileInput) {
 
         // Step 4: Handle the response and update the profile locally
         const data = await response.json(); // Assuming the response contains the avatar URL
-        updateLocalProfile(data);
 
         toast("Profile updated successfully", "success");
 
