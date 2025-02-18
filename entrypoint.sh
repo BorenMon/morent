@@ -11,3 +11,4 @@ rm -rf public/hot
 yarn && yarn build
 
 apache2-foreground
+# & php artisan queue:work --daemon

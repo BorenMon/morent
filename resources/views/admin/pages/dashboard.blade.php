@@ -4,21 +4,21 @@
     {{-- @include('admin.layouts.shared/page-title', ['sub_title' => 'Menu', 'page_title' => 'admin.dashboard']) --}}
     <br />
     <div class="row">
-        <div class="col-xxl-3 col-sm-6">
+        <a href="{{ route('admin.cars') }}" class="col-xxl-3 col-sm-6">
             <div class="card widget-flat text-bg-pink">
                 <div class="card-body">
                     <div class="float-end">
-                        <i class="ri-eye-line widget-icon"></i>
+                        <i class="ri-roadster-line widget-icon"></i>
                     </div>
-                    <h6 class="text-uppercase mt-0" title="Customers">Daily Visits</h6>
-                    <h2 class="my-2">8,652</h2>
+                    <h6 class="text-uppercase mt-0" title="Customers">Cars</h6>
+                    <h2 class="my-2">{{ $carsCount }}</h2>
                     <p class="mb-0">
-                        <span class="badge bg-white bg-opacity-10 me-1">2.97%</span>
+                        <span class="badge bg-white bg-opacity-10 me-1">{{ $carsPercentageChange }}%</span>
                         <span class="text-nowrap">Since last month</span>
                     </p>
                 </div>
             </div>
-        </div> <!-- end col-->
+        </a> <!-- end col-->
 
         <div class="col-xxl-3 col-sm-6">
             <div class="card widget-flat text-bg-purple">
@@ -27,46 +27,46 @@
                         <i class="ri-wallet-2-line widget-icon"></i>
                     </div>
                     <h6 class="text-uppercase mt-0" title="Customers">Revenue</h6>
-                    <h2 class="my-2">$9,254.62</h2>
+                    <h2 class="my-2">${{ $totalRevenue }}</h2>
                     <p class="mb-0">
-                        <span class="badge bg-white bg-opacity-10 me-1">18.25%</span>
+                        <span class="badge bg-white bg-opacity-10 me-1">{{ $revenuePercentageChange }}%</span>
                         <span class="text-nowrap">Since last month</span>
                     </p>
                 </div>
             </div>
         </div> <!-- end col-->
 
-        <div class="col-xxl-3 col-sm-6">
+        <a href="{{ route('admin.bookings') }}" class="col-xxl-3 col-sm-6">
             <div class="card widget-flat text-bg-info">
                 <div class="card-body">
                     <div class="float-end">
-                        <i class="ri-shopping-basket-line widget-icon"></i>
+                        <i class="ri-draft-line widget-icon"></i>
                     </div>
                     <h6 class="text-uppercase mt-0" title="Customers">Bookings</h6>
-                    <h2 class="my-2">753</h2>
+                    <h2 class="my-2">{{ $bookingsCount }}</h2>
                     <p class="mb-0">
-                        <span class="badge bg-white bg-opacity-25 me-1">-5.75%</span>
+                        <span class="badge bg-white bg-opacity-25 me-1">{{ $bookingsPercentageChange }}%</span>
                         <span class="text-nowrap">Since last month</span>
                     </p>
                 </div>
             </div>
-        </div> <!-- end col-->
+        </a> <!-- end col-->
 
-        <div class="col-xxl-3 col-sm-6">
+        <a href="{{ route('admin.customers') }}" class="col-xxl-3 col-sm-6">
             <div class="card widget-flat text-bg-primary">
                 <div class="card-body">
                     <div class="float-end">
                         <i class="ri-group-2-line widget-icon"></i>
                     </div>
                     <h6 class="text-uppercase mt-0" title="Customers">Customers</h6>
-                    <h2 class="my-2">63,154</h2>
+                    <h2 class="my-2">{{ $customersCount }}</h2>
                     <p class="mb-0">
-                        <span class="badge bg-white bg-opacity-10 me-1">8.21%</span>
+                        <span class="badge bg-white bg-opacity-10 me-1">{{ $customersPercentageChange }}%</span>
                         <span class="text-nowrap">Since last month</span>
                     </p>
                 </div>
             </div>
-        </div> <!-- end col-->
+        </a> <!-- end col-->
     </div>
 
     <div class="row">
@@ -178,7 +178,7 @@
                 <div class="card-body p-0">
                     <div class="p-3">
                         <div class="card-widgets">
-                            <a href="javascript:;" data-bs-toggle="reload"><i class="ri-refresh-line"></i></a>
+                            {{-- <a href="javascript:;" data-bs-toggle="reload"><i class="ri-refresh-line"></i></a> --}}
                             <a data-bs-toggle="collapse" href="#bookings-collapse" role="button" aria-expanded="false"
                                 aria-controls="bookings-collapse"><i class="ri-subtract-line"></i></a>
                             {{-- <a href="#" data-bs-toggle="remove"><i class="ri-close-line"></i></a> --}}

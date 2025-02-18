@@ -55,13 +55,13 @@ class RegisteredUserController extends Controller
     public function storeCustomer(Request $request)
     {
         $request->validate([
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|confirmed|min:8',
+            'customer_email' => 'required|string|email|max:255|unique:users,email',
+            'customer_password' => 'required|string|confirmed|min:8',
         ]);
 
         $user = User::create([
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'email' => $request->customer_email,
+            'password' => Hash::make($request->customer_password),
             'role' => UserRole::Customer,
         ]);
 

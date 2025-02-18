@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\CarController;
 
 Route::get('/admin/login', [AuthenticatedSessionController::class, 'create'])
     ->middleware('guest')
@@ -19,18 +22,18 @@ Route::group([
         'middleware' => ['role:ADMIN,MANAGER'],
         'as' => 'staffs'
     ], function () {
-        Route::get('', [UserController::class, 'staffsIndex']);
-        Route::get('/create', [UserController::class, 'staffsCreate'])
+        Route::get('', [StaffController::class, 'staffsIndex']);
+        Route::get('/create', [StaffController::class, 'staffsCreate'])
             ->name('.create');
-        Route::post('', [UserController::class, 'staffsStore'])
+        Route::post('', [StaffController::class, 'staffsStore'])
             ->name('.store');
-        Route::get('/{user}', [UserController::class, 'staffsShow'])
+        Route::get('/{user}', [StaffController::class, 'staffsShow'])
             ->name('.show');
-        Route::get('/{user}/edit', [UserController::class, 'staffsEdit'])
+        Route::get('/{user}/edit', [StaffController::class, 'staffsEdit'])
             ->name('.edit');
-        Route::put('/{user}', [UserController::class, 'staffsUpdate'])
+        Route::put('/{user}', [StaffController::class, 'staffsUpdate'])
             ->name('.update');
-        Route::delete('/{user}', [UserController::class, 'staffsDestroy'])
+        Route::delete('/{user}', [StaffController::class, 'staffsDestroy'])
             ->name('.destroy');
     });
 
@@ -39,21 +42,51 @@ Route::group([
         'prefix' => '/customers',
         'as' => 'customers'
     ], function () {
-        Route::get('', [UserController::class, 'customersIndex']);
-        Route::get('/create', [UserController::class, 'customersCreate'])
+        Route::get('', [CustomerController::class, 'customersIndex']);
+        Route::get('/create', [CustomerController::class, 'customersCreate'])
             ->name('.create');
-        Route::post('', [UserController::class, 'customersStore'])
+        Route::post('', [CustomerController::class, 'customersStore'])
             ->name('.store');
-        Route::get('/{user}', [UserController::class, 'customersShow'])
+        Route::get('/{user}', [CustomerController::class, 'customersShow'])
             ->name('.show');
-        Route::get('/{user}/edit', [UserController::class, 'customersEdit'])
+        Route::get('/{user}/edit', [CustomerController::class, 'customersEdit'])
             ->name('.edit');
-        Route::put('/{user}', [UserController::class, 'customersUpdate'])
+        Route::put('/{user}', [CustomerController::class, 'customersUpdate'])
             ->name('.update');
-        Route::delete('/{user}', [UserController::class, 'customersDestroy'])
+        Route::delete('/{user}', [CustomerController::class, 'customersDestroy'])
             ->name('.destroy');
     });
 
-    Route::get('', fn() => view('admin.pages.dashboard'))->name('dashboard');
+    // CRUD Cars
+    Route::group([
+        'prefix' => '/cars',
+        'as' => 'cars'
+    ], function () {
+        Route::get('', [CarController::class, 'index']);
+        Route::get('/create', [CarController::class, 'create'])
+            ->name('.create');
+        Route::post('', [CarController::class, 'store'])
+            ->name('.store');
+        Route::get('/{car}', [CarController::class, 'show'])
+            ->name('.show');
+        Route::get('/{car}/edit', [CarController::class, 'edit'])
+            ->name('.edit');
+        Route::put('/{car}', [CarController::class, 'update'])
+            ->name('.update');
+        Route::delete('/{car}', [CarController::class, 'destroy'])
+            ->name('.destroy');
+    });
+
+    // CRUD Bookings
+    Route::group([
+        'prefix' => '/bookings',
+        'as' => 'bookings'
+    ], function () {
+        Route::get('', [AdminController::class, 'index']);
+        Route::get('/{booking}', [AdminController::class, 'show'])
+            ->name('.show');
+    });
+
+    Route::get('', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('profile', fn() => view('admin.pages.profile'))->name('profile');
 });
