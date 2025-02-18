@@ -62,7 +62,7 @@
                                     <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                                     role="menuitem" tabindex="-1" id="menu-item-0">Admin Dashboard</a>
                                 @endif
-                                <a href="/profile" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                                <a href="{{ $user->role == UserRole::Admin->value ? route('admin.profile') : route('client.profile') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                                     role="menuitem" tabindex="-1" id="menu-item-1">Profile Setting</a>
                                 <div class="block px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer logout"
                                     role="menuitem" tabindex="-1">

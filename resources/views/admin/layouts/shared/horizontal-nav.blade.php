@@ -40,6 +40,7 @@
                         </a>
                     </li>
                     @endcan
+                    @if ($user->role == 'ADMIN')
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-apps" role="button"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -51,6 +52,7 @@
                             <a href="{{ route('admin.car-steerings') }}" class="dropdown-item">Car Steerings</a>
                         </div>
                     </li>
+                    @endif
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-apps" role="button"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
