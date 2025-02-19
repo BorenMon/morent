@@ -55,7 +55,10 @@ class Car extends Model
     public function getImageUrlsAttribute()
     {
         return collect($this->images)->map(function ($imagePath) {
-            return getAssetUrl($imagePath);
+            return [
+                'image_path' => $imagePath,
+                'full_url'   => getAssetUrl($imagePath),
+            ];
         })->toArray();
     }
 }

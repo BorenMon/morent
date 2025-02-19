@@ -176,4 +176,36 @@ class CarController extends Controller
         $car->delete();
         return redirect()->route('cars.index')->with('success', 'Car deleted successfully.');
     }
+
+    public function uploadImage(Request $request, Car $car)
+    {
+        $request->validate(['image' => 'required|image|max:2048']);
+
+        $path = $request->file('image')->storeAs(
+            'car/card-sub-images',
+            Str::uuid() . '.' . $request->file('image')->getClientOriginalExtension(),
+            's3'
+        );
+
+        $images = $car->images ?? [];
+        $images[] = $path;
+        $car->update(['images' => $images]);
+
+        return response()->json([
+            'image_path' => $path
+        ]);
+    }
+
+    public function deleteImage(Car $car, $imagePath)
+    {
+        $decodedPath = base64_decode($imagePath);
+
+        $images = $car->images ?? [];
+        $images = array_filter($images, fn($img) => $img !== $decodedPath);
+
+        Storage::disk('s3')->delete($decodedPath);
+        $car->update(['images' => array_values($images)]);
+
+        return response()->json(['message' => 'Image deleted successfully']);
+    }
 }

@@ -78,6 +78,8 @@ Route::group([
             ->name('.update');
         Route::delete('/{car}', [CarController::class, 'destroy'])
             ->name('.destroy');
+        Route::post('/{car}/images', [CarController::class, 'uploadImage'])->name('upload-image');
+        Route::delete('/{car}/images/{imagePath}', [CarController::class, 'deleteImage'])->where('imagePath', '.*')->name('delete-image');
     });
 
     // CRUD Bookings

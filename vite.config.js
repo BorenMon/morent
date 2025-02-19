@@ -29,6 +29,7 @@ export default defineConfig({
                 'node_modules/admin-resources/rwd-table/rwd-table.min.css',
                 'node_modules/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css',
                 'node_modules/filepond/dist/filepond.min.css',
+                'resources/styles/client/modules/filepond.min.css',
 
                 // Theme JS
                 'resources/js/admin/main.js',

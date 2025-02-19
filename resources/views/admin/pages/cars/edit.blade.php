@@ -4,11 +4,24 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="car-id" content="{{ $car->id }}">
     <meta name="car-images" content='@json($car->image_urls)'>
-
 @endsection
 
 @section('css')
-    @vite('node_modules/filepond/dist/filepond.min.css')
+    @vite([
+        'resources/styles/client/modules/filepond.min.css',
+        // 'node_modules/filepond/dist/filepond.min.css',
+        'node_modules/cropper/dist/cropper.min.css'
+    ])
+    <style>
+        .filepond--item {
+            width: 250px;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -258,10 +271,6 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('css')
-    @vite(['node_modules/cropper/dist/cropper.min.css'])
 @endsection
 
 @section('script')
