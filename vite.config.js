@@ -28,6 +28,7 @@ export default defineConfig({
                 'node_modules/datatables.net-select-bs5/css/select.bootstrap5.min.css',
                 'node_modules/admin-resources/rwd-table/rwd-table.min.css',
                 'node_modules/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css',
+                'node_modules/filepond/dist/filepond.min.css',
 
                 // Theme JS
                 'resources/js/admin/main.js',
@@ -57,6 +58,7 @@ export default defineConfig({
 
                 // Admin JS
                 'resources/js/admin/pages/profile.js',
+                'resources/js/admin/pages/cars/edit.js',
 
                 // Client Style
                 'resources/styles/client/main.css',

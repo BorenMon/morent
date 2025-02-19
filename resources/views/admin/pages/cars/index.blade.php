@@ -26,14 +26,38 @@
                             <thead>
                                 <tr>
                                     <th>Image</th>
+                                    <th>Model</th>
+                                    <th>Brand</th>
+                                    <th>Rent Times</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($cars as $car)
                                     <tr>
-                                        <td></td>
-                                        <td></td>
+                                        <td>
+                                            <img src="{{ getAssetUrl($car->card_image) }}" alt="Avatar" class="rounded" style="object-fit: contain; width: 80px; height: 40px;">
+                                        </td>
+                                        <td>{{ $car->model }}</td>
+                                        <td>{{ $car->brand->value }}</td>
+                                        <td>{{ $car->rent_times }}</td>
+                                        <td>
+                                            <a href="{{ route('admin.cars.show', ['car' => $car->id]) }}"
+                                                class="text-reset fs-16 px-1"> <i class="ri-eye-line text-info"></i></a>
+                                            <a href="{{ route('admin.cars.edit', ['car' => $car->id]) }}"
+                                                class="text-reset fs-16 px-1"> <i
+                                                    class="ri-settings-3-line text-primary"></i></a>
+                                            <form id="delete-form-{{ $car->id }}"
+                                                action="{{ route('admin.cars.destroy', ['car' => $car->id]) }}"
+                                                method="POST" style="display: none;">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                            <a href="javascript:void(0);" class="text-reset fs-16 px-1 delete-btn"
+                                                data-id="{{ $car->id }}">
+                                                <i class="ri-delete-bin-2-line text-danger"></i>
+                                            </a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

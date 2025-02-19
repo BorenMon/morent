@@ -36,8 +36,7 @@ class PicklistController extends Controller
 
         Picklist::create([
             'value' => $request->value,
-            'category' => 'car_brand',
-            'is_custom' => false,
+            'category' => 'car_brand'
         ]);
 
         return redirect()->route('admin.car-brands')->with([
@@ -78,8 +77,7 @@ class PicklistController extends Controller
 
         Picklist::create([
             'value' => $request->value,
-            'category' => 'car_type',
-            'is_custom' => false,
+            'category' => 'car_type'
         ]);
 
         return redirect()->route('admin.car-types')->with([
@@ -117,8 +115,7 @@ class PicklistController extends Controller
 
         Picklist::create([
             'value' => $request->value,
-            'category' => 'car_steering',
-            'is_custom' => false,
+            'category' => 'car_steering'
         ]);
 
         return redirect()->route('admin.car-steerings')->with([

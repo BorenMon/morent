@@ -12,89 +12,112 @@
                 <form class="card-body" method="POST" action="{{ route('admin.cars.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row row-cols-sm-2 row-cols-1">
-                        {{-- Name --}}
                         <div class="mb-2">
-                            <label class="form-label" for="FullName">Name</label>
-                            <input type="text" value="{{ old('name') }}" id="FullName"
-                                class="form-control @error('name') is-invalid @enderror" name="name">
-                            @error('name')
+                            <label class="form-label" for="model">Model</label>
+                            <input type="text" value="{{ old('model') }}" id="model"
+                                class="form-control @error('model') is-invalid @enderror" name="model">
+                            @error('model')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-
-                        {{-- Email --}}
                         <div class="mb-3">
-                            <label class="form-label" for="Email">Email</label>
-                            <input type="email" value="{{ old('email') }}" id="Email" name="email"
-                                class="form-control @error('email') is-invalid @enderror">
-                            @error('email')
+                            <label class="form-label">Brand</label>
+                            <select class="form-select @error('brand_id') is-invalid @enderror" name="brand_id">
+                                <option value="">Select</option>
+                                @foreach ($brandOptions as $id => $name)
+                                    <option value="{{ $id }}" {{ old('brand_id') == $id ? 'selected' : '' }}>
+                                        {{ $name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('brand_id')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-
-                        {{-- Phone --}}
                         <div class="mb-3">
-                            <label class="form-label" for="Phone">Phone</label>
-                            <input type="text" value="{{ old('phone') }}" id="Phone"
-                                class="form-control @error('phone') is-invalid @enderror" name="phone">
-                            @error('phone')
+                            <label class="form-label">Steering</label>
+                            <select class="form-select @error('steering_id') is-invalid @enderror" name="steering_id">
+                                <option value="">Select</option>
+                                @foreach ($steeringOptions as $id => $name)
+                                    <option value="{{ $id }}" {{ old('steering_id') == $id ? 'selected' : '' }}>
+                                        {{ $name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('steering_id')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-
-                        {{-- Verification Status --}}
                         <div class="mb-3">
-                            <label class="form-label" for="IsVerified">Is Verified</label>
-                            <div class="form-check form-switch">
-                                <input type="hidden" name="is_verified" value="0">
-                                <input type="checkbox" class="form-check-input" value="1" id="IsVerified" name="is_verified">
-                            </div>
-                            @error('is_verified')
+                            <label class="form-label">Type</label>
+                            <select class="form-select @error('type_id') is-invalid @enderror" name="type_id">
+                                <option value="">Select</option>
+                                @foreach ($typeOptions as $id => $name)
+                                    <option value="{{ $id }}" {{ old('type_id') == $id ? 'selected' : '' }}>
+                                        {{ $name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('type_id')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-
-                        {{-- Address --}}
                         <div class="col-sm-12 mb-3">
-                            <label class="form-label" for="address">Address</label>
-                            <textarea id="address" class="form-control @error('address') is-invalid @enderror" name="address">{{ old('address') }}</textarea>
-                            @error('address')
+                            <label class="form-label" for="description">Description</label>
+                            <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description">{{ old('description') }}</textarea>
+                            @error('description')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-
-                        {{-- Password --}}
                         <div class="mb-3">
-                            <label class="form-label" for="password">Password</label>
-                            <input type="password" id="password" name="password"
-                                class="form-control @error('password') is-invalid @enderror">
-                            @error('password')
+                            <label for="gasoline-volume" class="form-label">Gasoline Volume</label>
+                            <input class="form-control @error('gasoline') is-invalid @enderror" id="gasoline-volume" type="number" name="gasoline" step="1" value="{{ old('gasoline', 0) }}" min="0" step="1">
+                            @error('gasoline')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-
-                        {{-- Confirm Password --}}
                         <div class="mb-3">
-                            <label class="form-label" for="confirmPassword">Confirm Password</label>
-                            <input type="password" id="confirmPassword" name="password_confirmation"
-                                class="form-control @error('password_confirmation') is-invalid @enderror">
-                            @error('password_confirmation')
+                            <label for="capacity" class="form-label">Capacity</label>
+                            <input class="form-control @error('capacity') is-invalid @enderror" id="capacity" type="number" name="capacity" step="1" value="{{ old('capacity', 1) }}" min="1">
+                            @error('capacity')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-
                         <div class="mb-3">
-                            <label for="id-card" class="form-label">Identity Card</label>
-                            <input type="file" id="id-card" class="form-control @error('id_card') is-invalid @enderror" name="id_card">
-                            @error('id_card')
+                            <label for="price" class="form-label">Price</label>
+                            <input class="form-control @error('price') is-invalid @enderror" id="price" type="number" name="price" step="1" value="{{ old('price', 0) }}" min="0">
+                            @error('price')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-
                         <div class="mb-3">
-                            <label for="driving-license" class="form-label">Driving License</label>
-                            <input type="file" id="driving-license" class="form-control @error('driving_license') is-invalid @enderror" name="driving_license">
-                            @error('driving_license')
+                            <label class="form-label" for="has-promotion">Has Promotion</label>
+                            <div class="form-check form-switch">
+                                <input type="hidden" name="has_promotion" value="0">
+                                <input type="checkbox" class="form-check-input" value="1" id="has-promotion" name="has_promotion">
+                            </div>
+                            @error('has_promotion')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="promotion_price" class="form-label">Promotion Price</label>
+                            <input class="form-control @error('promotion_price') is-invalid @enderror" id="promotion_price" type="number" name="promotion_price" value="{{ old('promotion_price') }}" min="0">
+                            @error('promotion_price')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="rent_times" class="form-label">Rent Times</label>
+                            <input class="form-control @error('rent_times') is-invalid @enderror" id="rent_times" type="number" name="rent_times" value="{{ old('rent_times', 0) }}" step="1" min="0">
+                            @error('rent_times')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="rating" class="form-label">Rating</label>
+                            <input class="form-control @error('rating') is-invalid @enderror" id="rating" type="number" name="rating" value="{{ old('rating') }}"  min="0" max="5">
+                            @error('rating')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

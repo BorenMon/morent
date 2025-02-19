@@ -29,7 +29,7 @@ class Car extends Model
 
     protected $casts = [
         'images' => 'array',
-        'has_promotion' => 'boolean',
+        'has_promotion' => 'boolean'
     ];
 
     public function type()
@@ -50,5 +50,12 @@ class Car extends Model
     public function bookings()
     {
         return $this->hasMany(Booking::class);
+    }
+
+    public function getImageUrlsAttribute()
+    {
+        return collect($this->images)->map(function ($imagePath) {
+            return getAssetUrl($imagePath);
+        })->toArray();
     }
 }

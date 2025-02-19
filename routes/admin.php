@@ -72,6 +72,8 @@ Route::group([
             ->name('.show');
         Route::get('/{car}/edit', [CarController::class, 'edit'])
             ->name('.edit');
+        Route::patch('/{car}/image', [CarController::class, 'updateImage'])
+            ->name('update-image');
         Route::put('/{car}', [CarController::class, 'update'])
             ->name('.update');
         Route::delete('/{car}', [CarController::class, 'destroy'])
