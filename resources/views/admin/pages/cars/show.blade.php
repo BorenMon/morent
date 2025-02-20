@@ -1,72 +1,101 @@
-@extends('admin.layouts.horizontal', ['title' => 'Customer Profile', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
+@extends('admin.layouts.horizontal', ['title' => 'Car Details', 'mode' => $mode ?? '', 'demo' => $demo ?? ''])
 
 @section('content')
     <div class="card mt-4">
-        <h5 class="card-header bg-light-subtle d-flex align-items-center justify-content-between">
+        <div class="card-header d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center gap-4">
-                <img src="{{ getAvatarUrl($user->avatar) }}" alt="image" class="img-fluid avatar-xl rounded" />
+                <img src="{{ getAssetUrl($car->card_image) }}" alt="image" class="img-fluid rounded"
+                    style="width: 300px; height: 200px; object-fit: contain; object-position: center;" id="car-image" />
                 <div>
-                    <h2>{{ $user->name }}</h2>
-                    <h4>
-                        {{ $user->role }}
-                        @if ($user->is_verified)
-                            <span class="badge bg-info-subtle text-info">Verified</span>
-                        @else
-                            <span class="badge bg-warning-subtle text-warning">Unverified</span>
-                        @endif
-                    </h4>
+                    <h2>{{ $car->model }}</h2>
+                    <h4>{{ $car->brand->value }}</h4>
                 </div>
             </div>
-            <div>
-                <a href="{{ route('admin.customers.edit', ['user' => $user->id]) }}" class="text-reset fs-24 px-1"> <i
-                        class="ri-settings-3-line text-primary"></i></a>
-                <form id="delete-form-{{ $user->id }}"
-                    action="{{ route('admin.customers.destroy', ['user' => $user->id]) }}" method="POST"
-                    style="display: none;">
-                    @csrf
-                    @method('DELETE')
-                </form>
-                <a href="javascript:void(0);" class="text-reset fs-24 px-1 delete-btn" data-id="{{ $user->id }}">
-                    <i class="ri-delete-bin-2-line text-danger"></i>
-                </a>
+            <div class="d-flex flex-column gap-2">
+                <div>
+                    <a href="{{ route('admin.cars.edit', ['car' => $car->id]) }}" class="text-reset fs-24 px-1"> <i
+                            class="ri-settings-3-line text-primary"></i></a>
+                    <form id="delete-form-{{ $car->id }}"
+                        action="{{ route('admin.cars.destroy', ['car' => $car->id]) }}" method="POST"
+                        style="display: none;">
+                        @csrf
+                        @method('DELETE')
+                    </form>
+                    <a href="javascript:void(0);" class="text-reset fs-24 px-1 delete-btn" data-id="{{ $car->id }}">
+                        <i class="ri-delete-bin-2-line text-danger"></i>
+                    </a>
+                </div>
+                <a class="btn btn-primary" href="{{ route('admin.cars') }}" role="button">List</a>
             </div>
-        </h5>
+        </div>
         <div class="card-body">
             <div class="row row-cols-sm-2 row-cols-1">
                 <div class="mb-2">
-                    <label class="form-label">Email</label>
-                    <p>{{ $user->email }}</p>
+                    <label class="form-label" for="model">Model</label>
+                    <p>{{ $car->model }}</p>
                 </div>
-                <div class="mb-2">
-                    <label class="form-label">Phone</label>
-                    <p>{{ $user->phone }}</p>
+                <div class="mb-3">
+                    <label class="form-label">Brand</label>
+                    <p>{{ $car->brand->value }}</p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Steering</label>
+                    <p>{{ $car->steering->value }}</p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Type</label>
+                    <p>{{ $car->type->value }}</p>
                 </div>
                 <div class="col-sm-12 mb-3">
-                    <label class="form-label">Address</label>
-                    <p>{{ $user->address }}</p>
+                    <label class="form-label" for="description">Description</label>
+                    <p>{{ $car->description }}</p>
+                </div>
+                <div class="mb-3">
+                    <label for="gasoline-volume" class="form-label">Gasoline Volume</label>
+                    <p>{{ $car->gasoline }}</p>
+                </div>
+                <div class="mb-3">
+                    <label for="capacity" class="form-label">Capacity</label>
+                    <p>{{ $car->capacity }}</p>
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <p>${{ $car->price }}/day</p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="has-promotion">Has Promotion</label>
+                    <div class="form-check form-switch">
+                        <input type="hidden" name="has_promotion" value="0">
+                        <input type="checkbox" class="form-check-input" value="1" id="has-promotion"
+                            name="has_promotion" @checked($car->has_promotion) disabled>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="promotion_price" class="form-label">Promotion Price</label>
+                    <p>{{ $car->promotion_price }}</p>
+                </div>
+                <div class="mb-3">
+                    <label for="rent_times" class="form-label">Rent Times</label>
+                    <p>{{ $car->rent_times }}</p>
+                </div>
+                <div class="mb-3">
+                    <label for="rating" class="form-label">Rating</label>
+                    <p>{{ $car->rating }}</p>
                 </div>
                 <div class="card col-sm-12 mb-3">
                     <div class="card-header">
-                        <h5 class="card-title mb-0">Identity Card</h5>
+                        <h5 class="card-title mb-0">Images</h5>
                     </div>
                     <div id="id-card" class="collapse show">
-                        <div class="card-body">
-                            <img src="{{ getAssetUrl($user->id_card) }}" alt="" style="width: 100%; height: 300px;object-fit: contain; object-position: center;">
-                        </div>
-                    </div>
-                </div>
-                <div class="card col-sm-12 mb-3">
-                    <div class="card-header">
-                        <h5 class="card-title mb-0">Driving License</h5>
-                    </div>
-                    <div id="driving-license" class="collapse show">
-                        <div class="card-body">
-                            <img src="{{ getAssetUrl($user->driving_license) }}" alt="" style="width: 100%; height: 300px;object-fit: contain; object-position: center;">
+                        <div class="card-body d-flex gap-4 flex-wrap">
+                            @foreach ($car->images as $image)
+                                <img src="{{ getAssetUrl($image) }}" alt=""
+                                    style="height: 200px; object-fit: contain; object-position: center;">
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div> <!-- end card-body-->
     </div>
 @endsection

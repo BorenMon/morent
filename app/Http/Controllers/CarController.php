@@ -87,7 +87,7 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
-        return view('cars.show', compact('car'));
+        return view('admin.pages.cars.show', compact('car'));
     }
 
     /**
@@ -174,7 +174,10 @@ class CarController extends Controller
     public function destroy(Car $car)
     {
         $car->delete();
-        return redirect()->route('cars.index')->with('success', 'Car deleted successfully.');
+        return redirect()->route('admin.cars')->with([
+            'message' => 'Car deleted successfully',
+            'message_type' => 'success'
+        ]);
     }
 
     public function uploadImage(Request $request, Car $car)
