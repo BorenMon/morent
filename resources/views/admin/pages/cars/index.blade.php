@@ -36,10 +36,11 @@
                                 @foreach ($cars as $car)
                                     <tr>
                                         <td>
-                                            <img src="{{ getAssetUrl($car->card_image) }}" alt="Avatar" class="rounded" style="object-fit: contain; width: 80px; height: 40px;">
+                                            <img src="{{ getAssetUrl($car->card_image) }}" alt="Avatar" class="rounded"
+                                                style="object-fit: contain; width: 80px; height: 40px;">
                                         </td>
                                         <td>{{ $car->model }}</td>
-                                        <td>{{ $car->brand->value }}</td>
+                                        <td>{{ optional($car->brand)->value }}</td>
                                         <td>{{ $car->rent_times }}</td>
                                         <td>
                                             <a href="{{ route('admin.cars.show', ['car' => $car->id]) }}"

@@ -7,42 +7,84 @@
 @section('content')
     <div id="body-wrapper">
         <div id="body" class="container-fluid">
-            <div id="skeleton-loading">
-                <div role="status"
-                    class="space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center">
-                    <div class="flex items-center justify-center w-full h-48 bg-gray-300 rounded sm:w-96">
-                        <svg class="w-10 h-10 text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 20 18">
-                            <path
-                                d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-                        </svg>
-                    </div>
-                    <div class="w-full">
-                        <div class="h-2.5 bg-gray-200 rounded-full w-48 mb-4"></div>
-                        <div class="h-2 bg-gray-200 rounded-full max-w-[480px] mb-2.5"></div>
-                        <div class="h-2 bg-gray-200 rounded-full mb-2.5"></div>
-                        <div class="h-2 bg-gray-200 rounded-full max-w-[440px] mb-2.5"></div>
-                        <div class="h-2 bg-gray-200 rounded-full max-w-[460px] mb-2.5"></div>
-                        <div class="h-2 bg-gray-200 rounded-full max-w-[360px]"></div>
-                    </div>
-                </div>
-            </div>
-            <div id="loaded" class="hidden space-y-[32px]">
+            <div class="space-y-[32px]">
                 <div id="details">
                     <div id="images">
                         <div id="big-image">
-                            <img src="#" />
+                            <img src="{{ getAssetUrl($car->card_image) }}" />
                         </div>
                         <section id="images-carousel" class="splide">
                             <div class="splide__track">
                                 <ul class="splide__list" id="images-carousel-wrapper">
                                     <!-- Generate by JavaScript -->
+                                    <li class="splide__slide image active main">
+                                        <div>
+                                            <img src="{{ getAssetUrl($car->card_image) }}">
+                                        </div>
+                                    </li>
+                                    @foreach ($car->image_urls as $image)
+                                        <li class="splide__slide image">
+                                            <div style="background-image: url({{ $image['full_url'] }});"></div>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </section>
                     </div>
                     <div id="info" class="space-y-[24px]">
-                        <!-- Generate by JavaScript -->
+                        <div class="flex justify-between">
+                            <div class="-mt-[5px]">
+                                <div class="text-[32px] font-bold text-[#1A202C]">{{ $car->model }}</div>
+                            </div>
+                        </div>
+
+                        <p class="text-[20px] text-[#596780]">
+                            {{ $car->description ?? 'No description.' }}
+                        </p>
+
+                        <div id="spec">
+                            <div class="space-y-[12px]">
+                                <div class="space-x-[12px]">
+                                    <img src="/client/icons/car-body.svg" alt="" class="icon" />
+                                    <span class="name">Type</span>
+                                    <span>{{ optional($car->type)->value }}</span>
+                                </div>
+                                <div class="space-x-[12px]">
+                                    <img src="/client/icons/car.svg" alt="" class="icon" />
+                                    <span class="name">Steering</span>
+                                    <span>{{ optional($car->steering)->value }}</span>
+                                </div>
+                                <div class="space-x-[12px]">
+                                    <img src="/client/icons/profile-2user.svg" alt="" class="icon" />
+                                    <span class="name">Capacity</span>
+                                    <span>{{ $car->capacity }} People</span>
+                                </div>
+                                <div class="space-x-[12px]">
+                                    <img src="/client/icons/gas-station.svg" alt="" class="icon" />
+                                    <span class="name">Gasoline</span>
+                                    <span>{{ $car->gasoline }}L</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <div class="font-bold">
+                                <div>
+                                    <span class="text-[28px] text-[#1A202C]">
+                                        ${{ number_format($car->has_promotion ? $car->promotion_price : $car->price, 2) }}/
+                                    </span>
+                                    <span class="text-[#90A3BF] text-[14px]">day</span>
+                                </div>
+                                @if ($car->has_promotion)
+                                    <s class="text-[16px] text-[#90A3BF]">
+                                        ${{ number_format($car->price, 2) }}
+                                    </s>
+                                @endif
+                            </div>
+                            <button class="h-[66px] w-[134px]">
+                                <a href="{{ url('/payment', ['id' => $car->id]) }}">Book Now</a>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="flex items-center justify-between mb-[20px] mt-[32px] h-[44px] px-[20px]">

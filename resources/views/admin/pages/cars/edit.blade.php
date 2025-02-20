@@ -34,7 +34,7 @@
                             style="width: 300px; height: 200px; object-fit: contain; object-position: center;" id="car-image" />
                         <div>
                             <h2>{{ $car->model }}</h2>
-                            <h4>{{ $car->brand->value }}</h4>
+                            <h4>{{ optional($car->brand)->value }}</h4>
                         </div>
                     </div>
                     <div class="d-flex flex-column gap-2">

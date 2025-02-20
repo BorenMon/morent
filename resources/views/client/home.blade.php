@@ -7,87 +7,28 @@
 @section('content')
     <div id="body-wrapper">
         <div id="body" class="container-fluid">
-            <div class="space-y-8" id="skeleton-loading">
-                <div class="space-y-8 animate-pulse md:space-y-0 md:space-x-8 md:flex md:items-center">
-                    <div class="items-center justify-center w-full h-[360px] bg-gray-300 rounded hidden md:flex md:w-1/2">
-                        <svg class="w-10 h-10 text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 20 18">
-                            <path
-                                d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-                        </svg>
-                    </div>
-                    <div class="flex items-center justify-center w-full h-[360px] bg-gray-300 rounded md:w-1/2">
-                        <svg class="w-10 h-10 text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 20 18">
-                            <path
-                                d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <div class="w-full p-4 border border-gray-200 rounded shadow animate-pulse md:p-6">
-                        <div class="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded">
-                            <svg class="w-10 h-10 text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="currentColor" viewBox="0 0 16 20">
-                                <path
-                                    d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
-                                <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-                            </svg>
-                        </div>
-                        <div class="h-2.5 bg-gray-200 rounded-full w-48 mb-4"></div>
-                        <div class="h-2 bg-gray-200 rounded-full mb-2.5"></div>
-                        <div class="h-2 bg-gray-200 rounded-full mb-2.5"></div>
-                        <div class="h-2 bg-gray-200 rounded-full"></div>
-                    </div>
-                    <div class="w-full p-4 border border-gray-200 rounded shadow animate-pulse md:p-6">
-                        <div class="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded">
-                            <svg class="w-10 h-10 text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="currentColor" viewBox="0 0 16 20">
-                                <path
-                                    d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
-                                <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-                            </svg>
-                        </div>
-                        <div class="h-2.5 bg-gray-200 rounded-full w-48 mb-4"></div>
-                        <div class="h-2 bg-gray-200 rounded-full mb-2.5"></div>
-                        <div class="h-2 bg-gray-200 rounded-full mb-2.5"></div>
-                        <div class="h-2 bg-gray-200 rounded-full"></div>
-                    </div>
-                    <div class="w-full p-4 border border-gray-200 rounded shadow animate-pulse md:p-6">
-                        <div class="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded">
-                            <svg class="w-10 h-10 text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="currentColor" viewBox="0 0 16 20">
-                                <path
-                                    d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
-                                <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-                            </svg>
-                        </div>
-                        <div class="h-2.5 bg-gray-200 rounded-full w-48 mb-4"></div>
-                        <div class="h-2 bg-gray-200 rounded-full mb-2.5"></div>
-                        <div class="h-2 bg-gray-200 rounded-full mb-2.5"></div>
-                        <div class="h-2 bg-gray-200 rounded-full"></div>
-                    </div>
-                    <div class="w-full p-4 border border-gray-200 rounded shadow animate-pulse md:p-6">
-                        <div class="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded">
-                            <svg class="w-10 h-10 text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="currentColor" viewBox="0 0 16 20">
-                                <path
-                                    d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
-                                <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-                            </svg>
-                        </div>
-                        <div class="h-2.5 bg-gray-200 rounded-full w-48 mb-4"></div>
-                        <div class="h-2 bg-gray-200 rounded-full mb-2.5"></div>
-                        <div class="h-2 bg-gray-200 rounded-full mb-2.5"></div>
-                        <div class="h-2 bg-gray-200 rounded-full"></div>
-                    </div>
-                </div>
-            </div>
-            <div id="loaded" class="hidden">
+            <div>
                 <section id="slider" class="splide">
                     <div class="splide__track">
                         <ul class="splide__list" id="slide-wrapper">
-                            <!-- Generate by JavaScript -->
+                            <li class="splide__slide" style="background-image: url(/client/slides/slide1-bg.svg);">
+                                <div class="text-white space-y-[16px]">
+                                    <h2>The Best Platform for Car Rental</h2>
+                                    <p>Ease of doing a car rental safely and reliably. Of course at a low price.</p>
+                                    <button class="bg-[#3563E9] slide-button"><a
+                                            href="${link_url}">Rental Car</a></button>
+                                </div>
+                                <img src="/client/slides/slide1-car.png" loading="lazy" alt="" class="pl-[56px]">
+                            </li>
+                            <li class="splide__slide" style="background-image: url(/client/slides/slide2-bg.svg);">
+                                <div class="text-white space-y-[16px]">
+                                    <h2>Easy way to rent a car at a low price</h2>
+                                    <p>Providing cheap car rental services and safe and comfortable facilities.</p>
+                                    <button class="bg-[#54A6FF] slide-button"><a
+                                            href="${link_url}">Rental Car</a></button>
+                                </div>
+                                <img src="/client/slides/slide2-car.png" loading="lazy" alt="" class="pl-[56px]">
+                            </li>
                         </ul>
                     </div>
                 </section>
@@ -98,7 +39,54 @@
                 <section id="popular" class="splide">
                     <div class="splide__track">
                         <ul class="splide__list" id="popular-wrapper">
-                            <!-- Generate by JavaScript -->
+                            @foreach ($popularCars as $car)
+                                <li class="splide__slide car-card">
+                                    <div>
+                                        <div class="-mt-[5px]">
+                                            <div class="text-[20px] font-bold text-[#1A202C]">{{ $car->model }}</div>
+                                            <div class="text-[14px] font-bold text-[#90A3BF]">
+                                                {{ optional($car->type)->value }}</div>
+                                        </div>
+                                    </div>
+                                    <a href="{{ route('client.detail', ['car' => $car->id]) }}"
+                                        aria-label="See more about car"><img src="{{ getAssetUrl($car->card_image) }}"
+                                            loading="lazy" alt=""></a>
+                                    <div class="space-y-[24px]">
+                                        <div>
+                                            <div>
+                                                <img src="/client/icons/gas-station.svg" alt="" class="icon">
+                                                <span>{{ $car->gasoline }}L</span>
+                                            </div>
+                                            <div>
+                                                <img src="/client/icons/car.svg" alt="" class="icon">
+                                                <span>{{ optional($car->steering)->value }}</span>
+                                            </div>
+                                            <div>
+                                                <img src="/client/icons/profile-2user.svg" alt="" class="icon">
+                                                <span>{{ $car->capacity }} People</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="font-bold">
+                                                <div>
+                                                    <span class="text-[20px] text-[#1A202C]">
+                                                        ${{ number_format($car->has_promotion ? $car->promotion_price : $car->price, 2) }}/
+                                                    </span>
+                                                    <span class="text-[#90A3BF] text-[14px]">day</span>
+                                                </div>
+                                                @if ($car->has_promotion)
+                                                    <s class="text-[14px] text-[#90A3BF]">
+                                                        ${{ number_format($car->price, 2) }}
+                                                    </s>
+                                                @endif
+                                            </div>
+                                            <button>
+                                                <a href="{{ route('client.payment', ['car' => $car->id]) }}">Book Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </section>
@@ -106,14 +94,64 @@
                     <h5 class="font-semibold text-[#90A3BF]">Recommendation Car</h5>
                 </div>
                 <div id="recommendation">
-                    <!-- Generate by JavaScript -->
+                    @foreach ($recommendedCars as $car)
+                        <div class="car-card">
+                            <div>
+                                <div class="-mt-[5px]">
+                                    <div class="text-[20px] font-bold text-[#1A202C]">{{ $car->model }}</div>
+                                    <div class="text-[14px] font-bold text-[#90A3BF]">{{ optional($car->type)->value }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="{{ route('client.detail', ['car' => $car->id]) }}" aria-label="See more about car">
+                                <img src="{{ getAssetUrl($car->card_image) }}" loading="lazy" alt="">
+                            </a>
+
+                            <div class="space-y-[24px]">
+                                <div>
+                                    <div>
+                                        <img src="/client/icons/gas-station.svg" alt="" class="icon">
+                                        <span>{{ $car->gasoline }}L</span>
+                                    </div>
+                                    <div>
+                                        <img src="/client/icons/car.svg" alt="" class="icon">
+                                        <span>{{ optional($car->steering)->value }}</span>
+                                    </div>
+                                    <div>
+                                        <img src="/client/icons/profile-2user.svg" alt="" class="icon">
+                                        <span>{{ $car->capacity }} People</span>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="font-bold">
+                                        <div>
+                                            <span class="text-[20px] text-[#1A202C]">
+                                                ${{ number_format($car->has_promotion ? $car->promotion_price : $car->price, 2) }}/
+                                            </span>
+                                            <span class="text-[#90A3BF] text-[14px]">day</span>
+                                        </div>
+                                        @if ($car->has_promotion)
+                                            <s class="text-[14px] text-[#90A3BF]">
+                                                ${{ number_format($car->price, 2) }}
+                                            </s>
+                                        @endif
+                                    </div>
+                                    <button>
+                                        <a href="{{ route('client.payment', ['car' => $car->id]) }}">Book Now</a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
                 <div class="my-[64px] flex ml-auto w-1/2 justify-between items-center">
                     <button class="-translate-x-1/2">
                         <a href="{{ route('client.cars') }}">Show more car</a>
                     </button>
                     <div class="font-medium text-[#90A3BF]">
-                        <span id="cars-count"></span> Car
+                        <span id="cars-count">{{ $totalCars }}</span> Cars
                     </div>
                 </div>
             </div>

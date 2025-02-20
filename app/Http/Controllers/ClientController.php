@@ -2,14 +2,54 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Car;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Services\StatisticsService;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 class ClientController extends Controller
 {
+    public function home(StatisticsService $statisticsService)
+    {
+        $cacheKey = 'home_data_' . Carbon::today()->toDateString();
+
+        $cachedData = Cache::get($cacheKey);
+
+        if ($cachedData) {
+            return view('client.home', $cachedData);
+        }
+
+        $popularCars = Car::where('rent_times', '>=', 50)->limit(8)->get();
+    
+        $recommendedCars = Car::
+            // where('rating', '>=', 4)->
+            limit(16)->get();
+    
+        $totalCars = $statisticsService->getTotalCount(new Car());
+
+        $homeData = compact('popularCars','recommendedCars', 'totalCars');
+
+        // Cache the data
+        Cache::put($cacheKey, $homeData, now()->addHour());
+    
+        return view('client.home', $homeData);
+    }
+
+    public function detail(Car $car)
+    {
+        return view('client.detail', compact('car'));
+    }
+
+    public function payment(Car $car)
+    {
+        return view('client.payment', compact('car'));
+    }
+
     public function uploadIdCard(Request $request, User $user)
     {
         $this->authorize('updateSelf', $user);

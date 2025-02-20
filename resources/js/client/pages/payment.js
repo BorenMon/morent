@@ -8,6 +8,11 @@ import select2 from "select2";
 
 select2();
 
+$(".city").select2({
+    width: "100%",
+    data: [{ id: "0", text: "Select your city", value: "" }, ...cities],
+});
+
 // Get the current URL
 const urlParams = new URLSearchParams(window.location.search);
 
@@ -36,8 +41,6 @@ if (carId) {
             $("#total").text(`$${formatToTwoDecimals(total_amount)}`);
         }
     );
-} else {
-    window.location.href = "/cars";
 }
 
 const bookingEls = [
