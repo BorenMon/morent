@@ -1,7 +1,17 @@
+@php
+    $user = auth()->user();
+@endphp
+
 @extends('client.layout', ['title' => 'Payment'])
 
+@section('meta')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="user-id" content="{{ $user->id }}">
+    <meta name="car-id" content="{{ $car->id }}">
+@endsection
+
 @section('css')
-    @vite('resources/styles/client/pages/payment.css')
+    @vite(['node_modules/viewerjs/dist/viewer.min.css', 'resources/styles/client/pages/payment.css'])
 @endsection
 
 @section('content')
@@ -31,7 +41,7 @@
                     background-color: whitesmoke;
                     border-radius: 10px;
                   "
-                                        placeholder="Your name" id="name-input" />
+                                        placeholder="Your name" id="name-input" value="{{ $user->name }}" />
                                 </div>
                                 <!--  -->
                                 <div class="bill_input_div">
@@ -44,7 +54,7 @@
                     background-color: whitesmoke;
                     border-radius: 10px;
                   "
-                                        placeholder="Phone number" id="phone-input" />
+                                        placeholder="Phone number" id="phone-input" value="{{ $user->phone }}" />
                                 </div>
                             </div>
                             <div class="bill_input">
@@ -57,7 +67,7 @@
                     background-color: whitesmoke;
                     border-radius: 10px;
                   "
-                                        placeholder="Address" id="address-input" />
+                                        placeholder="Address" id="address-input" value="{{ $user->address }}" />
                                 </div>
                             </div>
                         </div>
@@ -95,7 +105,7 @@
                                     </div>
                                     <div class="bill_input_div">
                                         <label style="font-weight: bold">Date <span class="text-red-500">*</span></label>
-                                        <input type="date"
+                                        <input type="datetime-local"
                                             style="
                       padding: 16px;
                       outline: none;
@@ -103,19 +113,10 @@
                       border-radius: 10px;
                     "
                                             class="date" />
-                                    </div>
-                                </div>
-                                <div class="bill_input">
-                                    <div class="bill_input_div">
-                                        <label style="font-weight: bold">Time <span class="text-red-500">*</span></label>
-                                        <input type="time"
-                                            style="
-                      padding: 16px;
-                      outline: none;
-                      background-color: whitesmoke;
-                      border-radius: 10px;
-                    "
-                                            class="time" />
+
+                                        @error('pick_up_datetime')
+                                            <p>{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -145,7 +146,7 @@
                                     </div>
                                     <div style="display: grid; width: 100%; gap: 10px">
                                         <label style="font-weight: bold">Date <span class="text-red-500">*</span></label>
-                                        <input type="date"
+                                        <input type="datetime-local"
                                             style="
                       padding: 16px;
                       outline: none;
@@ -153,103 +154,6 @@
                       border-radius: 10px;
                     "
                                             class="date" />
-                                    </div>
-                                </div>
-                                <div
-                                    style="
-                  display: flex;
-                  margin-top: 24px;
-                  justify-content: space-between;
-                ">
-                                    <div style="display: grid; width: 100%; gap: 10px">
-                                        <label style="font-weight: bold">Time <span class="text-red-500">*</span></label>
-                                        <input type="time"
-                                            style="
-                      padding: 16px;
-                      outline: none;
-                      background-color: whitesmoke;
-                      border-radius: 10px;
-                    "
-                                            class="time" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- payment method -->
-                        <div class="">
-                            <p style="font-weight: bold; font-size: large">Payment Info</p>
-                            <div class="pay_step">
-                                <p style="color: rgb(173, 170, 170)">
-                                    Please enter payment method
-                                </p>
-                                <p style="color: rgb(173, 170, 170)">Step 3 of 4</p>
-                            </div>
-
-                            <!-- input -->
-                            <div
-                                style="
-                background-color: whitesmoke;
-                margin-top: 24px;
-                padding: 16px;
-                border-radius: 10px;
-              ">
-                                <!-- credit card -->
-                                <div style="display: flex; justify-content: space-between">
-                                    <p
-                                        style="
-                    font-weight: bold;
-                    color: rgb(59, 89, 205);
-                    font-size: large;
-                  ">
-                                        Credit Card
-                                    </p>
-                                    <img style="width: 62px; height: 25px" src="/client/images/credit-card.svg" />
-                                </div>
-                                <div class="bill_input">
-                                    <div class="bill_input_div">
-                                        <label style="font-weight: bold">Card Number</label>
-                                        <input type="number" id="input_" placeholder="Card number" />
-                                    </div>
-                                    <div style="display: grid; width: 100%; gap: 10px">
-                                        <label style="font-weight: bold">Expiration Date</label>
-                                        <input type="month" id="input_" />
-                                    </div>
-                                </div>
-                                <div class="bill_input">
-                                    <div class="bill_input_div">
-                                        <label style="font-weight: bold">Card Holder</label>
-                                        <input id="input_" type="text" placeholder="Card Holder" />
-                                    </div>
-                                    <div style="display: grid; width: 100%; gap: 10px">
-                                        <label style="font-weight: bold">CVC</label>
-                                        <input id="input_" type="number" placeholder="CVC" />
-                                    </div>
-                                </div>
-                            </div>
-                            <!--  -->
-                            <div style="border-radius: 10px; display: grid">
-                                <div id="pay-choice">
-                                    <input type="radio" style="cursor: pointer" />
-                                    <div
-                                        style="
-                    display: flex;
-                    justify-content: space-between;
-                    width: 100%;
-                  ">
-                                        <label for="option1" style="font-weight: bold">Paypal</label><img width="90px"
-                                            src="/client/images/paypal.svg" />
-                                    </div>
-                                </div>
-                                <div id="pay-choice">
-                                    <input type="radio" style="cursor: pointer" />
-                                    <div
-                                        style="
-                    display: flex;
-                    justify-content: space-between;
-                    width: 100%;
-                  ">
-                                        <label for="option2" style="font-weight: bold">Bitcoin</label><img
-                                            width="90px" height="5px" src="/client/images/bitcoin.svg" />
                                     </div>
                                 </div>
                             </div>
@@ -312,30 +216,35 @@
                         <!-- image -->
                         <div class="car_img flex items-center">
                             <div id="car_card">
-                                <img src="#" alt="" width="80%" id="image" />
+                                <img src="{{ getAssetUrl($car->card_image) }}" alt="" width="80%" id="image" />
                             </div>
                             <div>
-                                <p style="font-weight: bold; font-size: x-large" id="model"></p>
-                                <div class="flex items-center font-medium text-[#596780] text-[14px]"></div>
+                                <p style="font-weight: bold; font-size: x-large" id="model">{{ $car->model }}</p>
+                                <div class="flex items-center font-medium text-[#596780] text-[14px]">{{ optional($car->brand)->value }}</div>
                             </div>
                         </div>
                         <hr class="my-[24px]" />
                         <div class="space-y-[20px]">
-                            <!--  -->
+                            <div class="pay_step">
+                                <p style="color: rgb(173, 170, 170)" class="text-[16px]">
+                                    Duration
+                                </p>
+                                <p style="font-weight: 800" class="text-[16px]" id="duration">
+                                </p>
+                            </div>
                             <div class="pay_step">
                                 <p style="color: rgb(173, 170, 170)" class="text-[16px]">
                                     Subtotal
                                 </p>
-                                <p style="font-weight: 800" class="text-[16px]" id="sub-total"></p>
+                                <p style="font-weight: 800" class="text-[16px]" id="sub-total">
+                                </p>
                             </div>
-                            <!-- tax -->
                             <div class="pay_step">
                                 <p style="color: rgb(173, 170, 170)" class="text-[16px]">
                                     Tax
                                 </p>
-                                <p style="font-weight: 800" class="text-[16px]" id="tax"></p>
+                                <p style="font-weight: 800" class="text-[16px]" id="tax">$0.00</p>
                             </div>
-                            <!-- total price -->
                             <div class="pay_step">
                                 <div>
                                     <p style="font-weight: bold; font-size: 20px">
@@ -345,11 +254,25 @@
                                         Overall price and includes rental discount
                                     </p>
                                 </div>
-                                <!-- total price -->
                                 <div>
                                     <p style="font-size: 32px; font-weight: 800" id="total"></p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div id="car_pic" class="mt-8">
+                        <div>
+                            <p style="font-weight: bold; font-size: large">Payment Info</p>
+                            <div class="pay_step">
+                                <p style="color: rgb(173, 170, 170)">
+                                    Please pay via KHQR and upload your payment proof here.
+                                </p>
+                                <p style="color: rgb(173, 170, 170)">Step 3 of 4</p>
+                            </div>
+                            <div id="khqr" class="cursor-pointer">
+                                <img src="/client/khqr-payment.png" class="mt-8" style="object-fit: contain; object-position: center; width: 100%; height: 210px;">
+                            </div>
+                            <div class="custom-file-container" data-upload-id="payment-proof"></div>
                         </div>
                     </div>
                 </div>

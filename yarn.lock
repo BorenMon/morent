@@ -1078,6 +1078,11 @@ fast-diff@1.1.2:
   resolved "https://registry.yarnpkg.com/fast-diff/-/fast-diff-1.1.2.tgz#4b62c42b8e03de3f848460b639079920695d0154"
   integrity sha512-KaJUt+M9t1qaIteSvjc6P3RbMdXsNhK61GRftR6SNxqmhthcd9MGIi4T+o0jD8LUSpSnSKXE20nLtJ3fOHxQig==
 
+file-upload-with-preview@^6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/file-upload-with-preview/-/file-upload-with-preview-6.1.2.tgz#16047ae2e63b2bd5d917161bb93dedbab3ef6ae4"
+  integrity sha512-Sd03yr87+YdarhNXL6mlJoEaLUR644RUox9JaG7kXzHA94n35Le245zmXmrZOKIuojHIiEOFpqXkrVaNKxpixQ==
+
 filepond-plugin-file-encode@^2.1.14:
   version "2.1.14"
   resolved "https://registry.yarnpkg.com/filepond-plugin-file-encode/-/filepond-plugin-file-encode-2.1.14.tgz#d24f37c836b57dbd2001daf0190be7f65b83091a"

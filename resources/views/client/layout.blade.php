@@ -58,11 +58,11 @@
                         <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden"
                             role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                             <div class="py-1" role="none">
-                                @if ($user->role == UserRole::Admin->value)
+                                @if ($user->role != UserRole::Customer->value)
                                     <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                                     role="menuitem" tabindex="-1" id="menu-item-0">Admin Dashboard</a>
                                 @endif
-                                <a href="{{ $user->role == UserRole::Admin->value ? route('admin.profile') : route('client.profile') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                                <a href="{{ $user->role == UserRole::Customer->value ? route('client.profile') : route('admin.profile') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                                     role="menuitem" tabindex="-1" id="menu-item-1">Profile Setting</a>
                                 <div class="block px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer logout"
                                     role="menuitem" tabindex="-1">
@@ -109,10 +109,10 @@
                         </div>
                     @else
                         <div class="space-y-2 py-6" id="mobile-profile">
-                            @if ($user->role == UserRole::Admin->value)
+                            @if ($user->role != UserRole::Customer->value)
                                 <a href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
                             @endif
-                            <a href="{{ $user->role == UserRole::Admin->value ? route('admin.profile') : route('client.profile') }}"
+                            <a href="{{ $user->role == UserRole::Customer->value ? route('client.profile') : route('admin.profile') }}"
                                 class="cursor-pointer {{ Route::is('client.profile') ? 'active' : '' }}">
                                 Profile Setting
                             </a>

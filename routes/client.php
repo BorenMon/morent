@@ -15,10 +15,11 @@ Route::group([
     Route::group([
         'middleware' => ['auth', 'role:CUSTOMER']
     ], function () {
-        Route::get('/cars/{car}/payment', fn() => view('client.payment'))
+        Route::get('/cars/{car}/payment', [ClientController::class, 'payment'])
         ->name('payment');
-        Route::get('/profile', [ClientController::class, 'payment'])
+        Route::get('/profile', fn() => view('client.profile'))
             ->name('profile');
+        Route::post('/book', [ClientController::class, 'book'])->name('book');
     });
 
     Route::get('/auth', fn() => view('client.auth'))->middleware('guest')->name('auth');

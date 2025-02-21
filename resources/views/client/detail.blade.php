@@ -1,3 +1,7 @@
+@php
+    $user = auth()->user();
+@endphp
+
 @extends('client.layout', ['title' => 'Car Detail'])
 
 @section('css')
@@ -16,7 +20,6 @@
                         <section id="images-carousel" class="splide">
                             <div class="splide__track">
                                 <ul class="splide__list" id="images-carousel-wrapper">
-                                    <!-- Generate by JavaScript -->
                                     <li class="splide__slide image active main">
                                         <div>
                                             <img src="{{ getAssetUrl($car->card_image) }}">
@@ -82,7 +85,7 @@
                                 @endif
                             </div>
                             <button class="h-[66px] w-[134px]">
-                                <a href="{{ url('/payment', ['id' => $car->id]) }}">Book Now</a>
+                                <a href="{{ $user->role == 'CUSTOMER' ? route('client.payment', ['car' => $car->id]) : '#' }}">Book Now</a>
                             </button>
                         </div>
                     </div>
@@ -94,7 +97,54 @@
                 <section id="popular" class="splide">
                     <div class="splide__track">
                         <ul class="splide__list" id="popular-wrapper">
-                            <!-- Generate by JavaScript -->
+                            @foreach ($popularCars as $car)
+                                <li class="splide__slide car-card">
+                                    <div>
+                                        <div class="-mt-[5px]">
+                                            <div class="text-[20px] font-bold text-[#1A202C]">{{ $car->model }}</div>
+                                            <div class="text-[14px] font-bold text-[#90A3BF]">
+                                                {{ optional($car->type)->value }}</div>
+                                        </div>
+                                    </div>
+                                    <a href="{{ route('client.detail', ['car' => $car->id]) }}"
+                                        aria-label="See more about car"><img src="{{ getAssetUrl($car->card_image) }}"
+                                            loading="lazy" alt=""></a>
+                                    <div class="space-y-[24px]">
+                                        <div>
+                                            <div>
+                                                <img src="/client/icons/gas-station.svg" alt="" class="icon">
+                                                <span>{{ $car->gasoline }}L</span>
+                                            </div>
+                                            <div>
+                                                <img src="/client/icons/car.svg" alt="" class="icon">
+                                                <span>{{ optional($car->steering)->value }}</span>
+                                            </div>
+                                            <div>
+                                                <img src="/client/icons/profile-2user.svg" alt="" class="icon">
+                                                <span>{{ $car->capacity }} People</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="font-bold">
+                                                <div>
+                                                    <span class="text-[20px] text-[#1A202C]">
+                                                        ${{ number_format($car->has_promotion ? $car->promotion_price : $car->price, 2) }}/
+                                                    </span>
+                                                    <span class="text-[#90A3BF] text-[14px]">day</span>
+                                                </div>
+                                                @if ($car->has_promotion)
+                                                    <s class="text-[14px] text-[#90A3BF]">
+                                                        ${{ number_format($car->price, 2) }}
+                                                    </s>
+                                                @endif
+                                            </div>
+                                            <button>
+                                                <a href="{{ $user->role == 'CUSTOMER' ? route('client.payment', ['car' => $car->id]) : '#' }}">Book Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </section>

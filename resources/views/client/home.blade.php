@@ -1,3 +1,7 @@
+@php
+    $user = Auth::user()
+@endphp
+
 @extends('client.layout', ['title' => 'Home'])
 
 @section('css')
@@ -81,7 +85,7 @@
                                                 @endif
                                             </div>
                                             <button>
-                                                <a href="{{ route('client.payment', ['car' => $car->id]) }}">Book Now</a>
+                                                <a href="{{ $user->role == 'CUSTOMER' ? route('client.payment', ['car' => $car->id]) : '#' }}">Book Now</a>
                                             </button>
                                         </div>
                                     </div>
@@ -139,7 +143,7 @@
                                         @endif
                                     </div>
                                     <button>
-                                        <a href="{{ route('client.payment', ['car' => $car->id]) }}">Book Now</a>
+                                        <a href="{{ $user->role == 'CUSTOMER' ? route('client.payment', ['car' => $car->id]) : '#' }}">Book Now</a>
                                     </button>
                                 </div>
                             </div>
