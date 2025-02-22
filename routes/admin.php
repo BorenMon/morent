@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PicklistController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -87,9 +88,10 @@ Route::group([
         'prefix' => '/bookings',
         'as' => 'bookings'
     ], function () {
-        Route::get('', [AdminController::class, 'index']);
-        Route::get('/{booking}', [AdminController::class, 'show'])
+        Route::get('', [BookingController::class, 'index']);
+        Route::get('/{booking}', [BookingController::class, 'show'])
             ->name('.show');
+        Route::patch('/{booking}', [BookingController::class, 'update'])->name('.update');
     });
 
     Route::group(['middleware' => ['role:ADMIN']], function () {

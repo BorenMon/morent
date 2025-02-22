@@ -1,5 +1,4 @@
-import $ from 'jquery'
-import { getAssetUrl, fetchCollection } from "../services/publicAPI.js";
+import $ from "jquery";
 import { formatToTwoDecimals, debounce } from "../services/utils.js";
 
 const debouncedRefreshCars = debounce(function (value) {
@@ -13,10 +12,13 @@ const displayCars = async (queryString) => {
     $("#skeleton-loading").removeClass("hidden");
     $("#loaded").addClass("hidden");
 
-    fetchCollection(`cars?${queryString}`).then((result) => {
+    try {
+        const response = await fetch(`/cars/json?${queryString}`);
+        const result = await response.json();
+
         const carData = result.data;
-        filter_count = result.meta.filter_count;
-        total_page = Math.ceil(filter_count / 9);
+        filter_count = result.total; // Laravel's paginator provides total count
+        total_page = result.last_page; // Last page number
         changePagination();
 
         const $cars = $("#cars"); // Select the container
@@ -27,7 +29,7 @@ const displayCars = async (queryString) => {
                 id,
                 model,
                 type,
-                card_image,
+                card_image_url,
                 gasoline,
                 steering,
                 capacity,
@@ -40,49 +42,47 @@ const displayCars = async (queryString) => {
             const $div = $("<div></div>")
                 .addClass("car-card")
                 .attr("data-id", id).html(`
-        <div>
-          <div class="-mt-[5px]">
-            <div class="text-[20px] font-bold text-[#1A202C]">${model}</div>
-            <div class="text-[14px] font-bold text-[#90A3BF]">${type}</div>
-          </div>
-        </div>
-        <a href="/detail?id=${id}"><img src="${getAssetUrl(
-                card_image
-            )}" alt=""></a>
-        <div class="space-y-[24px]">
-          <div>
-            <div>
-              <img src="/client/icons/gas-station.svg" alt="" class="icon">
-              <span>${gasoline}L</span>
-            </div>
-            <div>
-              <img src="/client/icons/car.svg" alt="" class="icon">
-              <span>${steering}</span>
-            </div>
-            <div>
-              <img src="/client/icons/profile-2user.svg" alt="" class="icon">
-              <span>${capacity} People</span>
-            </div>
-          </div>
-          <div>
-            <div class="font-bold">
-              <div>
-                <span class="text-[20px] text-[#1A202C]">$${formatToTwoDecimals(
-                    has_promotion ? promotion_price : price
-                )}/</span> <span class="text-[#90A3BF] text-[14px]">day</span>
-              </div>
-              ${
-                  has_promotion
-                      ? '<s class="text-[14px] text-[#90A3BF]">$' +
-                        formatToTwoDecimals(price) +
-                        "</s>"
-                      : ""
-              }
-            </div>
-            <button><a href="/payment?id=${id}">Book Now</a></button>
-          </div>
-        </div>
-      `);
+                <div>
+                  <div class="-mt-[5px]">
+                    <div class="text-[20px] font-bold text-[#1A202C]">${model}</div>
+                    <div class="text-[14px] font-bold text-[#90A3BF]">${type}</div>
+                  </div>
+                </div>
+                <a href="/cars/${id}"><img src="${card_image_url}" alt=""></a>
+                <div class="space-y-[24px]">
+                  <div>
+                    <div>
+                      <img src="/client/icons/gas-station.svg" alt="" class="icon">
+                      <span>${gasoline}L</span>
+                    </div>
+                    <div>
+                      <img src="/client/icons/car.svg" alt="" class="icon">
+                      <span>${steering}</span>
+                    </div>
+                    <div>
+                      <img src="/client/icons/profile-2user.svg" alt="" class="icon">
+                      <span>${capacity} People</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="font-bold">
+                      <div>
+                        <span class="text-[20px] text-[#1A202C]">$${formatToTwoDecimals(
+                            has_promotion ? promotion_price : price
+                        )}/</span> <span class="text-[#90A3BF] text-[14px]">day</span>
+                      </div>
+                      ${
+                          has_promotion
+                              ? `<s class="text-[14px] text-[#90A3BF]">$${formatToTwoDecimals(
+                                    price
+                                )}</s>`
+                              : ""
+                      }
+                    </div>
+                    <button><a href="${getPaymentUrl(id)}">Book Now</a></button>
+                  </div>
+                </div>
+            `);
 
             // Append each car card to the container
             $cars.append($div);
@@ -90,45 +90,104 @@ const displayCars = async (queryString) => {
 
         $("#skeleton-loading").addClass("hidden");
         $("#loaded").removeClass("hidden");
-    });
-};
-
-const prefixCarsQueryString =
-    "filter[status][_eq]=published&meta=filter_count&limit=9";
-
-$("#filter-button").on("click", () => {
-    $("#filter").addClass("open");
-    $("#filter-backdrop").css("display", "block");
-});
-
-const closeFilter = () => {
-    $("#filter-backdrop").css("display", "none");
-    $("#filter").removeClass("open");
-};
-
-$("#close-filter").on("click", closeFilter);
-$("#filter-backdrop").on("click", closeFilter);
-
-const filterHandleResize = (e) => {
-    if (e.matches) {
-        closeFilter();
+    } catch (error) {
+        console.error("Error fetching cars:", error);
     }
 };
 
-const filterMediaQuery = window.matchMedia("(min-width: 1100px)");
+const changePagination = () => {
+    if (filter_count > 0) {
+        $("#showing-from").text((page - 1) * 9 + 1);
+        $("#showing-to").text(Math.min(page * 9, filter_count));
+        $("#filter_count").text(filter_count);
 
-filterMediaQuery.addEventListener("change", filterHandleResize);
+        $("#pagination-container > div:nth-child(1)").css("display", "block");
+        $("#pagination-container > div:nth-child(2)").css("display", "block");
+        $("#pagination-container > p").css("display", "none");
 
-// Get the current URL
+        generatePagination(page, total_page);
+    } else {
+        $("#pagination-container > div:nth-child(1)").css("display", "none");
+        $("#pagination-container > div:nth-child(2)").css("display", "none");
+        $("#pagination-container > p").css("display", "block");
+    }
+};
+
+function queryParamsBuilder(page, keyword, types, capacities, maxPrice) {
+    let queryParams = new URLSearchParams();
+    queryParams.append("page", page);
+
+    if (keyword) {
+        queryParams.append("search", keyword);
+    }
+
+    if (types.length > 0) {
+        types.forEach((type) => queryParams.append("type[]", type));
+    }
+
+    if (capacities.length > 0) {
+        capacities.forEach((capacity) =>
+            queryParams.append("capacity[]", capacity)
+        );
+    }
+
+    if (maxPrice) {
+        queryParams.append("max_price", maxPrice);
+    }
+
+    return decodeURIComponent(queryParams.toString());
+}
+
+const defaultRefreshCars = (otherKeyword, restartPage) => {
+    if (restartPage) page = 1;
+    if (otherKeyword !== undefined) keyword = otherKeyword;
+
+    refreshCars(queryParamsBuilder(page, keyword, types, capacities, maxPrice));
+};
+
+function refreshCars(queryString) {
+    displayCars(queryString);
+}
+
+// Event listener for search input
+$(".search-input").on("input", function () {
+    const currentValue = $(this).val();
+    $(".search-input").val(currentValue); // Sync inputs
+    $("#skeleton-loading").removeClass("hidden");
+    $("#loaded").addClass("hidden");
+    debouncedRefreshCars(currentValue);
+});
+
+// Filter event listeners
+$("#max-price").on("input", (e) => {
+    maxPrice = $(e.target).val();
+    $("#max-price-value").text(formatToTwoDecimals(maxPrice));
+    debouncedRefreshCars();
+});
+
+$(".type-filter").on("change", function (e) {
+    const value = e.target.value;
+    if (e.target.checked) types.push(value);
+    else types = types.filter((t) => t !== value);
+    defaultRefreshCars();
+});
+
+$(".capacity-filter").on("change", function (e) {
+    const value = e.target.value;
+    if (e.target.checked) capacities.push(value);
+    else capacities = capacities.filter((c) => c !== value);
+    defaultRefreshCars();
+});
+
+// Initialize filters
 const urlParams = new URLSearchParams(window.location.search);
-
-let keyword = "";
+let keyword = urlParams.get("keyword") || "";
 let page = 1;
 let types = [];
 let capacities = [];
 let maxPrice = 100;
+defaultRefreshCars(keyword, false);
 
-// Function to generate pagination dynamically
 function generatePagination(currentPage, totalPages) {
     const paginationContainer = $("#pagination"); // Select the container
 
@@ -222,184 +281,18 @@ function generatePagination(currentPage, totalPages) {
     });
 }
 
-const prevAction = (e, totalPages) => {
-    e.preventDefault();
-    if (page > 1) {
-        generatePagination(page - 1, totalPages); // Go to previous page
-        --page;
-        defaultRefreshCars(undefined, false);
+const paymentBaseUrl = $('meta[name="payment-base-url"]').attr("content");
+
+function getPaymentUrl(carId) {
+    if (paymentBaseUrl != "#") {
+        return paymentBaseUrl.replace("#", carId);
     }
-};
 
-const nextAction = (e, totalPages) => {
-    e.preventDefault();
-    if (page < totalPages) {
-        generatePagination(page + 1, totalPages); // Go to next page
-        ++page;
-        defaultRefreshCars(undefined, false);
-    }
-};
-
-$("#prev-button").on("click", (e) => prevAction(e, total_page));
-$("#next-button").on("click", (e) => nextAction(e, total_page));
-
-const changePagination = () => {
-    if (filter_count > 0) {
-        $("#showing-from").text((page - 1) * 9 + 1);
-        $("#showing-to").text(Math.min(page * 9, filter_count));
-        $("#filter_count").text(filter_count);
-
-        $("#pagination-container > div:nth-child(1)").css("display", "block");
-        $("#pagination-container > div:nth-child(2)").css("display", "block");
-        $("#pagination-container > p").css("display", "none");
-
-        generatePagination(page, total_page);
-    } else {
-        $("#pagination-container > div:nth-child(1)").css("display", "none");
-        $("#pagination-container > div:nth-child(2)").css("display", "none");
-        $("#pagination-container > p").css("display", "block");
-    }
-};
-
-function refreshCars(queryString) {
-    displayCars(queryString)
+    return "#";
 }
 
-function queryParamsBuilder(page, keyword, types, capacities, maxPrice) {
-    let queryParams = new URLSearchParams();
-
-    // Add pagination parameters
-    queryParams.append("page", page);
-
-    // Add keyword search for multiple fields (e.g., title, description)
-    if (keyword) {
-        queryParams.append("search", keyword);
-    }
-
-    // Add filter for types (if not empty)
-    if (types.length > 0) {
-        types.forEach((type, index) => {
-            queryParams.append(`filter[type][_in][${index}]`, type);
-        });
-    }
-
-    // Add filter for capacities (if not empty)
-    if (capacities.length > 0) {
-        capacities.forEach((capacity, index) => {
-            if (capacity == "8") {
-                // Handle the "8" case with _gte (greater than or equal to)
-                queryParams.append("filter[capacity][_gte]", 8);
-            } else {
-                // Handle other capacity values as exact matches using _in
-                queryParams.append(
-                    `filter[capacity][_in][${index}]`,
-                    +capacity
-                );
-            }
-        });
-    }
-
-    // Add max price filter (if defined)
-    if (maxPrice !== undefined && maxPrice !== null) {
-        queryParams.append("filter[_or][0][price][_lte]", maxPrice);
-        queryParams.append("filter[_or][1][promotion_price][_lte]", maxPrice);
-    }
-
-    // Return the complete query string
-    return decodeURIComponent(queryParams.toString());
-}
-
-const defaultRefreshCars = (otherKeyword, restartPage) => {
-    if (restartPage) page = 1;
-    if (otherKeyword !== undefined) {
-        keyword = otherKeyword;
-    }
-    refreshCars(
-        prefixCarsQueryString +
-            "&" +
-            queryParamsBuilder(page, keyword, types, capacities, maxPrice)
-    );
-};
-
-async function getCount(queryParams) {
-  return fetchCollection(
-    ("cars?" + prefixCarsQueryString + "&" + queryParams).replace(
-        "limit=9",
-        "limit=0"
-    )
-).then(result => result.meta.filter_count)
-}
-
-getCount("filter[type][_eq]=Sport").then(result => {
-  $('label[for="Sport"] span').text(result);
-});
-
-getCount("filter[type][_eq]=SUV").then(result => {
-  $('label[for="SUV"] span').text(`(${result})`);
-});
-
-getCount("filter[type][_eq]=MPV").then(result => {
-  $('label[for="MPV"] span').text(`(${result})`);
-});
-
-getCount("filter[type][_eq]=Sedan").then(result => {
-  $('label[for="Sedan"] span').text(`(${result})`);
-});
-
-getCount("filter[type][_eq]=Coupe").then(result => {
-  $('label[for="Coupe"] span').text(`(${result})`);
-});
-
-getCount("filter[type][_eq]=Hatchback").then(result => {
-  $('label[for="Hatchback"] span').text(`(${result})`);
-});
-
-getCount("filter[capacity][_eq]=2").then(result => {
-  $('label[for="2 Person"] span').text(`(${result})`);
-});
-
-getCount("filter[capacity][_eq]=4").then(result => {
-  $('label[for="4 Person"] span').text(`(${result})`);
-});
-
-getCount("filter[capacity][_eq]=6").then(result => {
-  $('label[for="6 Person"] span').text(`(${result})`);
-});
-
-getCount("filter[capacity][_gte]=8").then(result => {
-  $('label[for="8 or More"] span').text(`(${result})`);
-});
-
-
-// Event listener for input changes
-$("#max-price").on("input", (e) => {
-    maxPrice = $(e.target).val();
-
-    // Update the max price value display immediately
-    $("#max-price-value").text(formatToTwoDecimals(maxPrice));
-
-    $("#skeleton-loading").removeClass("hidden");
-    $("#loaded").addClass("hidden");
-
-    // Debounced API call
-    debounceRefreshCars();
-});
-
-const debounceRefreshCars = debounce(function () {
-    defaultRefreshCars(undefined, true);
-}, 300);
-
-const typeChecks = [
-    $("#Sport"),
-    $("#SUV"),
-    $("#MPV"),
-    $("#Sedan"),
-    $("#Coupe"),
-    $("#Hatchback"),
-];
-
-typeChecks.forEach((type) => {
-    type.on("change", (e) => {
+$("#types li input").each(function () {
+    $(this).on("change", function (e) {
         if (e.target.checked) {
             types.push(e.target.value);
         } else {
@@ -427,120 +320,4 @@ capacityChecks.forEach((capacity) => {
         }
         defaultRefreshCars(undefined, true);
     });
-});
-
-keyword = urlParams.get("keyword");
-
-const inputs = document.querySelectorAll(".search-input");
-
-if (keyword) {
-    inputs.forEach((input) => {
-        input.value = keyword;
-    });
-
-    defaultRefreshCars(keyword, false);
-} else defaultRefreshCars(undefined, false);
-
-// Get the current URL
-const url = new URL(window.location.href);
-
-// Clear the query parameters
-url.search = "";
-
-// Update the URL without reloading the page
-window.history.replaceState({}, document.title, url.toString());
-
-inputs.forEach((input) => {
-    input.addEventListener("input", function () {
-        const currentValue = input.value;
-        inputs.forEach((otherInput) => {
-            // Update all other inputs except the current one
-            if (otherInput !== input) {
-                otherInput.value = currentValue;
-            }
-        });
-
-        $("#skeleton-loading").removeClass("hidden");
-        $("#loaded").addClass("hidden");
-
-        debouncedRefreshCars(currentValue);
-    });
-});
-
-const bookingEls = [
-    {
-        key: "city",
-        type: "number",
-    },
-    {
-        key: "date",
-        type: "string",
-    },
-    {
-        key: "time",
-        type: "string",
-    },
-];
-
-const loadBookingInputs = () => {
-    const pickUpInputs = JSON.parse(localStorage.getItem("pickUpInputs")) || {
-        city: null,
-        date: null,
-        time: null,
-    };
-
-    const dropOffInputs = JSON.parse(localStorage.getItem("dropOffInputs")) || {
-        city: null,
-        date: null,
-        time: null,
-    };
-
-    ["pick-up", "drop-off"].forEach((id) => {
-        bookingEls.forEach((el) => {
-            let value;
-            if (id == "pick-up") value = pickUpInputs[el.key];
-            else value = dropOffInputs[el.key];
-            $(`#${id} .${el.key}`).val(value).trigger("change");
-        });
-    });
-};
-
-loadBookingInputs();
-
-bookingEls.forEach((el) => {
-    $(`.${el.key}`).on("change", function () {
-        let value;
-        if (el.type === "number") value = +$(this).val();
-        else value = $(this).val();
-        saveBookingInputs(el.key, value, this);
-    });
-});
-
-const saveBookingInputs = (key, value, el) => {
-    let type = $(el).closest(".booking-container").attr("id");
-
-    if (type === "pick-up") type = "pickUpInputs";
-    else type = "dropOffInputs";
-
-    const savedInputs = JSON.parse(localStorage.getItem(type)) || {
-        city: null,
-        date: null,
-        time: null,
-    };
-
-    savedInputs[key] = value;
-
-    localStorage.setItem(type, JSON.stringify(savedInputs));
-};
-
-$("#swap-icon").on("click", () => {
-    const pickUp = JSON.parse(localStorage.getItem("pickUpInputs"));
-    const dropOff = JSON.parse(localStorage.getItem("dropOffInputs"));
-
-    if (pickUp && dropOff) {
-        localStorage.setItem("pickUpInputs", JSON.stringify(dropOff));
-        localStorage.setItem("dropOffInputs", JSON.stringify(pickUp));
-    }
-
-    loadBookingInputs();
 });

@@ -25,6 +25,44 @@
 </head>
 
 <body>
+    @if (session('message'))
+        @php
+            $type = session('message_type') ?? 'info';
+            $tailwindClasses = [
+                'primary' => 'bg-blue-500 text-white',
+                'secondary' => 'bg-gray-500 text-white',
+                'success' => 'bg-green-500 text-white',
+                'danger' => 'bg-red-500 text-white',
+                'warning' => 'bg-yellow-500 text-black',
+                'info' => 'bg-blue-400 text-white',
+                'pink' => 'bg-pink-500 text-white',
+                'purple' => 'bg-purple-500 text-white',
+                'light' => 'bg-gray-100 text-gray-800',
+                'dark' => 'bg-gray-900 text-white',
+            ];
+        @endphp
+
+        <div id="flashMessage"
+            class="fixed top-5 right-5 z-50 min-w-[250px] px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 transition-opacity duration-300 {{ $tailwindClasses[$type] ?? 'bg-blue-400 text-white' }}">
+            <!-- Icon -->
+            @if ($type == 'success')
+                <i class="ri-check-line text-xl"></i>
+            @elseif ($type == 'danger' || $type == 'error')
+                <i class="ri-close-line text-xl"></i>
+            @else
+                <i class="ri-alert-line text-xl"></i>
+            @endif
+
+            <span>{{ session('message') }}</span>
+
+            <!-- Close button -->
+            <span class="ml-auto text-white hover:opacity-80 focus:outline-none cursor-pointer"
+                onclick="dismissFlashMessage()">
+                ✖
+            </span>
+        </div>
+    @endif
+
     <div class="backdrop items-center justify-center" id="loading-backdrop">
         <img src="/client/images/loading.svg">
     </div>
@@ -59,11 +97,13 @@
                             role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                             <div class="py-1" role="none">
                                 @if ($user->role != UserRole::Customer->value)
-                                    <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                                    role="menuitem" tabindex="-1" id="menu-item-0">Admin Dashboard</a>
+                                    <a href="{{ route('admin.dashboard') }}"
+                                        class="block px-4 py-2 text-gray-700 hover:bg-gray-100" role="menuitem"
+                                        tabindex="-1" id="menu-item-0">Admin Dashboard</a>
                                 @endif
-                                <a href="{{ $user->role == UserRole::Customer->value ? route('client.profile') : route('admin.profile') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                                    role="menuitem" tabindex="-1" id="menu-item-1">Profile Setting</a>
+                                <a href="{{ $user->role == UserRole::Customer->value ? route('client.profile') : route('admin.profile') }}"
+                                    class="block px-4 py-2 text-gray-700 hover:bg-gray-100" role="menuitem"
+                                    tabindex="-1" id="menu-item-1">Profile Setting</a>
                                 <div class="block px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer logout"
                                     role="menuitem" tabindex="-1">
                                     Logout
@@ -174,6 +214,25 @@
         </div>
     </footer>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let flashMessage = document.getElementById("flashMessage");
+            if (flashMessage) {
+                setTimeout(() => {
+                    flashMessage.classList.add("opacity-0");
+                    setTimeout(() => flashMessage.remove(), 500);
+                }, 3000); // Auto-hide after 3 seconds
+            }
+        });
+
+        function dismissFlashMessage() {
+            let flashMessage = document.getElementById("flashMessage");
+            if (flashMessage) {
+                flashMessage.classList.add("opacity-0");
+                setTimeout(() => flashMessage.remove(), 500);
+            }
+        }
+    </script>
     @yield('script')
     @vite('resources/js/client/main.js')
 </body>

@@ -8,9 +8,7 @@ import FilePondPluginFileValidateSize from "filepond-plugin-file-validate-type";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
 import { urlToFilePondObject } from "../services/filepond.js";
-import {
-    areObjectsEqual
-} from "../services/utils.js";
+import { areObjectsEqual } from "../services/utils.js";
 
 let userId = $('meta[name="user-id"]').attr("content");
 let csrfToken = $('meta[name="csrf-token"]').attr("content");
@@ -258,18 +256,22 @@ Promise.all(idCardImages.map((file) => urlToFilePondObject(file))).then(
                                         formData.append("id_card", file.file);
 
                                         try {
-                                            const response = await fetch(`/id-card/${userId}`, {
-                                                method: "POST",
-                                                body: formData,
-                                                headers: {
-                                                    "X-CSRF-TOKEN": csrfToken,
-                                                },
-                                            });
+                                            const response = await fetch(
+                                                `/id-card/${userId}`,
+                                                {
+                                                    method: "POST",
+                                                    body: formData,
+                                                    headers: {
+                                                        "X-CSRF-TOKEN":
+                                                            csrfToken,
+                                                    },
+                                                }
+                                            );
 
-                                            $('#status').html(`
+                                            $("#status").html(`
                                                 <img src="client/icons/unverified.svg" alt="">&nbsp;
                                                 Unverified
-                                            `)
+                                            `);
 
                                             file.setMetadata(
                                                 "object_name",
@@ -322,10 +324,10 @@ Promise.all(idCardImages.map((file) => urlToFilePondObject(file))).then(
                                             },
                                         });
 
-                                        $('#status').html(`
+                                        $("#status").html(`
                                             <img src="client/icons/unverified.svg" alt="">&nbsp;
                                             Unverified
-                                        `)
+                                        `);
                                     } catch (removeError) {
                                         console.error(
                                             "File removal failed:",
@@ -335,7 +337,9 @@ Promise.all(idCardImages.map((file) => urlToFilePondObject(file))).then(
                                 } else {
                                     pond1.addFile(processingFile.file, {
                                         metadata: {
-                                            object_name: processingFile.getMetadata().object_name,
+                                            object_name:
+                                                processingFile.getMetadata()
+                                                    .object_name,
                                             reverted: true,
                                         },
                                     }); // Re-add the file if removal is canceled
@@ -348,7 +352,9 @@ Promise.all(idCardImages.map((file) => urlToFilePondObject(file))).then(
     }
 );
 
-const drivingLicenseObjectName = $('meta[name="driving-license"]').attr("content");
+const drivingLicenseObjectName = $('meta[name="driving-license"]').attr(
+    "content"
+);
 const drivingLicenseUrl = $('meta[name="driving-license-url"]').attr("content");
 
 let drivingLicenseImages = [];
@@ -398,21 +404,28 @@ Promise.all(drivingLicenseImages.map((file) => urlToFilePondObject(file))).then(
                                     // Proceed with file upload if confirmed
                                     if (!file.getMetadata().object_name) {
                                         const formData = new FormData();
-                                        formData.append("driving_license", file.file);
+                                        formData.append(
+                                            "driving_license",
+                                            file.file
+                                        );
 
                                         try {
-                                            const response = await fetch(`/driving-license/${userId}`, {
-                                                method: "POST",
-                                                body: formData,
-                                                headers: {
-                                                    "X-CSRF-TOKEN": csrfToken,
-                                                },
-                                            });
+                                            const response = await fetch(
+                                                `/driving-license/${userId}`,
+                                                {
+                                                    method: "POST",
+                                                    body: formData,
+                                                    headers: {
+                                                        "X-CSRF-TOKEN":
+                                                            csrfToken,
+                                                    },
+                                                }
+                                            );
 
-                                            $('#status').html(`
+                                            $("#status").html(`
                                                 <img src="client/icons/unverified.svg" alt="">&nbsp;
                                                 Unverified
-                                            `)
+                                            `);
 
                                             file.setMetadata(
                                                 "object_name",
@@ -458,17 +471,20 @@ Promise.all(drivingLicenseImages.map((file) => urlToFilePondObject(file))).then(
                                 if (result.isConfirmed) {
                                     // Proceed with file removal if confirmed
                                     try {
-                                        await fetch(`/driving-license/${userId}`, {
-                                            method: "DELETE",
-                                            headers: {
-                                                "X-CSRF-TOKEN": csrfToken,
-                                            },
-                                        });
+                                        await fetch(
+                                            `/driving-license/${userId}`,
+                                            {
+                                                method: "DELETE",
+                                                headers: {
+                                                    "X-CSRF-TOKEN": csrfToken,
+                                                },
+                                            }
+                                        );
 
-                                        $('#status').html(`
+                                        $("#status").html(`
                                             <img src="client/icons/unverified.svg" alt="">&nbsp;
                                             Unverified
-                                        `)
+                                        `);
                                     } catch (removeError) {
                                         console.error(
                                             "File removal failed:",
@@ -478,7 +494,9 @@ Promise.all(drivingLicenseImages.map((file) => urlToFilePondObject(file))).then(
                                 } else {
                                     pond2.addFile(processingFile.file, {
                                         metadata: {
-                                            object_name: processingFile.getMetadata().object_name,
+                                            object_name:
+                                                processingFile.getMetadata()
+                                                    .object_name,
                                             reverted: true,
                                         },
                                     }); // Re-add the file if removal is canceled
@@ -550,3 +568,23 @@ const checkPassword = () => {
 };
 
 checkPassword();
+
+$(".cancel-booking").on("click", function (e) {
+    sweetalert
+        .fire({
+            title: "Are you sure to cancel this booking?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3563E9",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes",
+            cancelButtonText: "No",
+        })
+        .then((result) => {
+            if (result.isConfirmed) {
+                $("#loading-backdrop").css("display", "flex");
+                $(e.currentTarget).closest("form").trigger("submit");
+            }
+        });
+});

@@ -9,7 +9,8 @@ Route::group([
     'as' => 'client.'
 ], function () {
     Route::get('', [ClientController::class, 'home'])->name('home');
-    Route::get('/cars', fn() => view('client.cars'))->name('cars');
+    Route::get('/cars', [ClientController::class, 'cars'])->name('cars');
+    Route::get('/cars/json', [ClientController::class, 'getCars'])->name('cars.json');
     Route::get('/cars/{car}', [ClientController::class, 'detail'])->name('detail');
 
     Route::group([
@@ -17,9 +18,10 @@ Route::group([
     ], function () {
         Route::get('/cars/{car}/payment', [ClientController::class, 'payment'])
         ->name('payment');
-        Route::get('/profile', fn() => view('client.profile'))
+        Route::get('/profile', [ClientController::class, 'profile'])
             ->name('profile');
         Route::post('/book', [ClientController::class, 'book'])->name('book');
+        Route::delete('/cancel/{booking}', [ClientController::class, 'cancel'])->name('cancel');
     });
 
     Route::get('/auth', fn() => view('client.auth'))->middleware('guest')->name('auth');

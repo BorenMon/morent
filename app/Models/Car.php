@@ -28,6 +28,8 @@ class Car extends Model
         'rating',
     ];
 
+    protected $appends = ['card_image_url', 'type', 'steering'];
+
     protected $casts = [
         'images' => 'array',
         'has_promotion' => 'boolean'
@@ -61,5 +63,20 @@ class Car extends Model
                 'full_url'   => getAssetUrl($imagePath),
             ];
         })->toArray();
+    }
+
+    public function getCardImageUrlAttribute()
+    {
+        return getAssetUrl($this->card_image);
+    }
+
+    public function getTypeAttribute()
+    {
+        return $this->type_id? Picklist::find($this->type_id)->value : '';
+    }
+
+    public function getSteeringAttribute()
+    {
+        return $this->steering_id? Picklist::find($this->steering_id)->value : '';
     }
 }

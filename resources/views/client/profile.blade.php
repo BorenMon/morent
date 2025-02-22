@@ -34,7 +34,7 @@
                             <div class="inline-block py-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 cursor-pointer font-semibold tab"
                                 id="bookings-tab" data-tabs-target="#bookings" role="tab" aria-controls="bookings"
                                 aria-selected="false">
-                                Booking
+                                Bookings
                             </div>
                         </li>
                         <li role="presentation">
@@ -48,7 +48,7 @@
                             <div class="inline-block py-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 cursor-pointer font-semibold tab"
                                 id="history-tab" data-tabs-target="#history" role="tab" aria-controls="history"
                                 aria-selected="false">
-                                History
+                                Histories
                             </div>
                         </li>
                     </ul>
@@ -61,11 +61,11 @@
                                     class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 relative">
                                     <div id="status">
                                         @if ($user->is_verified)
-                                        <img src="client/icons/verified.svg" alt="">&nbsp;
-                                        Verified
+                                            <img src="client/icons/verified.svg" alt="">&nbsp;
+                                            Verified
                                         @else
-                                        <img src="client/icons/unverified.svg" alt="">&nbsp;
-                                        Unverified
+                                            <img src="client/icons/unverified.svg" alt="">&nbsp;
+                                            Unverified
                                         @endif
                                     </div>
                                     <div
@@ -235,7 +235,8 @@
                                         @method('PATCH')
                                         <div class="grid grid-cols-6 gap-6">
                                             <div class="col-span-6 sm:col-span-3">
-                                                <label for="current-password" class="block mb-2 font-medium text-gray-900">Current password
+                                                <label for="current-password"
+                                                    class="block mb-2 font-medium text-gray-900">Current password
                                                     <span class="text-red-500">*</span></label>
                                                 <input type="password" name="current_password" id="current-password"
                                                     class="shadow-sm bg-gray-50 text-gray-900 rounded-lg block w-full p-2.5 focus:outline-0"
@@ -247,7 +248,8 @@
                                             <div class="col-span-6 sm:col-span-3"></div>
 
                                             <div class="col-span-6 sm:col-span-3">
-                                                <label for="password" class="block mb-2 font-medium text-gray-900">New password
+                                                <label for="password" class="block mb-2 font-medium text-gray-900">New
+                                                    password
                                                     <span class="text-red-500">*</span></label>
                                                 <input type="password" id="password" name="new_password"
                                                     class="bg-gray-50 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -258,9 +260,11 @@
                                             </div>
 
                                             <div class="col-span-6 sm:col-span-3">
-                                                <label for="confirm-password" class="block mb-2 font-medium text-gray-900">Confirm password
+                                                <label for="confirm-password"
+                                                    class="block mb-2 font-medium text-gray-900">Confirm password
                                                     <span class="text-red-500">*</span></label>
-                                                <input type="password" name="new_password_confirmation" id="confirm-password"
+                                                <input type="password" name="new_password_confirmation"
+                                                    id="confirm-password"
                                                     class="shadow-sm bg-gray-50 text-gray-900 rounded-lg block w-full p-2.5 focus:outline-0"
                                                     placeholder="••••••••" required />
                                                 @error('new_password_confirmation')
@@ -289,16 +293,47 @@
                             <h2 class="text-lg font-semibold">Recent Bookings</h2>
                             <a href="" class="text-sm text-blue-500">View All</a>
                         </div>
-                        <img src="/client/images/loading.svg" width="100" style="margin: 0 auto;" class="hidden">
-                        <ul class="grid-cols-1 gap-[32px] min-[1000px]:grid-cols-2 hidden"></ul>
+                        <ul class="grid grid-cols-1 gap-[32px] min-[1000px]:grid-cols-2">
+                            @foreach ($bookings as $b)
+                                <li class="cursor-pointer py-[12px] flex border-e-2 pe-8 border-[#3563E9]">
+                                    <img src="{{ getAssetUrl($b->car->card_image) }}" class="w-[155px] me-[24px] object-contain">
+                                    <form action="{{ route('client.cancel', ['booking' => $b->id]) }}" method="POST" class="flex justify-between w-full">
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="flex flex-col">
+                                            <h3 class="text-xl font-medium">{{ $b->car->model }}</h3>
+                                            <p class="text-[#90A3BF] mb-[6px]">{{ optional($b->car->type)->value }}</p>
+                                            <button type="button" class="cancel-booking"
+                                                style="font-size: 0.875rem !important; height: 24px; padding: 0 12px !important; width: 88px !important; border-radius: 1000px !important; background-color: rgb(255, 40, 40) !important;">Cancel</button>
+                                        </div>
+                                        <div class="h-full flex flex-col justify-between items-end">
+                                            <p class="text-[#90A3BF]">{{ getDateTime($b->created_at) }}</p>
+                                            <h3 class="font-bold text-2xl">${{ $b->total_amount }}</h3>
+                                        </div>
+                                    </form>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
                     <div class="hidden p-[24px] rounded-lg bg-white border border-gray-200 shadow-sm" id="rentings"
                         role="tabpanel" aria-labelledby="rentings-tab">
                         <div class="flex justify-between items-center mb-[32px]">
                             <h2 class="text-lg font-semibold">Renting Car</h2>
                         </div>
-                        <img src="/client/images/loading.svg" width="100" style="margin: 0 auto;" class="hidden">
-                        <div class="cursor-pointer py-[12px] flex hidden" id="renting-car"></div>
+                        <div class="cursor-pointer py-[12px] flex" id="renting-car">
+                            <img src="{{ getAssetUrl($renting->car->card_image) }}"
+                                class="w-[155px] me-[24px] object-contain">
+                            <div class="flex justify-between w-full">
+                                <div class="flex flex-col">
+                                    <h3 class="text-xl font-medium">{{ $renting->car->model }}</h3>
+                                    <p class="text-[#90A3BF]">{{ optional($renting->car->type)->value }}</p>
+                                </div>
+                                <div class="h-full flex flex-col justify-between items-end">
+                                    <p class="text-[#90A3BF]">{{ getDateTime($renting->created_at) }}</p>
+                                    <h3 class="font-bold text-2xl">${{ $renting->total_amount }}</h3>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="hidden p-[24px] rounded-lg bg-white border border-gray-200 shadow-sm" id="history"
                         role="tabpanel" aria-labelledby="history-tab">
@@ -306,8 +341,24 @@
                             <h2 class="text-lg font-semibold">History</h2>
                             <a href="" class="text-sm text-blue-500">View All</a>
                         </div>
-                        <img src="/client/images/loading.svg" width="100" style="margin: 0 auto;" class="hidden">
-                        <ul class="grid grid-cols-1 gap-[32px] min-[1000px]:grid-cols-2 hidden"></ul>
+                        <ul class="grid grid-cols-1 gap-[32px] min-[1000px]:grid-cols-2">
+                            @foreach ($histories as $h)
+                                <li class="cursor-pointer py-[12px] border-e-2 flex border-[#3563E9] pe-8">
+                                    <img src="{{ getAssetUrl($h->car->card_image) }}" class="w-[155px] me-[24px] object-contain">
+                                    <div class="flex justify-between w-full">
+                                        <div class="flex flex-col">
+                                            <h3 class="text-xl font-medium">{{ $h->car->model }}</h3>
+                                            <p class="text-[#90A3BF]">{{ optional($h->car->type)->value }}</p>
+                                        </div>
+                                        <div class="h-full flex flex-col justify-between items-end">
+                                            <p class="text-[#90A3BF]">{{ getDateTime($h->created_at) }}</p>
+                                            <span
+                                                class="{{ $h->progress_status == 'CANCELLED' ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800' }} text-sm font-medium ms-2 px-2.5 py-0.5 rounded">{{ $h->progress_status }}</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>

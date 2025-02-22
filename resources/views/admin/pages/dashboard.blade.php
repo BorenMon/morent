@@ -10,7 +10,7 @@
                     <div class="float-end">
                         <i class="ri-wallet-2-line widget-icon"></i>
                     </div>
-                    <h6 class="text-uppercase mt-0" title="Customers">Revenue</h6>
+                    <h6 class="text-uppercase mt-0" title="Customers">Income</h6>
                     <h2 class="my-2">${{ $totalRevenue }}</h2>
                     <p class="mb-0">
                         <span class="badge bg-white bg-opacity-10 me-1">{{ $revenuePercentageChange }}%</span>
@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div> <!-- end col-->
-        
+
         <a href="{{ route('admin.cars') }}" class="col-xxl-3 col-sm-6">
             <div class="card widget-flat text-bg-pink">
                 <div class="card-body">
@@ -183,7 +183,7 @@
                                 aria-controls="bookings-collapse"><i class="ri-subtract-line"></i></a>
                             {{-- <a href="#" data-bs-toggle="remove"><i class="ri-close-line"></i></a> --}}
                         </div>
-                        <h5 class="header-title mb-0">Bookings</h5>
+                        <h5 class="header-title mb-0">Recent Bookings</h5>
                     </div>
 
                     <div id="bookings-collapse" class="collapse show">
@@ -192,74 +192,31 @@
                             <table class="table table-nowrap table-hover mb-0">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>Customer Name</th>
                                         <th>Pick-up Date</th>
                                         <th>Drop-off Date</th>
-                                        <th>Status</th>
+                                        <th>Payment Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Velonic Admin v1</td>
-                                        <td>01/01/2015</td>
-                                        <td>26/04/2015</td>
-                                        <td><span class="badge bg-info-subtle text-info">Released</span></td>
-                                        <td>Techzaa Studio</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Velonic Frontend v1</td>
-                                        <td>01/01/2015</td>
-                                        <td>26/04/2015</td>
-                                        <td><span class="badge bg-info-subtle text-info">Released</span></td>
-                                        <td>Techzaa Studio</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Velonic Admin v1.1</td>
-                                        <td>01/05/2015</td>
-                                        <td>10/05/2015</td>
-                                        <td><span class="badge bg-pink-subtle text-pink">Pending</span></td>
-                                        <td>Techzaa Studio</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Velonic Frontend v1.1</td>
-                                        <td>01/01/2015</td>
-                                        <td>31/05/2015</td>
-                                        <td><span class="badge bg-purple-subtle text-purple">Work in Progress</span></td>
-                                        <td>Techzaa Studio</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Velonic Admin v1.3</td>
-                                        <td>01/01/2015</td>
-                                        <td>31/05/2015</td>
-                                        <td><span class="badge bg-warning-subtle text-warning">Coming soon</span></td>
-                                        <td>Techzaa Studio</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>6</td>
-                                        <td>Velonic Admin v1.3</td>
-                                        <td>01/01/2015</td>
-                                        <td>31/05/2015</td>
-                                        <td><span class="badge bg-primary-subtle text-primary">Coming soon</span></td>
-                                        <td>Techzaa Studio</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>7</td>
-                                        <td>Velonic Admin v1.3</td>
-                                        <td>01/01/2015</td>
-                                        <td>31/05/2015</td>
-                                        <td><span class="badge bg-danger-subtle text-danger">Cool</span></td>
-                                        <td>Techzaa Studio</td>
-                                    </tr>
-
+                                    @foreach ($recentBookings as $b)
+                                        <tr>
+                                            <td>{{ $b->name }}</td>
+                                            <td>{{ getDateTime($b->pick_up_datetime) }}</td>
+                                            <td>{{ getDateTime($b->drop_off_datetime) }}</td>
+                                            <td>
+                                                <span class="badge {{ statusBadge($b->payment_status) }}">
+                                                    {{ $b->payment_status }}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('admin.bookings.show', ['booking' => $b->id]) }}" class="text-reset fs-16 px-1"> <i
+                                                        class="ri-eye-line text-info"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

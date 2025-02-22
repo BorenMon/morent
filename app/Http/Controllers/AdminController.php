@@ -59,6 +59,8 @@ class AdminController extends Controller
         $lastMonthCars = $statisticsService->getLastMonthCount(new Car());
         $carsPercentageChange = $statisticsService->calculatePercentageChange($currentMonthCars, $lastMonthCars);
 
+        $recentBookings = Booking::latest()->take(8)->get();
+
         // Prepare data to be cached
         $dashboardData = compact(
             'customersCount',
@@ -68,7 +70,8 @@ class AdminController extends Controller
             'totalRevenue',
             'revenuePercentageChange',
             'carsCount',
-            'carsPercentageChange'
+            'carsPercentageChange',
+            'recentBookings'
         );
 
         // Cache the data

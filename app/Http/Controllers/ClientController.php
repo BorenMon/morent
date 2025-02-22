@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Car;
 use App\Models\User;
 use App\Models\Booking;
+use App\Models\Picklist;
 use app\Enums\BookingStage;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -43,6 +44,55 @@ class ClientController extends Controller
         Cache::put($cacheKey, $homeData, now()->addHour());
 
         return view('client.home', $homeData);
+    }
+
+    public function cars()
+    {
+        $types = Picklist::where('category', 'car_type')->get();
+
+        return view('client.cars', compact('types'));
+    }
+
+    public function getCars(Request $request)
+    {
+        // Get filters from request
+        $search = $request->input('search');
+        $types = $request->input('type', []); // Expecting an array
+        $capacities = $request->input('capacity', []); // Expecting an array
+        $minPrice = $request->input('min_price');
+        $maxPrice = $request->input('max_price');
+
+        // Query cars with filters
+        $cars = Car::query();
+
+        if ($search) {
+            $cars->where(function ($query) use ($search) {
+                $query->where('model', 'like', "%{$search}%")
+                      ->orWhere('description', 'like', "%{$search}%");
+            });
+        }
+
+        if (!empty($types)) {
+            $cars->whereIn('type_id', $types);
+        }
+
+        if (!empty($capacities)) {
+            $cars->whereIn('capacity', $capacities);
+        }
+
+        if ($minPrice) {
+            $cars->where('price', '>=', (float) $minPrice);
+        }
+
+        if ($maxPrice) {
+            $cars->where('price', '<=', (float) $maxPrice);
+        }
+
+        // Paginate results (10 cars per page)
+        $cars = $cars->paginate(10);
+
+        // Return JSON response
+        return response()->json($cars);
     }
 
     public function detail(Car $car)
@@ -220,11 +270,37 @@ class ClientController extends Controller
         // Create the booking record
         Booking::create($validated);
 
-        if ($request->expectsJson()) {
-            return response()->json(['message' => 'Booking successful'], 201);
+        return redirect()->route('client.profile')->with([
+        'message_type' =>'success',
+           'message' => 'Booking request sent successfully!'
+        ])->withFragment('bookings');
+    }
+
+    public function profile()
+    {
+        $bookings = Booking::where('stage', BookingStage::Booking)->latest()->take(8)->get();
+
+        $renting = Booking::where('stage', BookingStage::Renting)->latest()->first();
+
+        $histories = Booking::where('stage', BookingStage::History)->latest()->take(8)->get();
+
+        return view('client.profile', compact('bookings', 'renting', 'histories'));
+    }
+
+    public function cancel(Booking $booking)
+    {
+        if (auth()->user()->id != $booking->customer_id) {
+            abort(403);
         }
 
-        // Default redirect if not JSON
-        return redirect()->back()->withInput()->withErrors($validated);
+        $booking->update([
+            'stage' => BookingStage::History,
+            'progress_status' => BookingProgressStatus::Cancelled
+        ]);
+
+        return redirect()->back()->with([
+            'message_type' => 'success',
+            'message' => 'Booking cancelled successfully!'
+        ])->withFragment('history');
     }
 }

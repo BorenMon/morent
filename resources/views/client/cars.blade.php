@@ -4,6 +4,14 @@
     @vite('resources/styles/client/pages/cars.css')
 @endsection
 
+@php
+    $user = Auth::user();
+@endphp
+
+@section('meta')
+    <meta name="payment-base-url" content="{{ optional($user)->role == 'CUSTOMER' || !$user ? route('client.payment', ['car' => '#']) : '#' }}" />
+@endsection
+
 @section('content')
     <div class="backdrop" id="filter-backdrop"></div>
     <div id="body-wrapper">
@@ -16,31 +24,13 @@
                             <img src="/client/icons/close.svg" alt="" />
                         </button>
                     </h4>
-                    <ul class="space-y-[32px]">
+                    <ul class="space-y-[32px]" id="types">
+                        @foreach ($types as $t)
                         <li class="checkbox-item">
-                            <input type="checkbox" id="Sport" name="type" value="Sport" />
-                            <label for="Sport">Sport <span></span></label>
+                            <input type="checkbox" id="{{ $t->id . $t->value }}" name="type" value="{{ $t->id }}" />
+                            <label for="{{ $t->id . $t->value }}">{{ $t->value }} <span></span></label>
                         </li>
-                        <li class="checkbox-item">
-                            <input type="checkbox" id="SUV" name="type" value="SUV" />
-                            <label for="SUV">SUV <span></span></label>
-                        </li>
-                        <li class="checkbox-item">
-                            <input type="checkbox" id="MPV" name="type" value="MPV" />
-                            <label for="MPV">MPV <span></span></label>
-                        </li>
-                        <li class="checkbox-item">
-                            <input type="checkbox" id="Sedan" name="type" value="Sedan" />
-                            <label for="Sedan">Sedan <span></span></label>
-                        </li>
-                        <li class="checkbox-item">
-                            <input type="checkbox" id="Coupe" name="type" value="Coupe" />
-                            <label for="Coupe">Coupe <span></span></label>
-                        </li>
-                        <li class="checkbox-item">
-                            <input type="checkbox" id="Hatchback" name="type" value="Hatchback" />
-                            <label for="Hatchback">Hatchback <span></span></label>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div>
@@ -76,7 +66,7 @@
             <div id="filter-button">
                 <img src="/client/icons/filter.svg" alt="" class="icon" />
             </div>
-            <div id="category" class="space-y-[32px]">
+            <div id="category">
                 <div class="space-y-8" id="skeleton-loading">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                         <div class="w-full p-4 border border-gray-200 rounded shadow animate-pulse md:p-6">

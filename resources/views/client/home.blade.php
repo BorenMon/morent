@@ -85,7 +85,7 @@
                                                 @endif
                                             </div>
                                             <button>
-                                                <a href="{{ $user->role == 'CUSTOMER' ? route('client.payment', ['car' => $car->id]) : '#' }}">Book Now</a>
+                                                <a href="{{ optional($user)->role == 'CUSTOMER' || !$user ? route('client.payment', ['car' => $car->id]) : '#' }}">Book Now</a>
                                             </button>
                                         </div>
                                     </div>
@@ -143,7 +143,7 @@
                                         @endif
                                     </div>
                                     <button>
-                                        <a href="{{ $user->role == 'CUSTOMER' ? route('client.payment', ['car' => $car->id]) : '#' }}">Book Now</a>
+                                        <a href="{{ optional($user)->role == 'CUSTOMER' || !$user ? route('client.payment', ['car' => $car->id]) : '#' }}">Book Now</a>
                                     </button>
                                 </div>
                             </div>

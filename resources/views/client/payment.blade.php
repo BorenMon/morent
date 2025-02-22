@@ -4,12 +4,6 @@
 
 @extends('client.layout', ['title' => 'Payment'])
 
-@section('meta')
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="user-id" content="{{ $user->id }}">
-    <meta name="car-id" content="{{ $car->id }}">
-@endsection
-
 @section('css')
     @vite(['node_modules/viewerjs/dist/viewer.min.css', 'resources/styles/client/pages/payment.css'])
 @endsection
@@ -17,7 +11,11 @@
 @section('content')
     <div id="body-wrapper">
         <div class="container-fluid" id="payment">
-            <main class="payment-main">
+            <form action="{{ route('client.book') }}" method="POST" class="payment-main" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="customer_id" value="{{ $user->id }}">
+                <input type="hidden" name="car_id" value="{{ $car->id }}">
+                <input type="file" name="payment_proof" class="hidden">
                 <!-- Billing -->
                 <div class="pay" style="grid-area: pay">
                     <div id="form" style="display: grid; gap: 25px">
@@ -41,7 +39,11 @@
                     background-color: whitesmoke;
                     border-radius: 10px;
                   "
-                                        placeholder="Your name" id="name-input" value="{{ $user->name }}" />
+                                        placeholder="Your name" id="name-input" value="{{ old('name', $user->name) }}"
+                                        name="name" />
+                                    @error('name')
+                                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <!--  -->
                                 <div class="bill_input_div">
@@ -54,7 +56,11 @@
                     background-color: whitesmoke;
                     border-radius: 10px;
                   "
-                                        placeholder="Phone number" id="phone-input" value="{{ $user->phone }}" />
+                                        placeholder="Phone number" id="phone-input" value="{{ old('phone', $user->phone) }}"
+                                        name="phone" />
+                                    @error('phone')
+                                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="bill_input">
@@ -67,7 +73,11 @@
                     background-color: whitesmoke;
                     border-radius: 10px;
                   "
-                                        placeholder="Address" id="address-input" value="{{ $user->address }}" />
+                                        placeholder="Address" id="address-input"
+                                        value="{{ old('address', $user->address) }}" name="address" />
+                                    @error('address')
+                                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -100,8 +110,11 @@
                       background-color: whitesmoke;
                       border-radius: 10px;
                     ">
-                                            <select class="city"></select>
+                                            <select class="city" name="pick_up_city"></select>
                                         </div>
+                                        @error('pick_up_city')
+                                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div class="bill_input_div">
                                         <label style="font-weight: bold">Date <span class="text-red-500">*</span></label>
@@ -112,10 +125,10 @@
                       background-color: whitesmoke;
                       border-radius: 10px;
                     "
-                                            class="date" />
+                                            class="date" name="pick_up_datetime" value="{{ old('pick_up_datetime') }}" />
 
                                         @error('pick_up_datetime')
-                                            <p>{{ $message }}</p>
+                                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
@@ -141,8 +154,11 @@
                       background-color: whitesmoke;
                       border-radius: 10px;
                     ">
-                                            <select name="dropoff-city" class="city"></select>
+                                            <select class="city" name="drop_off_city"></select>
                                         </div>
+                                        @error('drop_off_city')
+                                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div style="display: grid; width: 100%; gap: 10px">
                                         <label style="font-weight: bold">Date <span class="text-red-500">*</span></label>
@@ -153,7 +169,11 @@
                       background-color: whitesmoke;
                       border-radius: 10px;
                     "
-                                            class="date" />
+                                            class="date" name="drop_off_datetime"
+                                            value="{{ old('drop_off_datetime') }}" />
+                                        @error('drop_off_datetime')
+                                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -216,11 +236,13 @@
                         <!-- image -->
                         <div class="car_img flex items-center">
                             <div id="car_card">
-                                <img src="{{ getAssetUrl($car->card_image) }}" alt="" width="80%" id="image" />
+                                <img src="{{ getAssetUrl($car->card_image) }}" alt="" width="80%"
+                                    id="image" />
                             </div>
                             <div>
                                 <p style="font-weight: bold; font-size: x-large" id="model">{{ $car->model }}</p>
-                                <div class="flex items-center font-medium text-[#596780] text-[14px]">{{ optional($car->brand)->value }}</div>
+                                <div class="flex items-center font-medium text-[#596780] text-[14px]">
+                                    {{ optional($car->brand)->value }}</div>
                             </div>
                         </div>
                         <hr class="my-[24px]" />
@@ -270,18 +292,19 @@
                                 <p style="color: rgb(173, 170, 170)">Step 3 of 4</p>
                             </div>
                             <div id="khqr" class="cursor-pointer">
-                                <img src="/client/khqr-payment.png" class="mt-8" style="object-fit: contain; object-position: center; width: 100%; height: 210px;">
+                                <img src="/client/khqr-payment.png" class="mt-8"
+                                    style="object-fit: contain; object-position: center; width: 100%; height: 210px;">
                             </div>
                             <div class="custom-file-container" data-upload-id="payment-proof"></div>
+                            @error('payment_proof')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
                 </div>
-            </main>
+            </form>
         </div>
     </div>
-    {{-- <div class="backdrop items-center justify-center" id="loading-backdrop">
-        <img src="/client/images/loading.svg">
-    </div> --}}
 @endsection
 
 @section('script')
