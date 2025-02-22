@@ -36,7 +36,10 @@
                 </div>
 
                 <!-- Forgot Password Link -->
-                <div class="forgot-link">
+                <div class="forgot-link" style="display: flex; justify-content: space-between;">
+                    <div style="display: flex; align-items: center;">
+                        <input type="checkbox" name="remember"><span style="margin-left: 4px;">Remember me</span>
+                    </div>
                     <a href="{{ route('password.request') }}">Forgot Password?</a>
                 </div>
 

@@ -61,9 +61,8 @@
                                             <div class="mb-3">
                                                 <div class="form-check">
                                                     <input type="checkbox" class="form-check-input"
-                                                        id="checkbox-signin">
-                                                    <label class="form-check-label" for="checkbox-signin">Remember
-                                                        me</label>
+                                                        id="checkbox-signin" name="remember">
+                                                    <label class="form-check-label" for="checkbox-signin">Remember me</label>
                                                 </div>
                                             </div>
                                             <div class="mb-0 text-start">

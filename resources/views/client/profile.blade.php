@@ -296,8 +296,10 @@
                         <ul class="grid grid-cols-1 gap-[32px] min-[1000px]:grid-cols-2">
                             @foreach ($bookings as $b)
                                 <li class="cursor-pointer py-[12px] flex border-e-2 pe-8 border-[#3563E9]">
-                                    <img src="{{ getAssetUrl($b->car->card_image) }}" class="w-[155px] me-[24px] object-contain">
-                                    <form action="{{ route('client.cancel', ['booking' => $b->id]) }}" method="POST" class="flex justify-between w-full">
+                                    <img src="{{ getAssetUrl($b->car->card_image) }}"
+                                        class="w-[155px] me-[24px] object-contain">
+                                    <form action="{{ route('client.cancel', ['booking' => $b->id]) }}" method="POST"
+                                        class="flex justify-between w-full">
                                         @csrf
                                         @method('DELETE')
                                         <div class="flex flex-col">
@@ -321,18 +323,20 @@
                             <h2 class="text-lg font-semibold">Renting Car</h2>
                         </div>
                         <div class="cursor-pointer py-[12px] flex" id="renting-car">
-                            <img src="{{ getAssetUrl($renting->car->card_image) }}"
-                                class="w-[155px] me-[24px] object-contain">
-                            <div class="flex justify-between w-full">
-                                <div class="flex flex-col">
-                                    <h3 class="text-xl font-medium">{{ $renting->car->model }}</h3>
-                                    <p class="text-[#90A3BF]">{{ optional($renting->car->type)->value }}</p>
+                            @if ($renting)
+                                <img src="{{ getAssetUrl($renting->car->card_image) }}"
+                                    class="w-[155px] me-[24px] object-contain">
+                                <div class="flex justify-between w-full">
+                                    <div class="flex flex-col">
+                                        <h3 class="text-xl font-medium">{{ $renting->car->model }}</h3>
+                                        <p class="text-[#90A3BF]">{{ optional($renting->car->type)->value }}</p>
+                                    </div>
+                                    <div class="h-full flex flex-col justify-between items-end">
+                                        <p class="text-[#90A3BF]">{{ getDateTime($renting->created_at) }}</p>
+                                        <h3 class="font-bold text-2xl">${{ $renting->total_amount }}</h3>
+                                    </div>
                                 </div>
-                                <div class="h-full flex flex-col justify-between items-end">
-                                    <p class="text-[#90A3BF]">{{ getDateTime($renting->created_at) }}</p>
-                                    <h3 class="font-bold text-2xl">${{ $renting->total_amount }}</h3>
-                                </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
                     <div class="hidden p-[24px] rounded-lg bg-white border border-gray-200 shadow-sm" id="history"
@@ -344,7 +348,8 @@
                         <ul class="grid grid-cols-1 gap-[32px] min-[1000px]:grid-cols-2">
                             @foreach ($histories as $h)
                                 <li class="cursor-pointer py-[12px] border-e-2 flex border-[#3563E9] pe-8">
-                                    <img src="{{ getAssetUrl($h->car->card_image) }}" class="w-[155px] me-[24px] object-contain">
+                                    <img src="{{ getAssetUrl($h->car->card_image) }}"
+                                        class="w-[155px] me-[24px] object-contain">
                                     <div class="flex justify-between w-full">
                                         <div class="flex flex-col">
                                             <h3 class="text-xl font-medium">{{ $h->car->model }}</h3>
