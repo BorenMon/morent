@@ -39,10 +39,10 @@ class AdminController extends Controller
         $lastMonthBookings = $statisticsService->getLastMonthCount(new Booking());
         $bookingsPercentageChange = $statisticsService->calculatePercentageChange($currentMonthBookings, $lastMonthBookings);
 
-        // Get Total Revenue
+        // Get Total Income
         $totalRevenue = Booking::sum('total_amount');
         $currentMonthRevenue = Booking::whereMonth('created_at', Carbon::now()->month)
-            ->whereYear('created_at', Carbon::now()->year)
+            ->whereYear('created_at', Carbon::now()->year)->where('payment_status', 'PAID')
             ->sum('total_amount');
         $lastMonthRevenue = Booking::whereMonth('created_at', Carbon::now()->subMonth()->month)
             ->whereYear('created_at', Carbon::now()->subMonth()->year)

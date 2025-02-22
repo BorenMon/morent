@@ -4,6 +4,10 @@
 
 @extends('client.layout', ['title' => 'Payment'])
 
+@section('meta')
+    <meta name="price-per-day" content="{{ $car->has_promotion ? $car->promotion_price : $car->price }}">
+@endsection
+
 @section('css')
     @vite(['node_modules/viewerjs/dist/viewer.min.css', 'resources/styles/client/pages/payment.css'])
 @endsection
@@ -265,7 +269,7 @@
                                 <p style="color: rgb(173, 170, 170)" class="text-[16px]">
                                     Tax
                                 </p>
-                                <p style="font-weight: 800" class="text-[16px]" id="tax">$0.00</p>
+                                <p style="font-weight: 800" class="text-[16px]" id="tax"></p>
                             </div>
                             <div class="pay_step">
                                 <div>

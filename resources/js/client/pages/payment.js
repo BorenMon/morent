@@ -4,6 +4,7 @@ import select2 from "select2";
 import Viewer from "viewerjs";
 import { FileUploadWithPreview, Events } from 'file-upload-with-preview';
 import 'file-upload-with-preview/dist/style.css';
+import { formatToTwoDecimals } from '../services/utils.js'
 
 const paymentProof = new FileUploadWithPreview('payment-proof');
 
@@ -155,3 +156,26 @@ optionalFields.forEach((field) => {
         else optionalPayload[field.key] = $(field.selector).val();
     });
 });
+
+let pricePerDay = +$('meta[name="price-per-day').attr('content');
+let taxPercentage = 0;
+
+function updatePrice() {
+    const startDate = $('input[name="pick_up_datetime"]').val()
+    const endDate = $('input[name="drop_off_datetime"]').val();
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const duration = Math.ceil((end - start) / (1000 * 60 * 60 * 24)) || 0;
+
+    $('#duration').text(duration + ' days');
+    const subTotal = duration * pricePerDay;
+    $('#sub-total').text('$' + formatToTwoDecimals(subTotal));
+    const tax = subTotal * taxPercentage / 100;
+    $('#tax').text('$' + formatToTwoDecimals(tax));
+    $('#total').text('$' + formatToTwoDecimals(subTotal + tax));
+}
+
+updatePrice();
+
+$('input[name="pick_up_datetime"]').on('change', updatePrice);
+$('input[name="drop_off_datetime"]').on('change', updatePrice);

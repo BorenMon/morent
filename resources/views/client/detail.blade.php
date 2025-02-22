@@ -50,12 +50,12 @@
                                 <div class="space-x-[12px]">
                                     <img src="/client/icons/car-body.svg" alt="" class="icon" />
                                     <span class="name">Type</span>
-                                    <span>{{ optional($car->type)->value }}</span>
+                                    <span>{{ $car->type }}</span>
                                 </div>
                                 <div class="space-x-[12px]">
                                     <img src="/client/icons/car.svg" alt="" class="icon" />
                                     <span class="name">Steering</span>
-                                    <span>{{ optional($car->steering)->value }}</span>
+                                    <span>{{ $car->steering }}</span>
                                 </div>
                                 <div class="space-x-[12px]">
                                     <img src="/client/icons/profile-2user.svg" alt="" class="icon" />
@@ -85,7 +85,7 @@
                                 @endif
                             </div>
                             <button class="h-[66px] w-[134px]">
-                                <a href="{{ $user->role == 'CUSTOMER' ? route('client.payment', ['car' => $car->id]) : '#' }}">Book Now</a>
+                                <a href="{{ optional($user)->role == 'CUSTOMER' ? route('client.payment', ['car' => $car->id]) : '#' }}">Book Now</a>
                             </button>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                                         <div class="-mt-[5px]">
                                             <div class="text-[20px] font-bold text-[#1A202C]">{{ $car->model }}</div>
                                             <div class="text-[14px] font-bold text-[#90A3BF]">
-                                                {{ optional($car->type)->value }}</div>
+                                                {{ $car->type }}</div>
                                         </div>
                                     </div>
                                     <a href="{{ route('client.detail', ['car' => $car->id]) }}"
@@ -117,7 +117,7 @@
                                             </div>
                                             <div>
                                                 <img src="/client/icons/car.svg" alt="" class="icon">
-                                                <span>{{ optional($car->steering)->value }}</span>
+                                                <span>{{ $car->steering }}</span>
                                             </div>
                                             <div>
                                                 <img src="/client/icons/profile-2user.svg" alt="" class="icon">
@@ -139,7 +139,7 @@
                                                 @endif
                                             </div>
                                             <button>
-                                                <a href="{{ $user->role == 'CUSTOMER' ? route('client.payment', ['car' => $car->id]) : '#' }}">Book Now</a>
+                                                <a href="{{ optional($user)->role == 'CUSTOMER' ? route('client.payment', ['car' => $car->id]) : '#' }}">Book Now</a>
                                             </button>
                                         </div>
                                     </div>

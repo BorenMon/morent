@@ -33,7 +33,7 @@ class ClientController extends Controller
         $popularCars = Car::where('rent_times', '>=', 50)->limit(8)->get();
 
         $recommendedCars = Car::
-            // where('rating', '>=', 4)->
+            where('rating', '>=', 4)->
             limit(16)->get();
 
         $totalCars = $statisticsService->getTotalCount(new Car());
@@ -295,7 +295,8 @@ class ClientController extends Controller
 
         $booking->update([
             'stage' => BookingStage::History,
-            'progress_status' => BookingProgressStatus::Cancelled
+            'progress_status' => BookingProgressStatus::Cancelled,
+            'payment_status' => $booking->payment_status == BookingPaymentStatus::Paid->value ? BookingPaymentStatus::Refunding : $booking->payment_status
         ]);
 
         return redirect()->back()->with([

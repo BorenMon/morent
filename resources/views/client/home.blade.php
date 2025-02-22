@@ -20,7 +20,7 @@
                                     <h2>The Best Platform for Car Rental</h2>
                                     <p>Ease of doing a car rental safely and reliably. Of course at a low price.</p>
                                     <button class="bg-[#3563E9] slide-button"><a
-                                            href="${link_url}">Rental Car</a></button>
+                                            href="{{ route('client.cars') }}">Rental Car</a></button>
                                 </div>
                                 <img src="/client/slides/slide1-car.png" loading="lazy" alt="" class="pl-[56px]">
                             </li>
@@ -29,7 +29,7 @@
                                     <h2>Easy way to rent a car at a low price</h2>
                                     <p>Providing cheap car rental services and safe and comfortable facilities.</p>
                                     <button class="bg-[#54A6FF] slide-button"><a
-                                            href="${link_url}">Rental Car</a></button>
+                                            href="{{ route('client.cars') }}">Rental Car</a></button>
                                 </div>
                                 <img src="/client/slides/slide2-car.png" loading="lazy" alt="" class="pl-[56px]">
                             </li>
@@ -49,7 +49,7 @@
                                         <div class="-mt-[5px]">
                                             <div class="text-[20px] font-bold text-[#1A202C]">{{ $car->model }}</div>
                                             <div class="text-[14px] font-bold text-[#90A3BF]">
-                                                {{ optional($car->type)->value }}</div>
+                                                {{ $car->type }}</div>
                                         </div>
                                     </div>
                                     <a href="{{ route('client.detail', ['car' => $car->id]) }}"
@@ -63,7 +63,7 @@
                                             </div>
                                             <div>
                                                 <img src="/client/icons/car.svg" alt="" class="icon">
-                                                <span>{{ optional($car->steering)->value }}</span>
+                                                <span>{{ $car->steering }}</span>
                                             </div>
                                             <div>
                                                 <img src="/client/icons/profile-2user.svg" alt="" class="icon">
@@ -103,7 +103,7 @@
                             <div>
                                 <div class="-mt-[5px]">
                                     <div class="text-[20px] font-bold text-[#1A202C]">{{ $car->model }}</div>
-                                    <div class="text-[14px] font-bold text-[#90A3BF]">{{ optional($car->type)->value }}
+                                    <div class="text-[14px] font-bold text-[#90A3BF]">{{ $car->type }}
                                     </div>
                                 </div>
                             </div>
@@ -120,7 +120,7 @@
                                     </div>
                                     <div>
                                         <img src="/client/icons/car.svg" alt="" class="icon">
-                                        <span>{{ optional($car->steering)->value }}</span>
+                                        <span>{{ $car->steering }}</span>
                                     </div>
                                     <div>
                                         <img src="/client/icons/profile-2user.svg" alt="" class="icon">
