@@ -40,11 +40,11 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Steering</label>
-                    <p>{{ $car->steering->value }}</p>
+                    <p>{{ $car->steering }}</p>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Type</label>
-                    <p>{{ $car->type->value }}</p>
+                    <p>{{ $car->type }}</p>
                 </div>
                 <div class="col-sm-12 mb-3">
                     <label class="form-label" for="description">Description</label>
@@ -88,10 +88,12 @@
                     </div>
                     <div id="id-card" class="collapse show">
                         <div class="card-body d-flex gap-4 flex-wrap">
-                            @foreach ($car->images as $image)
-                                <img src="{{ getAssetUrl($image) }}" alt=""
-                                    style="height: 200px; object-fit: contain; object-position: center;">
-                            @endforeach
+                            @if ($car->images)
+                                @foreach ($car->images as $image)
+                                    <img src="{{ getAssetUrl($image) }}" alt=""
+                                        style="height: 200px; object-fit: contain; object-position: center;">
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
