@@ -281,6 +281,27 @@ function generatePagination(currentPage, totalPages) {
     });
 }
 
+const prevAction = (e, totalPages) => {
+    e.preventDefault();
+    if (page > 1) {
+        generatePagination(page - 1, totalPages); // Go to previous page
+        --page;
+        defaultRefreshCars(undefined, false);
+    }
+};
+
+const nextAction = (e, totalPages) => {
+    e.preventDefault();
+    if (page < totalPages) {
+        generatePagination(page + 1, totalPages); // Go to next page
+        ++page;
+        defaultRefreshCars(undefined, false);
+    }
+};
+
+$('#prev-button').on('click', (e) => prevAction(e, total_page))
+$('#next-button').on('click', (e) => nextAction(e, total_page))
+
 const paymentBaseUrl = $('meta[name="payment-base-url"]').attr("content");
 
 function getPaymentUrl(carId) {
