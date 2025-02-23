@@ -299,8 +299,8 @@ const nextAction = (e, totalPages) => {
     }
 };
 
-$('#prev-button').on('click', (e) => prevAction(e, total_page))
-$('#next-button').on('click', (e) => nextAction(e, total_page))
+$("#prev-button").on("click", (e) => prevAction(e, total_page));
+$("#next-button").on("click", (e) => nextAction(e, total_page));
 
 const paymentBaseUrl = $('meta[name="payment-base-url"]').attr("content");
 
@@ -342,3 +342,26 @@ capacityChecks.forEach((capacity) => {
         defaultRefreshCars(undefined, true);
     });
 });
+
+$("#filter-button").on("click", () => {
+    $("#filter").addClass("open");
+    $("#filter-backdrop").css("display", "block");
+});
+
+const closeFilter = () => {
+    $("#filter-backdrop").css("display", "none");
+    $("#filter").removeClass("open");
+};
+
+$("#close-filter").on("click", closeFilter);
+$("#filter-backdrop").on("click", closeFilter);
+
+const filterHandleResize = (e) => {
+    if (e.matches) {
+        closeFilter();
+    }
+};
+
+const filterMediaQuery = window.matchMedia("(min-width: 1100px)");
+
+filterMediaQuery.addEventListener("change", filterHandleResize);
