@@ -102,11 +102,8 @@ class BookingController extends Controller
             'progress_status'  => ['required', 'string', Rule::in(BookingProgressStatus::values())],
         ]);
 
-        // Update booking
-        $booking->update($validated);
-
-        // Determine stage based on payment and progress status
         $stage = $booking->stage;
+        $paymentStatus = $booking->payment_status;
 
         if ($validated['progress_status'] === BookingProgressStatus::InProgress->value) {
             $stage = BookingStage::Renting;
@@ -115,11 +112,15 @@ class BookingController extends Controller
         $validated['progress_status'] === BookingProgressStatus::Cancelled->value) {
             $stage = BookingStage::History;
         }
-
-        // Update stage if changed
-        if ($booking->stage !== $stage) {
-            $booking->update(['stage' => $stage]);
+        if ($validated['payment_status'] === BookingPaymentStatus::Paid && $validated['progress_status'] === BookingProgressStatus::Rejected)
+        {
+            $paymentStatus = BookingPaymentStatus::Refunding;
         }
+
+        $booking->update([
+            'stage' => $stage,
+            'payment_status' => $paymentStatus
+        ]);
 
         return redirect()->back()->with([
             'message' => 'Booking updated successfully',

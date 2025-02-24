@@ -8,6 +8,7 @@ enum BookingProgressStatus: string
   case InProgress = 'IN_PROGRESS';
   case Cancelled = 'CANCELLED';
   case Completed = 'COMPLETED';
+  case Rejected = 'REJECTED';
 
   public static function values(): array
   {
