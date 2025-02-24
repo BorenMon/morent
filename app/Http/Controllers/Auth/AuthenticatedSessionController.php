@@ -49,7 +49,8 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        $isCustomer = Auth::user()->role == UserRole::Customer->value;
+        // Get the referer from the request header
+        $referer = $request->header('referer');
 
         Auth::guard('web')->logout();
 
@@ -57,8 +58,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        if ($isCustomer) return redirect()->back();
-        
-        return redirect('/admin/login');
+        if (str_contains($referer, '/admin')) {
+            return redirect('/admin/login');
+        }
+
+        return redirect()->back();
     }
 }

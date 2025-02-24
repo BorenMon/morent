@@ -186,6 +186,7 @@ let page = 1;
 let types = [];
 let capacities = [];
 let maxPrice = 100;
+$('input[name="search"]').val(keyword);
 defaultRefreshCars(keyword, false);
 
 function generatePagination(currentPage, totalPages) {

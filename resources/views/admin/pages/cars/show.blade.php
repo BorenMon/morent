@@ -13,6 +13,8 @@
             </div>
             <div class="d-flex flex-column gap-2">
                 <div>
+                    <a href="{{ route('client.detail', ['car' => $car->id]) }}"
+                        class="text-reset fs-24 px-1"> <i class="ri-eye-line text-info"></i></a>
                     <a href="{{ route('admin.cars.edit', ['car' => $car->id]) }}" class="text-reset fs-24 px-1"> <i
                             class="ri-settings-3-line text-primary"></i></a>
                     <form id="delete-form-{{ $car->id }}"
