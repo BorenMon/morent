@@ -88,8 +88,7 @@ class ClientController extends Controller
             $cars->where('price', '<=', (float) $maxPrice);
         }
 
-        // Paginate results (10 cars per page)
-        $cars = $cars->paginate(10);
+        $cars = $cars->paginate(9);
 
         // Return JSON response
         return response()->json($cars);

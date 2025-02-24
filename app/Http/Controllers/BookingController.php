@@ -108,7 +108,7 @@ class BookingController extends Controller
         // Determine stage based on payment and progress status
         $stage = $booking->stage;
 
-        if ($validated['payment_status'] === BookingPaymentStatus::Paid->value || $validated['progress_status'] === BookingProgressStatus::InProgress->value) {
+        if ($validated['progress_status'] === BookingProgressStatus::InProgress->value) {
             $stage = BookingStage::Renting;
         }
         if ($validated['payment_status'] === BookingPaymentStatus::Refunding->value || $validated['payment_status'] === BookingPaymentStatus::Refunded->value || $validated['progress_status'] === BookingProgressStatus::Completed->value ||
