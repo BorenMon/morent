@@ -111,10 +111,10 @@ class BookingController extends Controller
             $stage = BookingStage::Renting;
         }
         if ($validated['payment_status'] === BookingPaymentStatus::Refunding->value || $validated['payment_status'] === BookingPaymentStatus::Refunded->value || $validated['progress_status'] === BookingProgressStatus::Completed->value ||
-        $validated['progress_status'] === BookingProgressStatus::Cancelled->value || $validated['progress_status'] === BookingProgressStatus::Rejected) {
+        $validated['progress_status'] === BookingProgressStatus::Cancelled->value || $validated['progress_status'] === BookingProgressStatus::Rejected->value) {
             $stage = BookingStage::History;
         }
-        if ($validated['payment_status'] === BookingPaymentStatus::Paid && $validated['progress_status'] === BookingProgressStatus::Rejected)
+        if ($validated['payment_status'] === BookingPaymentStatus::Paid->value && $validated['progress_status'] === BookingProgressStatus::Rejected->value)
         {
             $paymentStatus = BookingPaymentStatus::Refunding;
         }
