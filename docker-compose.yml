@@ -28,7 +28,7 @@ services:
       - mysql-data:/var/lib/mysql
 
   minio:
-    image: minio/minio
+    image: minio/minio:RELEASE.2025-03-12T18-04-18Z
     container_name: morent_minio
     ports:
       - "9002:9000"
