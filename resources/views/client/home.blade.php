@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+boren
     <div id="body-wrapper">
         <div id="body" class="container-fluid">
             <div>
