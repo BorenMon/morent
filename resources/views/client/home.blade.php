@@ -9,7 +9,6 @@
 @endsection
 
 @section('content')
-My name is Boren
     <div id="body-wrapper">
         <div id="body" class="container-fluid">
             <div>
