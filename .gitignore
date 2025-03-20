@@ -24,4 +24,5 @@ yarn-error.log
 
 backup
 backup.sh
+backup.log
 restore.sh
