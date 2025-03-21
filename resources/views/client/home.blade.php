@@ -9,7 +9,6 @@
 @endsection
 
 @section('content')
-test
     <div id="body-wrapper">
         <div id="body" class="container-fluid">
             <div>
