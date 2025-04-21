@@ -9,4 +9,3 @@ yarn && yarn dev &
 composer update && composer install
 
 php artisan serve --host=0.0.0.0
-# & php artisan queue:work

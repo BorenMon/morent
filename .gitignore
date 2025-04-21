@@ -21,3 +21,8 @@ yarn-error.log
 /.vscode
 /database/database.sqlite
 /git-filter-env
+
+backup
+backup.sh
+backup.log
+restore.sh
